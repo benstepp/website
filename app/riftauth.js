@@ -1,6 +1,7 @@
 //Required modules
 var request = require('request');
 var querystring = require('querystring');
+var util = require('util');
 var EventEmitter = require('events').EventEmitter;
 //Account info imported from .gitignore file
 var account = require('../config/account.js');
@@ -55,7 +56,7 @@ var TrionAuth = function() {
 	//once both chat servers are logged into 
 	var eventCheck = function() {
 		if (typeof _this.session_chatus !== 'undefined' && typeof _this.session_chateu !== 'undefined') {
-			module.exports.emit('ready', _this);
+			_this.emit('ready', _this);
 		}
 	};
 
@@ -70,8 +71,6 @@ var TrionAuth = function() {
 
 };
 
-//execute login function
-var trionAuth = new TrionAuth();
-
-//export event emitter
-module.exports = new EventEmitter();
+//inherit event emitter and export the class
+util.inherits(TrionAuth, EventEmitter);
+module.exports = TrionAuth;

@@ -109,5 +109,6 @@ var ZoneEvent = function(trionAuth) {
 
 };
 
+//inherit event emitter and export class
 util.inherits(ZoneEvent, EventEmitter);
 module.exports = ZoneEvent;

@@ -41,22 +41,23 @@ if (env == 'development') {
 }
 
 //login to rift mobile services
-var trionAuth = require('./app/riftauth');
-trionAuth.on('ready', function(TrionAuth) {
+var TrionAuth = require('./app/riftauth');
+trionAuth = new TrionAuth();
+trionAuth.on('ready', function(tAuth) {
 	//load up ZoneEvent class module with session cookies
 	var ZoneEvent = require('./app/riftzoneevents');
-	var ZoneEvents = new ZoneEvent(TrionAuth);
+	var zEvents = new ZoneEvent(tAuth);
 
 	//when new events, update router
-	ZoneEvents.on('newEvents', function(events) {
+	zEvents.on('newEvents', function(events) {
 		console.log('new events');
 	});
 });
 
 
-io.on('connection', function(socket) {
-	socket.emit('news', {hello: 'world'});
-});
+//io.on('connection', function(socket) {
+	//socket.emit('news', {hello: 'world'});
+//});
 
 //start app
 app.listen(port);
