@@ -16,7 +16,6 @@ app.use(bodyParser.json());
 app.use(morgan());
 
 var server = http.Server(app, env);
-var io = socketio(server);
 
 //app modules
 var riftevents = require('./app/riftevents/main')(app, env);

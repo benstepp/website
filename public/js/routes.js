@@ -7,6 +7,11 @@ angular.module('routes',[]).config(['$routeProvider','$locationProvider',functio
             controller: 'EventsController',
             templateUrl: 'partials/events.html'
         })
+        .when('/riftevents', 
+        {
+        	controller: 'EventsController',
+        	templateUrl: 'partials/events.html'
+        })
         .otherwise({ redirectTo: '/'});
 
     $locationProvider.html5Mode(true);

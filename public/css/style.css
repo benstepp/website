@@ -1,0 +1,26 @@
+.navbar-nav > li > a {
+	padding-top:5px;
+	padding-bottom:5px;
+}
+.navbar {
+	min-height:28px;
+	background-color:#FFFFFF;
+}
+.navbar-brand {
+	padding:5px 15px;
+	margin-right:20px;
+	height:28px;
+}
+.navbar-toggle {
+	padding:2px;
+}
+
+#mainContent {
+	margin-top:40px;
+}
+
+.nav-small-brand {
+	margin-right:0px;
+	padding-right:15px;
+	font-size:14px;
+}

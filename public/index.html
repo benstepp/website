@@ -8,6 +8,10 @@
 	<link rel="stylesheet" href="libs/bootstrap/dist/css/bootstrap.min.css">
 	<link rel="stylesheet" href="css/style.css">
 
+	<!-- BootStrap -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+	<script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+
 	<!-- Angular -->
 	<script src="libs/angular/angular.min.js"></script>
 	<script src="libs/angular-route/angular-route.min.js"></script>
@@ -16,33 +20,45 @@
 	<script src="js/routes.js"></script>
 	<script src="js/app.js"></script>
 
-	<script src="libs/socket.io-client/socket.io.js"></script>
-
 </head>
 <body>
 
-	<div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+	<div class="navbar navbar-default navbar-fixed-top" role="navigation">
 		<div class="container">
 			<div class="navbar-header">
 				<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-					<span class="sr-only">Toggle navigation</span>
-					<span class="icon-bar"></span>
-					<span class="icon-bar"></span>
-					<span class="icon-bar"></span>
+				<span class="sr-only">Toggle navigation</span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
 				</button>
-				<a class="navbar-brand" href="#"><span class="glyphicon glyphicon-user"></span> Events</a>
+				<a class="navbar-brand" href="#">website</a>
+				<a class = "navbar-brand nav-small-brand" href="#/riftevents">RiftEvents</a>
 			</div>
-			<div class="collapse navbar-collapse">
+			<div class="navbar-collapse collapse">
 				<ul class="nav navbar-nav">
-					<li><a href="#/kf">Events Data</a></li>
+					<li class="dropdown">
+					<a href="#" class="dropdown-toggle" data-toggle="dropdown">Region <span class="caret"></span></a>
+						<ul class="dropdown-menu" role="menu">
+						<li><a href="#">US</a></li>
+						<li><a href="#">EU1</a></li>
+						<li><a href="#">EU2</a></li>
+						</ul>
+					</li>
 				</ul>
+				<ul class="nav navbar-nav navbar-right">
+					<li><a href="#">Put a Search Box here</a></li>
+				</ul>
+			</div><!--/.nav-collapse -->
 			</div>
 		</div>
-    </div>
+	</div>
 
 	<div class="container" id="mainContent" data-ng-view="">
 
 	</div>
+
+
 
 </body>
 </html>
