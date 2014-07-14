@@ -31,7 +31,8 @@ module.exports = function(router,Events, zEvents){
 			if (req.params.region === 'US' || 
 				req.params.region ==='EU1' || 
 				req.params.region ==='EU2') {
-				var eventPacked = events[req.params.region];
+				var eventPacked = {};
+				eventPacked[req.params.region] = events[req.params.region];
 				eventPacked.lastUpdated = lastUpdated;
 				res.json(eventPacked);
 			}
