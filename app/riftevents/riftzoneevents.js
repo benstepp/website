@@ -4,9 +4,9 @@ var util = require('util');
 var EventEmitter = require('events').EventEmitter;
 
 //Trion URLs 
-var trionhosts = require('../config/trionhosts.js');
+var trionhosts = require('./config/trionhosts.js');
 //Shard Id List
-var shards = require('../config/shards.js');
+var shards = require('./config/shards.js');
 
 var ZoneEvent = function(trionAuth) {
 
