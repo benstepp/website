@@ -11,9 +11,9 @@
 				</tr>
 			</thead>
 
-			<tbody data-ng-repeat="(shard,events) in events[region]">
+			<tbody>
 				<tr data-ng-repeat="event in events">
-					<td>{{ shard }}</td>
+					<td>{{ event.shard }}</td>
 					<td>{{ event.zone }}</td>
 					<td>{{ event.name }}</td>
 					<td>f</td>

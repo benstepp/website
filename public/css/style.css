@@ -24,3 +24,9 @@
 	padding-right:15px;
 	font-size:14px;
 }
+
+table {
+	max-width:100%;
+	margin-left:auto;
+	margin-right:auto;
+}
