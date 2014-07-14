@@ -6,11 +6,11 @@ angular.module('EventsCtrl',['EventsService'])
 			$scope.region = $scope.$parent.region;
 			//watches for region change in header controller
 			$scope.$watchCollection(
-				'$parent.region', 
+				'$parent.data', 
 				function() {
-					$scope.region = $scope.$parent.region;
+					$scope.data = $scope.$parent.data;
 					//we also need regrab events for that region
-					$scope.updateEvents($scope.region);
+					$scope.updateEvents($scope.data.region);
 			});
 
 
@@ -20,11 +20,12 @@ angular.module('EventsCtrl',['EventsService'])
 						//clear the array for that region
 						var newArray = [];
 						//for each shard in the region
-						for (var key in data[$scope.region]) {
-							var eventLength = data[$scope.region][key].length;
+						for (var key in data[$scope.data.region]) {
+							var eventLength = data[$scope.data.region][key].length;
 							//for each event on the shard
 							for (var i =0; i < eventLength;i++) {
-								var newEvent = data[$scope.region][key][i];
+								var newEvent = data[$scope.data.region][key][i];
+								newEvent.started = $scope.toDate(newEvent.started);
 								newEvent.shard = key;
 								newArray.push(newEvent);
 							}
@@ -32,6 +33,17 @@ angular.module('EventsCtrl',['EventsService'])
 						$scope.events = newArray;
 					});
 			};
+
+			$scope.toDate = function(date) {
+				var d = new Date(date*1000);
+				var options = {
+					'hour': 'numeric',
+					'minute':'2-digit'
+				};
+				return d.toLocaleString($scope.data.locale, options);
+			};
+
+
 
 			//init with no region specified
 			$scope.updateEvents();
@@ -42,7 +54,7 @@ angular.module('EventsCtrl',['EventsService'])
 						//we expect a true or false value from this function
 						if(res) {
 							console.log('getting new events');
-							$scope.updateEvents($scope.region);
+							$scope.updateEvents($scope.data.region);
 						}
 					});
 			}, 30000);
