@@ -13,7 +13,6 @@ angular.module('EventsCtrl',['EventsService'])
 
 
 			$scope.updateEvents = function(region) {
-				console.log('updating Events');
 				EventsService.getEvents(region).then(
 					function(data) {
 						$scope.events = data;
@@ -23,5 +22,5 @@ angular.module('EventsCtrl',['EventsService'])
 			//init with no region specified
 			$scope.updateEvents();
 			//$interval($scope.updateEvents($scope.region), 60000);
-			$interval(EventsService.checkUpdated(), 1);
+			//$interval(EventsService.checkUpdated(), 1);
 });

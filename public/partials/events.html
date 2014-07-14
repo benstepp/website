@@ -3,21 +3,21 @@
 		<table>
 			<thead>
 				<tr>
+					<th>Shard</th>
 					<th>Zone</th>
 					<th>Event</th>
-					<th>Shard</th>
 					<th>Level</th>
 					<th>Started</th>
 				</tr>
 			</thead>
 
-			<tbody>
-				<tr data-ng-repeat="event in zoneEvents">
-					<td>a</td>
-					<td>s</td>
-					<td>d</td>
+			<tbody data-ng-repeat="(shard,events) in events[region]">
+				<tr data-ng-repeat="event in events">
+					<td>{{ shard }}</td>
+					<td>{{ event.zone }}</td>
+					<td>{{ event.name }}</td>
 					<td>f</td>
-					<td>g</td>
+					<td>{{ event.started }}</td>
 				</tr>
 			</tbody>
 
