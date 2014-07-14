@@ -3,7 +3,6 @@ var express = require('express');
 var mongoose = require('mongoose');
 var bodyParser = require('body-parser');
 var morgan = require('morgan');
-var socketio = require('socket.io');
 var http = require('http');
 
 //config
@@ -21,10 +20,6 @@ var io = socketio(server);
 
 //app modules
 var riftevents = require('./app/riftevents/main')(app, env);
-
-//io.on('connection', function(socket) {
-	//socket.emit('news', {hello: 'world'});
-//});
 
 //start app
 app.listen(port);

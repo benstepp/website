@@ -1,50 +1,49 @@
-module.exports = function(router,Events, ZoneEvents){
+module.exports = function(router,Events, zEvents){
 
 	router.use(function(req, res, next) {
 		console.log("Router being used");
 		next();
 	});
 
-	//server routes
-	router.route('/events')
-		//Get all events /api/events/
-		.get(function(req, res) {
-			Events.find(function(err, events) {
-				if (err){
-					res.json({ success:'0' , message:err });
-				}
-				else if (events.length === 0) {
-					res.json({ success:'0' , message: 'events not found in database' });
-				}
-				else {
-					res.json({ success:'1' , events:events });
-				}
-			});
-		})
-		//Post an event /api/events/
-		.post(function(req,res){
-			var event = new Events();
+	var events = {};
+	var lastUpdated = '';
 
-		});
-
-	//Get a single event /api/:event#
-	router.get('/events/:event_id', function(req, res) {
-		Events.findById(req.params.event_id, function(err, event) {
-			if (err){
-				err.success = '0';
-				res.json(err);
-			}
-			else {
-				res.json({ success:'1' , events:events });
-			}
-		});
+	//events emitted from zoneevents when it is updated
+	zEvents.on('newEvents', function(newEvents, newLastUpdated) {
+		events = newEvents;
+		lastUpdated = newLastUpdated;
 	});
 
-	
+	//server routes
+	router.route('/')
+		//Get all events /api/riftevents/events/
+		.get(function(req, res) {
+			//build the json
+			var eventPacked = events;
+			eventPacked.lastUpdated = lastUpdated;
+			res.json(eventPacked);
+		});
 
-	//frontend routes
-	/*router.get('*', function(req, res){
-		res.sendfile('./public/index.html');
-	});*/
+	//get events for a single region /api/riftevents/region/ID
+	router.route('/region/:region')
+		.get(function(req, res) {
+			//check for valid region
+			if (req.params.region === 'US' || 
+				req.params.region ==='EU1' || 
+				req.params.region ==='EU2') {
+				var eventPacked = events[req.params.region];
+				eventPacked.lastUpdated = lastUpdated;
+				res.json(eventPacked);
+			}
+			else {
+				res.json({success:'0', message: 'invalid region parameter: US, EU1, EU2 '});
+			}
+		});
+
+	//only get the last updated time /api/riftevents/lastUpdated
+	router.route('/lastUpdated')
+		.get(function(req, res) {
+			res.json({success: '1', message: lastUpdated});
+		});
 
 };

@@ -73,4 +73,4 @@ var TrionAuth = function() {
 
 //inherit event emitter and export the class
 util.inherits(TrionAuth, EventEmitter);
-module.exports = TrionAuth;
+module.exports = new TrionAuth();

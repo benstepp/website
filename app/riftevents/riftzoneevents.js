@@ -67,8 +67,9 @@ var ZoneEvent = function(trionAuth) {
 		}
 		//save the events if they are different
 		if(!checkZoneEvents(shard, zoneEvents)) {
+			_this.lastUpdated = Date.now();
 			_this.events[shard.region][shard.shardName] = zoneEvents;
-			_this.emit('newEvents', _this.events);
+			_this.emit('newEvents', _this.events, _this.lastUpdated);
 		}
 	};
 
