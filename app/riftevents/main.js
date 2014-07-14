@@ -37,7 +37,7 @@ app.use('/api',router);
 if (env == 'development') {
 	var devRouter = express.Router();
 	app.use('/dev',devRouter);
-	require('./dev/devroutes')(devRouter,Zone);
+	require('../../dev/devroutes')(devRouter,Zone);
 }
 
 };
