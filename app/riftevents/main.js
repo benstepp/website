@@ -1,5 +1,6 @@
 //modules requires
 var express = require('express');
+var mongoose = require('mongoose');
 
 //config
 var db = require('./config/db');
@@ -7,15 +8,13 @@ var db = require('./config/db');
 module.exports = function(app, env) {
 
 //database
-var Events = require('./models/event');
+var Event = require('./models/event');
 var Zone = require('./models/zone');
-//mongoose.connect(db.url);
+mongoose.connect(db.url);
 
 //Development only configs
 if (env == 'development') {
-	var devRouter = express.Router();
-	app.use('/dev',devRouter);
-	require('../../dev/devroutes')(devRouter,Zone);
+	require('../../dev/updatedb')(Zone, Event, db);
 }
 
 
@@ -28,7 +27,7 @@ trionAuth.on('ready', function(tAuth) {
 
 	//create routes with our zoneevents class
 	var router = express.Router();
-	require('./routes')(router,Events, zEvents);
+	require('./routes')(router,Event, zEvents);
 	app.use('/api/riftevents',router);
 
 });

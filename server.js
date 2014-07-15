@@ -7,7 +7,7 @@ var http = require('http');
 
 //config
 var port = process.env.PORT || 80;
-var env = process.env.NODE_ENV || 'development';
+var env = process.env.NODE_ENV || 'production';
 
 //Execute app
 var app = express();
