@@ -1,70 +1,51 @@
 //Contains the shards and their default locales. 
 
 module.exports = {
-	EU1: [
+	EU: [
 		{
 			shardId:'2702',
 			shardName: 'Bloodiron',
 			chatServer: 'eu',
 			locale: 'en',
 			pvp: true,
-			region: 'EU1'
+			region: 'EU'
 		},
 		{
 			shardId:'2721',
 			shardName: 'Gelidra',
 			chatServer: 'eu',
 			locale: 'en',
-			region: 'EU1'
+			region: 'EU'
 		},
 		{
 			shardId:'2722',
 			shardName: 'Zaviel',
 			chatServer: 'eu',
 			locale: 'en',
-			region: 'EU1'
+			region: 'EU'
 		},
 		{
 			shardId:'2741',
 			shardName: 'Typhiria',
 			chatServer: 'eu',
 			locale: 'en',
-			region: 'EU1'
+			region: 'EU'
 		},
-	],
-
-	EU2: [
 		{
 			shardId:'2711',
 			shardName: 'Brutwacht',
 			chatServer: 'eu',
 			locale: 'de',
-			region: 'EU2'
-		},
-		{
-			shardId:'2713',
-			shardName: 'Brutmutter',
-			chatServer: 'eu',
-			locale: 'de',
-			region: 'EU2'
+			region: 'EU'
 		},
 		{
 			shardId:'2714',
 			shardName: 'Brisesol',
 			chatServer: 'eu',
 			locale: 'fr',
-			region: 'EU2'
-		},
-		{
-			shardId:'2715',
-			shardName: 'Phynnious',
-			chatServer: 'eu',
-			locale: 'fr',
-			pvp: true,
-			region: 'EU2'
-		},
+			region: 'EU'
+		}
 	],
-
 
 	US: [
 		{
