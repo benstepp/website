@@ -1,0 +1,2273 @@
+    {
+    "events":[
+    {
+        "name_en": "Bloodfire Behemoth",
+        "name_fr": "B\u00e9h\u00e9moth feu-sanglant",
+        "name_de": "Blutfeuer-Unget\u00fcm",
+        "zones": {
+            "0": {
+                "level":17,
+                "magelo":1394291260
+            },
+            "1": {
+                "level":17,
+                "magelo":-22200665
+            },
+            "2": {
+                "level":27,
+                "magelo":1914043907
+            },
+            "3": {
+                "level":27,
+                "magelo":53338862
+            },
+            "5": {
+                "level":35,
+                "magelo":1254845308
+            },
+            "6": {
+                "level":35,
+                "magelo":1925670429
+            },
+            "8": {
+                "level":42,
+                "magelo":956213184
+            },
+            "11": {
+                "level":50,
+                "magelo":758324689
+            },
+            "12": {
+                "level":52,
+                "magelo":672265295
+            },
+            "13": {
+                "level":52,
+                "magelo":2020377116
+            },
+            "14": {
+                "level":56,
+                "magelo":627666098
+            },
+            "16": {
+                "level":56,
+                "magelo":1532701495
+            },
+            "19": {
+                "level":59,
+                "magelo":1005760469
+            },
+            "20": {
+                "level":60,
+                "magelo":736538331
+            },
+            "21": {
+                "level":60,
+                "magelo":1548750047
+            },
+            "22": {
+                "level":60,
+                "magelo":1429111060
+            }
+        }
+    },
+
+    {
+        "name_en": "Golden Embers",
+        "name_fr": "Braises dor\u00e9es",
+        "name_de": "G\u00fcldenglut",
+        "zones": {
+            "10": {
+                "level":48,
+                "magelo":23502231
+            },
+            "2":{
+                "level":24,
+                "magelo":76005299
+            },
+            "1":{
+                "level":15,
+                "magelo":675222450
+            },
+            "3":{
+                "level":24,
+                "magelo":299060192
+            },
+            "9":{
+                "level":48,
+                "magelo":682679716
+            },
+            "0":{
+                "level":15,
+                "magelo":1177000525
+            },
+            "8":{
+                "level":39,
+                "magelo":823067722
+            },
+            "5":{
+                "level":33,
+                "magelo":1082879659
+            },
+            "4":{
+                "level":28,
+                "magelo":1328677165
+            },
+            "7":{
+                "level":38,
+                "magelo":1763720315
+            },
+            "6":{
+                "level":33,
+                "magelo":1915289274
+            }
+        }
+    },
+
+    {
+        "name_en": "Hammer and Flame",
+        "name_fr": "Marteau et flamme",
+        "name_de": "Hammer und Flamme",
+        "zones": {
+            "0":{
+                "level":15,
+                "magelo":87685498
+            },
+            "3":{
+                "level":24,
+                "magelo":545983522
+            },
+            "9":{
+                "level":48,
+                "magelo":375898188
+            },
+            "10":{
+                "level":48,
+                "magelo":258194308
+            },
+            "8":{
+                "level":39,
+                "magelo":966714688
+            },
+            "2":{
+                "level":24,
+                "magelo":1638058430
+            },
+            "6":{
+                "level":33,
+                "magelo":1400764314
+            },
+            "5":{
+                "level":33,
+                "magelo":1226329772
+            },
+            "4":{
+                "level":28,
+                "magelo":1503436326
+            },
+            "1":{
+                "level":15,
+                "magelo":1441299052
+            },
+            "7":{
+                "level":38,
+                "magelo":1792566655
+            }
+        }
+    },
+
+    {
+        "name_en": "Infernal Awakening",
+        "name_fr": "\u00c9veil infernal",
+        "name_de": "H\u00f6llisches Erwachen",
+        "zones":{
+            "9":{
+                "level":48,
+                "magelo":127108952
+            },
+            "0":{
+                "level":15,
+                "magelo":1123235776
+            },
+            "4":{
+                "level":28,
+                "magelo":1129171950
+            },
+            "2":{
+                "level":24,
+                "magelo":971696971
+            },
+            "5":{
+                "level":32,
+                "magelo":1090382515
+            },
+            "1":{
+                "level":15,
+                "magelo":1483856737
+            },
+            "3":{
+                "level":24,
+                "magelo":1896249099
+            }
+        }
+    },
+
+    {
+        "name_en": "Parade Day!",
+        "name_fr": "Jour de la Parade !",
+        "name_de": "Paradetag!",
+        "zones":{
+            "9":{
+                "level":48,
+                "magelo":200124626
+            },
+            "5":{
+                "level":33,
+                "magelo":338258775
+            },
+            "8":{
+                "level":39,
+                "magelo":3818885396
+            },
+            "7":{
+                "level":38,
+                "magelo":76762912
+            },
+            "1":{
+                "level":15,
+                "magelo":1381896564
+            },
+            "2":{
+                "level":24,
+                "magelo":1952655647
+            },
+            "0":{
+                "level":15,
+                "magelo":1914505213
+            },
+            "3":{
+                "level":24,
+                "magelo":732805634
+            }
+        }
+    },
+
+    {
+        "name_en": "Power of Nightmares",
+        "name_fr": "Puissance des cauchemars",
+        "name_de": "Macht der Albtr\u00e4ume",
+        "zones":{
+            "20":{
+                "level":60,
+                "magelo":418256688
+            },
+            "9":{
+                "level":47,
+                "magelo":1869533627
+            }
+        }
+    },
+
+    {
+        "name_en": "The Blight",
+        "name_fr": "Le Fl\u00e9au",
+        "name_de": "Der Fluch",
+        "zones":{
+            "6":{
+                "level":33,
+                "magelo":13959395
+            },
+            "7":{
+                "level":37,
+                "magelo":40368027
+            },
+            "9":{
+                "level":48,
+                "magelo":6555171420
+            },
+            "8":{
+                "level":39,
+                "magelo":567786084
+            },
+            "10":{
+                "level":48,
+                "magelo":459262824
+            },
+            "5":{
+                "level":33,
+                "magelo":1386865081
+            }
+        }
+    },
+
+    {
+        "name_en": "The Bloodfire Army",
+        "name_fr": "The Bloodfire Army",
+        "name_de": "Die Blutfeuer-Armee",
+        "zones":{
+            "20":{
+                "level":60,
+                "magelo":-80766446
+            },
+            "17":{
+                "level":56,
+                "magelo":269308249
+            },
+            "0":{
+                "level":18,
+                "magelo":230128710
+            },
+            "22":{
+                "level":60,
+                "magelo":871207042
+            },
+            "19":{
+                "level":59,
+                "magelo":1456915795
+            },
+            "15":{
+                "level":53,
+                "magelo":1370357592
+            },
+            "21":{
+                "level":60,
+                "magelo":1482204709
+            },
+            "1":{
+                "level":18,
+                "magelo":1927156857
+            },
+            "5":{
+                "level":34,
+                "magelo":1789866919
+            },
+            "14":{
+                "level":56,
+                "magelo":2120304257
+            }
+        }
+    },
+
+    {
+        "name_en": "The Exuvia of Khargroth",
+        "name_fr": "L'Exuvie de Khargroth",
+        "name_de": "Exuvie von Khargroth",
+        "zones":{
+            "23":{
+                "level":"00",
+                "magelo":350415098
+            }
+        }
+    },
+
+    {
+        "name_en": "There Arose Such A Clatter",
+        "name_fr": "Un grand fracas se fit alors entendre",
+        "name_de": "Da erklang solch ein Rumpeln",
+        "zones":{
+            "21":{
+                "level":60,
+                "magelo":178926429
+            },
+            "5":{
+                "level":33,
+                "magelo":67992004
+            },
+            "0":{
+                "level":15,
+                "magelo":713013360
+            },
+            "7":{
+                "level":38,
+                "magelo":1022437158
+            },
+            "1":{
+                "level":15,
+                "magelo":1037311603
+            },
+            "12":{
+                "level":52,
+                "magelo":1551298961
+            },
+            "13":{
+                "level":52,
+                "magelo":1670228852
+            },
+            "6":{
+                "level":33,
+                "magelo":1904983180
+            }
+        }
+    },
+
+    {
+        "name_en": "Unnatural Speciation",
+        "name_fr": "Sp\u00e9ciation surnaturelle",
+        "name_de": "Unnat\u00fcrliche Artenbildung",
+        "zones":{
+            "1":{
+                "level":15,
+                "magelo":10903643
+            }, 
+            "7":{
+                "level":37,
+                "magelo":342260129
+            },
+            "0":{
+                "level":15,
+                "magelo":720893081
+            },
+            "8":{
+                "level":39,
+                "magelo":1829635419
+            }
+        }
+    },
+
+    {
+        "name_en": "Visions of Future Past",
+        "name_fr": "Visions du futur r\u00e9volu",
+        "name_de": "Visionen einer vergangenen Zukunft",
+        "zones":{
+            "10":{
+                "level":50,
+                "magelo":273041069
+            },
+            "8":{
+                "level":40, 
+                "magelo":282123982
+            },
+            "6":{
+                "level":32,
+                "magelo":75939748
+            },
+            "3":{
+                "level":23,
+                "magelo":1149538875
+            },
+            "7":{
+                "level":38,
+                "magelo":1287982317
+            },
+            "9":{
+                "level":50,
+                "magelo":1355039464
+            },
+            "1":{
+                "level":15,
+                "magelo":1272443642
+            },
+            "2":{
+                "level":23,
+                "magelo":1603144538
+            },
+            "0":{
+                "level":15,
+                "magelo":1422251378
+            },
+            "5":{
+                "level":31,
+                "magelo":1776843329
+            },
+            "4":{
+                "level":31,
+                "magelo":1916673597
+            },
+            "8":{
+                "level":37,
+                "magelo":1512091069
+            }
+        }
+    },
+
+    {
+        "name_en": "Waves of Madness",
+        "name_fr": "Vagues de folie",
+        "name_de": "Wogen des Wahnsinns",
+        "zones":{
+            "0":{
+                "level":10,
+                "magelo":534996255
+            },
+            "5":{
+                "level":33,
+                "magelo":265198953
+            },
+            "2":{
+                "level":24,
+                "magelo":680976057
+            },
+            "7":{
+                "level":38,
+                "magelo":733040035
+            },
+            "4":{
+                "level":28,
+                "magelo":903923818
+            },
+            "3":{
+                "level":24,
+                "magelo":820684556
+            },
+            "9":{
+                "level":50,
+                "magelo":971832091
+            },
+            "10":{
+                "level":50,
+                "magelo":1234006952
+            },
+            "6":{
+                "level":33,
+                "magelo":1307224191
+            },
+            "1":{
+                "level":10,
+                "magelo":1334530696
+            },
+            "8":{
+                "level":39,
+                "magelo":1935639989
+            }
+        }
+    },
+
+    {
+        "name_en": "Fragment of Kaaz'Ra",
+        "name_fr": "L'Archange de Kaaz'Ra",
+        "name_de": "Fragment von Kaaz'Ra",
+        "zones": {
+            "22":{
+                "level": "62",
+                "magelo": 1083286403
+            }
+        }
+    },
+
+    {
+        "name_en": "Boiling Ambition",
+        "name_fr": "Ambition bouillonnante",
+        "name_de": "Brodelnder Ehrgeiz",
+        "zones": {
+            "22":{
+                "level": "60",
+                "magelo": 1016993838
+            }
+        }
+    },
+
+    {
+        "name_en": "Champions of the Firestorm",
+        "name_fr": "Champions de la Temp\u00eate de feu",
+        "name_de": "Champions des Feuersturms",
+        "zones": {
+            "20":{
+                "level": "60",
+                "magelo": 851135310
+            }
+        }
+    },
+
+    {
+        "name_en": "Critical Mass",
+        "name_fr": "Masse critique",
+        "name_de": "Kritische Masse",
+        "zones": {
+            "22":{
+                "level": "60",
+                "magelo": 1527748942
+            }
+        }
+    },
+
+    {
+        "name_en": "Dreams of Blood and Bone",
+        "name_fr": "R\u00eaves de sang et d'os",
+        "name_de": "Tr\u00e4ume aus Blut und Gebeinen",
+        "zones": {
+            "21":{
+                "level": "60",
+                "magelo": -46777135
+            }
+        }
+    },
+
+    {
+        "name_en": "Fortress Defense: Phase One",
+        "name_fr": "D\u00e9fense de la forteresse : Phase 1",
+        "name_de": "Festungsverteidigung: Phase Eins",
+        "zones": {
+            "20":{
+                "level": "60",
+                "magelo": -42377129
+            }
+        }
+    },
+
+    {
+        "name_en": "Fortress Defense: Phase Three",
+        "name_fr": "D\u00e9fense de la forteresse : Phase 3",
+        "name_de": "Festungsverteidigung: Phase Drei",
+        "zones": {
+            "20":{ "level": "60",
+                "magelo": -71758569
+            }
+        }
+    },
+
+    {
+        "name_en": "Fortress Defense: Phase Two",
+        "name_fr": "D\u00e9fense de la forteresse : Phase 2",
+        "name_de": "Festungsverteidigung: Phase Zwei",
+        "zones": {
+            "20":{
+                "level": "60",
+                "magelo": -50533419
+            }
+        }
+    },
+
+    {
+        "name_en": "Hunt: Arboreal Menace",
+        "name_fr": "Chasse : Menace arboricole",
+        "name_de": "Jagd: Bedrohung der B\u00e4ume",
+        "zones": {
+            "22":{
+                "level": "60",
+                "magelo": -40484691
+            }
+        }
+    },
+
+    {
+        "name_en": "Hunt: Fear From Freedom",
+        "name_fr": "Chasse : La peur de la libert\u00e9",
+        "name_de": "Jagd: Furcht vor der Freiheit",
+        "zones": {
+            "22":{
+                "level": "60",
+                "magelo": 127035490
+            }
+        }
+    },
+
+    {
+        "name_en": "Hunt: Melting Point",
+        "name_fr": "Chasse : Point de fusion",
+        "name_de": "Jagd: Schmelzpunkt",
+        "zones": {
+            "22":{
+                "level": "60",
+                "magelo": 79079490
+            }
+        }
+    },
+
+    {
+        "name_en": "Hunt: Pay No Mind",
+        "name_fr": "Chasse\ufffd: Fermer les yeux",
+        "name_de": "Jagd: Geistesabwesend",
+        "zones": {
+            "22":{
+                "level": "60",
+                "magelo": -38112289
+            }
+        }
+    },
+
+    {
+        "name_en": "Hunt: Portents of Terror",
+        "name_fr": "Chasse : Pr\u00e9sages de la terreur",
+        "name_de": "Jagd: Omen des Schreckens",
+        "zones": {
+            "22":{
+                "level": "60",
+                "magelo": 1089270280
+            }
+        }
+    },
+
+    {
+        "name_en": "Hunt: Scuttled Dreams",
+        "name_fr": "Chasse : Des r\u00eaves en \u00e9clats",
+        "name_de": "Jagd: Krabbeltr\u00e4ume",
+        "zones": {
+            "22":{
+                "level": "60",
+                "magelo": 883322370
+            }
+        }
+    },
+
+    {
+        "name_en": "Inner Maelstrom",
+        "name_fr": "Le maelstr\u00f6m int\u00e9rieur",
+        "name_de": "Innerer Mahlstrom",
+        "zones": {
+            "22":{
+                "level": "60",
+                "magelo": 938486191
+            }
+        }
+    },
+
+    {
+        "name_en": "Party Crashers",
+        "name_fr": "Trouble-f\u00eates",
+        "name_de": "Ungeladene G\u00e4ste",
+        "zones": {
+            "21":{
+                "level": "60",
+                "magelo": 817963954
+            }
+        }
+    },
+
+    {
+        "name_en": "Return Of The Fallen",
+        "name_fr": "Le retour des d\u00e9chus",
+        "name_de": "R\u00fcckkehr der Gefallenen",
+        "zones": {
+            "21":{
+                "level": "60",
+                "magelo": 350981352
+            }
+        }
+    },
+
+    {
+        "name_en": "Rude Awakening",
+        "name_fr": "R\u00e9veil difficile",
+        "name_de": "B\u00f6ses Erwachen",
+        "zones": {
+            "22":{
+                "level": "60",
+                "magelo": 1042973965
+            }
+        }
+    },
+
+    {
+        "name_en": "Shattered Earth",
+        "name_fr": "Terre fracass\u00e9e",
+        "name_de": "Ersch\u00fctterte Erde",
+        "zones": {
+            "20":{
+                "level": "60",
+                "magelo": 2100101292
+            }
+        }
+    },
+
+    {
+        "name_en": "Swarm of the Century",
+        "name_fr": "L'essaim du si\u00e8cle",
+        "name_de": "Schwarm des Jahrhunderts",
+        "zones": {
+            "22":{
+                "level": "60",
+                "magelo": 333552688
+            }
+        }
+    },
+
+    {
+        "name_en": "The Awakening",
+        "name_fr": "L'\u00c9veil",
+        "name_de": "Das Erwachen",
+        "zones": {
+            "22":{
+                "level": "60",
+                "magelo": 300529965
+            }
+        }
+    },
+
+    {
+        "name_en": "The Craft of Conflict",
+        "name_fr": "l'Art du Conflit",
+        "name_de": "Das Handwerk des Krieges",
+        "zones": {
+            "20":{
+                "level": "60",
+                "magelo": 532481438
+            }
+        }
+    },
+
+    {
+        "name_en": "The Macabre Feast",
+        "name_fr": "Le festin macabre",
+        "name_de": "Makabres Festmahl",
+        "zones": {
+            "22":{
+                "level": "60",
+                "magelo": 1318088085
+            }
+        }
+    },
+
+    {
+        "name_en": "The Rising Depths",
+        "name_fr": "Le Soul\u00e8vement des profondeurs",
+        "name_de": "Die steigenden Tiefen",
+        "zones": {
+            "11":{
+                "level": "60",
+                "magelo": 1343555756
+            }
+        }
+    },
+
+    {
+        "name_en": "The Silver Army",
+        "name_fr": "L'Arm\u00e9e d'airain",
+        "name_de": "Die Silberne Armee",
+        "zones": {
+            "21":{
+                "level": "60",
+                "magelo": -27270300
+            }
+        }
+    },
+
+    {
+        "name_en": "Thorns Everywhere",
+        "name_fr": "Des \u00e9pines partout",
+        "name_de": "\u00dcberall Dornen",
+        "zones": {
+            "22":{
+                "level": "60",
+                "magelo": 969056372
+            }
+        }
+    },
+
+    {
+        "name_en": "Under the Table",
+        "name_fr": "Sous la table",
+        "name_de": "Unterm Tisch",
+        "zones": {
+            "22":{
+                "level": "60",
+                "magelo": 1353113216
+            }
+        }
+    },
+
+    {
+        "name_en": "Unstable Ashora",
+        "name_fr": "Ashora instable",
+        "name_de": "Instabil: Ashora",
+        "zones": {
+            "21":{
+                "level": "60",
+                "magelo": 1494425058
+            }
+        }
+    },
+
+    {
+        "name_en": "Unstable Dendrome",
+        "name_fr": "Rhizome instable",
+        "name_de": "Instabil: Dendrom",
+        "zones": {
+            "22":{
+                "level": "60",
+                "magelo": 2129123202
+            }
+        }
+    },
+
+    {
+        "name_en": "Unstable Steppes of Infinity",
+        "name_fr": "Steppes de l'Infini instables",
+        "name_de": "Instabil: Steppen der Unendlichkeit",
+        "zones": {
+            "20":{
+                "level": "60",
+                "magelo": 559588407
+            }
+        }
+    },
+
+    {
+        "name_en": "Virtue of Vehemence",
+        "name_fr": "Vertueuse v\u00e9h\u00e9mence",
+        "name_de": "Tugend des Nachdrucks",
+        "zones": {
+            "22":{
+                "level": "60",
+                "magelo": 1057490234
+            }
+        }
+    },
+
+    {
+        "name_en": "Why So Sad?",
+        "name_fr": "Pourquoi cet air triste ?",
+        "name_de": "Warum so traurig?",
+        "zones": {
+            "22":{
+                "level": "60",
+                "magelo": 2130504188
+            }
+        }
+    },
+
+    {
+        "name_en": "Rotten March",
+        "name_fr": "Marche pourrie",
+        "name_de": "Marsch der Verrotteten",
+        "zones": {
+            "19":{
+                "level": "59",
+                "magelo": 1541057447
+            }
+        }
+    },
+
+    {
+        "name_en": "Sudden Swarm",
+        "name_fr": "Essaim soudain",
+        "name_de": "Pl\u00f6tzlicher Schwarm",
+        "zones": {
+            "18":{
+                "level": "59",
+                "magelo": 1294531016
+            }
+        }
+    },
+
+    {
+        "name_en": "Terror Above",
+        "name_fr": "Terreur dans le ciel",
+        "name_de": "Schrecken von oben",
+        "zones": {
+            "19":{
+                "level": "59",
+                "magelo": -30548864
+            }
+        }
+    },
+
+    {
+        "name_en": "Unstable Kingsward",
+        "name_fr": "Protectorat du Roi instable",
+        "name_de": "Instabil: K\u00f6nigszirkel",
+        "zones": {
+            "18":{
+                "level": "58",
+                "magelo": 1652487255
+            }
+        }
+    },
+
+    {
+        "name_en": "Unstable Morban",
+        "name_fr": "Morban instable",
+        "name_de": "Instabil: Morban",
+        "zones": {
+            "19":{
+                "level": "58",
+                "magelo": 296425546
+            }
+        }
+    },
+
+    {
+        "name_en": "Feeding Frenzy",
+        "name_fr": "Boulimie fr\u00e9n\u00e9tique",
+        "name_de": "Fressrausch",
+        "zones": {
+            "17":{
+                "level": "57",
+                "magelo": -78829010
+            }
+        }
+    },
+
+    {
+        "name_en": "Lady in the Lake",
+        "name_fr": "Dame du lac",
+        "name_de": "Lady im See",
+        "zones": {
+            "17":{
+                "level": "57",
+                "magelo": 324541532
+            }
+        }
+    },
+
+    {
+        "name_en": "Unstable Ardent Domain",
+        "name_fr": "Contr\u00e9e Ardente instable",
+        "name_de": "Instabil: Eiferer-Reich",
+        "zones": {
+            "17":{
+                "level": "57",
+                "magelo": 650311912
+            }
+        }
+    },
+
+    {
+        "name_en": "March Of The Legion",
+        "name_fr": "La marche de la L\u00e9gion",
+        "name_de": "Marsch der Legion",
+        "zones": {
+            "16":{
+                "level": "56",
+                "magelo": 1234842954
+            }
+        }
+    },
+
+    {
+        "name_en": "Secrets of the Deep",
+        "name_fr": "Secrets des profondeurs",
+        "name_de": "Geheimnisse der Tiefe",
+        "zones": {
+            "14":{
+                "level": "56",
+                "magelo": 1838005670
+            }
+        }
+    }, 
+
+    {
+        "name_en": "Strange Tidings",
+        "name_fr": "\u00c9tranges nouvelles",
+        "name_de": "Sonderbare Botschaft",
+        "zones": {
+            "14":{
+                "level": "56",
+                "magelo": -92984972
+            }
+        }
+    }, 
+
+    {
+        "name_en": "Unstable Eastern Holdings",
+        "name_fr": "Fiefs de l'Orient instables",
+        "name_de": "Instabil: \u00d6stliche Besitzt\u00fcmer",
+        "zones": {
+            "16":{
+                "level": "55",
+                "magelo": 62289350
+            }
+        }
+    }, 
+
+    {
+        "name_en": "Unstable Seratos",
+        "name_fr": "Serratos instable",
+        "name_de": "Instabil: Seratos",
+        "zones": {
+            "14":{
+                "level": "55",
+                "magelo": 904893338
+            }
+        }
+    }, 
+
+    {
+        "name_en": "On the Hunt",
+        "name_fr": "En chasse",
+        "name_de": "Auf der Jagd",
+        "zones": {
+            "16":{
+                "level": "54",
+                "magelo": -15063072
+            }
+        }
+    }, 
+
+    {
+        "name_en": "Entangled",
+        "name_fr": "Enchev\u00eatr\u00e9",
+        "name_de": "Verstrickt",
+        "zones": {
+            "15":{
+                "level": "53",
+                "magelo": 217342603
+            }
+        }
+    }, 
+
+    {
+        "name_en": "Unstable City Core",
+        "name_fr": "C\u0153ur de la Cit\u00e9 instable",
+        "name_de": "Instabil: Stadtkern",
+        "zones": {
+            "15":{
+                "level": "53",
+                "magelo": 487559768
+            }
+        }
+    }, 
+
+    {
+        "name_en": "Deathly Tendrils",
+        "name_fr": "Vrilles mortelles",
+        "name_de": "Todesranken",
+        "zones": {
+            "11":{
+                "level": "52",
+                "magelo": 1940144224
+            }
+        }
+    }, 
+
+    {
+        "name_en": "Fires of Rebirth",
+        "name_fr": "Flammes de la renaissance",
+        "name_de": "Feuer der Wiedergeburt",
+        "zones": {
+            "11":{
+                "level": "52",
+                "magelo": 10346127
+            }
+        }
+    }, 
+
+    {
+        "name_en": "In Golden's Grasp",
+        "name_fr": "Dans la poigne d'Or",
+        "name_de": "Im Griff des Goldes",
+        "zones": {
+            "11":{
+                "level": "52",
+                "magelo": 843047869
+            }
+        }
+    }, 
+
+    {
+        "name_en": "Island Storm",
+        "name_fr": "Orage insulaire",
+        "name_de": "Inselsturm",
+        "zones": {
+            "11":{
+                "level": "52",
+                "magelo": 1956308549
+            }
+        }
+    }, 
+
+    {
+        "name_en": "Ithkus' Rise",
+        "name_fr": "L'ascension d'Ithkus",
+        "name_de": "Ithkus' Aufstieg",
+        "zones": {
+            "11":{
+                "level": "52",
+                "magelo": 52536897
+            }
+        }
+    }, 
+
+    {
+        "name_en": "The Seed of Change",
+        "name_fr": "La graine de la proph\u00e9tie",
+        "name_de": "Die Saat der Ver\u00e4nderung",
+        "zones": {
+            "11":{
+                "level": "52",
+                "magelo": 1302119169
+            }
+        }
+    }, 
+
+    {
+        "name_en": "Operation: Landfall",
+        "name_fr": "Op\u00e9ration : D\u00e9barquement",
+        "name_de": "Operation: Land in Sicht",
+        "zones": {
+            "12":{
+                "level": "51",
+                "magelo": -50691404
+            }
+        }
+    }, 
+
+    {
+        "name_en": "Take It All Back!",
+        "name_fr": "Reprenez tout !",
+        "name_de": "Nehmt das alles zur\u00fcck!",
+        "zones": {
+            "12":{
+                "level": "51",
+                "magelo": 387631796
+            }
+        }
+    }, 
+
+    {
+        "name_en": "The Battle of Cape Jule",
+        "name_fr": "La bataille de Cap Yule",
+        "name_de": "Die Schlacht von Kap Jul",
+        "zones": {
+            "13":{
+                "level": "51",
+                "magelo": -35948581
+            }
+        }
+    }, 
+
+    {
+        "name_en": "The Jewel of Brevane",
+        "name_fr": "Le Joyau de Tynandra",
+        "name_de": "Das Juwel von Brevane",
+        "zones": {
+            "13":{
+                "level": "51",
+                "magelo": 1635691565
+            }
+        }
+    }, 
+
+    {
+        "name_en": "Unstable Cape Jule",
+        "name_fr": "Cap Yule instable",
+        "name_de": "Instabil: Kap Jul",
+        "zones": {
+            "13":{
+                "level": "51",
+                "magelo": 1187918940
+            }
+        }
+    }, 
+
+    {
+        "name_en": "Unstable Kingdom of Pelladane",
+        "name_fr": "Royaume instable de Pelladane",
+        "name_de": "Instabiles K\u00f6nigreich Pelladane",
+        "zones": {
+            "12":{
+                "level": "51",
+                "magelo": 953641807
+            }
+        }
+    }, 
+
+    {
+        "name_en": "Unstable Ember Isle",
+        "name_fr": "\u00cele de Braise instable",
+        "name_de": "Instabil: Glutinsel",
+        "zones": {
+            "11":{
+                "level": "50",
+                "magelo": 1973956283
+            }
+        }
+    }, 
+
+    {
+        "name_en": "An Eye for an Eye",
+        "name_fr": "\u0152il pour \u0153il...",
+        "name_de": "Auge um Auge",
+        "zones": {
+            "10":{
+                "level": "48",
+                "magelo": 136472804
+            }
+        }
+    }, 
+
+    {
+        "name_en": "Dreaded Knight",
+        "name_fr": "Chevalier de terreur",
+        "name_de": "Gef\u00fcrchteter Ritter",
+        "zones": {
+            "10":{
+                "level": "48",
+                "magelo": 2006309442
+            }
+        }
+    }, 
+
+    {
+        "name_en": "Flesh Monstrosity",
+        "name_fr": "Monstruosit\u00e9 de chair",
+        "name_de": "Fleischunget\u00fcm",
+        "zones": {
+            "10":{
+                "level": "48",
+                "magelo": 1930809622
+            }
+        }
+    }, 
+
+    {
+        "name_en": "Forest King",
+        "name_fr": "Roi de la for\u00eat",
+        "name_de": "Waldk\u00f6nig",
+        "zones": {
+            "10":{
+                "level": "48",
+                "magelo": 1585969627
+            }
+        }
+    }, 
+
+    {
+        "name_en": "From the Pit",
+        "name_fr": "De la Fosse",
+        "name_de": "Aus der Grube",
+        "zones": {
+            "9":{
+                "level": "48",
+                "magelo": 876707605
+            }
+        }
+    }, 
+
+    {
+        "name_en": "Prince of Earth",
+        "name_fr": "Prince de la Terre",
+        "name_de": "Prinz der Erde",
+        "zones": {
+            "9":{
+                "level": "48",
+                "magelo": 202829402
+            }
+        }
+    }, 
+
+    {
+        "name_en": "Raising Kain",
+        "name_fr": "L'\u00e9l\u00e9vation de Kain",
+        "name_de": "Kain erhebt sich",
+        "zones": {
+            "10":{
+                "level": "48",
+                "magelo": 1716925926
+            }
+        }
+    }, 
+
+    {
+        "name_en": "Sand Worship",
+        "name_fr": "V\u00e9n\u00e9rer le sable",
+        "name_de": "Sand-Verehrung",
+        "zones": {
+            "9":{
+                "level": "48",
+                "magelo": 1440572665
+            }
+        }
+    }, 
+
+    {
+        "name_en": "Scourge of the Sands",
+        "name_fr": "Fl\u00e9au des sables",
+        "name_de": "Gei\u00dfel des Sandes",
+        "zones": {
+            "9":{
+                "level": "48",
+                "magelo": 1997289082
+            }
+        }
+    }, 
+
+    {
+        "name_en": "Serpent Storm",
+        "name_fr": "Le serpent de la Temp\u00eate",
+        "name_de": "Schlangen-Sturm",
+        "zones": {
+            "9":{
+                "level": "48",
+                "magelo": 87383053
+            }
+        }
+    }, 
+
+    {
+        "name_en": "Skirmish in the Moor",
+        "name_fr": "Escarmouche \u00e0 Mornelande",
+        "name_de": "Scharm\u00fctzel im Moor",
+        "zones": {
+            "10":{
+                "level": "48",
+                "magelo": 327456198
+            }
+        }
+    }, 
+
+    {
+        "name_en": "Skirmish in the Sands",
+        "name_fr": "Escarmouche des sables",
+        "name_de": "Scharm\u00fctzel im Sand",
+        "zones": {
+            "9":{
+                "level": "48",
+                "magelo": 1157738522
+            }
+        }
+    }, 
+
+    {
+        "name_en": "Storm Rising",
+        "name_fr": "La Temp\u00eate gronde",
+        "name_de": "Ein Sturm zieht auf",
+        "zones": {
+            "6":{
+                "level": "48",
+                "magelo": 495813399
+            }
+        }
+    }, 
+
+    {
+        "name_en": "Unlikely Alliances",
+        "name_fr": "Alliances improbables",
+        "name_de": "Unwahrscheinliche B\u00fcndnisse",
+        "zones": {
+            "9":{
+                "level": "48",
+                "magelo": 1501776367
+            }
+        }
+    }, 
+
+    {
+        "name_en": "Unstable Shimmersand",
+        "name_fr": "Sable-chatoyant instable",
+        "name_de": "Instabil: Schimmersand",
+        "zones": {
+            "9":{
+                "level": "48",
+                "magelo": 1408769269
+            }
+        }
+    }, 
+
+    {
+        "name_en": "Unstable Stillmoor",
+        "name_fr": "Mornelande instable",
+        "name_de": "Instabil: Stillmoor",
+        "zones": {
+            "10":{
+                "level": "48",
+                "magelo": 454385343
+            }
+        }
+    }, 
+
+    {
+        "name_en": "Wind and Wings",
+        "name_fr": "Le vent et les ailes",
+        "name_de": "Wind und Fl\u00fcgel",
+        "zones": {
+            "9":{
+                "level": "48",
+                "magelo": 997868190
+            }
+        }
+    }, 
+
+    {
+        "name_en": "Witch of the West",
+        "name_fr": "Sorci\u00e8re de l'Ouest",
+        "name_de": "Hexe des Westens",
+        "zones": {
+            "10":{
+                "level": "48",
+                "magelo": 319990609
+            }
+        }
+    }, 
+
+    {
+        "name_en": "Army of the Wind",
+        "name_fr": "L'Arm\u00e9e du Vent",
+        "name_de": "Armee des Windes",
+        "zones": {
+            "6":{
+                "level": "33",
+                "magelo": 179231740
+            }
+        }
+    }, 
+
+    {
+        "name_en": "Chilled to the Bone",
+        "name_fr": "Glac\u00e9 jusqu'aux os",
+        "name_de": "Kalt bis auf die Knochen",
+        "zones": {
+            "6":{
+                "level": "33",
+                "magelo": 1459982959
+            }
+        }
+    }, 
+
+    {
+        "name_en": "Frostbitten Spirits",
+        "name_fr": "Esprits gel\u00e9s",
+        "name_de": "Eiseskalte Geister",
+        "zones": {
+            "6":{
+                "level": "33",
+                "magelo": 2013586231
+            }
+        }
+    }, 
+
+    {
+        "name_en": "Mountain Flood",
+        "name_fr": "Raz-de-mar\u00e9e dans la montagne",
+        "name_de": "Gebirgsflut",
+        "zones": {
+            "6":{
+                "level": "33",
+                "magelo": 558086798
+            }
+        }
+    }, 
+
+    {
+        "name_en": "Planar Chill",
+        "name_fr": "Frisson planaire",
+        "name_de": "Ebenenfrost",
+        "zones": {
+            "6":{
+                "level": "33",
+                "magelo": 1453621476
+            }
+        }
+    }, 
+
+    {
+        "name_en": "Skirmish in the Peak",
+        "name_fr": "Escarmouche au Pic du Pin de Fer",
+        "name_de": "Scharm\u00fctzel auf den Gipfeln",
+        "zones": {
+            "6":{
+                "level": "33",
+                "magelo": 552668834
+            }
+        }
+    }, 
+
+    {
+        "name_en": "Stone Cold Invaders",
+        "name_fr": "Des envahisseurs glac\u00e9s",
+        "name_de": "Steinkalte Eindringlinge",
+        "zones": {
+            "6":{
+                "level": "33",
+                "magelo": 1454878545
+            }
+        }
+    }, 
+
+    {
+        "name_en": "The Sky Beasts",
+        "name_fr": "Les B\u00eates du ciel",
+        "name_de": "Die Himmelsbestien",
+        "zones": {
+            "6":{
+                "level": "33",
+                "magelo": 193389812
+            }
+        }
+    }, 
+
+    {
+        "name_en": "The Snow Pack",
+        "name_fr": "La Meute des neiges",
+        "name_de": "Die Schneemeute",
+        "zones": {
+            "6":{
+                "level": "33",
+                "magelo": 1848636663
+            }
+        }
+    }, 
+
+    {
+        "name_en": "Desert Wind",
+        "name_fr": "Le Vent du d\u00e9sert",
+        "name_de": "W\u00fcstenwind",
+        "zones": {
+            "8":{
+                "level": "39",
+                "magelo": 610684794
+            }
+        }
+    }, 
+
+    {
+        "name_en": "Fiery Hoofsteps",
+        "name_fr": "Sabotage du plan centaure",
+        "name_de": "Feuriges Hufeklappern",
+        "zones": {
+            "8":{
+                "level": "39",
+                "magelo": 1304760521
+            }
+        }
+    }, 
+
+    {
+        "name_en": "March of the Stone Army",
+        "name_fr": "La marche de l'Arm\u00e9e de pierre",
+        "name_de": "Der Marsch der Steinarmee",
+        "zones": {
+            "8":{
+                "level": "39",
+                "magelo": 796458027
+            }
+        }
+    }, 
+
+    {
+        "name_en": "Saving Lantern Hook",
+        "name_fr": "Sauver Saillant de Lanterne",
+        "name_de": "Die Rettung von Laternenhaken",
+        "zones": {
+            "8":{
+                "level": "39",
+                "magelo": 2028130155
+            }
+        }
+    }, 
+
+    {
+        "name_en": "Sting of the Sand",
+        "name_fr": "Le dard du sable",
+        "name_de": "Der Stich des Sandes",
+        "zones": {
+            "8":{
+                "level": "39",
+                "magelo": 1341975654
+            }
+        }
+    }, 
+
+    {
+        "name_en": "Terror of the Sky",
+        "name_fr": "La Terreur du ciel",
+        "name_de": "Himmelsschrecken",
+        "zones": {
+            "8":{
+                "level": "39",
+                "magelo": 2119758703
+            }
+        }
+    }, 
+
+    {
+        "name_en": "The Burning Dragonian",
+        "name_fr": "Draconien enflamm\u00e9",
+        "name_de": "Der Brennende Dragoner",
+        "zones": {
+            "8":{
+                "level": "39",
+                "magelo": 1984132331
+            }
+        }
+    }, 
+
+    {
+        "name_en": "Unstable Droughtlands",
+        "name_fr": "Plaines Arides instables",
+        "name_de": "Instabil: \u00d6dlande",
+        "zones": {
+            "8":{
+                "level": "39",
+                "magelo": 1718234925
+            }
+        }
+    }, 
+
+    {
+        "name_en": "Life of a Bog Mother",
+        "name_fr": "La vie d'une M\u00e8re des marais",
+        "name_de": "Das Leben einer Sumpfmutter",
+        "zones": {
+            "7":{
+                "level": "37",
+                "magelo": 1713338479
+            }
+        }
+    }, 
+
+    {
+        "name_en": "Live and Let Die",
+        "name_fr": "Vivre et laisser mourir",
+        "name_de": "Leben und sterben lassen",
+        "zones": {
+            "7":{
+                "level": "37",
+                "magelo": 670548445
+            }
+        }
+    }, 
+
+    {
+        "name_en": "Runebound Technology",
+        "name_fr": "Technologie runique",
+        "name_de": "Runengebundene Technologie",
+        "zones": {
+            "6":{
+                "level": "37",
+                "magelo": 551097131
+            }
+        }
+    }, 
+
+    {
+        "name_en": "Run To The Hills",
+        "name_fr": "Fuir vers les collines",
+        "name_de": "Gefahr im Gebirge",
+        "zones": {
+            "7":{
+                "level": "37",
+                "magelo": 1103375719
+            }
+        }
+    }, 
+
+    {
+        "name_en": "The Bogspawn of Gorodon",
+        "name_fr": "Les mar\u00e9cageux de Gorodon",
+        "name_de": "Die Sumpfbrut von Gorodon",
+        "zones": {
+            "7":{
+                "level": "37",
+                "magelo": 2096288198
+            }
+        }
+    }, 
+
+    {
+        "name_en": "Where the Death Fae Go",
+        "name_fr": "L\u00e0 o\u00f9 vont les f\u00e9es de la Mort",
+        "name_de": "Der Weg der Todesfeen",
+        "zones": {
+            "7":{
+                "level": "37",
+                "magelo": 400212176
+            }
+        }
+    }, 
+
+    {
+        "name_en": "Hooves and Horns",
+        "name_fr": "Des sabots et des cornes",
+        "name_de": "Hufe und H\u00f6rner",
+        "zones": {
+            "7":{
+                "level": "37",
+                "magelo": 519206447
+            }
+        }
+    }, 
+
+    {
+        "name_en": "Unstable Moonshade Highlands",
+        "name_fr": "Hautes-Terres d'Ombrelune instables",
+        "name_de": "Instabil: Mondschattenberge",
+        "zones": {
+            "7":{
+                "level": "37",
+                "magelo": 1487742520
+            }
+        }
+    }, 
+
+    {
+        "name_en": "Double Danger",
+        "name_fr": "Double danger",
+        "name_de": "Doppelte Gefahr",
+        "zones": {
+            "5":{
+                "level": "33",
+                "magelo": 2133460827
+            }
+        }
+    }, 
+
+    {
+        "name_en": "Explosive Life",
+        "name_fr": "Vie explosive",
+        "name_de": "Explosives Leben",
+        "zones": {
+            "5":{
+                "level": "33",
+                "magelo": 369675607
+            }
+        }
+    }, 
+
+    {
+        "name_en": "Hard Knocks",
+        "name_fr": "Coups durs",
+        "name_de": "Harte Schl\u00e4ge",
+        "zones": {
+            "5":{
+                "level": "33",
+                "magelo": 124251161
+            }
+        }
+    }, 
+
+    {
+        "name_en": "The Witching Hour",
+        "name_fr": "L'heure de la sorci\u00e8re",
+        "name_de": "Die Hexenstunde",
+        "zones": {
+            "5":{
+                "level": "33",
+                "magelo": 1249477572
+            }
+        }
+    }, 
+
+    {
+        "name_en": "Unstable Iron Pine Peak",
+        "name_fr": "Pic du Pin de fer instable",
+        "name_de": "Instabil: Eisenkieferngipfel",
+        "zones": {
+            "6":{
+                "level": "33",
+                "magelo": 1043359058
+            }
+        }
+    }, 
+
+    {
+        "name_en": "Unstable Scarwood Reach",
+        "name_fr": "\u00c9tendue de Bois Meurtris instable",
+        "name_de": "Instabil: Wundwaldregion",
+        "zones": {
+            "5":{
+                "level": "33",
+                "magelo": 2035105743
+            }
+        }
+    }, 
+
+    {
+        "name_en": "Winged Horror",
+        "name_fr": "Horreur ail\u00e9e",
+        "name_de": "Gefl\u00fcgelter Schrecken",
+        "zones": {
+            "5":{
+                "level": "33",
+                "magelo": 803791194
+            }
+        }
+    }, 
+
+    {
+        "name_en": "A Royal Raid",
+        "name_fr": "Un raid royal",
+        "name_de": "Royaler Raubzug",
+        "zones": {
+            "4":{
+                "level": "28",
+                "magelo": 706822858
+            }
+        }
+    }, 
+
+    {
+        "name_en": "Fires of Suffering",
+        "name_fr": "Feux de la souffrance",
+        "name_de": "Feuer des Leidens",
+        "zones": {
+            "4":{
+                "level": "28",
+                "magelo": 1072218897
+            }
+        }
+    }, 
+
+    {
+        "name_en": "Greed in the Gorge",
+        "name_fr": "Cupidit\u00e9 dans les Gorges",
+        "name_de": "Gier erf\u00fcllt die Schlucht",
+        "zones": {
+            "4":{
+                "level": "28",
+                "magelo": 67030899
+            }
+        }
+    }, 
+
+    {
+        "name_en": "Shambling Hordes",
+        "name_fr": "Hordes peu vivaces",
+        "name_de": "Schlurferhorden",
+        "zones": {
+            "4":{
+                "level": "28",
+                "magelo": 1270315508
+            }
+        }
+    }, 
+
+    {
+        "name_en": "Systematic Deconstruction",
+        "name_fr": "D\u00e9construction syst\u00e9matique",
+        "name_de": "Systematische Zerst\u00f6rung",
+        "zones": {
+            "4":{
+                "level": "28",
+                "magelo": 2102591610
+            }
+        }
+    }, 
+
+    {
+        "name_en": "The Bone Dance",
+        "name_fr": "La danse des os",
+        "name_de": "Tanz der Knochen",
+        "zones": {
+            "4":{
+                "level": "28",
+                "magelo": 115721782
+            }
+        }
+    }, 
+
+    {
+        "name_en": "The Crucible",
+        "name_fr": "Le Creuset",
+        "name_de": "Die Feuerprobe",
+        "zones": {
+            "4":{
+                "level": "28",
+                "magelo": 1882144684
+            }
+        }
+    }, 
+
+    {
+        "name_en": "Unstable Scarlet Gorge",
+        "name_fr": "Gorges \u00c9carlates instables",
+        "name_de": "Instabil: Scharlachrote Schlucht",
+        "zones": {
+            "4":{
+                "level": "28",
+                "magelo": 2035605960
+            }
+        }
+    }, 
+
+    {
+        "name_en": "Descending Night",
+        "name_fr": "Tomb\u00e9e de la nuit",
+        "name_de": "Herabsinkende Nacht",
+        "zones": {
+            "3":{
+                "level": "24",
+                "magelo": 1084657500
+            }
+        }
+    }, 
+
+    {
+        "name_en": "Experiments in Stonefield",
+        "name_fr": "Exp\u00e9riences dans le Champ de pierre",
+        "name_de": "Experimente in Steinfeld",
+        "zones": {
+            "2":{
+                "level": "24",
+                "magelo": 1578105326
+            }
+        }
+    }, 
+
+    {
+        "name_en": "Field Of Screams",
+        "name_fr": "Champ de hurlements",
+        "name_de": "Das Feld der Schreie",
+        "zones": {
+            "2":{
+                "level": "24",
+                "magelo": 1730021805
+            }
+        }
+    }, 
+
+    {
+        "name_en": "Forged in Rage",
+        "name_fr": "Forg\u00e9 dans la fureur",
+        "name_de": "Geschmiedet im Zorn",
+        "zones": {
+            "3":{
+                "level": "24",
+                "magelo": 1038465296
+            }
+        }
+    }, 
+
+    {
+        "name_en": "From the Deeps",
+        "name_fr": "Dans les Profondeurs",
+        "name_de": "Aus den Tiefen",
+        "zones": {
+            "3":{
+                "level": "24",
+                "magelo": 386070404
+            }
+        }
+    }, 
+
+    {
+        "name_en": "Sticks and Stones",
+        "name_fr": "B\u00e2tons et pierres",
+        "name_de": "St\u00f6cke und Steine",
+        "zones": {
+            "2":{
+                "level": "24",
+                "magelo": 2045972736
+            }
+        }
+    }, 
+
+    {
+        "name_en": "The Purging of Gloamwood Pines",
+        "name_fr": "La purification des Pins du Bois du Cr\u00e9puscule",
+        "name_de": "Die L\u00e4uterung von D\u00e4mmerscheid",
+        "zones": {
+            "3":{
+                "level": "24",
+                "magelo": 1083555876
+            }
+        }
+    }, 
+
+    {
+        "name_en": "The Stone Titan",
+        "name_fr": "Le Titan de pierre",
+        "name_de": "Der Steintitan",
+        "zones": {
+            "2":{
+                "level": "24",
+                "magelo": 1955769285
+            }
+        }
+    }, 
+
+    {
+        "name_en": "The Wild Plague",
+        "name_fr": "Le fl\u00e9au sauvage",
+        "name_de": "Die ungeb\u00e4rdige Seuche",
+        "zones": {
+            "3":{
+                "level": "24",
+                "magelo": 1761862965
+            }
+        }
+    }, 
+
+    {
+        "name_en": "Undead Burden",
+        "name_fr": "Fardeau mort-vivant",
+        "name_de": "Untoten-B\u00fcrde",
+        "zones": {
+            "2":{
+                "level": "24",
+                "magelo": 969282339
+            }
+        }
+    }, 
+
+    {
+        "name_en": "Unstable Gloamwood",
+        "name_fr": "Bois du Cr\u00e9puscule instable",
+        "name_de": "Instabil: D\u00e4mmerwald",
+        "zones": {
+            "3":{
+                "level": "24",
+                "magelo": 276110018
+            }
+        }
+    }, 
+
+    {
+        "name_en": "Unstable Stonefield",
+        "name_fr": "Champ de pierre instable",
+        "name_de": "Instabil: Steinfeld",
+        "zones": {
+            "2":{
+                "level": "24",
+                "magelo": 826748342
+            }
+        }
+    }, 
+
+    {
+        "name_en": "Arboreal Assault",
+        "name_fr": "Attaque arboricole",
+        "name_de": "\u00dcberfall der B\u00e4ume",
+        "zones": {
+            "0":{
+                "level": "15",
+                "magelo": 385487480
+            }
+        }
+    }, 
+
+    {
+        "name_en": "Battle for Freemarch",
+        "name_fr": "La bataille de Libremarche",
+        "name_de": "Kampf um Freimark",
+        "zones": {
+            "1":{
+                "level": "15",
+                "magelo": 666427891
+            }
+        }
+    }, 
+
+    {
+        "name_en": "Battle of the Woodlands",
+        "name_fr": "La bataille des bois",
+        "name_de": "Schlacht der Waldlande",
+        "zones": {
+            "0":{
+                "level": "15",
+                "magelo": 1063301454
+            }
+        }
+    }, 
+
+    {
+        "name_en": "Crusade Against House Aelfwar",
+        "name_fr": "Croisade contre la Maison Aelfwar",
+        "name_de": "Kreuzzug gegen das Haus Aelfwar",
+        "zones": {
+            "0":{
+                "level": "15",
+                "magelo": 1755843210
+            }
+        }
+    }, 
+
+    {
+        "name_en": "Fall Of The Hammer",
+        "name_fr": "La chute du Marteau",
+        "name_de": "Der Fall des Hammers",
+        "zones": {
+            "1":{
+                "level": "15",
+                "magelo": 1014531395
+            }
+        }
+    }, 
+
+    {
+        "name_en": "Gathering of Souls",
+        "name_fr": "Rassemblement d\u2019\u00e2mes",
+        "name_de": "Seelensammlung",
+        "zones": {
+            "1":{
+                "level": "15",
+                "magelo": 1092502876
+            }
+        }
+    }, 
+
+    {
+        "name_en": "March of the Gedlo",
+        "name_fr": "La marche des Gedlo",
+        "name_de": "Der Marsch der Gedlo",
+        "zones": {
+            "0":{
+                "level": "15",
+                "magelo": 1714537512
+            }
+        }
+    }, 
+
+    {
+        "name_en": "The Crushing Deep",
+        "name_fr": "Les Profondeurs \u00e9crasantes",
+        "name_de": "Die erdr\u00fcckende Tiefe",
+        "zones": {
+            "1":{
+                "level": "15",
+                "magelo": 1826518950
+            }
+        }
+    }, 
+
+    {
+        "name_en": "The Ebb of the Tidelord",
+        "name_fr": "Le flux des Seigneurs des Mar\u00e9es",
+        "name_de": "Die Ebbe des Flutenf\u00fcrsten",
+        "zones": {
+            "1":{
+                "level": "15",
+                "magelo": 214468351
+            }
+        }
+    }, 
+
+    {
+        "name_en": "The Embers of Silverwood",
+        "name_fr": "Les braises de Bois d'Argent",
+        "name_de": "Die Glut von Silberwald",
+        "zones": {
+            "0":{
+                "level": "15",
+                "magelo": 130185960
+            }
+        }
+    }, 
+
+    {
+        "name_en": "The Forest Fire",
+        "name_fr": "Le Feu de for\u00eat",
+        "name_de": "Der Waldbrand",
+        "zones": {
+            "0":{
+                "level": "15",
+                "magelo": 126230276
+            }
+        }
+    }, 
+
+    {
+        "name_en": "The Hand of Death",
+        "name_fr": "La Main de la Mort",
+        "name_de": "Die Hand des Todes",
+        "zones": {
+            "1":{
+                "level": "15",
+                "magelo": 281023903
+            }
+        }
+    }, 
+
+    {
+        "name_en": "Unstable Freemarch",
+        "name_fr": "Libremarche instable",
+        "name_de": "Instabil: Freimark",
+        "zones": {
+            "1":{
+                "level": "15",
+                "magelo": 281814254
+            }
+        }
+    }, 
+
+    {
+        "name_en": "Unstable Silverwood",
+        "name_fr": "Bois d'Argent instable",
+        "name_de": "Instabil: Silberwald",
+        "zones":{
+            "0":{
+                "level": "15",
+                "magelo": 645641308
+            }
+        }
+    }
+    ]}

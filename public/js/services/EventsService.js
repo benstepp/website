@@ -7,14 +7,17 @@ angular.module('EventsService',[]).service('EventsService',['$http', '$q', funct
 		//if region is specified change the url
 		var url = '/api/riftevents/';
 		if (reg !== undefined) {
-			url = '/api/riftevents/region/'+ reg;
+			url = '/api/riftevents/'+ reg;
 		}
 
 		var deferred = $q.defer();
 		$http.get(url).success(
 			function(res) {
-				for (var key in res) {
-					EventsService.zoneEvents[key] = res[key];
+				if (reg !== undefined) {
+					EventsService.zoneEvents[reg] = res;
+				}
+				else {
+					EventsService.zoneEvents = res;
 				}
 				deferred.resolve(EventsService.zoneEvents);
 			});

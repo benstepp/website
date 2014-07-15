@@ -1,6 +1,6 @@
 angular.module('EventsCtrl',['EventsService'])
 	.controller('EventsController',
-		function($scope, EventsService, $interval) {
+		function($scope, EventsService, $interval, $http) {
 
 			$scope.events = {};
 			$scope.region = $scope.$parent.region;
@@ -17,6 +17,13 @@ angular.module('EventsCtrl',['EventsService'])
 			$scope.predicate = "";
 			$scope.reverse = false;
 
+			//get zones json file
+			$http.get("api/riftevents/zones")
+				.success(function(response){
+					$scope.zones = response;
+					$scope.updateEvents();
+				});
+
 			$scope.sort = function(str) {
 				//only reverse if it is already the sort method
 				if ($scope.predicate === str) {
@@ -32,20 +39,17 @@ angular.module('EventsCtrl',['EventsService'])
 			$scope.updateEvents = function(region) {
 				EventsService.getEvents(region).then(
 					function(data) {
-						//clear the array for that region
-						var newArray = [];
-						//for each shard in the region
-						for (var key in data[$scope.data.region]) {
-							var eventLength = data[$scope.data.region][key].length;
-							//for each event on the shard
-							for (var i =0; i < eventLength;i++) {
-								var newEvent = data[$scope.data.region][key][i];
-								newEvent.started = $scope.toDate(newEvent.started);
-								newEvent.shard = key;
-								newArray.push(newEvent);
-							}
+						var newEvents = data[$scope.data.region].events;
+						var newEventsLength = newEvents.length;
+						//get correct time and zone name
+						var locale = $scope.data.locale.slice(0,2);
+						console.log(newEvents);
+						for (var i=0; i < newEventsLength;i++) {
+							newEvents[i].started = $scope.toDate(newEvents[i].started);
+							newEvents[i].zone = $scope.zones[newEvents[i].zone]['name_'+locale];
+							newEvents[i].name = newEvents[i]['name_'+locale];
 						}
-						$scope.events = newArray;
+						$scope.events = newEvents;
 					});
 			};
 
@@ -61,7 +65,6 @@ angular.module('EventsCtrl',['EventsService'])
 
 
 			//init with no region specified
-			$scope.updateEvents();
 
 			$interval(function() {
 				EventsService.checkUpdated().then(

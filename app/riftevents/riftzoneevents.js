@@ -7,6 +7,13 @@ var EventEmitter = require('events').EventEmitter;
 var trionhosts = require('./config/trionhosts.js');
 //Shard Id List
 var shards = require('./config/shards.js');
+//zones
+var zones = require('./config/zones.json').zones;
+var zonesLength = zones.length;
+
+//events
+var eventsList = require('./config/events.json').events;
+var eventsListLength = eventsList.length;
 
 var ZoneEvent = function(trionAuth) {
 
@@ -68,8 +75,9 @@ var ZoneEvent = function(trionAuth) {
 		//save the events if they are different
 		if(!checkZoneEvents(shard, zoneEvents)) {
 			_this.lastUpdated = Date.now();
+			localeCheck(shard,zoneEvents);
 			_this.events[shard.region][shard.shardName] = zoneEvents;
-			_this.emit('newEvents', _this.events, _this.lastUpdated);
+			packEvents();
 		}
 	};
 
@@ -91,6 +99,69 @@ var ZoneEvent = function(trionAuth) {
 		}
 		//else return false
 		return false;
+	};
+
+	var localeCheck = function(shard, events) {
+		var eventsLength = events.length;
+		var localeName = 'name_'+shard.locale;
+		for (var i = 0; i <eventsLength;i++) {
+			//sets the zone to an id number
+			events[i].zone = getZoneId(events[i], localeName);
+			events[i].name_en = getNames(events[i], localeName, 'name_en');
+			events[i].name_fr = getNames(events[i], localeName, 'name_fr');
+			events[i].name_de = getNames(events[i], localeName, 'name_de');
+			delete events[i].name;
+			delete events[i].zoneId;
+		}
+	};
+
+	var getZoneId = function(event, localeName) {
+		for (var j = 0; j < zonesLength; j++) {
+			if (zones[j][localeName] === event.zone) {
+				return j;
+			}
+		}
+	};
+
+	var getNames = function(event, localeName, toLocale) {
+		//return if locale of server is same as requested
+		if (localeName === toLocale) {
+			return event.name;
+		}
+		//otherwise search through events list for the event
+		else {
+			for (var j = 0;j < eventsListLength;j++) {
+				if(eventsList[j][localeName] === event.name) {
+					return eventsList[j][toLocale];
+				}
+			}
+			//return name if not in json yet
+			return event.name;
+		}
+	};
+
+	var packEvents = function() {
+		var packed = {
+			EU:{},
+			US:{}
+		};
+		//for each region
+		for (var region in _this.events) {
+			//for each shard
+			var eventArray = [];
+			for (var shard in _this.events[region]) {
+				//for each event
+				var shardLength = _this.events[region][shard].length;
+				for (var i = 0; i < shardLength; i++) {
+					var newEvent = _this.events[region][shard][i];
+					newEvent.shard = shard;
+					eventArray.push(newEvent);
+				}
+			}
+			packed[region].events = eventArray;
+			packed[region].lastUpdated = _this.lastUpdated;
+			_this.emit('newEvents', packed);
+		}
 	};
 
 	//updates all events on shards

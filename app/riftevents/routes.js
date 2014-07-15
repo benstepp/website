@@ -1,3 +1,5 @@
+var zones = require('./config/zones.json').zones;
+
 module.exports = function(router,Events, zEvents){
 
 	router.use(function(req, res, next) {
@@ -15,29 +17,26 @@ module.exports = function(router,Events, zEvents){
 	});
 
 	//server routes
-	router.route('/')
+	router.route('/:region')
 		//Get all events /api/riftevents/events/
 		.get(function(req, res) {
-			//build the json
-			var eventPacked = events;
-			eventPacked.lastUpdated = lastUpdated;
-			res.json(eventPacked);
-		});
-
-	//get events for a single region /api/riftevents/region/ID
-	router.route('/region/:region')
-		.get(function(req, res) {
-			//check for valid region
+			//if valid region send just that region
 			if (req.params.region === 'US' || 
 				req.params.region ==='EU') {
-				var eventPacked = {};
-				eventPacked[req.params.region] = events[req.params.region];
-				eventPacked.lastUpdated = lastUpdated;
-				res.json(eventPacked);
+				res.json(events[req.params.region]);
 			}
+			else if (req.params.region === 'zones'){
+				res.json(zones);
+			}
+			//otherwise send everything
 			else {
-				res.json({success:'0', message: 'invalid region parameter: US, EU'});
+				res.json(events);
 			}
+		});
+
+	router.route('/')
+		.get(function(req, res) {
+			res.json(events);
 		});
 
 	//only get the last updated time /api/riftevents/lastUpdated
@@ -45,5 +44,5 @@ module.exports = function(router,Events, zEvents){
 		.get(function(req, res) {
 			res.json({success: '1', message: lastUpdated});
 		});
-
+		
 };
