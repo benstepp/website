@@ -2,8 +2,8 @@ angular.module('HeaderCtrl',[]).controller('HeaderController', function($scope) 
 
 	$scope.locales = {
 		'English':'en-US',
-		'French':'fr',
-		'German':'de'
+		'French':'fr-FR',
+		'German':'de-DE'
 	};
 
 	$scope.data = {

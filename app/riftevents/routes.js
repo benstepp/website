@@ -29,15 +29,14 @@ module.exports = function(router,Events, zEvents){
 		.get(function(req, res) {
 			//check for valid region
 			if (req.params.region === 'US' || 
-				req.params.region ==='EU1' || 
-				req.params.region ==='EU2') {
+				req.params.region ==='EU') {
 				var eventPacked = {};
 				eventPacked[req.params.region] = events[req.params.region];
 				eventPacked.lastUpdated = lastUpdated;
 				res.json(eventPacked);
 			}
 			else {
-				res.json({success:'0', message: 'invalid region parameter: US, EU1, EU2 '});
+				res.json({success:'0', message: 'invalid region parameter: US, EU'});
 			}
 		});
 

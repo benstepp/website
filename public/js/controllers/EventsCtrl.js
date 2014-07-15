@@ -13,6 +13,21 @@ angular.module('EventsCtrl',['EventsService'])
 					$scope.updateEvents($scope.data.region);
 			});
 
+			//defines a sorting predicate
+			$scope.predicate = "";
+			$scope.reverse = false;
+
+			$scope.sort = function(str) {
+				//only reverse if it is already the sort method
+				if ($scope.predicate === str) {
+					$scope.reverse = !$scope.reverse;
+				}
+				//otherwise reset the reverse
+				else {
+					$scope.predicate = str;
+					$scope.reverse = false;
+				}
+			};
 
 			$scope.updateEvents = function(region) {
 				EventsService.getEvents(region).then(

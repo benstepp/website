@@ -1,18 +1,19 @@
 <div class="row">
 	<div class="col-md-12">
 		<table>
+		
 			<thead>
 				<tr>
-					<th>Shard</th>
-					<th>Zone</th>
-					<th>Event</th>
-					<th>Level</th>
-					<th>Started</th>
+					<th><a href="" data-ng-click="sort('shard')">Shard</a></th>
+					<th><a href="" data-ng-click="sort('zone')">Zone</a></th>
+					<th><a href="" data-ng-click="sort('name')">Event</a></th>
+					<th><a href="" data-ng-click="sort('level')">Level</a></th>
+					<th><a href="" data-ng-click="sort('started')">Started</a></th>
 				</tr>
 			</thead>
 
 			<tbody>
-				<tr data-ng-repeat="event in events">
+				<tr data-ng-repeat="event in events | orderBy:predicate:reverse">
 					<td>{{ event.shard }}</td>
 					<td>{{ event.zone }}</td>
 					<td>{{ event.name }}</td>
