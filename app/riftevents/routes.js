@@ -28,6 +28,9 @@ module.exports = function(router,Events, zEvents){
 			else if (req.params.region === 'zones'){
 				res.json(zones);
 			}
+			else if (req.params.region === 'lastUpdated') {
+				res.json({success: '1', message: lastUpdated});
+			}
 			//otherwise send everything
 			else {
 				res.json(events);
@@ -38,11 +41,4 @@ module.exports = function(router,Events, zEvents){
 		.get(function(req, res) {
 			res.json(events);
 		});
-
-	//only get the last updated time /api/riftevents/lastUpdated
-	router.route('/lastUpdated')
-		.get(function(req, res) {
-			res.json({success: '1', message: lastUpdated});
-		});
-		
 };

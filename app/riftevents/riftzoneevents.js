@@ -160,7 +160,7 @@ var ZoneEvent = function(trionAuth) {
 			}
 			packed[region].events = eventArray;
 			packed[region].lastUpdated = _this.lastUpdated;
-			_this.emit('newEvents', packed);
+			_this.emit('newEvents', packed, _this.lastUpdated);
 		}
 	};
 

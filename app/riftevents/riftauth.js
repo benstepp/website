@@ -4,7 +4,7 @@ var querystring = require('querystring');
 var util = require('util');
 var EventEmitter = require('events').EventEmitter;
 //Account info imported from .gitignore file
-var account = require('./config/account.js');
+var account = require('./config/account.json');
 //Trion URLS 
 var trionhosts = require('./config/trionhosts.js');
 
