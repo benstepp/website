@@ -3,8 +3,6 @@ var request = require('request');
 var querystring = require('querystring');
 var util = require('util');
 var EventEmitter = require('events').EventEmitter;
-//Account info imported from .gitignore file
-var account = require('./config/account.json');
 //Trion URLS 
 var trionhosts = require('./config/trionhosts.js');
 
@@ -62,8 +60,8 @@ var TrionAuth = function() {
 
 	//Constructor
 	var postData = querystring.stringify({
-		'username': account.username,
-		'password': account.password,
+		'username': process.argv[2],
+		'password': process.argv[3],
 		'channel': 1
 	});
 

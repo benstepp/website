@@ -5,15 +5,15 @@ var mongoose = require('mongoose');
 //config
 var db = require('./config/db');
 
-module.exports = function(app, env) {
+module.exports = function(app) {
 
 //database
 var Event = require('./models/event');
 var Zone = require('./models/zone');
-mongoose.connect(db.url);
+//mongoose.connect(db.url);
 
-//Development only configs
-if (env == 'development') {
+//Development only
+if (process.env.NODE_ENV == 'development') {
 	require('../../dev/updatedb')(Zone, Event, db);
 }
 

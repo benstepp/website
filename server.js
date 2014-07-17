@@ -15,7 +15,7 @@ app.use(bodyParser.json());
 app.use(morgan());
 
 //app modules
-var riftevents = require('./app/riftevents/main')(app, env);
+var riftevents = require('./app/riftevents/main')(app);
 
 //start app
 app.listen(port);

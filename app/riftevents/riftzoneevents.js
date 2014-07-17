@@ -57,7 +57,6 @@ var ZoneEvent = function(trionAuth) {
 			}
 			else {
 				console.log(err); 
-				console.log('HTTP Status Code:' + res.statusCode);
 			}
 		});
 	};
