@@ -1,19 +1,33 @@
-angular.module('routes',[]).config(['$routeProvider','$locationProvider',function($routeProvider,$locationProvider) {
+angular.module('routes',['routeStyles', 'ui.router'])
+	.config(['$stateProvider','$urlRouterProvider', 
+		function($stateProvider,$urlRouterProvider) {
 
-	$routeProvider
+			$urlRouterProvider.otherwise('/');
 
-        .when('/',
-        {
-            controller: 'EventsController',
-            templateUrl: 'partials/events.html'
-        })
-        .when('/riftevents', 
-        {
-        	controller: 'EventsController',
-        	templateUrl: 'partials/events.html'
-        })
-        .otherwise({ redirectTo: '/'});
+			$stateProvider.state('index', {
+				url:'/',
+				views: {
+					"main":{
+						templateUrl:"partials/main.html"
+					}
+				}
+			});
 
-    $locationProvider.html5Mode(true);
-    
+			$stateProvider.state('riftevents', {
+				url:'/riftevents',
+				css:'/partials/riftevents/riftevents.css',
+				views: {
+					"main": { 
+						templateUrl:"partials/riftevents/main.html",
+						controller:"EventsController"
+					},
+					"navbar-right": { 
+						templateUrl:"partials/riftevents/navbar-right.html"
+					},
+					"footer-left": {
+						templateUrl:"partials/riftevents/footer-left.html"
+					}
+				}
+			}); 
+
 }]);

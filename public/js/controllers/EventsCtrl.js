@@ -43,9 +43,8 @@ angular.module('EventsCtrl',['EventsService'])
 						var newEventsLength = newEvents.length;
 						//get correct time and zone name
 						var locale = $scope.data.locale.slice(0,2);
-						console.log(newEvents);
 						for (var i=0; i < newEventsLength;i++) {
-							newEvents[i].started = $scope.toDate(newEvents[i].started);
+							newEvents[i].time = $scope.toDate(newEvents[i].started);
 							newEvents[i].zone = $scope.zones[newEvents[i].zone]['name_'+locale];
 							newEvents[i].name = newEvents[i]['name_'+locale];
 						}
@@ -71,7 +70,6 @@ angular.module('EventsCtrl',['EventsService'])
 					function(res) {
 						//we expect a true or false value from this function
 						if(res) {
-							console.log('getting new events');
 							$scope.updateEvents($scope.data.region);
 						}
 					});

@@ -1,1 +1,1 @@
-angular.module('app',['ngRoute', 'routes', 'EventsCtrl','EventsService','HeaderCtrl']);
+angular.module('app',['routes', 'EventsCtrl','EventsService','HeaderCtrl', 'ui.router', 'routeStyles']);

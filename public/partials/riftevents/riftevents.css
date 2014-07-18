@@ -1,0 +1,37 @@
+.navbar-default {
+	border-color:#663399;
+}
+
+th > a, .nav-small-brand.navbar-brand{
+	color:#663399;
+	font-weight:700;
+}
+
+th > a:hover, .nav-small-brand.navbar-brand:hover {
+	color:#8A45CF;
+	text-decoration:none;
+}
+
+thead {
+	border-bottom:1px solid #663399;
+}
+
+tr td:nth-child(n+4) {
+	text-align:right;
+}
+
+th, td {
+	padding: 1px 12px;
+}
+
+tbody tr:nth-child(even) {
+	background-color:#EEEEEE;
+}
+
+table {
+	max-width:100%;
+	margin-left:auto;
+	margin-right:auto;
+	white-space:nowrap;
+	overflow:auto;
+}

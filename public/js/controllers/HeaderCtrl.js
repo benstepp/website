@@ -1,4 +1,9 @@
-angular.module('HeaderCtrl',[]).controller('HeaderController', function($scope) {
+angular.module('HeaderCtrl',[]).controller('HeaderController', function($scope, $rootScope) {
+
+	$scope.titles = {
+		'index':'website',
+		'riftevents':'Rift Event Tracker'
+	};
 
 	$scope.locales = {
 		'English':'en-US',
@@ -29,6 +34,15 @@ angular.module('HeaderCtrl',[]).controller('HeaderController', function($scope) 
 		if ($scope.data.language === 'English'	&& $scope.data.region !== 'US') {
 			$scope.data.locale = 'en-GB';
 		}
+		else if ($scope.data.langage === 'English' ) {
+			$scope.data.locale = 'en-US';
+		}
 	};
+
+	$rootScope.$on('$stateChangeStart', 
+		function (event, next, nextParams, current, currentParams) {
+            $scope.title = $scope.titles[next.name];
+            $scope.url = next.name;
+        });
 
 });
