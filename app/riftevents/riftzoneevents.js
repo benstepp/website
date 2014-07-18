@@ -2,6 +2,7 @@
 var request = require('request');
 var util = require('util');
 var EventEmitter = require('events').EventEmitter;
+var _ = require('lodash');
 
 //Trion URLs 
 var trionhosts = require('./config/trionhosts.js');
@@ -14,6 +15,10 @@ var zonesLength = zones.length;
 //events
 var eventsList = require('./config/events.json').events;
 var eventsListLength = eventsList.length;
+
+//lodash mixins
+var mixin = require('./config/arrayobject.js');
+_.mixin(mixin);
 
 var ZoneEvent = function(trionAuth) {
 
@@ -67,12 +72,12 @@ var ZoneEvent = function(trionAuth) {
 		var zoneLength = zones.length;
 		var zoneEvents = [];
 		for (var i = 0; i < zoneLength; i++) {
-			if (zones[i].hasOwnProperty('name')) {
+			if (_.has(zones[i], 'name')) {
 				zoneEvents.push(zones[i]);
 			}		
 		}
 		//save the events if they are different
-		if(!checkZoneEvents(shard, zoneEvents)) {
+		if(checkZoneEvents(shard, zoneEvents)) {
 			_this.lastUpdated = Date.now();
 			localeCheck(shard,zoneEvents);
 			_this.events[shard.region][shard.shardName] = zoneEvents;
@@ -85,8 +90,8 @@ var ZoneEvent = function(trionAuth) {
 		var oldEvents = _this.events[shard.region][shard.shardName];
 		var oldEventsLength = oldEvents.length;
 		var newEventsLength = newEvents.length;
-
-		for (var i = 0; i < newEventsLength; i++) {
+		return _.difference(newEvents, oldEvents);
+		/*for (var i = 0; i < newEventsLength; i++) {
 			//loop through all old events
 			for (var j = 0; j < oldEventsLength; j++) {
 				if (newEvents[i].name === oldEvents[j].name &&
@@ -95,9 +100,7 @@ var ZoneEvent = function(trionAuth) {
 					return true;
 				}
 			}
-		}
-		//else return false
-		return false;
+		}*/
 	};
 
 	var localeCheck = function(shard, events) {

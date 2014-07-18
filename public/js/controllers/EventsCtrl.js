@@ -58,16 +58,19 @@ angular.module('EventsCtrl',['EventsService'])
 				var min = d.getMinutes();
 				var apm = "";
 				//special case for 24 hr/12am
-				if (hr === 24 && locale === "en-US") {
+				if (hr === 24 && $scope.data.locale === "en-US") {
 					apm = "AM";
                     hr=12;
                 }
-				else if (hr >= 12 && locale === "en-US") {
+				else if (hr >= 12 && $scope.data.locale === "en-US") {
     				apm = "PM";
     				hr = hr-12;
     				}
-    			else if (hr < 12 && locale === "en-US") {
+    			else if (hr < 12 && $scope.data.locale === "en-US") {
     				apm = "AM";
+    			}
+    			if(min < 10) {
+    				min = "0"+min;
     			}
                 return  hr + ":" + min + apm;
             };

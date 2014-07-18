@@ -1,0 +1,7 @@
+<div class="col-md-4" data-ng-repeat="app in apps | filter:$parent.search">
+	<div class="project-container">
+		<h3> {{ app.name }} </h3>
+		<p> {{ app.desc }} </p>
+		<a data-ng-href="{{ app.href }}"  data-ng-class="[app.css, defaultbtn]" >{{ app.btn }}</a>
+	</div>
+</div>
