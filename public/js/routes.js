@@ -8,7 +8,7 @@ angular.module('routes',['routeStyles', 'ui.router'])
 				url:'/',
 				views: {
 					"main":{
-						templateUrl:"partials/index.html"
+						templateUrl:"partials/main.html"
 					}
 				}
 			});

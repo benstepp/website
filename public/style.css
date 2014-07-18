@@ -20,7 +20,7 @@ body {
 }
 
 #mainContent {
-	margin-top:60px;
+	padding-top:60px;
 }
 
 .nav-small-brand {
@@ -46,4 +46,52 @@ footer span {
 .footerLink {
 	float:right;
 	margin:0px 6px;
+}
+
+.rift-container {
+	padding:12px;
+	background-color:#EEEEEE;
+	border:2px solid #663399;
+}
+
+.kf-container {
+	padding:12px;
+	background-color:#EEEEEE;
+	border:2px solid #6B1717;
+}
+
+.app-btn {
+	display:block;
+	color:#FFFFFF;
+	width:100%;
+	font-size:15px;
+	padding:4px;
+	margin-bottom:12px;
+	text-align:center;
+}
+
+.app-btn:hover {
+	text-decoration:none;
+	display:block;
+	color:#FFFFFF;
+	width:100%;
+	font-size:15px;
+	padding:4px;
+	margin-bottom:12px;
+	text-align:center;
+}
+
+.rift-btn {
+	background-color:#663399;
+}
+
+.rift-btn:hover {
+	background-color:#8A45CF;
+}
+
+.kf-btn {
+	background-color:#6B1717;
+}
+.kf-btn:hover {
+	background-color:#AB1C1B;
 }
