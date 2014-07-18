@@ -29,6 +29,9 @@ angular.module('HeaderCtrl',[]).controller('HeaderController', function($scope) 
 		if ($scope.data.language === 'English'	&& $scope.data.region !== 'US') {
 			$scope.data.locale = 'en-GB';
 		}
+		else if ($scope.data.langage === 'English' ) {
+			$scope.data.locale = 'en-US';
+		}
 	};
 
 });

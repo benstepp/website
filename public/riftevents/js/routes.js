@@ -5,12 +5,12 @@ angular.module('routes',[]).config(['$routeProvider','$locationProvider',functio
         .when('/',
         {
             controller: 'EventsController',
-            templateUrl: 'partials/events.html'
+            templateUrl: 'riftevents/partials/events.html'
         })
         .when('/riftevents', 
         {
         	controller: 'EventsController',
-        	templateUrl: 'partials/events.html'
+        	templateUrl: 'riftevents/partials/events.html'
         })
         .otherwise({ redirectTo: '/'});
 

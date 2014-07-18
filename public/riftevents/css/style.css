@@ -1,3 +1,7 @@
+body {
+	font-family: 'Roboto', sans-serif;
+}
+
 .navbar-nav > li > a {
 	padding-top:5px;
 	padding-bottom:5px;
@@ -13,6 +17,10 @@
 }
 .navbar-toggle {
 	padding:2px;
+}
+
+.navbar-default {
+	border-color:#663399;
 }
 
 #mainContent {
