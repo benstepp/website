@@ -17,6 +17,16 @@ module.exports = function(router,Events, zEvents){
 	});
 
 	//server routes
+	router.route('/lastUpdated')
+		.get(function(req, res) {
+			res.json({success: '1', message: lastUpdated});
+		});
+
+	router.route('/zones')
+		.get(function(req,res) {
+			res.json(zones);
+		});
+
 	router.route('/:region')
 		//Get all events /api/riftevents/events/
 		.get(function(req, res) {
@@ -25,18 +35,12 @@ module.exports = function(router,Events, zEvents){
 				req.params.region ==='EU') {
 				res.json(events[req.params.region]);
 			}
-			else if (req.params.region === 'zones'){
-				res.json(zones);
-			}
-			else if (req.params.region === 'lastUpdated') {
-				res.json({success: '1', message: lastUpdated});
-			}
-			//otherwise send everything
+			//if incorrect region token, just send everything
 			else {
 				res.json(events);
 			}
 		});
-
+	//otherwise send everything
 	router.route('/')
 		.get(function(req, res) {
 			res.json(events);
