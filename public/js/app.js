@@ -1,0 +1,1 @@
+angular.module('app',['routes', 'EventsCtrl','EventsService','HeaderCtrl', 'ui.router', 'routeStyles']);

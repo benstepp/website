@@ -13,14 +13,10 @@ body {
 .navbar-brand {
 	padding:5px 15px;
 	margin-right:20px;
-	height:28px;
+	height:30px;
 }
 .navbar-toggle {
 	padding:2px;
-}
-
-.navbar-default {
-	border-color:#663399;
 }
 
 #mainContent {
@@ -30,15 +26,7 @@ body {
 .nav-small-brand {
 	margin-right:0px;
 	padding-right:15px;
-	font-size:14px;
-}
-
-table {
-	max-width:100%;
-	margin-left:auto;
-	margin-right:auto;
-	white-space:nowrap;
-	overflow:auto;
+	font-size:15px;
 }
 
 footer {

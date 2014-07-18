@@ -70,7 +70,6 @@ angular.module('EventsCtrl',['EventsService'])
 					function(res) {
 						//we expect a true or false value from this function
 						if(res) {
-							console.log('getting new events');
 							$scope.updateEvents($scope.data.region);
 						}
 					});
