@@ -54,12 +54,23 @@ angular.module('EventsCtrl',['EventsService'])
 
 			$scope.toDate = function(date) {
 				var d = new Date(date*1000);
-				var options = {
-					'hour': 'numeric',
-					'minute':'2-digit'
-				};
-				return d.toLocaleString($scope.data.locale, options);
-			};
+				var hr = d.getHours();
+				var min = d.getMinutes();
+				var apm = "";
+				//special case for 24 hr/12am
+				if (hr === 24 && locale === "en-US") {
+					apm = "AM";
+                    hr=12;
+                }
+				else if (hr >= 12 && locale === "en-US") {
+    				apm = "PM";
+    				hr = hr-12;
+    				}
+    			else if (hr < 12 && locale === "en-US") {
+    				apm = "AM";
+    			}
+                return  hr + ":" + min + apm;
+            };
 
 
 

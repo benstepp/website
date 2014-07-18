@@ -1,5 +1,5 @@
 {
-	"name": "starter-node-angular",
+	"name": "website-project",
 	"main": "server.js",
 	"dependencies": {
 		"express": "~4.4.5",

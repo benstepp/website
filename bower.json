@@ -1,10 +1,9 @@
 {
-	"name": "starter-node-angular",
+	"name": "website-project",
 	"version": "1.0.0",
 	"dependencies": {
-		"bootstrap": "latest",
-		"angular": "latest",
-		"angular-route": "latest",
-		"angular-ui-router":"latest"
+		"bootstrap": "~3.2.0",
+		"angular": "~1.2.20",
+		"angular-ui-router":"~0.2.10"
 	}	
 }
