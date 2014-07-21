@@ -71,6 +71,7 @@ var ZoneEvent = function(trionAuth) {
 		var zones = body.data;
 		var zoneLength = zones.length;
 		var zoneEvents = [];
+		//remove all zones without events on the shard
 		for (var i = 0; i < zoneLength; i++) {
 			if (_.has(zones[i], 'name')) {
 				zoneEvents.push(zones[i]);
@@ -79,7 +80,6 @@ var ZoneEvent = function(trionAuth) {
 		//save the events if they are different
 		if(checkZoneEvents(shard, zoneEvents)) {
 			_this.lastUpdated = Date.now();
-			localeCheck(shard,zoneEvents);
 			_this.events[shard.region][shard.shardName] = zoneEvents;
 			packEvents();
 		}
@@ -88,19 +88,11 @@ var ZoneEvent = function(trionAuth) {
 	//checks if the zone events have changed
 	var checkZoneEvents = function(shard, newEvents) {
 		var oldEvents = _this.events[shard.region][shard.shardName];
-		var oldEventsLength = oldEvents.length;
-		var newEventsLength = newEvents.length;
-		return _.difference(newEvents, oldEvents);
-		/*for (var i = 0; i < newEventsLength; i++) {
-			//loop through all old events
-			for (var j = 0; j < oldEventsLength; j++) {
-				if (newEvents[i].name === oldEvents[j].name &&
-					newEvents[i].zone === oldEvents[j].zone &&
-					newEvents[i].started === oldEvents[j].started) {
-					return true;
-				}
-			}
-		}*/
+		//we call socket here because we already calculated data needed.
+		var addedEvents = _.difference(newEvents, oldEvents);
+		var removedEvents = _.difference(oldEvents,newEvents);
+		ioEvents(shard, addedEvents, removedEvents);
+		return addedEvents;
 	};
 
 	var localeCheck = function(shard, events) {
@@ -112,9 +104,15 @@ var ZoneEvent = function(trionAuth) {
 			events[i].name_en = getNames(events[i], localeName, 'name_en');
 			events[i].name_fr = getNames(events[i], localeName, 'name_fr');
 			events[i].name_de = getNames(events[i], localeName, 'name_de');
-			delete events[i].name;
-			delete events[i].zoneId;
+			events[i].shard = shard.shardName;
+			if (typeof events[i].name !== undefined) {
+				delete events[i].name;
+			}
+			if (typeof events[i].zoneId !== undefined) {
+				delete events[i].zoneId;
+			}
 		}
+		return events;
 	};
 
 	var getZoneId = function(event, localeName) {
@@ -156,7 +154,7 @@ var ZoneEvent = function(trionAuth) {
 				var shardLength = _this.events[region][shard].length;
 				for (var i = 0; i < shardLength; i++) {
 					var newEvent = _this.events[region][shard][i];
-					newEvent.shard = shard;
+					//newEvent.shard = shard;
 					eventArray.push(newEvent);
 				}
 			}
@@ -172,15 +170,35 @@ var ZoneEvent = function(trionAuth) {
 			var shardCount = shards[k].length;
 			for (var i = 0; i < shardCount; i++) {
 				getEvents(shards[k][i]);
-
 			}
+		}
+	};
+
+	var ioEvents = function(shard, addedEvents, removedEvents) {
+		var addedCount = addedEvents.length;
+		var removedCount = removedEvents.length;
+		if (addedCount > 0) {
+
+			var added = localeCheck(shard,addedEvents);
+			var addedJson = {
+				action: "add",
+				events: added
+			};
+			_this.emit('add', addedJson);
+		}
+		if (removedCount > 0) {
+			var removed = localeCheck(shard,removedEvents);
+			var removedJson = {
+				action: "remove",
+				events: removed
+			};
+			_this.emit('remove', removedJson);
 		}
 	};
 
 	//initialize events
 	updateEvents();
 	setInterval(updateEvents, 60000);
-
 };
 
 //inherit event emitter and export class

@@ -1,6 +1,6 @@
 angular.module('EventsCtrl',['EventsService'])
 	.controller('EventsController',
-		function($scope, EventsService, $interval, $http) {
+		function($scope, EventsService, $interval, $http, socket) {
 
 			$scope.events = {};
 			$scope.region = $scope.$parent.region;
@@ -59,15 +59,15 @@ angular.module('EventsCtrl',['EventsService'])
 				var apm = "";
 				//special case for 24 hr/12am
 				if (hr === 24 && $scope.data.locale === "en-US") {
-					apm = "AM";
+					apm = " AM";
                     hr=12;
                 }
 				else if (hr >= 12 && $scope.data.locale === "en-US") {
-    				apm = "PM";
+    				apm = " PM";
     				hr = hr-12;
     				}
     			else if (hr < 12 && $scope.data.locale === "en-US") {
-    				apm = "AM";
+    				apm = " AM";
     			}
     			if(min < 10) {
     				min = "0"+min;
@@ -78,7 +78,7 @@ angular.module('EventsCtrl',['EventsService'])
 
 
 			//init with no region specified
-
+			/*
 			$interval(function() {
 				EventsService.checkUpdated().then(
 					function(res) {
@@ -87,5 +87,20 @@ angular.module('EventsCtrl',['EventsService'])
 							$scope.updateEvents($scope.data.region);
 						}
 					});
-			}, 30000);
+			}, 30000);*/
+
+			//client socket.io
+			socket.on('addEvent', function(data) {
+				$scope.msg = data;
+				console.log(data);
+			});
+
+			socket.on('removeEvent', function(data) {
+				$scope.msg = data;
+				console.log(data);
+			});
+
+
+
+
 });

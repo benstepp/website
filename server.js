@@ -13,11 +13,14 @@ var app = express();
 app.use(express.static(__dirname + '/public'));
 app.use(bodyParser.json());
 app.use(morgan());
+var http = require('http').Server(app);
+var io = require('socket.io')(http);
+
 
 //app modules
-var riftevents = require('./app/riftevents/main')(app);
+var riftevents = require('./app/riftevents/main')(app, io);
 
 //start app
-app.listen(port);
+http.listen(port);
 console.log('Now listening on port: '+ port);
 exports = module.exports = app;

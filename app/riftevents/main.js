@@ -5,7 +5,7 @@ var mongoose = require('mongoose');
 //config
 var db = require('./config/db');
 
-module.exports = function(app) {
+module.exports = function(app, io) {
 
 //database
 var Event = require('./models/event');
@@ -27,8 +27,13 @@ trionAuth.on('ready', function(tAuth) {
 
 	//create routes with our zoneevents class
 	var router = express.Router();
-	require('./routes')(router,Event, zEvents);
+	require('./routes.js')(router,Event, zEvents);
 	app.use('/api/riftevents',router);
+
+	//socket io from zoneevent events
+	io.sockets.on('connection', function(socket) { 
+		require('./sockets.js')(zEvents, socket);
+	});
 
 });
 

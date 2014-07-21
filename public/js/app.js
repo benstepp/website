@@ -1,1 +1,11 @@
-angular.module('app',['routes', 'EventsCtrl','EventsService','HeaderCtrl', 'MainCtrl', 'ui.router', 'routeStyles']);
+angular.module('app', [
+	'routes', 
+	'EventsCtrl',
+	'EventsService',
+	'HeaderCtrl', 
+	'MainCtrl', 
+	'SocketFactory',
+	'ui.router', 
+	'routeStyles',
+	'btford.socket-io'
+	]);

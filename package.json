@@ -12,6 +12,7 @@
 		"morgan": "~1.1.1",
 		"request": "~2.37.0",
 		"lodash":"~2.4.1",
+		"socket.io":"~1.0.6",
 		"mongoose-unique-validator": "~0.3.0"
 	}
 }
