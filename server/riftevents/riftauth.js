@@ -58,15 +58,18 @@ var TrionAuth = function() {
 		}
 	};
 
-	//Constructor
-	var postData = querystring.stringify({
-		'username': process.argv[2],
-		'password': process.argv[3],
-		'channel': 1
-	});
-
-	authRequest('auth', postData, authCallback);
-
+	//if arguments passed to process log in, otherwise emit ready
+	if (process.argv[2] && process.argv[3]) {	
+		var postData = querystring.stringify({
+			'username': process.argv[2],
+			'password': process.argv[3],
+			'channel': 1
+		});
+		authRequest('auth', postData, authCallback);
+	}
+	else {
+		_this.emit('ready', _this);
+	}
 };
 
 //inherit event emitter and export the class

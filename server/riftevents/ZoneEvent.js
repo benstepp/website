@@ -24,12 +24,13 @@ var ZoneEvent = function(trionAuth) {
 
 	//use _this because of problems with this in request library
 	var _this = this;
+	//all events are saved in this object in events.region.shard -> array of events
 	this.events = {};
 
 	//initialize total shard count
 	this.shardCount = 0;
-	for (var k in shards) {
-			this.shardCount += shards[k].length;
+	for (var region in shards) {
+			this.shardCount += shards[region].length;
 	}
 
 	//initialize events with empty arrays
@@ -43,6 +44,7 @@ var ZoneEvent = function(trionAuth) {
 		}
 	}
 
+
 	//http request the events for a single shard 
 	var getEvents = function(shard) {
 		var options = {
@@ -51,10 +53,15 @@ var ZoneEvent = function(trionAuth) {
 			method: 'GET',
 			json: true,
 			headers: {
-				'Content-Type': 'application/x-www-form-urlencoded',
-				'Cookie': trionAuth['session_chat'+shard.chatServer]
-			},
+				'Content-Type': 'application/x-www-form-urlencoded'
+			}
 		};
+
+		//if logged into auth server send session cookie
+		var sessionCookie = trionAuth['session_chat'+shard.chatServer] || undefined;
+		if (sessionCookie) {
+			options.headers.Cookie = sessionCookie;
+		}
 
 		request(options, function(err, res, body) {
 			if (!err && res.statusCode == 200 ) {
@@ -201,6 +208,7 @@ var ZoneEvent = function(trionAuth) {
 	};
 
 	//initialize events
+	console.log('loaded');
 	updateEvents();
 	setInterval(updateEvents, 60000);
 };

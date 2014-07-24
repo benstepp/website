@@ -22,7 +22,8 @@ if (process.env.NODE_ENV == 'development') {
 var trionAuth = require('./riftauth');
 trionAuth.on('ready', function(tAuth) {
 	//load up ZoneEvent class module with session cookies
-	var ZoneEvent = require('./riftzoneevents');
+	var ZoneEvent = require('./ZoneEvent.js');
+
 	var zEvents = new ZoneEvent(tAuth);
 
 	//create routes with our zoneevents class
