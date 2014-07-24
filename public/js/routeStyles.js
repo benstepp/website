@@ -1,9 +1,9 @@
-(function(){
+(function() {
+    angular
+        .module('routeStyles', ['ui.router'])
+        .directive('head', ['$rootScope','$compile', routeStyles]);
 
-    var mod = angular.module('routeStyles', ['ui.router']);
-
-    mod.directive('head', ['$rootScope','$compile',
-        function($rootScope, $compile){
+        function routeStyles($rootScope, $compile){
             return {
                 restrict: 'E',
                 link: function(scope, elem){
@@ -31,6 +31,5 @@
                 }
             };
         }
-    ]);
 
 })();

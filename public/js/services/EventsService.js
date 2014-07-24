@@ -1,45 +1,49 @@
-angular.module('EventsService',[]).service('EventsService',['$http', '$q', function($http, $q){
+(function() {
+	angular
+		.module('EventsService',[])
+		.service('EventsService',['$http', '$q', EventsService]);
 
-	var EventsService = {};
-	EventsService.zoneEvents = {};
+	function EventsService($http, $q) {
+		var _this = this;
+		this.zoneEvents = {};
 
-	EventsService.getEvents = function(reg) {
-		//if region is specified change the url
-		var url = '/api/riftevents/';
-		if (reg !== undefined) {
-			url = '/api/riftevents/'+ reg;
-		}
+		this.getEvents = function(region) {
+			//if region is specified change the url
+			var url = '/api/riftevents/';
+			if (region !== undefined) {
+				url = '/api/riftevents/'+ region;
+			}
 
-		var deferred = $q.defer();
-		$http.get(url).success(
-			function(res) {
-				if (reg !== undefined) {
-					EventsService.zoneEvents[reg] = res;
-				}
-				else {
-					EventsService.zoneEvents = res;
-				}
-				deferred.resolve(EventsService.zoneEvents);
-			});
-		return deferred.promise;
-	};
-
-	EventsService.checkUpdated = function() {
-		var url = '/api/riftevents/lastUpdated';
 			var deferred = $q.defer();
-				$http.get(url).success(
-					function(res) {
-						//check old lastupdated with new one
-						if (res.message !== EventsService.zoneEvents.lastUpdated) {
-							deferred.resolve(true);
-						}
-						else {
-							deferred.resolve(false);
-						}
-					});
-				return deferred.promise;
-	};
+			$http.get(url).success(
+				function(res) {
+					if (region !== undefined) {
+						_this.zoneEvents[region] = res;
+					}
+					else {
+						_this.zoneEvents = res;
+					}
+					deferred.resolve(_this.zoneEvents);
+				});
+			return deferred.promise;
+		};
 
+		this.checkUpdated = function() {
+			var url = '/api/riftevents/lastUpdated';
+				var deferred = $q.defer();
+					$http.get(url).success(
+						function(res) {
+							//check old lastupdated with new one
+							if (res.message !== this.zoneEvents.lastUpdated) {
+								deferred.resolve(true);
+							}
+							else {
+								deferred.resolve(false);
+							}
+						});
+					return deferred.promise;
+		};
 
-	return EventsService;
-}]);
+	}
+
+})();

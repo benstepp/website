@@ -1,26 +1,28 @@
-angular.module('MainCtrl',[])
-	.controller('MainController',
-		function($scope) {
+(function() {
+	angular
+		.module('MainCtrl',[])
+		.controller('MainController', MainCtrl);
 
-			$scope.defaultbtn = "app-btn";
+	function MainCtrl($scope) {
 
-			$scope.apps = [
-				{
-					name:"Rift Event Tracker",
-					desc: "A zone event tracker created for Rift using their mobile APIs.",
-					href: "#/riftevents",
-					btn:"Start App",
-					css: "rift-btn"
-				},
-				{
-					name:"KF-MapProgression",
-					desc: "Compare the map progression of your friends when choosing a Killing Floor map to play",
-					href: "",
-					btn:"Coming Soon",
-					css: "kf-btn"
-				}
+		$scope.defaultbtn = "app-btn";
 
+		$scope.apps = [
+			{
+				name:"Rift Event Tracker",
+				desc: "A zone event tracker created for Rift using their mobile APIs.",
+				href: "#/riftevents",
+				btn:"Start App",
+				css: "rift-btn"
+			},
+			{
+				name:"KF-MapProgression",
+				desc: "Compare the map progression of your friends when choosing a Killing Floor map to play",
+				href: "",
+				btn:"Coming Soon",
+				css: "kf-btn"
+			}
+		];
 
-			];
-
-		});
+	}
+})();
