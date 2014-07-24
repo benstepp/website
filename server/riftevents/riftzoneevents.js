@@ -57,8 +57,12 @@ var ZoneEvent = function(trionAuth) {
 		};
 
 		request(options, function(err, res, body) {
-			if (!err && res.statusCode == 200) {
-				parseEvents(shard, body);
+			if (!err && res.statusCode == 200 ) {
+				//expected result format from the api call
+				if (typeof body === 'object' && body.status === 'success' && body.data.isArray()) {
+					parseEvents(shard, body);
+				}
+				//error here if not an object
 			}
 			else {
 				console.log(err); 

@@ -18,7 +18,7 @@ var io = require('socket.io')(http);
 
 
 //app modules
-var riftevents = require('./app/riftevents/main')(app, io);
+var riftevents = require('./server/riftevents/main')(app, io);
 
 //start app
 http.listen(port);
