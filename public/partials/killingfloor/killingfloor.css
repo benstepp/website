@@ -1,0 +1,20 @@
+.navbar-default {
+	border-color:#6B1717;
+}
+
+th > a, .nav-small-brand.navbar-brand{
+	color:#6B1717;
+	font-weight:700;
+}
+
+th > a:hover, .nav-small-brand.navbar-brand:hover {
+	color:#AB1C1B;
+	text-decoration:none;
+}
+
+.nav-icon {
+	color:#DDDDDD;
+	font-size:14px;
+	margin:4px;
+	display:inline-block;
+}

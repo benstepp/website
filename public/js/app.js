@@ -5,6 +5,8 @@
 		'EventsService',
 		'HeaderCtrl', 
 		'MainCtrl', 
+		'KillingFloorService',
+		'KillingFloorCtrl',
 		'SocketFactory',
 		'ui.router', 
 		'routeStyles',

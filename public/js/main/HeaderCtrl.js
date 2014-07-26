@@ -6,7 +6,8 @@
 	function HeaderCtrl($scope, $rootScope) {
 		$scope.titles = {
 			'index':'website',
-			'riftevents':'Rift Event Tracker'
+			'riftevents':'Rift Event Tracker',
+			'killingfloor':'KF-MapProgress'
 		};
 
 		$scope.locales = {

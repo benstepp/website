@@ -36,6 +36,23 @@
 				}
 			}
 		}); 
+
+		$stateProvider.state('killingfloor', {
+			url:'/killingfloor',
+			css:'/partials/killingfloor/killingfloor.css',
+			views: {
+				"main": { 
+					templateUrl:"partials/killingfloor/main.html",
+					controller:"KillingFloorController as kf"
+				},
+				"navbar-right": { 
+					templateUrl:"partials/killingfloor/navbar-right.html"
+				},
+				"footer-left": {
+					templateUrl:"partials/killingfloor/footer-left.html"
+				}
+			}
+		}); 
 	}
 
 })();

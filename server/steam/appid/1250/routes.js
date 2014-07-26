@@ -1,0 +1,38 @@
+var kfMaps = require('./kfMaps.json');
+var userSummary = require('../../users/userSummary.js');
+var KillingFloorStats = require('./KillingFloorStats.js');
+
+module.exports = function(router) {
+
+	router.use(function(req, res, next) {
+		console.log("Router being used");
+		next();
+	});
+
+	router.route('/userstats/:user')
+		.get(function(req, res) {
+			console.log(req.params.user);
+			if (typeof req.params.user !== undefined) {
+				//get user summary
+				var user = new userSummary(req.params.user, function(data) {
+					res.json(data);
+				});
+
+			}
+
+		});
+
+	router.route('/1250/kfmaps')
+		.get(function(req, res) {
+			res.json(kfMaps);
+		});
+
+	router.route('/1250/userstats/:user')
+		.get(function(req, res) {
+			if (typeof req.param.user !== undefined) {
+				var stats = new KillingFloorStats(req.params.user, function(data) {
+					res.json(data);
+				});
+			}
+		});
+};				

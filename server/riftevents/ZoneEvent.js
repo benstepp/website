@@ -208,7 +208,6 @@ var ZoneEvent = function(trionAuth) {
 	};
 
 	//initialize events
-	console.log('loaded');
 	updateEvents();
 	setInterval(updateEvents, 60000);
 };

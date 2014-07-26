@@ -18,7 +18,8 @@ var io = require('socket.io')(http);
 
 
 //app modules
-var riftevents = require('./server/riftevents/main')(app, io);
+require('./server/riftevents/main.js')(app, io);
+require('./server/steam/main.js')(app, io);
 
 //start app
 http.listen(port);

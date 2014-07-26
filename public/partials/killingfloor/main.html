@@ -1,0 +1,56 @@
+<div class="row" id="table">
+	<div class="col-sm-12">
+
+	<table>
+
+		<thead>
+			<tr>
+				<th></th>
+				<td data-ng-repeat="input in fields.inputs" data-ng-show="input.data.kf_ach" colspan="4" ng-class-odd="'alternate'">
+					<img data-ng-src="{{input.data.playerData.avatar}}" />
+				</td>
+			</tr>
+		</thead>
+
+		<tbody>
+			<tr data-ng-repeat="(key,map) in kfMaps">
+				<th>
+					{{key}}
+				</th>
+				<td data-ng-repeat-start="input in fields.inputs" data-ng-show="input.data.kf_ach" ng-class-odd="'alternate'">
+					<span class="glyphicon glyphicon-stop" data-ng-show="input.data.kf_ach[$parent.map[0]]"></span>
+				</td>
+				<td data-ng-show="input.data.kf_ach" ng-class-odd="'alternate'">
+					<span class="glyphicon glyphicon-stop" data-ng-show="input.data.kf_ach[$parent.map[1]]"></span>
+				</td>
+				<td data-ng-show="input.data.kf_ach" ng-class-odd="'alternate'">
+					<span class="glyphicon glyphicon-stop" data-ng-show="input.data.kf_ach[$parent.map[2]]"></span>
+				</td>
+				<td data-ng-repeat-end="" data-ng-show="input.data.kf_ach" ng-class-odd="'alternate'">
+					<span class="glyphicon glyphicon-stop" data-ng-show="input.data.kf_ach[$parent.map[3]]"></span>
+				</td>
+			</tr>
+		</tbody>
+
+		<tfoot>
+			<tr>
+				<th></th>
+				<td data-ng-repeat-start="input in fields.inputs" data-ng-show="input.data.kf_ach" ng-class-odd="'alternate'">
+					<img src="img/normal.png" />
+				</td>
+				<td data-ng-show="input.data.kf_ach" ng-class-odd="'alternate'">
+					<img src="img/hard.png" />
+				</td>
+				<td data-ng-show="input.data.kf_ach" ng-class-odd="'alternate'">
+					<img src="img/suicidal.png" />
+				</td>
+				<td data-ng-repeat-end="" data-ng-show="input.data.kf_ach" ng-class-odd="'alternate'">
+					<img src="img/hellonearth.png" />
+				</td>
+			</tr>
+		</tfoot>
+
+	</table>
+
+	</div>
+</div>
