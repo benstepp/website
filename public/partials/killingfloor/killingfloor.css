@@ -18,3 +18,7 @@ th > a:hover, .nav-small-brand.navbar-brand:hover {
 	margin:4px;
 	display:inline-block;
 }
+
+aside {
+	background-color:green;
+}
