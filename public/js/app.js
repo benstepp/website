@@ -10,6 +10,7 @@
 		'SocketFactory',
 		'ui.router', 
 		'routeStyles',
-		'btford.socket-io'
+		'btford.socket-io',
+		'ui.bootstrap'
 		]);
 })();
