@@ -4,72 +4,73 @@
 		.controller('EventsController', EventsCtrl);
 
 	function EventsCtrl($scope, EventsService, $interval, $http, socket) {
+		var _this = this;
 
-		$scope.events = {};
-		$scope.region = $scope.$parent.region;
+		this.events = {};
+		this.region = $scope.header.data.region;
 		//watches for region change in header controller
 		$scope.$watchCollection(
-			'$parent.data', 
+			'header.data', 
 			function() {
-				$scope.data = $scope.$parent.data;
+				this.data = $scope.header.data;
 				//we also need regrab events for that region
-				$scope.updateEvents($scope.data.region);
+				_this.updateEvents(this.data.region);
 		});
 
 		//defines a sorting predicate
-		$scope.predicate = "";
-		$scope.reverse = false;
+		this.predicate = "";
+		this.reverse = false;
 
 		//get zones json file
 		$http.get("api/riftevents/zones")
 			.success(function(response){
-				$scope.zones = response;
-				$scope.updateEvents();
+				this.zones = response;
+				this.updateEvents();
 			});
 
-		$scope.sort = function(str) {
+		this.sort = function(str) {
 			//only reverse if it is already the sort method
-			if ($scope.predicate === str) {
-				$scope.reverse = !$scope.reverse;
+			if (this.predicate === str) {
+				this.reverse = !this.reverse;
 			}
 			//otherwise reset the reverse
 			else {
-				$scope.predicate = str;
-				$scope.reverse = false;
+				this.predicate = str;
+				this.reverse = false;
 			}
 		};
 
-		$scope.updateEvents = function(region) {
+		this.updateEvents = function(region) {
 			EventsService.getEvents(region).then(
 				function(data) {
-					var newEvents = data[$scope.data.region].events;
+					var newEvents = data[this.data.region].events;
 					var newEventsLength = newEvents.length;
 					//get correct time and zone name
-					var locale = $scope.data.locale.slice(0,2);
+					var locale = this.data.locale.slice(0,2);
 					for (var i=0; i < newEventsLength;i++) {
-						newEvents[i].time = $scope.toDate(newEvents[i].started);
-						newEvents[i].zone = $scope.zones[newEvents[i].zone]['name_'+locale];
-						newEvents[i].name = newEvents[i]['name_'+locale];
+						newEvents[i].time = this.toDate(newEvents[i].started);
+						newEvents[i].zone = this.zones[newEvents[i].zone]['name_'+locale];
+						newEvents[i].name = newEthisvents[i]['name_'+locale];
 					}
-					$scope.events = newEvents;
+					this.events = newEvents;
 				});
 		};
 
-		$scope.toDate = function(date) {
+		this.toDate = function(date) {
 			var d = new Date(date*1000);
 			var hr = d.getHours();
 			var min = d.getMinutes();
 			var apm = "";
 			//special case for 24 hr/12am
-			if (hr === 24 && $scope.data.locale === "en-US") {
+			if (hr === 24 && this.data.locale === "en-US") {
 				apm = " AM";
                 hr=12;
             }
-			else if (hr >= 12 && $scope.data.locale === "en-US") {
+			else if (hr >= 12 && this.data.locale === "en-US") {
 				apm = " PM";
 				hr = hr-12;
 				}
-			else if (hr < 12 && $scope.data.locale === "en-US") {
+			else if (hr < 12 && this.data.locale === "en-US") {
 				apm = " AM";
 			}
 			if(min < 10) {
@@ -94,12 +95,12 @@
 
 		//client socket.io
 		socket.on('addEvent', function(data) {
-			$scope.msg = data;
+			this.msg = data;
 			console.log(data);
 		});
 
 		socket.on('removeEvent', function(data) {
-			$scope.msg = data;
+			this.msg = data;
 			console.log(data);
 		});
 	}

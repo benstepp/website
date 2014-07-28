@@ -26,7 +26,7 @@
 			views: {
 				"main": { 
 					templateUrl:"partials/riftevents/main.html",
-					controller:"EventsController"
+					controller:"EventsController as riftevents"
 				},
 				"navbar-right": { 
 					templateUrl:"partials/riftevents/navbar-right.html"
@@ -46,7 +46,8 @@
 					controller:"KillingFloorController as kf"
 				},
 				"navbar-right": { 
-					templateUrl:"partials/killingfloor/navbar-right.html"
+					templateUrl:"partials/killingfloor/navbar-right.html",
+					controller:"KillingFloorController as kfhead"
 				},
 				"footer-left": {
 					templateUrl:"partials/killingfloor/footer-left.html"

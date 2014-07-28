@@ -50,7 +50,6 @@ var KillingFloorStats = function(query, callback) {
 			});
 	};
 
-	console.log(query);
 	var user = new userSummary(query, function(data){
 		_this.id64 = data.id64;
 		_this.summary = data.summary;
