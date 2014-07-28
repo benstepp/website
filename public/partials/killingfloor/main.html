@@ -1,5 +1,3 @@
-<div class="jumbotron"><h3>{{ kf.test }}</h3></div>
-
 <div class="row" id="table">
 	<div class="col-sm-12">
 
@@ -8,18 +6,18 @@
 		<thead>
 			<tr>
 				<th></th>
-				<td data-ng-repeat="input in fields.inputs" data-ng-show="input.data.kf_ach" colspan="4" ng-class-odd="'alternate'">
+				<td data-ng-repeat="player in $parent.kf.players" data-ng-show="player.data.kfstats" colspan="4" ng-class-odd="'alternate'">
 					<img data-ng-src="{{input.data.playerData.avatar}}" />
 				</td>
 			</tr>
 		</thead>
 
 		<tbody>
-			<tr data-ng-repeat="(key,map) in kfMaps">
+			<tr data-ng-repeat="(key,map) in kf.kfMaps">
 				<th>
 					{{key}}
 				</th>
-				<td data-ng-repeat-start="input in fields.inputs" data-ng-show="input.data.kf_ach" ng-class-odd="'alternate'">
+				<td data-ng-repeat-start="player in $parent.kf.players" data-ng-show="player.data.kfstats" ng-class-odd="'alternate'">
 					<span class="glyphicon glyphicon-stop" data-ng-show="input.data.kf_ach[$parent.map[0]]"></span>
 				</td>
 				<td data-ng-show="input.data.kf_ach" ng-class-odd="'alternate'">
@@ -37,7 +35,7 @@
 		<tfoot>
 			<tr>
 				<th></th>
-				<td data-ng-repeat-start="input in fields.inputs" data-ng-show="input.data.kf_ach" ng-class-odd="'alternate'">
+				<td data-ng-repeat-start="player in $parent.kf.players" data-ng-show="player.data.kfstats" ng-class-odd="'alternate'">
 					<img src="img/normal.png" />
 				</td>
 				<td data-ng-show="input.data.kf_ach" ng-class-odd="'alternate'">

@@ -6,7 +6,6 @@
 	function KillingFloorService($http, $q) {
 		var _this = this;
 
-		this.kfMaps = {};
 		this.players = [];
 
 		/* this.players is an array of objects
@@ -24,11 +23,25 @@
 		*/
 
 		//get kf map json file
-		var getMaps = function() {
-			$http.get("api/steam/1250/kfmaps")
-				.success( function(response) {
-					_this.kfMaps = response;
-				});
+		this.getMaps = function() {
+			var deferred = $q.defer();
+	        //if player data exists or is not forced, otherwise make a new request
+	        if(typeof _this.kfMaps !== 'undefined') {
+	            deferred.resolve(_this.kfMaps);
+	        } 
+	        else {
+	            var url = 'api/steam/1250/kfmaps';
+	            $http.get(url)
+	            .success(function(response) {
+	            	_this.kfMaps = response;
+	            	deferred.resolve(response);
+	            })
+	            .error(function(response) {
+	                console.log(response);
+	                deferred.reject(response);
+	            });
+	        }
+	        return deferred.promise;			
 		};
 
 		var checkExist = function(query) {
@@ -47,7 +60,7 @@
 			return false;
 		};
 
-		var getPlayer = function(userinput, force) {
+		this.getPlayer = function(userinput, force) {
 			var exist = checkExist(userinput);
 			//create it if it doesn't exist
 			if (!exist) {
@@ -56,22 +69,23 @@
 					"ajax":false
 				};
 				//parse the userinput, returns object with query
-				_this.parseInput(player);
+				parseInput(player);
 				var index = _this.players.length;
 				//i think this will work
 				_this.players.push(player);
 				//make call because it is new
-				_this.kfApiCall(index, player, true);
+				return kfApiCall(index, player, true);
 			}
 			//no current ajax call and forced
 			else if(!exist.player.ajax && force) {
 				//this force is always true
-				_this.kfApiCall(exist.index, exist.player, force);
+				return kfApiCall(exist.index, exist.player, force);
 			}
 
 		};
 
 		var parseInput = function(player) {
+			player.query = player.userinput;
 			return player;
 			//fuck i need to learn how to regex a url
 		};
@@ -84,12 +98,13 @@
 	        } 
 	        else {
 	            _this.players[index].ajax = true;
-	            $http.get('api/steam/1250/userstats/' + player.query)
+	            var url = 'api/steam/1250/userstats/' + player.query;
+	            $http.get(url)
 	            .success(function(response) {
 	                _this.players[index].ajax = false;
-	                _this.parseResult(index, response);
+	                parseResult(index, response);
 
-	                deferred.resolve(_this.players[index].data);
+	                deferred.resolve(_this.players[index]);
 	            })
 	            .error(function(response) {
 	                console.log(response);
@@ -100,9 +115,10 @@
 	    };
 
 	    var parseResult = function(index, data) {
+	    	_this.players[index].data = {};
 	    	_this.players[index].data.summary = data.summary;
 	    	_this.players[index].data.kfstats = data.kfstats;
-	    	_this.players[index].data.maps = data.kfmaps;
+	    	_this.players[index].data.maps = data.maps;
 	    };
 
 	}
