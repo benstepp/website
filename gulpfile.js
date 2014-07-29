@@ -12,6 +12,7 @@ var gulp = require('gulp'),
 //path of source files
 var paths = {
 	js: ['public/js/**/*.js', '!public/libs/**/*'],
+	socket: ['public/libs/socket.io-client/socket.io.js'],
 	img: ['public/img/**/*', '!public/libs/**/*'],
 	css: ['public/**/*.css', '!public/libs/**/*'],
 	html: ['public/**/*.html', '!public/libs/**/*'],
@@ -56,6 +57,15 @@ gulp.task('js', function() {
 		.pipe(gulp.dest('build'));
 });
 
+gulp.task('socket', function() {
+	return gulp.src(paths.socket, {base:'public/'})
+		.pipe(uglify({mangle: false}))
+		.pipe(rename(function(path){
+			path.basename += '.min';
+		}))
+		.pipe(gulp.dest('build'));
+});
+
 gulp.task('libs', function() {
 	return gulp.src(paths.libs,{base:'public/'})
 		.pipe(gulp.dest('build'));
@@ -66,5 +76,6 @@ gulp.task('default', function() {
 	gulp.start('img');
 	gulp.start('html');
 	gulp.start('js');
+	gulp.start('socket');
 	gulp.start('libs');
 });
