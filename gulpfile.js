@@ -12,7 +12,10 @@ var gulp = require('gulp'),
 //path of source files
 var paths = {
 	js: ['public/js/**/*.js', '!public/libs/**/*'],
-	socket: ['public/libs/socket.io-client/socket.io.js'],
+	vendor: ['public/libs/socket.io-client/socket.io.js',
+		'public/libs/angular-ui-router/release/angular-ui-router.min.js',
+		'public/libs/angular-bootstrap/ui-bootstrap.min.js',
+		'public/libs/angular-socket-io/socket.min.js'],
 	img: ['public/img/**/*', '!public/libs/**/*'],
 	css: ['public/**/*.css', '!public/libs/**/*'],
 	html: ['public/**/*.html', '!public/libs/**/*'],
@@ -57,8 +60,9 @@ gulp.task('js', function() {
 		.pipe(gulp.dest('build'));
 });
 
-gulp.task('socket', function() {
-	return gulp.src(paths.socket, {base:'public/'})
+gulp.task('vendor', function() {
+	return gulp.src(paths.vendor, {base:'public/'})
+		.pipe(concat('vendor.js'))
 		.pipe(uglify({mangle: false}))
 		.pipe(rename(function(path){
 			path.basename += '.min';
@@ -76,6 +80,6 @@ gulp.task('default', function() {
 	gulp.start('img');
 	gulp.start('html');
 	gulp.start('js');
-	gulp.start('socket');
+	gulp.start('vendor');
 	gulp.start('libs');
 });
