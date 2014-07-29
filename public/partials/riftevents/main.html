@@ -14,7 +14,7 @@
 			</thead>
 
 			<tbody>
-				<tr data-ng-repeat="event in events | orderBy:predicate:reverse">
+				<tr data-ng-repeat="event in riftevents.events | orderBy:predicate:reverse">
 					<td>{{ event.shard }}</td>
 					<td>{{ event.zone }}</td>
 					<td>{{ event.name }}</td>

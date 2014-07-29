@@ -11,6 +11,7 @@
 		'ui.router', 
 		'routeStyles',
 		'btford.socket-io',
-		'ui.bootstrap'
+		'ui.bootstrap',
+		'ngEnter'
 		]);
 })();

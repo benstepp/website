@@ -13,23 +13,18 @@
 				});
 		};
 
-		this.init = function() {
+		var init = function() {
 			this.players = [];
 			_this.getMaps();
+			KillingFloorService.registerObserverCallback(updatePlayers);
 		};
 
-		this.addPlayer = function() {
-			KillingFloorService.getPlayer(_this.input)
-				.then(function(data) {
-					console.log(_this);
-					_this.players.push(data);
-					console.log(_this.players);
-				});
-			//clear the input field by deleting what it's bound to
-			delete _this.input;
+		var updatePlayers = function() {
+			console.log(KillingFloorService.players);
+			_this.players = KillingFloorService.players;
 		};
 
-		this.init();
+		init();
 
 	}
 })();

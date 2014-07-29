@@ -12,13 +12,52 @@ th > a:hover, .nav-small-brand.navbar-brand:hover {
 	text-decoration:none;
 }
 
-.nav-icon {
-	color:#DDDDDD;
-	font-size:14px;
-	margin:4px;
-	display:inline-block;
+#table {
+	overflow:auto;
+	color:#333333;
 }
 
-aside {
-	background-color:green;
+table {
+	border:none;
+	white-space:nowrap;
+	margin-left:auto;
+	margin-right:auto;
+}
+
+thead td {
+	text-align:center;
+	padding:8px 16px;
+}
+
+thead td img {
+	height:32px;
+	width:32px;
+}
+
+tbody th {
+	border-top:1px #AB1C1B solid;
+	border-bottom:1px #AB1C1B solid;
+	padding:0px 10px;
+	font-weight:normal;
+}
+
+tbody td {
+	border-top:1px #AB1C1B solid;
+	border-bottom:1px #AB1C1B solid;
+	text-align:center;
+	padding:0px 6px;
+	width:24px;
+}
+
+.alternate {
+	background-color:#F1F1F1;
+}
+
+tfoot td{
+	text-align:center;
+}
+
+tfoot img {
+	height:12px;
+	width:12px;
 }

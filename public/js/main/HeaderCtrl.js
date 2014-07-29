@@ -1,9 +1,9 @@
 (function() {
 	angular
-		.module('HeaderCtrl',[])
+		.module('HeaderCtrl',['KillingFloorService'])
 		.controller('HeaderController', HeaderCtrl);
 
-	function HeaderCtrl($scope, $rootScope) {
+	function HeaderCtrl($scope, $rootScope, KillingFloorService) {
 		var _this = this;
 
 		this.titles = {
@@ -46,6 +46,13 @@
 			}
 		};
 
+		//push player to kf scope
+		this.kfSearch = function() {
+			KillingFloorService.getPlayer(_this.input);
+			delete _this.input;
+		};
+
+		//changes title and name based on page
 		$rootScope.$on('$stateChangeStart', 
 			function (event, next, nextParams, current, currentParams) {
 				_this.title = _this.titles[next.name];

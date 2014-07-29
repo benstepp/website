@@ -1,5 +1,5 @@
 <div class="navbar-right">
-<input class="search" type="text" placeholder="SteamID64 or CustomURL" data-ng-model="kfhead.input"  />
-<a data-ng-click="kfhead.addPlayer()"><span class="glyphicon glyphicon-plus nav-icon"></span></a>
-<span class="glyphicon glyphicon-list nav-icon"></span>
+<input class="search" type="text" placeholder="SteamID64 or CustomURL" data-ng-model="header.input" data-ng-enter="header.kfSearch()" />
+<a class="headbtn" data-ng-click="header.kfSearch()"><span class="glyphicon glyphicon-plus nav-icon"></span> Add</a>
+<a class="headbtn" data-ng-click=""><span class="glyphicon glyphicon-list nav-icon"></span> List</a>
 </div>

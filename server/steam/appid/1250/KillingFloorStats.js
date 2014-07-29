@@ -13,12 +13,10 @@ var KillingFloorStats = function(query, callback) {
 	var parseAchievements = function(achievements) {
 		//in format array -> object.name, object.achieved
 		var achievementLength = achievements.length;
-		var parsed = [];
+		var parsed = {};
 		for (var i=0;i < achievementLength;i++) {
 			if (_.contains(mapAchievements, achievements[i].name) && achievements[i].achieved === 1) {
-				var achievement = {};
-				achievement[achievements[i].name] = 1;
-				parsed.push(achievement);
+				parsed[achievements[i].name] = 1;
 			}
 		}
 		_this.maps = parsed;

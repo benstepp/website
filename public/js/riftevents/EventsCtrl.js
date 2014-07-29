@@ -7,14 +7,13 @@
 		var _this = this;
 
 		this.events = {};
-		this.region = $scope.header.data.region;
 		//watches for region change in header controller
 		$scope.$watchCollection(
 			'header.data', 
 			function() {
-				this.data = $scope.header.data;
+				_this.data = $scope.header.data;
 				//we also need regrab events for that region
-				_this.updateEvents(this.data.region);
+				_this.updateEvents(_this.data.region);
 		});
 
 		//defines a sorting predicate
@@ -24,8 +23,8 @@
 		//get zones json file
 		$http.get("api/riftevents/zones")
 			.success(function(response){
-				this.zones = response;
-				this.updateEvents();
+				_this.zones = response;
+				_this.updateEvents();
 			});
 
 		this.sort = function(str) {
@@ -43,16 +42,16 @@
 		this.updateEvents = function(region) {
 			EventsService.getEvents(region).then(
 				function(data) {
-					var newEvents = data[this.data.region].events;
+					var newEvents = data[_this.data.region].events;
 					var newEventsLength = newEvents.length;
 					//get correct time and zone name
-					var locale = this.data.locale.slice(0,2);
+					var locale = _this.data.locale.slice(0,2);
 					for (var i=0; i < newEventsLength;i++) {
-						newEvents[i].time = this.toDate(newEvents[i].started);
-						newEvents[i].zone = this.zones[newEvents[i].zone]['name_'+locale];
-						newEvents[i].name = newEthisvents[i]['name_'+locale];
+						newEvents[i].time = _this.toDate(newEvents[i].started);
+						newEvents[i].zone = _this.zones[newEvents[i].zone]['name_'+locale];
+						newEvents[i].name = newEvents[i]['name_'+locale];
 					}
-					this.events = newEvents;
+					_this.events = newEvents;
 				});
 		};
 
@@ -96,12 +95,10 @@
 		//client socket.io
 		socket.on('addEvent', function(data) {
 			this.msg = data;
-			console.log(data);
 		});
 
 		socket.on('removeEvent', function(data) {
 			this.msg = data;
-			console.log(data);
 		});
 	}
 })();

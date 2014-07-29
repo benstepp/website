@@ -47,7 +47,6 @@
 				},
 				"navbar-right": { 
 					templateUrl:"partials/killingfloor/navbar-right.html",
-					controller:"KillingFloorController as kfhead"
 				},
 				"footer-left": {
 					templateUrl:"partials/killingfloor/footer-left.html"

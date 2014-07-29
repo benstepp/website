@@ -1,6 +1,6 @@
 <ul class="nav navbar-nav navbar-right">
 	<li class="dropdown">
-	<a class="dropdown-toggle" data-toggle="dropdown">Region: {{data.region}}<span class="caret"></span></a>
+	<a class="dropdown-toggle" data-toggle="dropdown">Region: {{header.data.region}}<span class="caret"></span></a>
 		<ul class="dropdown-menu" role="menu">
 		<li><a data-dropdown-toggle data-ng-click="changeRegion('US')">US</a></li>
 		<li><a data-dropdown-toggle data-ng-click="changeRegion('EU')">EU</a></li>
@@ -8,7 +8,7 @@
 	</li>
 
 	<li class="dropdown">
-	<a class="dropdown-toggle" data-toggle="dropdown">Language: {{data.language}}<span class="caret"></span></a>
+	<a class="dropdown-toggle" data-toggle="dropdown">Language: {{header.data.language}}<span class="caret"></span></a>
 		<ul class="dropdown-menu" role="menu">
 		<li><a data-dropdown-toggle data-ng-click="changeLanguage('English')">English</a></li>
 		<li><a data-dropdown-toggle data-ng-click="changeLanguage('French')">French</a></li>

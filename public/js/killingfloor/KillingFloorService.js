@@ -7,11 +7,10 @@
 		var _this = this;
 
 		this.players = [];
-
 		/* this.players is an array of objects
 		{	
 			userinput: userinput, direct input from the user
-			query: parsed query of userinput
+			query: parsed query of userinput in case of url
 			ajax: bool, whether or not there is open ajax for this query
 			id64: steamid64
 			data: {
@@ -21,6 +20,17 @@
 			}
 		}
 		*/
+
+		var observerCallbacks = [];
+		this.registerObserverCallback = function(callback) {
+			observerCallbacks.push(callback);
+		};
+
+		var notifyObservers = function() {
+			angular.forEach(observerCallbacks, function(callback) {
+				callback();
+			});
+		};
 
 		//get kf map json file
 		this.getMaps = function() {
@@ -74,12 +84,19 @@
 				//i think this will work
 				_this.players.push(player);
 				//make call because it is new
-				return kfApiCall(index, player, true);
+				kfApiCall(index, player, true)
+					.then(function(){
+						notifyObservers();
+					});
 			}
 			//no current ajax call and forced
 			else if(!exist.player.ajax && force) {
 				//this force is always true
-				return kfApiCall(exist.index, exist.player, force);
+				kfApiCall(exist.index, exist.player, force)
+					.then(function(){
+						notifyObservers();
+					}
+					);
 			}
 
 		};
