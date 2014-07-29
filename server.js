@@ -10,7 +10,7 @@ var env = process.env.NODE_ENV || 'production';
 
 //Execute app
 var app = express();
-app.use(express.static(__dirname + '/public'));
+app.use(express.static(__dirname + '/build'));
 app.use(bodyParser.json());
 app.use(morgan());
 var http = require('http').Server(app);

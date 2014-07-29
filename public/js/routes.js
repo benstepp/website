@@ -22,7 +22,7 @@
 
 		$stateProvider.state('riftevents', {
 			url:'/riftevents',
-			css:'/partials/riftevents/riftevents.css',
+			css:'/partials/riftevents/riftevents.min.css',
 			views: {
 				"main": { 
 					templateUrl:"partials/riftevents/main.html",
@@ -39,7 +39,7 @@
 
 		$stateProvider.state('killingfloor', {
 			url:'/killingfloor',
-			css:'/partials/killingfloor/killingfloor.css',
+			css:'/partials/killingfloor/killingfloor.min.css',
 			views: {
 				"main": { 
 					templateUrl:"partials/killingfloor/main.html",

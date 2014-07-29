@@ -1,10 +1,13 @@
-#Rift Events Tracker
-Here is a Rift zone events tracker being created using nodejs and angular.
-
-I'm learning how to javascript.
+#website
+I'm learning how to webdev. 
 
 
 ###Getting Started
+Requires npm, bower, and gulp to be installed globally.
+
 ```bash
+$ npm install
+$ bower install
+$ gulp
 $ node server riftlogin riftpassword
 ```

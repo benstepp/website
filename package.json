@@ -13,6 +13,15 @@
 		"request": "~2.37.0",
 		"lodash":"~2.4.1",
 		"socket.io":"~1.0.6",
-		"mongoose-unique-validator": "~0.3.0"
+		"gulp":"~3.8.6",
+		"gulp-concat":"~2.3.4",
+		"gulp-uglify":"~0.3.1",
+		"gulp-htmlmin":"~0.1.3",
+		"gulp-minify-css":"~0.3.7",
+		"gulp-imagemin":"~0.6.2",
+		"gulp-ignore":"~1.2.0",
+		"gulp-jshint":"~1.8.1",
+		"gulp-rename":"~1.2.0",
+		"gulp-ng-annotate":"~0.2.0"
 	}
 }
