@@ -20,7 +20,6 @@
 		};
 
 		var updatePlayers = function() {
-			console.log(KillingFloorService.players);
 			_this.players = KillingFloorService.players;
 		};
 

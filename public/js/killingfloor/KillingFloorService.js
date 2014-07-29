@@ -102,7 +102,18 @@
 		};
 
 		var parseInput = function(player) {
-			player.query = player.userinput;
+			var splitArray = player.userinput.split('/');
+			var splitArrayLength = splitArray.length;
+			var urlGarbage = ["http:","","www.steamcommunity.com","steamcommunity.com","id","profiles"];
+			for (var i=0;i < splitArrayLength;i++) {
+				if (urlGarbage.indexOf(splitArray[i]) === -1) {
+					player.query = splitArray[i];
+					break;
+				}
+			}
+			if (typeof player.query === 'undefined') {
+				//invalid input let user know here
+			}
 			return player;
 			//fuck i need to learn how to regex a url
 		};

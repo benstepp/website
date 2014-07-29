@@ -1,3 +1,17 @@
+<div class="row" id="input" data-ng-show="!kf.players">
+	<div class="col-sm-6 col-sm-offset-3">
+		<p class="form-label">
+			Identify a player on Steam to get started. <a><span class="glyphicon glyphicon-question-sign"></span></a> 
+		</p>
+		<form class="form">
+
+			<input class="playerinput" placeholder="SteamID64 or CustomURL" data-ng-model="header.input" data-ng-enter="header.kfSearch()" />
+			<button class="btn" data-ng-click="header.kfSearch()">View Stats</button>
+			<button class="btn">Add Some Friends</button>
+		</form>
+	</div>
+</div>
+
 <div class="row" id="table" data-ng-show="kf.players">
 	<div class="col-sm-12">
 
@@ -35,16 +49,16 @@
 		<tfoot>
 			<tr>
 				<th></th>
-				<td data-ng-repeat-start="player in $parent.kf.players" data-ng-show="player.data.kfstats" ng-class-odd="'alternate'">
+				<td data-ng-repeat-start="player in kf.players" data-ng-show="player.data.kfstats" ng-class-odd="'alternate'">
 					<img src="img/normal.png" />
 				</td>
-				<td data-ng-show="input.data.kf_ach" ng-class-odd="'alternate'">
+				<td data-ng-show="player.data.kfstats" ng-class-odd="'alternate'">
 					<img src="img/hard.png" />
 				</td>
-				<td data-ng-show="input.data.kf_ach" ng-class-odd="'alternate'">
+				<td data-ng-show="player.data.kfstats" ng-class-odd="'alternate'">
 					<img src="img/suicidal.png" />
 				</td>
-				<td data-ng-repeat-end="" data-ng-show="input.data.kf_ach" ng-class-odd="'alternate'">
+				<td data-ng-repeat-end="" data-ng-show="player.data.kfstats" ng-class-odd="'alternate'">
 					<img src="img/hellonearth.png" />
 				</td>
 			</tr>

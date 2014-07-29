@@ -48,8 +48,10 @@
 
 		//push player to kf scope
 		this.kfSearch = function() {
-			KillingFloorService.getPlayer(_this.input);
-			delete _this.input;
+			if (typeof _this.input === 'string' && _this.input !== "") {
+				KillingFloorService.getPlayer(_this.input);
+				delete _this.input;
+			}
 		};
 
 		//changes title and name based on page

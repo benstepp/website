@@ -15,9 +15,13 @@ th > a:hover, .nav-small-brand.navbar-brand:hover {
 #table {
 	overflow:auto;
 	color:#333333;
+	background-color:#FFFFFF;
+	height:100%;
+	padding-top:30px;
 }
 
 table {
+	margin-top:3%;
 	border:none;
 	white-space:nowrap;
 	margin-left:auto;
@@ -60,4 +64,61 @@ tfoot td{
 tfoot img {
 	height:12px;
 	width:12px;
+}
+
+.hero-unit {
+	background-image:url("/img/kf1.jpg");
+	background-size:cover;
+	background-repeat:no-repeat;
+	background-position: center center;
+}
+
+.playerinput {
+	padding:8px;
+	display:block;
+	width:100%;
+	margin-bottom:12px;
+	background: rgba(40, 40, 40, 0.8);
+	color:#FFFFFF;
+	border:none;
+}
+
+.playerinput:focus {
+	border:none;
+	outline:1px solid #AAAAAA;
+}
+
+#input {
+	margin-top:15%;
+}
+
+.form {
+	padding:12px;
+	background: rgba(40, 40, 40, 0.5)
+}
+
+.form button{
+	margin:0px;
+	border-radius:0px;
+	border:none;
+	background-color:#6B1717;
+	color:#EEEEEE;
+	width:40%;
+	margin-right:10px;
+}
+
+.form button:hover, .form button:active {
+	background-color:#AB1C1B;
+	color:#FFFFFF;	
+	outline:none;
+}
+.form button:focus {
+	background-color:#6B1717;
+	color:#EEEEEE;
+	outline:none;
+}
+
+.form-label {
+	color:#DDDDDD;
+	margin-left:12px;
 }
