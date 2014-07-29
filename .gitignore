@@ -21,4 +21,4 @@ $RECYCLE.BIN/
 *.msi
 *.msm
 *.msp
-apiKey.json
+.gitattributes
