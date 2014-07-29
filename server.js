@@ -5,7 +5,7 @@ var bodyParser = require('body-parser');
 var morgan = require('morgan');
 
 //config
-var port = process.env.PORT || 80;
+var port = process.env.PORT || 3000;
 var env = process.env.NODE_ENV || 'production';
 
 //Execute app
