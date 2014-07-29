@@ -1,6 +1,6 @@
 var express = require('express');
 
-module.exports = function(app, io) {
+module.exports = function(app, io, _) {
 
 	//Development only
 	if (process.env.NODE_ENV == 'development') {

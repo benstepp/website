@@ -16,10 +16,6 @@ var zonesLength = zones.length;
 var eventsList = require('./config/events.json').events;
 var eventsListLength = eventsList.length;
 
-//lodash mixins
-var mixin = require('./config/arrayobject.js');
-_.mixin(mixin);
-
 var ZoneEvent = function(trionAuth) {
 
 	//use _this because of problems with this in request library

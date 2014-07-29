@@ -11,7 +11,6 @@ module.exports = function(router) {
 
 	router.route('/userstats/:user')
 		.get(function(req, res) {
-			console.log(req.params.user);
 			if (typeof req.params.user !== undefined) {
 				//get user summary
 				var user = new userSummary(req.params.user, function(data) {

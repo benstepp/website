@@ -2,6 +2,7 @@ var request = require('request');
 var util = require('util');
 var _ = require('lodash');
 
+
 var mapAchievements = require('./mapAchievements.json').mapAchievements;
 var apiKey = require('../../config/apiKey.json').apiKey;
 var userSummary = require('../../users/userSummary.js');
