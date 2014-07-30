@@ -26,6 +26,7 @@ var paths = {
 gulp.task('css', function() {
 	return gulp.src(paths.css, {base:'public/'})
 		.pipe(minifyCss())
+		.pipe(concat('style.css'))
 		.pipe(rename(function(path){
 			path.basename += '.min';
 		}))
@@ -82,4 +83,17 @@ gulp.task('default', function() {
 	gulp.start('js');
 	gulp.start('vendor');
 	gulp.start('libs');
+});
+
+gulp.task('watch', function() {
+	gulp.start('default');
+	gulp.watch(paths.js, function() {
+		gulp.start('js');
+	});
+	gulp.watch(paths.css, function() {
+		gulp.start('css');
+	});
+	gulp.watch(paths.html, function() {
+		gulp.start('html');
+	});
 });

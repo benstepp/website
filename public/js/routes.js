@@ -1,6 +1,6 @@
 (function() {
 	angular
-		.module('routes',['routeStyles', 'ui.router'])
+		.module('routes',['ui.router'])
 		.config(['$stateProvider','$urlRouterProvider', routes]);
 
 	function routes($stateProvider,$urlRouterProvider) {
@@ -22,11 +22,11 @@
 
 		$stateProvider.state('riftevents', {
 			url:'/riftevents',
-			css:'/partials/riftevents/riftevents.min.css',
 			views: {
 				"main": { 
 					templateUrl:"partials/riftevents/main.html",
-					controller:"EventsController as riftevents"
+					controller:"EventsController",
+					controllerAs:"riftevents"
 				},
 				"navbar-right": { 
 					templateUrl:"partials/riftevents/navbar-right.html"
@@ -39,11 +39,11 @@
 
 		$stateProvider.state('killingfloor', {
 			url:'/killingfloor',
-			css:'/partials/killingfloor/killingfloor.min.css',
 			views: {
 				"main": { 
 					templateUrl:"partials/killingfloor/main.html",
-					controller:"KillingFloorController as kf"
+					controller:"KillingFloorController",
+					controllerAs:"kf"
 				},
 				"navbar-right": { 
 					templateUrl:"partials/killingfloor/navbar-right.html",

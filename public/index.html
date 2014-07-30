@@ -21,7 +21,7 @@
 </head>
 <body>
 
-	<nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+	<nav class="navbar navbar-default navbar-fixed-top" data-ng-class="header.url" role="navigation">
 		<div class="container">
 			<div class="navbar-header">
 				<button type="button" 
@@ -33,9 +33,10 @@
 				<span class="icon-bar"></span>
 				<span class="icon-bar"></span>
 				</button>
-				<a class="navbar-brand" href="#">website</a>
+				<a class="navbar-brand hidden-xs" href="#">website</a>
 				<a class = "navbar-brand nav-small-brand" 
-					data-ng-href="#/{{ url }}" 
+					data-ng-class="header.url"
+					data-ng-href="#/{{ header.url }}" 
 					data-ng-hide="header.title === 'website'">{{ header.title }}</a>
 			</div>
 			<div class="navbar-collapse collapse" 
@@ -47,7 +48,7 @@
 		</div>
 	</nav>
 
-	<div class="hero-unit">
+	<div class="hero-unit" data-ng-class="header.url">
 	<div class="container" id="mainContent" data-ui-view="main">
 
 	</div>

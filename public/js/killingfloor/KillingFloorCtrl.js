@@ -5,6 +5,7 @@
 
 	function KillingFloorCtrl($scope, KillingFloorService) {
 		var _this = this;
+		this.showTable = false;
 
 		this.getMaps = function() {
 			this.kfMaps = KillingFloorService.getMaps()
@@ -14,13 +15,23 @@
 		};
 
 		var init = function() {
-			this.players = [];
+			_this.players = KillingFloorService.players;
+			if (_this.players.length > 0) {
+				_this.showTable = true;
+			}
 			_this.getMaps();
 			KillingFloorService.registerObserverCallback(updatePlayers);
 		};
 
 		var updatePlayers = function() {
 			_this.players = KillingFloorService.players;
+			_this.showTable = true;
+		};
+
+		this.clearScope = function() {
+			_this.players = [];
+			KillingFloorService.players = [];
+			this.showTable = false;
 		};
 
 		init();

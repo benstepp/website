@@ -59,6 +59,7 @@
 			function (event, next, nextParams, current, currentParams) {
 				_this.title = _this.titles[next.name];
 				_this.url = next.name;
+				_this.titleAction = next.titleAction;
 			});
 
 	}

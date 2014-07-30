@@ -1,26 +1,27 @@
-.navbar-default {
+.navbar-default.killingfloor {
 	border-color:#6B1717;
 }
 
-th > a, .nav-small-brand.navbar-brand{
+th > a, .nav-small-brand.navbar-brand.killingfloor{
 	color:#6B1717;
 	font-weight:700;
 }
 
-th > a:hover, .nav-small-brand.navbar-brand:hover {
+th > a:hover, .nav-small-brand.navbar-brand.killingfloor:hover {
 	color:#AB1C1B;
 	text-decoration:none;
 }
 
-#table {
+#kf-table {
+	padding-top:30px;
 	overflow:auto;
 	color:#333333;
-	background-color:#FFFFFF;
+	background:none;
 	height:100%;
-	padding-top:30px;
+	text-align:center;
 }
 
-table {
+table.kf-table {
 	margin-top:3%;
 	border:none;
 	white-space:nowrap;
@@ -28,24 +29,24 @@ table {
 	margin-right:auto;
 }
 
-thead td {
+table.kf-table thead td {
 	text-align:center;
 	padding:8px 16px;
 }
 
-thead td img {
+table.kf-table thead td img {
 	height:32px;
 	width:32px;
 }
 
-tbody th {
+table.kf-table tbody th {
 	border-top:1px #AB1C1B solid;
 	border-bottom:1px #AB1C1B solid;
 	padding:0px 10px;
 	font-weight:normal;
 }
 
-tbody td {
+table.kf-table tbody td {
 	border-top:1px #AB1C1B solid;
 	border-bottom:1px #AB1C1B solid;
 	text-align:center;
@@ -57,23 +58,23 @@ tbody td {
 	background-color:#F1F1F1;
 }
 
-tfoot td{
+table.kf-table tfoot td{
 	text-align:center;
 }
 
-tfoot img {
+table.kf-table tfoot img {
 	height:12px;
 	width:12px;
 }
 
-.hero-unit {
+.hero-unit.killingfloor {
 	background-image:url("/img/kf1.jpg");
 	background-size:cover;
 	background-repeat:no-repeat;
 	background-position: center center;
 }
 
-.playerinput {
+.kf-playerinput {
 	padding:8px;
 	display:block;
 	width:100%;
@@ -83,16 +84,16 @@ tfoot img {
 	border:none;
 }
 
-.playerinput:focus {
+.kf-playerinput:focus {
 	border:none;
 	outline:1px solid #AAAAAA;
 }
 
-#input {
+#kf-input {
 	margin-top:15%;
 }
 
-.form {
+.kf-form {
 	padding:12px;
 	background: rgba(40, 40, 40, 0.5)
 }
@@ -103,8 +104,14 @@ tfoot img {
 	border:none;
 	background-color:#6B1717;
 	color:#EEEEEE;
-	width:40%;
+	width:100%;
 	margin-right:10px;
+}
+
+@media (max-width:768px){
+	.form button.btn-left {
+		margin-bottom:12px;
+	}
 }
 
 .form button:hover, .form button:active {
@@ -121,4 +128,22 @@ tfoot img {
 .form-label {
 	color:#DDDDDD;
 	margin-left:12px;
+}
+
+.table-container {
+	display:inline-block;
+	background-color:#FFFFFF;
+	padding:12px;
+	margin-left:auto;
+	margin-right:auto;
+	min-height:100%;
+}
+
+@media (min-width:768px){
+	.btn-left-container {
+		padding-right:6px;
+	}
+	.btn-right-container {
+		padding-left:6px;
+	}
 }
