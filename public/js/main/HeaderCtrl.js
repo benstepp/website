@@ -1,7 +1,7 @@
 (function() {
 	angular
 		.module('HeaderCtrl',['KillingFloorService'])
-		.controller('HeaderController', HeaderCtrl);
+		.controller('HeaderController', ['$scope', '$rootScope','KillingFloorService', HeaderCtrl]);
 
 	function HeaderCtrl($scope, $rootScope, KillingFloorService) {
 		var _this = this;

@@ -1,7 +1,7 @@
 (function() {
 	angular
 		.module('KillingFloorCtrl',['KillingFloorService'])
-		.controller('KillingFloorController', KillingFloorCtrl);
+		.controller('KillingFloorController', ['$scope', 'KillingFloorService', KillingFloorCtrl]);
 
 	function KillingFloorCtrl($scope, KillingFloorService) {
 		var _this = this;

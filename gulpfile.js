@@ -54,7 +54,7 @@ gulp.task('js', function() {
 	return gulp.src(paths.js, {base:'public/'})
 		.pipe(jshint())
 		.pipe(concat('app.js'))
-		.pipe(uglify({mangle: false}))
+		.pipe(uglify({mangle: true}))
 		.pipe(rename(function(path){
 			path.basename += '.min';
 		}))
@@ -64,7 +64,7 @@ gulp.task('js', function() {
 gulp.task('vendor', function() {
 	return gulp.src(paths.vendor, {base:'public/'})
 		.pipe(concat('vendor.js'))
-		.pipe(uglify({mangle: false}))
+		.pipe(uglify({mangle: true}))
 		.pipe(rename(function(path){
 			path.basename += '.min';
 		}))

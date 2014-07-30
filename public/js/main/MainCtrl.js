@@ -1,7 +1,7 @@
 (function() {
 	angular
 		.module('MainCtrl',[])
-		.controller('MainController', MainCtrl);
+		.controller('MainController', ['$scope', MainCtrl]);
 
 	function MainCtrl($scope) {
 

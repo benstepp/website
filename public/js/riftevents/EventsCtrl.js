@@ -1,7 +1,7 @@
 (function() {
 	angular
 		.module('EventsCtrl',['EventsService'])
-		.controller('EventsController', EventsCtrl);
+		.controller('EventsController', ['$scope','EventsService','$interval','$http','$socket',EventsCtrl]);
 
 	function EventsCtrl($scope, EventsService, $interval, $http, socket) {
 		var _this = this;

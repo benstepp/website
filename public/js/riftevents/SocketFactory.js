@@ -1,7 +1,7 @@
 (function() {
 	angular
 		.module('SocketFactory',[])
-		.factory('socket', SocketFactory);
+		.factory('socket', ['$rootScope',SocketFactory]);
 
 	function SocketFactory($rootScope) {
 		var socket = io.connect();
