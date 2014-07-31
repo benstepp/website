@@ -14,7 +14,6 @@ th > a:hover, .nav-small-brand.navbar-brand.killingfloor:hover {
 
 #kf-table {
 	padding-top:30px;
-	overflow:auto;
 	color:#333333;
 	background:none;
 	height:100%;
@@ -72,6 +71,7 @@ table.kf-table tfoot img {
 	background-size:cover;
 	background-repeat:no-repeat;
 	background-position: center center;
+	background-attachment:fixed;
 }
 
 .kf-playerinput {
@@ -114,12 +114,12 @@ table.kf-table tfoot img {
 	}
 }
 
-.form button:hover, .form button:active {
+.form button:hover, .form button:active, .compare-btn:hover, .compare-btn:active {
 	background-color:#AB1C1B;
 	color:#FFFFFF;	
 	outline:none;
 }
-.form button:focus {
+.form button:focus, .compare-btn:focus {
 	background-color:#6B1717;
 	color:#EEEEEE;
 	outline:none;
@@ -146,4 +146,93 @@ table.kf-table tfoot img {
 	.btn-right-container {
 		padding-left:6px;
 	}
+}
+
+.player-card {
+	cursor:pointer;
+	background-color: rgba(40, 40, 40, 0.8);
+	display:inline-block;
+	padding:4px;
+	border:2px solid #111111;
+}
+
+.player-card div {
+	height:34px;
+}
+
+.player-avatar {
+	border:1px solid black;
+}
+
+.player-card-name {
+	padding-left:4px;
+	padding-right:4px;
+	color:#FFFFFF;
+	width: calc(100% - 32px);
+	overflow:hidden;
+	text-overflow:clip;
+	white-space:nowrap;
+	display:inline-block;
+}
+
+.player-container {
+	white-space:nowrap;
+	padding-top:4px;
+}
+
+.player-card-col {
+	height:52px;
+	padding-bottom:12px;
+	position:relative;
+}
+
+.player-card-col div {
+	width:100%;
+}
+
+.add-player {
+	position:relative;
+	display:none;
+	padding:4px;
+	height:46px;
+	background-color:rgba(0,200,0,0.2);
+	border:2px green solid;
+	z-index:12;
+	top:-46px;
+}
+
+.add-player-bg {
+	background-color:rgba(20,20,20,0.8);
+}
+
+.remove-player-bg {
+	background-color:rgba(40,40,40,0.8);
+}
+
+.compare-bg {
+	background-color:#6B1717;
+}
+
+.instruction {
+	padding:8px;
+	color:#DDDDDD;
+}
+
+.compare-btn {
+	width:100%;
+	height:100%;
+	margin:0px;
+	padding:8px;
+	color:#DDDDDD;
+	background-color:#6B1717;
+	border:none;
+}
+
+.no-gutter {
+	padding-left:0px;
+	padding-right:0px;
+}
+
+#addFriends {
+	margin-top:8%;
 }

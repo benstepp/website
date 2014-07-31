@@ -46,14 +46,6 @@
 			}
 		};
 
-		//push player to kf scope
-		this.kfSearch = function() {
-			if (typeof _this.input === 'string' && _this.input !== "") {
-				KillingFloorService.getPlayer(_this.input);
-				delete _this.input;
-			}
-		};
-
 		//changes title and name based on page
 		$rootScope.$on('$stateChangeStart', 
 			function (event, next, nextParams, current, currentParams) {

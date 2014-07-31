@@ -6,7 +6,9 @@ html {
 
 body {
 	font-family: 'Roboto', sans-serif;
+	background-color:transparent;
 	height:100%;
+	overflow:hidden;
 }
 
 .navbar-nav > li > a {
@@ -27,9 +29,6 @@ body {
 	padding:2px;
 }
 
-#mainContent {
-	height:100%;
-}
 
 #projects {
 	margin-top:60px;
@@ -148,5 +147,10 @@ footer span {
 
 .hero-unit {
 	background-color:#FFFFFF;
+	height:100%;
+	overflow:auto;
+}
+
+#mainContent {
 	height:100%;
 }

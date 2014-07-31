@@ -11,6 +11,7 @@
 		'ui.router', 
 		'btford.socket-io',
 		'ui.bootstrap',
-		'ngEnter'
+		'ngEnter',
+		'bsPlayerCard'
 		]);
 })();
