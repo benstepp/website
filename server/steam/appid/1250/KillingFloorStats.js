@@ -52,7 +52,7 @@ var KillingFloorStats = function(query, callback) {
 	};
 
 	var user = new userSummary(query, function(data){
-		_this.summary = data.summary;
+		_this.summary = data;
 		getKfStats();
 	});
 };
