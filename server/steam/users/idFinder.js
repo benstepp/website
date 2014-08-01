@@ -25,7 +25,7 @@ var idFinder = function(query, callback) {
 					if (typeof body === 'object') {
 						if(body.response.success === 1) {
 							_this.id64 = body.response.steamid;
-							callback();
+							callback(_this.id64);
 						}
 					}
 				}
@@ -40,7 +40,7 @@ var idFinder = function(query, callback) {
 		//check if it is between the proper values
 		if (query >= 76561190000000000 && query <= 76561199999999999) {
 			_this.id64 = query;
-			callback();
+			callback(_this.id64);
 		}
 	}
 	else {

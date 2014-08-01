@@ -27,7 +27,7 @@ var KillingFloorStats = function(query, callback) {
 
 	var getKfStats = function() {
 		var options = {
-			url: "http://api.steampowered.com/ISteamUserStats/GetUserStatsForGame/v0002/?appid=1250&key=" + apiKey + "&steamid=" + _this.id64 + "&format=json",
+			url: "http://api.steampowered.com/ISteamUserStats/GetUserStatsForGame/v0002/?appid=1250&key=" + apiKey + "&steamid=" + _this.summary.steamid + "&format=json",
 			encoding: 'utf8',
 			method: 'GET',
 			json: true
@@ -44,13 +44,14 @@ var KillingFloorStats = function(query, callback) {
 					}
 				}
 				else {
-					console.log(err); 
+					//if we get an error from steam, send to client
+					_this.error = err;
+					callback(_this);
 				}
 			});
 	};
 
 	var user = new userSummary(query, function(data){
-		_this.id64 = data.id64;
 		_this.summary = data.summary;
 		getKfStats();
 	});

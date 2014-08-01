@@ -1,9 +1,5 @@
 //modules requires
 var express = require('express');
-var mongoose = require('mongoose');
-
-//config
-var db = require('./config/db');
 
 module.exports = function(app, io) {
 

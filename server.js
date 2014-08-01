@@ -16,6 +16,13 @@ app.use(morgan());
 var http = require('http').Server(app);
 var io = require('socket.io')(http);
 
+//database
+mongoose.connect('mongodb://localhost/');
+var db = mongoose.connection;
+db.on('error', console.error.bind(console, 'connection error:'));
+db.once('open', function callback () {
+	console.log('db works ');
+});
 
 //app modules
 require('./server/riftevents/main.js')(app, io);
