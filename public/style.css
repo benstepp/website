@@ -28,6 +28,9 @@ body {
 .navbar-toggle {
 	padding:2px;
 }
+.navbar-right {
+	padding-top:5px;
+}
 
 
 #projects {

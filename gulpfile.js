@@ -1,5 +1,6 @@
 //modules
 var gulp = require('gulp'),
+	clean = require('gulp-clean'),
 	minifyCss = require('gulp-minify-css'),
 	concat = require('gulp-concat'),
 	jshint = require('gulp-jshint'),
@@ -7,6 +8,7 @@ var gulp = require('gulp'),
 	uglify = require('gulp-uglify'),
 	imagemin = require('gulp-imagemin'),
 	rename = require('gulp-rename'),
+	htmlreplace = require('gulp-html-replace'),
 	ngannotate = require('gulp-ng-annotate');
 
 //path of source files
@@ -22,13 +24,20 @@ var paths = {
 	libs: ['public/libs/**/*']
 };
 
+var date = Date.now();
+console.log(date);
+
+gulp.task('clean', function () {  
+	return gulp.src('build/*', {read: false})
+		.pipe(clean());
+});
 
 gulp.task('css', function() {
 	return gulp.src(paths.css, {base:'public/'})
 		.pipe(minifyCss())
 		.pipe(concat('style.css'))
 		.pipe(rename(function(path){
-			path.basename += '.min';
+			path.basename += '-' + date + '.min';
 		}))
 		.pipe(gulp.dest('build'));
 });
@@ -41,6 +50,11 @@ gulp.task('img', function() {
 
 gulp.task('html', function() {
 	return gulp.src(paths.html, {base:'public/'})
+		.pipe(htmlreplace({
+			'css':'style-' +date+'.min.css',
+			'js':'app-'+date+'.min.js',
+			'vendor':'vendor-'+date+'.min.js'
+		}))
 		.pipe(htmlmin(
 			{
 				collapseWhitespace: true,
@@ -56,7 +70,7 @@ gulp.task('js', function() {
 		.pipe(concat('app.js'))
 		.pipe(uglify({mangle: true}))
 		.pipe(rename(function(path){
-			path.basename += '.min';
+			path.basename += '-' + date +'.min';
 		}))
 		.pipe(gulp.dest('build'));
 });
@@ -66,7 +80,7 @@ gulp.task('vendor', function() {
 		.pipe(concat('vendor.js'))
 		.pipe(uglify({mangle: true}))
 		.pipe(rename(function(path){
-			path.basename += '.min';
+			path.basename += '-' + date + '.min';
 		}))
 		.pipe(gulp.dest('build'));
 });
@@ -77,6 +91,7 @@ gulp.task('libs', function() {
 });
 
 gulp.task('default', function() {
+	gulp.start('clean');
 	gulp.start('css');
 	gulp.start('img');
 	gulp.start('html');
@@ -85,7 +100,7 @@ gulp.task('default', function() {
 	gulp.start('libs');
 });
 
-gulp.task('watch', function() {
+gulp.task('dev', function() {
 	gulp.start('default');
 	gulp.watch(paths.js, function() {
 		gulp.start('js');

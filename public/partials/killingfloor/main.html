@@ -1,5 +1,5 @@
 <!--Input when first visiting-->
-<div class="row" id="kf-input" data-ng-show="!kf.showTable">
+<div class="row" id="kf-input" data-ng-show="kf.viewInput">
 	<div class="col-sm-6 col-sm-offset-3">
 		<p class="form-label">
 			Identify a player on Steam to get started. <a><span class="glyphicon glyphicon-question-sign"></span></a> 
@@ -20,43 +20,49 @@
 </div>
 
 
-<div id="addFriends" data-ng-show="kf.showPlayers">
-<!--main player -->
-<div class="row player-container">
-	<div class="col-xs-12 col-sm-6 col-sm-offset-3 col-md-4 col-md-offset-4 player-card-col">
-		<div data-bs-player-card="kf.userInput.data.summary" class="player-card" data-ng-show="kf.userInput"></div>
+<div id="addFriends" data-ng-show="kf.viewPlayers">
+	<!--Current Players on Table-->
+	<div class="row player-container remove-player-bg">
+		<div data-ng-repeat="player in kf.players" class="col-xs-12 col-sm-6 col-md-4 col-lg-3 player-card-col">
+			<div data-bs-player-card="player.data.summary" class="player-card" data-ng-click="kf.removePlayer(this.player)">
+				<div data-ng-show="player.ajax" class="player-card-subtext player-card-loading">Loading</div>
+				<div data-ng-show="player.data.kfstats" class="player-card-subtext">
+					<div data-bs-perks="player.data.perks"></div>		
+				</div>
+				<div data-ng-show="!player.ajax && !player.data.kfstats" class="player-card-subtext player-card-private">Doesn't own Killing Floor</div>
+			</div>
+		</div>
 	</div>
-</div>
-<!--Current Players on Table-->
-<div class="row">
-	<div data-ng-repeat="player in kf.players" class="col-xs-12 col-sm-6 col-md-4 col-lg-3 player-card-col" data-ng-show="$index !== 0">
-		<div data-bs-player-card="player.data.summary" class="player-card"></div>
+	<!--Controls and Instruction-->
+	<div class="row">
+		<div class="col-sm-3 remove-player-bg instruction">
+			<span class="glyphicon glyphicon-arrow-up"></span><span>Remove players above</span>
+		</div>
+		<div class="col-sm-3 add-player-bg instruction">
+			<span class="glyphicon glyphicon-arrow-down"></span><span>Add players below</span>
+		</div>
+		<div class="col-sm-2 remove-player-bg instruction">
+			<span class="glyphicon glyphicon-floppy-disk"></span> Save
+		</div>
+		<div class="col-sm-4 no-gutter">
+			<button class="compare-btn" data-ng-click="kf.showStats()">Compare these Players</button>
+		</div>
+
 	</div>
-</div>
-<!--Controls and Instruction-->
-<div class="row">
-	<div class="col-sm-4 remove-player-bg instruction">
-		<span class="glyphicon glyphicon-arrow-up"></span><span>Select players above to remove</span>
-	</div>
-	<div class="col-sm-4 no-gutter">
-		<button class="compare-btn">Compare these Players</button>
-	</div>
-	<div class="col-sm-4 add-player-bg instruction">
-		<span class="glyphicon glyphicon-arrow-down"></span><span>Select players below to add</span>
-	</div>
-</div>
-<!--List of Friends to add-->
-<div class="row player-container add-player-bg">
-	<div data-ng-repeat="friend in kf.friends" class="col-xs-12 col-sm-6 col-md-4 col-lg-3 player-card-col">
-		<div data-bs-player-card="friend" class="player-card" data-ng-click="kf.addPlayer(this.friend)"></div>
+	<!--List of Friends to add-->
+	<div class="row player-container add-player-bg">
+	<div data-ng-repeat="friend in kf.friends | orderBy:'personaName'" class="col-xs-12 col-sm-6 col-md-4 col-lg-3 player-card-col">
+		<div data-bs-player-card="friend" class="player-card" data-ng-click="kf.addPlayer(this.friend)">
+			<span data-ng-show="friend.communityVisibilityState === 1" class="player-card-subtext player-card-private">This profile is private</span>
+		</div>
 		<div class="add-player"></div>
 	</div>
-</div>
+	</div>
 
 </div>
 
 <!--Table of map achievements-->
-<div class="row" id="kf-table" data-ng-show="kf.showTable">
+<div class="row" id="kf-table" data-ng-show="kf.viewTable">
 	<div class="col-sm-12">
 	<div class="table-container">
 	<table class="kf-table">
@@ -65,7 +71,7 @@
 			<tr>
 				<th></th>
 				<td data-ng-repeat="player in kf.players" data-ng-show="player.data.kfstats" colspan="4" ng-class-odd="'alternate'">
-					<a data-ng-href="//www.steamcommunity.com/{{player.data.summary.profileUrl}}"><img data-ng-src="//media.steampowered.com/steamcommunity/public/images/avatars/{{player.data.summary.avatar}}" /></a>
+					<a data-ng-href="{{player.data.summary.profileUrl}}"><img data-ng-src="{{player.data.summary.avatar}}" /></a>
 				</td>
 			</tr>
 		</thead>

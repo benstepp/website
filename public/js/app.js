@@ -16,6 +16,7 @@
 		//KillingFloor
 		'KillingFloorService',
 		'KillingFloorCtrl',
+		'bsPerks',
 		//Steam
 		'SteamService',
 		'bsPlayerCard'

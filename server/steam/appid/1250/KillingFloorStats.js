@@ -11,6 +11,7 @@ var KillingFloorStats = function(query, callback) {
 
 	var _this = this;
 
+	var parseCounter = 0;
 	var parseAchievements = function(achievements) {
 		//in format array -> object.name, object.achieved
 		var achievementLength = achievements.length;
@@ -21,7 +22,25 @@ var KillingFloorStats = function(query, callback) {
 			}
 		}
 		_this.maps = parsed;
-		callback(_this);
+		parseCounter++;
+		lastCallback();
+	};
+
+	var parseStats = function(stats) {
+		var statsLength = stats.length;
+		var parsed = {};
+		for (var i=0;i < statsLength; i++) {
+			parsed[stats[i].name] = stats[i].value;
+		}
+		_this.kfstats = parsed;
+		parseCounter++;
+		lastCallback();
+	};
+
+	var lastCallback = function() {
+		if (parseCounter === 2) {
+			callback(_this);
+		}
 	};
 
 
@@ -37,9 +56,9 @@ var KillingFloorStats = function(query, callback) {
 				if (!err && res.statusCode == 200 ) {
 					//expected result format from the api call
 					if (typeof body === 'object') {
-						_this.kfstats = body.playerstats.stats;
 						if (util.isArray(body.playerstats.achievements)) {
 							parseAchievements(body.playerstats.achievements);
+							parseStats(body.playerstats.stats);
 						}
 					}
 				}

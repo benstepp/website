@@ -24,6 +24,24 @@
 			locale: 'en'
 		};
 
+		var mainScope = [];
+		this.registerMainScope = function(scope) {
+			mainScope.push(scope);
+		};
+
+		this.showPlayers = function() {
+			angular.forEach(mainScope, function(scope) {
+				scope.showPlayers();
+			});
+		};
+
+		this.showStats = function() {
+			angular.forEach(mainScope, function(scope) {
+				scope.showStats();
+			});
+		};
+
+
 		//default to US region add cookie checking later
 		this.changeRegion = function(region) {
 			this.data.region = region;

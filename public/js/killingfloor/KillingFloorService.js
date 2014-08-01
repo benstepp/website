@@ -70,6 +70,17 @@
 			return false;
 		};
 
+		this.getPlayerByObj = function(player) {
+			player.query = player.data.summary.steamid;
+			var index = _this.players.length;
+			_this.players.push(player);
+			notifyObservers();
+			kfApiCall(index, player, true)
+				.then(function(){
+					notifyObservers();
+				});
+		};
+
 		this.getPlayer = function(userinput, force) {
 			var exist = checkExist(userinput);
 			//create it if it doesn't exist
@@ -112,6 +123,7 @@
 	            $http.get(url)
 	            .success(function(response) {
 	                _this.players[index].ajax = false;
+	                response.summary = SteamService.fullUrls(response.summary);
 	                parseResult(index, response);
 	                deferred.resolve(_this.players[index]);
 	            })
@@ -127,7 +139,60 @@
 	    	_this.players[index].data = {};
 	    	_this.players[index].data.summary = data.summary;
 	    	_this.players[index].data.kfstats = data.kfstats;
+	    	if (typeof data.kfstats !== 'undefined') {
+	    		_this.players[index].data.perks = perkRank(data.kfstats);
+	   		}
 	    	_this.players[index].data.maps = data.maps;
+	    };
+
+	    var perkRank = function(kfstats) {
+	    	var perks = {
+		    	fieldmedic: {
+		    		'DamageHealed':[200,750,4000,12000,25000,100000]
+		    	},
+		    	support:{
+		    		'ShotgunDamage': [25000,100000,500000,1500000,3500000,5500000],
+		    		'WeldingPoints': [2000,7000,35000,120000,250000,370000]
+		    	},
+		    	sharpshooter: {
+					'HeadshotKills':[30,100,700,2500,5500,8500]
+		    	},
+		    	commando:{
+		    		'BullpupDamage': [25000,100000,500000,1500000,3500000,5500000],
+		    		'StalkerKills': [30,100,350,1200,2400,3600]
+		    	},
+		    	berserker:{
+		    		'MeleeDamage':[25000,100000,500000,1500000,3500000,5500000]
+		    	},
+		    	firebug:{
+		    		'FlameThrowerDamage':[25000,100000,500000,1500000,3500000,5500000]
+		    	},
+		    	demolitions: {
+		    		'ExplosivesDamage':[25000,100000,500000,1500000,3500000,5500000]
+		    	}
+		    };
+	    	var playerPerks = {};
+	    	//for each of the 7 perks
+	    	for (var perk in perks) {
+	    		//initialize the playerPerks object with excessive numbers
+	    		playerPerks[perk] = 6;
+
+	    		//for each key to seach for in the stats array
+	    		for (var key in perks[perk]) {
+	    			//for each of the 6 ranks in each key
+	    			for (var i = 0; i < 6; i++) {
+	    				//because we are itterating from first key, we can assume if
+	    				//it is less than the key that is the rank of perk
+	    				//also checks if this key is lower than the current one saved.
+	    				if (kfstats[key] < perks[perk][key][i] && i < playerPerks[perk]) {
+	    						playerPerks[perk] = i;
+	    				}
+	    				//else the key we have is good
+	    			}
+	    		}
+	    	}
+	    	return playerPerks;
+
 	    };
 
 	}

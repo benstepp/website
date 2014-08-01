@@ -6,6 +6,7 @@
 	function SteamService($http, $q) {
 
 		var _this = this;
+		this.friends = [];
 
 		var observerCallbacks = [];
 		this.registerObserverCallback = function(callback) {
@@ -28,7 +29,13 @@
 	        var url = 'api/steam/friends/'+ player.query;
 	        $http.get(url)
 	            .success(function(response) {
-	            	deferred.resolve(response.friends);
+	            	var friends = response.friends;
+	            	var friendsLength = response.friends.length;
+	            	for (var i = 0; i < friendsLength; i ++) {
+	            		friends[i] = _this.fullUrls(friends[i]);
+	            	}
+	            	_this.friends = friends;
+	            	deferred.resolve(friends);
 	            })
 	            .error(function(response) {
 	                console.log(response);
@@ -61,6 +68,12 @@
 			}
 			return player;
 			//fuck i need to learn how to regex a url
+		};
+
+		this.fullUrls = function(player) {
+			player.avatar = '//media.steampowered.com/steamcommunity/public/images/avatars/'+player.avatar;
+			player.profileUrl = '//www.steamcommunity.com/' + player.profileUrl;
+			return player;
 		};
 
 		var steamIdConverter = function(id) {
