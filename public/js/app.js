@@ -1,17 +1,23 @@
 (function() {
 	angular.module('app', [
-		'routes', 
-		'EventsCtrl',
-		'EventsService',
-		'HeaderCtrl', 
-		'MainCtrl', 
-		'KillingFloorService',
-		'KillingFloorCtrl',
+		//Vendor Dependencies
 		'SocketFactory',
 		'ui.router', 
 		'btford.socket-io',
 		'ui.bootstrap',
+		//Main
+		'routes', 
+		'HeaderCtrl', 
+		'MainCtrl', 
 		'ngEnter',
+		//RiftEvents
+		'EventsCtrl',
+		'EventsService',
+		//KillingFloor
+		'KillingFloorService',
+		'KillingFloorCtrl',
+		//Steam
+		'SteamService',
 		'bsPlayerCard'
 		]);
 })();

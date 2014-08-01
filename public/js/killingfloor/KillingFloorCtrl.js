@@ -1,16 +1,22 @@
 (function() {
 	angular
-		.module('KillingFloorCtrl',['KillingFloorService'])
-		.controller('KillingFloorController', ['$scope', 'KillingFloorService', KillingFloorCtrl]);
+		.module('KillingFloorCtrl',['KillingFloorService', 'SteamService'])
+		.controller('KillingFloorController', ['$scope', 'KillingFloorService', 'SteamService', KillingFloorCtrl]);
 
-	function KillingFloorCtrl($scope, KillingFloorService) {
+	function KillingFloorCtrl($scope, KillingFloorService, SteamService) {
 		var _this = this;
 		this.showTable = false;
 		this.showPlayers = false;
 
 		this.kfSearch = function(friends) {
 			if (typeof _this.input === 'string' && _this.input !== "") {
-				KillingFloorService.getPlayer(_this.input, friends || false);
+				KillingFloorService.getPlayer(_this.input);
+				if (friends) {
+					SteamService.getFriends(_this.input).then(function(friends) {
+						_this.friends = friends;
+						_this.showPlayers = true;
+					});
+				}
 				delete _this.input;
 			}
 		};
