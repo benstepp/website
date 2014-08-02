@@ -31,6 +31,9 @@
 		this.setView = function() {
 			controlView = true;
 		};
+		this.removeView = function() {
+			controlView = false;
+		}
 
 		this.showPlayers = function() {
 			if (_this.players.length > 0) {

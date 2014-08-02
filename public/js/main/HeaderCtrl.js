@@ -31,6 +31,7 @@
 
 		this.showPlayers = function() {
 			angular.forEach(mainScope, function(scope) {
+				scope.removeView();
 				scope.showPlayers();
 			});
 		};
@@ -41,7 +42,6 @@
 				scope.showStats();
 			});
 		};
-
 
 		//default to US region add cookie checking later
 		this.changeRegion = function(region) {
