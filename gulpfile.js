@@ -1,6 +1,6 @@
 //modules
 var gulp = require('gulp'),
-	clean = require('gulp-clean'),
+	rimraf = require('gulp-rimraf'),
 	minifyCss = require('gulp-minify-css'),
 	concat = require('gulp-concat'),
 	jshint = require('gulp-jshint'),
@@ -17,7 +17,8 @@ var paths = {
 	vendor: ['public/libs/socket.io-client/socket.io.js',
 		'public/libs/angular-ui-router/release/angular-ui-router.min.js',
 		'public/libs/angular-bootstrap/ui-bootstrap.min.js',
-		'public/libs/angular-socket-io/socket.min.js'],
+		'public/libs/angular-socket-io/socket.min.js',
+		'public/libs/angular-bootstrap/ui-bootstrap-tpls.min.js'],
 	img: ['public/img/**/*', '!public/libs/**/*'],
 	css: ['public/**/*.css', '!public/libs/**/*'],
 	html: ['public/**/*.html', '!public/libs/**/*'],
@@ -29,7 +30,7 @@ console.log(date);
 
 gulp.task('clean', function () {  
 	return gulp.src('build/*', {read: false})
-		.pipe(clean());
+		.pipe(rimraf());
 });
 
 gulp.task('css', function() {
@@ -104,9 +105,11 @@ gulp.task('dev', function() {
 	gulp.start('default');
 	gulp.watch(paths.js, function() {
 		gulp.start('js');
+		gulp.start('html');
 	});
 	gulp.watch(paths.css, function() {
 		gulp.start('css');
+		gulp.start('html');
 	});
 	gulp.watch(paths.html, function() {
 		gulp.start('html');

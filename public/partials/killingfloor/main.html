@@ -2,14 +2,14 @@
 <div class="row" id="kf-input" data-ng-show="kf.viewInput">
 	<div class="col-sm-6 col-sm-offset-3">
 		<p class="form-label">
-			Identify a player on Steam to get started. <a><span class="glyphicon glyphicon-question-sign"></span></a> 
+			Identify a player on Steam to get started. <a data-tooltip-html-unsafe="{{kf.help}}"
+			data-tooltip-placement="bottom" data-tooltip-animation="true"><span class="glyphicon glyphicon-question-sign"></span></a> 
 		</p>
 		<form class="form kf-form">
-
 			<input class="kf-playerinput" placeholder="SteamID64 or CustomURL" data-ng-model="kf.input" data-ng-enter="kf.kfSearch()" />
 				<div class="row btn-container">
 				<div class="col-sm-6 btn-left-container">
-				<button class="btn btn-left" data-ng-click="kf.kfSearch()">View Stats</button>
+				<button class="btn btn-left" data-ng-click="kf.setView(); kf.kfSearch()">View Stats</button>
 				</div>
 				<div class="col-sm-6 btn-right-container">
 				<button class="btn" data-ng-click="kf.kfSearch(true)">Add Some Friends</button>
@@ -19,44 +19,55 @@
 	</div>
 </div>
 
-
+<!--Controlling what players/friends are added-->
 <div id="addFriends" data-ng-show="kf.viewPlayers">
-	<!--Current Players on Table-->
-	<div class="row player-container remove-player-bg">
-		<div data-ng-repeat="player in kf.players" class="col-xs-12 col-sm-6 col-md-4 col-lg-3 player-card-col">
-			<div data-bs-player-card="player.data.summary" class="player-card" data-ng-click="kf.removePlayer(this.player)">
-				<div data-ng-show="player.ajax" class="player-card-subtext player-card-loading">Loading</div>
-				<div data-ng-show="player.data.kfstats" class="player-card-subtext">
-					<div data-bs-perks="player.data.perks"></div>		
-				</div>
-				<div data-ng-show="!player.ajax && !player.data.kfstats" class="player-card-subtext player-card-private">Doesn't own Killing Floor</div>
+
+	<!--Controls and Instruction-->
+	<div class="row player-container controls-container add-player-bg">
+		<!--Main Player-->
+		<div class="col-xs-12 col-sm-6 col-md-4 player-card-col">
+			<div data-bs-player-card="kf.players[0]"></div>
+		</div>
+		<!--Filter and Controls-->
+		<div class="col-xs-12 col-sm-6 col-md-4  add-player-bg">
+			<input class="friend-filter" type="text" placeholder="Filter friends" data-ng-model="kf.filter"/>
+			<div><span class="glyphicon glyphicon-floppy-disk"></span> Save</div>
+		</div>
+		<!--To the Table-->
+		<div class="col-xs-12 col-sm-12 col-md-4 no-gutter">
+			<button class="compare-btn" data-ng-click="kf.setView(); kf.showStats()">Compare these Players</button>
+		</div>
+	</div>
+
+	<!--Horizontal Rule-->
+	<div class="row">
+		<div class="col-xs-12 kf-hr"></div>
+	</div>
+
+	<!--List of Friends to add-->
+	<div class="row player-container add-player-bg test">
+		<!--Manually Add a player block-->
+		<div class="col-xs-12 col-sm-6 col-md-4 col-lg-3 player-card-col">
+			<div class="player-card">
+				<span class="glyphicon glyphicon-plus add-icon" data-ng-click="kf.kfSearch()"></span>
+				<input type="text" class="manual-input" placeholder="Manually add player" data-ng-model="kf.input" data-ng-enter="kf.kfSearch()" />
 			</div>
 		</div>
-	</div>
-	<!--Controls and Instruction-->
-	<div class="row">
-		<div class="col-sm-3 remove-player-bg instruction">
-			<span class="glyphicon glyphicon-arrow-up"></span><span>Remove players above</span>
+		<!--Friends List -->
+		<div data-ng-repeat="player in kf.friends.concat(kf.players) | orderBy:'data.summary.personaName' | filter:kf.filter" class="col-xs-12 col-sm-6 col-md-4 col-lg-3 player-card-col" data-ng-show="!player.userinput">
+			<div data-bs-player-card="player" data-ng-click="kf.addPlayer(this.player)" data-ng-class="{playeradded: player.added, privatecursor: player.data.summary.communityVisibilityState === 1}">
+				<!--private-->
+				<span data-ng-show="player.data.summary.communityVisibilityState === 1" class="player-card-subtext player-card-private">This profile is private</span>
+				<!--loading-->
+				<div data-ng-show="player.ajax" class="player-card-subtext player-card-loading">Loading</div>
+				<!--perks-->
+				<div data-ng-show="player.added && player.data.kfstats" class="player-card-subtext">
+					<div data-bs-perks="player.data.perks"></div>		
+				</div>
+				<!--no stats-->
+				<div data-ng-show="!player.ajax && player.added && !player.data.kfstats" class="player-card-subtext player-card-private">Doesn't own Killing Floor</div>
+			</div>
 		</div>
-		<div class="col-sm-3 add-player-bg instruction">
-			<span class="glyphicon glyphicon-arrow-down"></span><span>Add players below</span>
-		</div>
-		<div class="col-sm-2 remove-player-bg instruction">
-			<span class="glyphicon glyphicon-floppy-disk"></span> Save
-		</div>
-		<div class="col-sm-4 no-gutter">
-			<button class="compare-btn" data-ng-click="kf.showStats()">Compare these Players</button>
-		</div>
-
-	</div>
-	<!--List of Friends to add-->
-	<div class="row player-container add-player-bg">
-	<div data-ng-repeat="friend in kf.friends | orderBy:'personaName'" class="col-xs-12 col-sm-6 col-md-4 col-lg-3 player-card-col">
-		<div data-bs-player-card="friend" class="player-card" data-ng-click="kf.addPlayer(this.friend)">
-			<span data-ng-show="friend.communityVisibilityState === 1" class="player-card-subtext player-card-private">This profile is private</span>
-		</div>
-		<div class="add-player"></div>
-	</div>
 	</div>
 
 </div>

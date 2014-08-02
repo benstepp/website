@@ -13,9 +13,9 @@
     			player:"=bsPlayerCard"
     		},
 
-    		template: ['<div>',
-    			'<img data-ng-src="{{player.avatar}}" class="player-avatar" />',
-    			'<span class="player-card-name">{{player.personaName}}</span>',
+    		template: ['<div class="player-card">',
+    			'<img data-ng-src="{{player.data.summary.avatar}}" class="player-avatar" />',
+    			'<span class="player-card-name">{{player.data.summary.personaName}}</span>',
                 '<span ng-transclude></span>',
     			'</div>'].join(''),
 

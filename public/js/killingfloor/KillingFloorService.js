@@ -70,6 +70,16 @@
 			return false;
 		};
 
+		this.removePlayer = function(steamid) {
+			var playerLength = _this.players.length;
+			for (var i = 0; i < playerLength; i ++) {
+				if (_this.players[i].data.summary.steamid === steamid) {
+					_this.players.splice(i,1);
+					break;
+				}
+			}
+		};
+
 		this.getPlayerByObj = function(player) {
 			player.query = player.data.summary.steamid;
 			var index = _this.players.length;
@@ -179,6 +189,11 @@
 
 	    		//for each key to seach for in the stats array
 	    		for (var key in perks[perk]) {
+	    			//check if the player has this key, otherwise break
+	    			if (!kfstats.hasOwnProperty(key)) {
+	    				playerPerks[perk] = 0;
+	    				break;
+	    			}
 	    			//for each of the 6 ranks in each key
 	    			for (var i = 0; i < 6; i++) {
 	    				//because we are itterating from first key, we can assume if
@@ -186,9 +201,11 @@
 	    				//also checks if this key is lower than the current one saved.
 	    				if (kfstats[key] < perks[perk][key][i] && i < playerPerks[perk]) {
 	    						playerPerks[perk] = i;
+	    						break;
 	    				}
 	    				//else the key we have is good
 	    			}
+
 	    		}
 	    	}
 	    	return playerPerks;

@@ -161,6 +161,7 @@ table.kf-table tfoot img {
 }
 
 .instruction {
+	height:60px !important;
 	padding:8px 8px 8px 16px;
 	color:#DDDDDD;
 }
@@ -181,7 +182,7 @@ table.kf-table tfoot img {
 }
 
 #addFriends {
-	margin-top:8%;
+	margin-top:50px;
 }
 
 .player-card-perk {
@@ -190,4 +191,70 @@ table.kf-table tfoot img {
 	margin-left:4px;
 	display:inline-block;
 	float:left;
+}
+.kf-hr {
+	background-color:#6B1717;
+	height:4px;
+}
+
+.controls-container {
+	height:60px;
+}
+
+.controls-container > div {
+	height:100%;
+}
+
+.friend-filter {
+	margin-top:2px;
+	margin-bottom:2px;
+	width:100%;
+	background:none;
+	color:#DDDDDD;
+	border:none;
+	outline:none;
+	border-bottom:2px #555555 solid;
+}
+
+.friend-filter:focus {
+	outline:none;
+	border-bottom:2px #6B1717 solid;
+}
+
+.manual-input {
+	margin-top:-1px;
+	padding-left:4px;
+	width:calc(100% - 40px);
+	position:relative;
+	top:2px;
+	float:left;
+	height:32px;
+	background:none;
+	border:1px solid transparent;
+	border-bottom:1px solid #555555;
+	color:#DDDDDD;
+}
+
+.manual-input:focus {
+	outline:none;
+	border:1px solid #DDDDDD;
+}
+
+.add-icon {
+	float:left;
+	padding:8px;
+	color:#DDDDDD;
+	border:1px solid #000000;
+}
+
+.playeradded {
+	border: 2px #239649 solid !important;
+}
+
+.privatecursor {
+	cursor:default !important;
+}
+
+code {
+	display:inline-block;
 }

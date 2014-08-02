@@ -37,6 +37,7 @@
 
 		this.showStats = function() {
 			angular.forEach(mainScope, function(scope) {
+				scope.setView();
 				scope.showStats();
 			});
 		};

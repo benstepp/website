@@ -6,19 +6,32 @@
 	function KillingFloorCtrl($scope, KillingFloorService, SteamService) {
 		var _this = this;
 		//controls the views in the main ui-view
+		var controlView = false;
 
+		//the help tooltip
+		this.help =[
+			'<p>The following are valid formats</p>',
+			'<code>http://www.steamcommunity.com/profiles/SteamID64</code>',
+			'<code>http://www.steamcommunity.com/profiles/CustomURL</code>',
+			'<code>SteamID64</code>',
+			'<code>CustomURL</code>',
+			].join('');
 
 		this.kfSearch = function(friends) {
 			if (typeof _this.input === 'string' && _this.input !== "") {
-				KillingFloorService.getPlayer(_this.input);
 				if (friends) {
 					SteamService.getFriends(_this.input).then(function(friends) {
 						_this.friends = friends;
 						_this.showPlayers();
 					});
 				}
+				KillingFloorService.getPlayer(_this.input);
 				delete _this.input;
 			}
+		};
+
+		this.setView = function() {
+			controlView = true;
 		};
 
 		this.showPlayers = function() {
@@ -30,7 +43,7 @@
 		};
 
 		this.showStats = function() {
-			if (_this.players.length > 0) {
+			if (controlView) {
 				_this.viewInput = false;
 				_this.viewTable = true;
 				_this.viewPlayers = false;
@@ -38,17 +51,29 @@
 		};
 
 		this.addPlayer = function(player) {
-			if (player.communityVisibilityState === 1) {
-				//alert that you cannot add a private profile
+			var newPlayer = {
+				'data':player.data,
+				'query':player.data.summary.steamid,
+				'class':""
+			};
+			//remove player
+			if (player.added) {
+				var index = _this.players.indexOf(player);
+				_this.players.splice(index,1);
+				KillingFloorService.removePlayer(player.data.summary.steamid);
+				_this.friends.push(newPlayer);
 			}
+			//add player
 			else {
-				var playerObj = {
-					data:{}
-				};
-				playerObj.data.summary = player;
-				var index = _this.friends.indexOf(player);
-				_this.friends.splice(index,1);
-				KillingFloorService.getPlayerByObj(playerObj);
+				if (player.data.summary.communityVisibilityState === 1) {
+					//alert that you cannot add a private profile
+				}
+				else {
+					newPlayer.added = true;
+					var indexa = _this.friends.indexOf(player);
+					_this.friends.splice(indexa,1);
+					KillingFloorService.getPlayerByObj(newPlayer);
+				}
 			}
 		};
 
@@ -90,17 +115,8 @@
 		};
 
 		var updatePlayers = function() {
-			if (typeof _this.userInput === 'undefined') {
-				_this.userInput = KillingFloorService.players[0];
-			}
 			_this.players = KillingFloorService.players;
-			_this.showTable = true;
-		};
-
-		this.clearScope = function() {
-			_this.players = [];
-			KillingFloorService.players = [];
-			this.showTable = false;
+			_this.showStats();
 		};
 
 		init();

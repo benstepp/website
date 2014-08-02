@@ -33,6 +33,12 @@
 	            	var friendsLength = response.friends.length;
 	            	for (var i = 0; i < friendsLength; i ++) {
 	            		friends[i] = _this.fullUrls(friends[i]);
+	            		var friend = friends[i];
+	            		friends[i] = {
+	            			data:{
+	            				summary:friend
+	            			}
+	            		};
 	            	}
 	            	_this.friends = friends;
 	            	deferred.resolve(friends);
