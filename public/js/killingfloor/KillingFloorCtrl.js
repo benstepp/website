@@ -19,12 +19,10 @@
 
 		this.kfSearch = function(friends) {
 			if (typeof _this.input === 'string' && _this.input !== "") {
-				if (friends) {
-					SteamService.getFriends(_this.input).then(function(friends) {
-						_this.friends = friends;
-						_this.showPlayers();
-					});
-				}
+				SteamService.getFriends(_this.input).then(function(friends) {
+					_this.friends = friends;
+					_this.showPlayers();
+				});
 				KillingFloorService.getPlayer(_this.input);
 				delete _this.input;
 			}
