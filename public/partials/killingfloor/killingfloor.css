@@ -198,6 +198,7 @@ table.kf-table tfoot img {
 }
 
 .controls-container {
+	white-space:nowrap;
 	height:60px;
 }
 
@@ -206,7 +207,7 @@ table.kf-table tfoot img {
 }
 
 .friend-filter {
-	margin-top:2px;
+	margin-top:4px;
 	margin-bottom:2px;
 	width:100%;
 	background:none;
@@ -255,6 +256,29 @@ table.kf-table tfoot img {
 	cursor:default !important;
 }
 
-code {
-	display:inline-block;
+.tooltip-inner {
+	text-align:left;
+	max-width:500px;
+	background-color:rgba(20,20,20,0.8);
+	padding:8px;
+}
+
+.tooltip-inner p {
+	margin-bottom:2px;
+	padding-left:4px;
+}
+
+.tooltip-inner code {
+	margin-top:4px;
+	display:block;
+	text-align:left;
+}
+
+.guide {
+	background-color:green;
+	height:12px;
+}
+
+.main-card {
+	margin-top:5px;
 }

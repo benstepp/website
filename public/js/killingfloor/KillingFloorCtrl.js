@@ -10,11 +10,12 @@
 
 		//the help tooltip
 		this.help =[
-			'<p>The following are valid formats</p>',
-			'<code>http://www.steamcommunity.com/profiles/SteamID64</code>',
-			'<code>http://www.steamcommunity.com/profiles/CustomURL</code>',
+			'<p>The following are valid inputs:</p>',
+			'<code>http://www.steamcommunity.com/profiles/SteamID64/</code>',
+			'<code>http://www.steamcommunity.com/id/CustomURL/</code>',
 			'<code>SteamID64</code>',
 			'<code>CustomURL</code>',
+			'<code>STEAM_0:#:########</code>'
 			].join('');
 
 		this.kfSearch = function(friends) {
@@ -33,7 +34,7 @@
 		};
 		this.removeView = function() {
 			controlView = false;
-		}
+		};
 
 		this.showPlayers = function() {
 			if (_this.players.length > 0) {

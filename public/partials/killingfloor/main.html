@@ -22,16 +22,20 @@
 <!--Controlling what players/friends are added-->
 <div id="addFriends" data-ng-show="kf.viewPlayers">
 
+	<div class="row">
+		<div class="col-xs-12 kf-hr"></div>
+	</div>
+
 	<!--Controls and Instruction-->
-	<div class="row player-container controls-container add-player-bg">
+	<div class="row controls-container add-player-bg">
 		<!--Main Player-->
 		<div class="col-xs-12 col-sm-6 col-md-4 player-card-col">
-			<div data-bs-player-card="kf.players[0]"></div>
+			<div data-bs-player-card="kf.players[0]" class="main-card privatecursor"></div>
 		</div>
 		<!--Filter and Controls-->
 		<div class="col-xs-12 col-sm-6 col-md-4  add-player-bg">
 			<input class="friend-filter" type="text" placeholder="Filter friends" data-ng-model="kf.filter"/>
-			<div><span class="glyphicon glyphicon-floppy-disk"></span> Save</div>
+			<div><span class="glyphicon glyphicon-question-sign"></span> Help</div>
 		</div>
 		<!--To the Table-->
 		<div class="col-xs-12 col-sm-12 col-md-4 no-gutter">

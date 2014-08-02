@@ -83,11 +83,11 @@
 		};
 
 		var steamIdConverter = function(id) {
-			 var base = 76561197960265728;
+			 var base = '76561197960';
 			 var idArray = id.split(':');
 			 var alpha = parseInt(idArray[1]);
 			 var beta = parseInt(idArray[2]);
-			 return (base + alpha + 2*beta);
+			 return (base + (alpha + 265728 + 2*beta).toString());
 		};
 
 	}
