@@ -1,0 +1,47 @@
+.navbar-default.riftevents {
+	border-color:#663399;
+}
+
+th > a, .nav-small-brand.navbar-brand.riftevents {
+	color:#663399;
+	font-weight:700;
+}
+
+th > a:hover, .nav-small-brand.navbar-brand.riftevents:hover {
+	color:#8A45CF;
+	text-decoration:none;
+}
+
+table.rift-table thead {
+	border-bottom:1px solid #663399;
+}
+
+table.rift-table tr td:nth-child(n+4) {
+	text-align:right;
+}
+
+table.rift-table th, table.rift-table td {
+	padding: 1px 12px;
+}
+
+table.rift-table tbody tr:nth-child(even) {
+	background-color:#EEEEEE;
+}
+
+table.rift-table {
+	max-width:100%;
+	margin-left:auto;
+	margin-right:auto;
+	white-space:nowrap;
+	overflow:auto;
+	text-align:left;
+}
+
+#rift-table {
+	padding-top:30px;
+	overflow:auto;
+	color:#333333;
+	background:none;
+	height:100%;
+	text-align:center;
+}

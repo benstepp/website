@@ -1,0 +1,59 @@
+@charset "UTF-8";
+// Foundation by ZURB
+// foundation.zurb.com
+// Licensed under MIT Open Source
+
+// Make sure the charset is set appropriately
+  @import "settings";
+  @import "../../libs/foundation/scss/normalize.scss";
+
+// Behold, here are all the Foundation components.
+  @import "../../libs/foundation/scss/foundation/components/grid";
+  @import "../../libs/foundation/scss/foundation/components/alert-boxes";
+  @import "../../libs/foundation/scss/foundation/components/block-grid";
+  @import "../../libs/foundation/scss/foundation/components/buttons";
+  @import "../../libs/foundation/scss/foundation/components/clearing";
+  @import "../../libs/foundation/scss/foundation/components/dropdown";
+  @import "../../libs/foundation/scss/foundation/components/dropdown-buttons";
+  @import "../../libs/foundation/scss/foundation/components/forms";
+  @import "../../libs/foundation/scss/foundation/components/icon-bar";
+  @import "../../libs/foundation/scss/foundation/components/inline-lists";
+  @import "../../libs/foundation/scss/foundation/components/labels";
+  @import "../../libs/foundation/scss/foundation/components/panels";
+  @import "../../libs/foundation/scss/foundation/components/tables";
+  @import "../../libs/foundation/scss/foundation/components/tabs";
+  @import "../../libs/foundation/scss/foundation/components/thumbs";
+  @import "../../libs/foundation/scss/foundation/components/tooltips";
+  @import "../../libs/foundation/scss/foundation/components/top-bar";
+  @import "../../libs/foundation/scss/foundation/components/type";
+  @import "../../libs/foundation/scss/foundation/components/offcanvas";
+  @import "../../libs/foundation/scss/foundation/components/visibility";
+
+.top-bar {
+  border-bottom:2px solid $primary-color;
+}
+
+form {
+  margin-top: rem-calc(16px);
+  padding:rem-calc(16px);
+  background-color: rgba(40,40,40,.2);
+}
+
+@media only screen and (min-width: 64.063em) {
+  form {
+    margin-top:rem-calc(160px);
+  }
+}
+
+.main-section > div {
+  height:100%;
+  background-image:url("../img/kf1.jpg");
+  background-size:cover;
+  background-repeat:no-repeat;
+  background-position: center center;
+  background-attachment:fixed;
+}
+
+.off-canvas-wrap, .inner-wrap, .main-section {
+  height:100%
+}

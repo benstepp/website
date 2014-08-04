@@ -1,0 +1,74 @@
+.player-card {
+	height:100%;
+	cursor:pointer;
+	background-color: rgba(40, 40, 40, 0.8);
+	display:inline-block;
+	padding:4px;
+	border:2px solid #111111;
+	position:relative;
+}
+
+.player-card > div {
+	height:34px;
+}
+
+.player-avatar {
+	border:1px solid black;
+	float:left;
+}
+
+.player-card-name {
+	padding-left:4px;
+	padding-right:4px;
+	color:#DDDDDD;
+	width: calc(100% - 32px);
+	overflow:hidden;
+	text-overflow:clip;
+	white-space:nowrap;
+	display:inline-block;
+	font-size:13px;
+}
+
+.player-card-subtext {
+	display:inline-block;
+	font-size:11px;
+	top: -4px;
+	position:relative;
+	float:left;
+	padding:0px 4px;
+	margin-bottom:-4px;
+}
+
+.player-card-private {
+	color:#AB1C1B;
+}
+
+.player-card-loading {
+	color:blue;
+}
+.player-container {
+	white-space:nowrap;
+	padding-top:4px;
+}
+
+.player-card-col {
+	height:58px;
+	padding-bottom:12px;
+	position:relative;
+}
+
+.player-card-col > div {
+	width:100%;
+}
+
+.add-player {
+	position:relative;
+	display:none;
+	padding:4px;
+	height:46px;
+	background-color:rgba(0,200,0,0.2);
+	border:2px green solid;
+	z-index:12;
+	top:-46px;
+}
+
