@@ -1,13 +1,16 @@
 (function() {
 	angular
 		.module('KillingFloorCtrl',['KillingFloorService', 'SteamService'])
-		.controller('KillingFloorController', ['$scope', 'KillingFloorService', 'SteamService', KillingFloorCtrl]);
+		.controller('KillingFloorController', ['$scope', '$location', 'KillingFloorService', 'SteamService', KillingFloorCtrl]);
 
-	function KillingFloorCtrl($scope, KillingFloorService, SteamService) {
+	function KillingFloorCtrl($scope, $location, KillingFloorService, SteamService) {
+		
 		var _this = this;
-		//controls the views in the main ui-view
-		var controlView = false;
 
+		//object of players with data
+		this.players = {};
+		this.playersArray = [];
+		
 		//the help tooltip
 		this.help =[
 			'<p>The following are valid inputs:</p>',
@@ -18,107 +21,77 @@
 			'<code>STEAM_0:#:########</code>'
 			].join('');
 
-		this.kfSearch = function(friends) {
-			if (typeof _this.input === 'string' && _this.input !== "") {
-				SteamService.getFriends(_this.input).then(function(friends) {
-					_this.friends = friends;
-					_this.showPlayers();
-				});
-				KillingFloorService.getPlayer(_this.input);
+		this.kfSearch = function(input) {
+			$location.path('/addfriends');
+			if (typeof input === 'string' && input !== "" ) {
+				KillingFloorService.getPlayer(_this.input)
+					.then(function(player) {
+						KillingFloorService.mainPlayer = player;
+						updatePlayers();
+					});
+				SteamService.getFriends(_this.input)
+					.then(function(friends) {
+						updatePlayers();
+					});
 				delete _this.input;
 			}
-		};
-
-		this.setView = function() {
-			controlView = true;
-		};
-		this.removeView = function() {
-			controlView = false;
-		};
-
-		this.showPlayers = function() {
-			if (_this.players.length > 0) {
-				_this.viewInput = false;
-				_this.viewTable = false;
-				_this.viewPlayers = true;
+			if (typeof input === 'object') {
+				KillingFloorService.getPlayer(input)
+					.then(function() {
+						updatePlayers();
+					});
 			}
 		};
 
-		this.showStats = function() {
-			if (controlView) {
-				_this.viewInput = false;
-				_this.viewTable = true;
-				_this.viewPlayers = false;
-			}
-		};
-
-		this.addPlayer = function(player) {
-			var newPlayer = {
-				'data':player.data,
-				'query':player.data.summary.steamid,
-				'class':""
-			};
-			//remove player
-			if (player.added) {
-				var index = _this.players.indexOf(player);
-				_this.players.splice(index,1);
-				KillingFloorService.removePlayer(player.data.summary.steamid);
-				_this.friends.push(newPlayer);
-			}
-			//add player
-			else {
-				if (player.data.summary.communityVisibilityState === 1) {
-					//alert that you cannot add a private profile
-				}
-				else {
-					newPlayer.added = true;
-					var indexa = _this.friends.indexOf(player);
-					_this.friends.splice(indexa,1);
-					KillingFloorService.getPlayerByObj(newPlayer);
-				}
-			}
-		};
-
-		this.removePlayer = function(player) {
-			var index = _this.players.indexOf(player);
-			_this.players.splice(index,1);
-			player = player.data.summary;
-			_this.friends.push(player);
-		};
-
-		this.getMaps = function() {
+		//Make ajax call to get json of the maps
+		var getMaps = function() {
 			this.kfMaps = KillingFloorService.getMaps()
-				.then(function(data) {
-					_this.kfMaps = data;
+				.then(function(maps) {
+					_this.kfMaps = maps;
 				});
-		};
-
-		var init = function() {
-			_this.players = KillingFloorService.players;
-			_this.friends = SteamService.friends;
-			if (_this.players.length > 0) {
-				_this.viewTable = true;
-				_this.viewPlayers = false;
-				_this.viewInput = false;
-			}
-			else if (_this.friends.length > 0) {
-				_this.viewTable = false;
-				_this.viewPlayers = true;
-				_this.viewInput = false;
-			}
-			else {
-				_this.viewTable = false;
-				_this.viewPlayers = false;
-				_this.viewInput = true;
-			}
-			_this.getMaps();
-			KillingFloorService.registerObserverCallback(updatePlayers);
-			$scope.header.registerMainScope(_this);
 		};
 
 		var updatePlayers = function() {
-			_this.players = KillingFloorService.players;
-			_this.showStats();
+			_this.players = SteamService.friends;
+			_this.mainPlayer = KillingFloorService.mainPlayer;
+			_this.players = combine(_this.players,KillingFloorService.players);
+			_this.playersArray = updatePlayerArray();
+		};
+
+		var combine = function(oldObj, newObj) {
+			for (var key in newObj) {
+				oldObj[key] = newObj[key];
+			}
+			return oldObj;
+		};
+
+		var updatePlayerArray = function() {
+			var oldPlayers = _this.playersArray;
+			var playersArrayLength = oldPlayers.length;
+			//for each player in object
+			angular.forEach(_this.players, function(val,key) {
+				//for each player in the array
+				var i = 0;
+				do {
+					//if the player was not in array and we are at the end of it.
+					if ( i === playersArrayLength) {
+						oldPlayers.push(val);
+					}
+					//if the player is already in the array
+					if (oldPlayers[i].data.summary.steamid === key) {
+						oldPlayers.splice(i, 1, val);
+					}
+					i++;
+				} while (i < playersArrayLength);
+			});
+			return oldPlayers;
+		};
+
+		var init = function() {
+			updatePlayers();
+			console.log(_this.playersArray);
+			getMaps();
+			KillingFloorService.registerObserverCallback(updatePlayers);
 		};
 
 		init();

@@ -9,6 +9,8 @@ var gulp = require('gulp'),
 	imagemin = require('gulp-imagemin'),
 	rename = require('gulp-rename'),
 	htmlreplace = require('gulp-html-replace'),
+	sass = require('gulp-sass'),
+	uncss = require('gulp-uncss'),
 	ngannotate = require('gulp-ng-annotate');
 
 //path of source files
@@ -21,6 +23,7 @@ var paths = {
 		'public/libs/angular-bootstrap/ui-bootstrap-tpls.min.js'],
 	img: ['public/img/**/*', '!public/libs/**/*'],
 	css: ['public/**/*.css', '!public/libs/**/*'],
+	scss: ['public/**/*.scss', '!public/libs/**/*'],
 	html: ['public/**/*.html', '!public/libs/**/*'],
 	libs: ['public/libs/**/*']
 };
@@ -91,6 +94,13 @@ gulp.task('libs', function() {
 		.pipe(gulp.dest('build'));
 });
 
+gulp.task('scss', function() {
+	return gulp.src(paths.scss, {base:'public/'})
+		.pipe(sass())
+		.pipe(minifyCss())
+		.pipe(gulp.dest('public'));
+});
+
 gulp.task('default', function() {
 	gulp.start('clean');
 	gulp.start('css');
@@ -113,5 +123,11 @@ gulp.task('dev', function() {
 	});
 	gulp.watch(paths.html, function() {
 		gulp.start('html');
+	});
+});
+
+gulp.task('dev2', function() {
+	gulp.watch(paths.scss, function() {
+		gulp.start('scss');
 	});
 });

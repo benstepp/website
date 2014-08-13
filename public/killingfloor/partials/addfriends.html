@@ -1,0 +1,28 @@
+<div class="friend-chooser">
+	<div class="row">
+		<div class="small-12 columns">
+			Select some friends to add.
+		</div>
+	</div>
+	<div class="row">
+		<div class="small-12 medium-6 large-6 columns">
+			<input type="text" placeholder="Filter Friends" data-ng-model="kf.filter" />
+		</div>
+		<div class="small-12 medium-6 large-6 columns">
+			Manually Add Player
+		</div>
+	</div>
+	<div class="row">
+		<div class="small-12 columns">
+			<ul class="small-block-grid-1 medium-block-grid-3 large-block-grid-4">
+				<li data-ng-repeat="player in kf.playersArray | orderBy:'player.data.summary.personaName' | filter:kf.filter">
+					<div data-bs-player-card="player">
+						<!--private-->
+						<span data-ng-show="player.data.summary.communityVisibilityState === 1" class="player-card-subtext player-card-private">This profile is private</span>
+										
+					</div>
+				</li>
+			</ul>
+		</div>
+	</div>
+</div>

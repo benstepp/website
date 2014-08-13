@@ -3,11 +3,9 @@
 		//Vendor Dependencies
 		'ui.router', 
 		'mm.foundation',
-		//Main
-		'routes', 
 		'ngEnter',
-		'OffCanvasCtrl',
 		//KillingFloor
+		'routes', 
 		'KillingFloorService',
 		'KillingFloorCtrl',
 		'bsPerks',

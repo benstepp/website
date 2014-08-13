@@ -45,7 +45,7 @@ $include-html-global-classes: $include-html-classes;
 // We use these to control various global styles
 // $body-bg: #fff;
 // $body-font-color: #222;
-// $body-font-family: "Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif;
+$body-font-family: "Roboto", "Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif;
 $font-weight-normal:normal;
 $body-font-weight: $font-weight-normal;
 // $body-font-style: normal;
@@ -349,12 +349,12 @@ $primary-color: #6b1717;
 // We use these to build padding for buttons.
 // $button-tny: rem-calc(10);
 // $button-sml: rem-calc(14);
-// $button-med: rem-calc(16);
+ $button-med: rem-calc(8);
 // $button-lrg: rem-calc(18);
 
 // We use this to control the display property.
 // $button-display: inline-block;
-// $button-margin-bottom: rem-calc(20);
+$button-margin-bottom: 0;
 
 // We use these to control button text styles.
 // $button-font-family: $body-font-family;
@@ -362,7 +362,7 @@ $primary-color: #6b1717;
 // $button-font-color-alt: #333;
 // $button-font-tny: rem-calc(11);
 // $button-font-sml: rem-calc(13);
-// $button-font-med: rem-calc(16);
+$button-font-med: rem-calc(14);
 // $button-font-lrg: rem-calc(20);
 // $button-font-weight: $font-weight-normal;
 // $button-font-align: center;
@@ -540,9 +540,9 @@ $form-label-pointer: default;
 // $form-label-bottom-margin: 0;
 // $input-font-family: inherit;
 // $input-font-color: rgba(0,0,0,0.75);
-// $input-font-size: rem-calc(14);
-// $input-bg-color: #fff;
-// $input-focus-bg-color: scale-color(#fff, $lightness: -2%);
+$input-font-size: rem-calc(14);
+	$input-bg-color: rgba(40,40,40,0.8);
+	$input-focus-bg-color: scale-color($input-bg-color, $lightness: -2%);
 // $input-border-color: scale-color(#fff, $lightness: -20%);
 // $input-focus-border-color: scale-color(#fff, $lightness: -40%);
 // $input-border-style: solid;
@@ -697,7 +697,7 @@ $magellan-padding: 0 !important;
 // $include-html-off-canvas-classes: $include-html-classes;
 
 $tabbar-bg: #FFFFFF;
-// $tabbar-height: rem-calc(45);
+$tabbar-height: rem-calc(36px);
 // $tabbar-icon-width: $tabbar-height;
 // $tabbar-line-height: $tabbar-height;
 // $tabbar-color: #fff;
@@ -708,7 +708,7 @@ $tabbar-bg: #FFFFFF;
 // $tabbar-left-section-border: solid 1px scale-color($tabbar-bg, $lightness: -50%);
 
 // Off Canvas Tab Bar Headers
-// $tabbar-header-color: #fff;
+// $tabbar-header-color: #222;
 // $tabbar-header-weight: $font-weight-bold;
 // $tabbar-header-line-height: $tabbar-height;
 // $tabbar-header-margin: 0;
@@ -731,8 +731,8 @@ $tabbar-bg: #FFFFFF;
 // $off-canvas-link-border-bottom: 1px solid scale-color($off-canvas-bg, $lightness: -25%);
 
 // Off Canvas Menu Icon Variables
-// $tabbar-menu-icon-color: #fff;
-// $tabbar-menu-icon-hover: scale-color($tabbar-menu-icon-color, $lightness: -30%);
+ $tabbar-menu-icon-color: #222;
+$tabbar-menu-icon-hover: scale-color($tabbar-menu-icon-color, $lightness: -30%);
 
 // $tabbar-menu-icon-text-indent: rem-calc(35);
 // $tabbar-menu-icon-width: $tabbar-height;
@@ -1213,7 +1213,7 @@ $topbar-bg-color: #FFFFFF;
 $topbar-bg: $topbar-bg-color;
 
 // Height and margin
-$topbar-height: 30px;
+$topbar-height: 36px;
 // $topbar-margin-bottom: 0;
 
 // Controlling the styles for the title in the top bar
@@ -1231,15 +1231,15 @@ $topbar-height: 30px;
 
 // Set the link colors and styles for top-level nav
 $topbar-link-color: #222;
-//$topbar-link-color-hover: #111;
+$topbar-link-color-hover: #111;
 //$topbar-link-color-active: #111;
 // $topbar-link-color-active-hover: #fff;
 // $topbar-link-weight: $font-weight-normal;
 // $topbar-link-font-size: rem-calc(13);
 // $topbar-link-hover-lightness: -10%; // Darken by 10%
 // $topbar-link-bg: $topbar-bg;
-$topbar-link-bg-color-hover: scale-color($topbar-bg, $lightness: -5%);
-$topbar-link-bg-hover: scale-color($topbar-bg, $lightness: -5%);
+$topbar-link-bg-color-hover: $topbar-bg;
+$topbar-link-bg-hover: $topbar-bg;
 // $topbar-link-bg-active: $primary-color;
 // $topbar-link-bg-active-hover: scale-color($primary-color, $lightness: -14%);
 // $topbar-link-font-family: $body-font-family;

@@ -1,19 +1,20 @@
 <!--Input when first visiting-->
-<div class="row">
+<div class="row" id="input">
 	<div class="small-12 large-6 large-offset-3 columns">
+		<label>Identify a player on Steam to get started. <a data-tooltip-placement="bottom" ><i class="fi-social-steam"></i></a> </label>
 		<form>
 			<div class="row">
 				<div class="small-12 columns">
-					<label>Identify a player on Steam to get started. <a data-tooltip-placement="bottom" ><i class="fi-social-steam"></i></a> </label>
-					<input class="small-12 columns" placeholder="SteamID64 or CustomURL" data-ng-model="kf.input" data-ng-enter="kf.kfSearch()" />
+					<input class="small-12 columns" placeholder="SteamID64 or CustomURL" data-ng-model="kf.input" data-ng-enter="kf.kfSearch(kf.input)" />
 				</div>
 			</div>
 			<div class="row">
-				<div class="small-12 large-6 columns">
-					<button class="expand" data-ng-click="kf.setView(); kf.kfSearch()">View Stats</button>
-				</div>
-				<div class="small-12 large-6 columns">
-					<button class="expand" data-ng-click="kf.kfSearch(true)">Add Some Friends</button>
+				<div class="small-12 columns">
+					<a 
+						class="expand button" 
+						data-ng-click="kf.kfSearch(kf.input)"
+						href="#/addfriends">View Stats
+					</a>
 				</div>
 			</div>
 		</form>

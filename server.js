@@ -10,7 +10,7 @@ var env = process.env.NODE_ENV || 'production';
 
 //Execute app
 var app = express();
-app.use(express.static(__dirname + '/build'));
+app.use(express.static(__dirname + '/public'));
 app.use(bodyParser.json());
 app.use(morgan());
 var http = require('http').Server(app);
@@ -21,11 +21,11 @@ mongoose.connect('mongodb://localhost/');
 var db = mongoose.connection;
 db.on('error', console.error.bind(console, 'connection error:'));
 db.once('open', function callback () {
-	console.log('db works ');
+	console.log('connected to database');
 });
 
 //app modules
-require('./server/riftevents/main.js')(app, io);
+//require('./server/riftevents/main.js')(app, io);
 require('./server/steam/main.js')(app, io);
 
 //start app

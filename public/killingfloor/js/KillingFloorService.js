@@ -6,8 +6,10 @@
 	function KillingFloorService($http, $q, SteamService) {
 		var _this = this;
 
-		this.players = [];
-		/* this.players is an array of objects
+		this.players = {};
+		this.ajax = false;
+		/* this.players is an object indexed by steamid
+		players are added here when api is called
 		{	
 			userinput: userinput, direct input from the user
 			query: parsed query of userinput in case of url
@@ -40,7 +42,7 @@
 	            deferred.resolve(_this.kfMaps);
 	        } 
 	        else {
-	            var url = 'api/steam/1250/kfmaps';
+	            var url = '/api/steam/1250/kfmaps';
 	            $http.get(url)
 	            .success(function(response) {
 	            	_this.kfMaps = response;
@@ -54,105 +56,95 @@
 	        return deferred.promise;			
 		};
 
-		var checkExist = function(query) {
-			var playerLength = _this.players.length;
-			for (var i = 0; i< playerLength; i++) {
-				var player = _this.players[i];
-				if (player.query === query || player.userinput === query) {
-					var returnobj = {
-						"player":player,
-						"index":i
-					};
-					return returnobj;
+		this.getPlayer = function(query) {
+			var player = createPlayer(query);
+			var deferred = $q.defer();
+			//this means either the api has been called or it exists
+			if (checkExist(player)) {
+				deferred.resolve(_this.players[player.data.summary.steamid]);
+			}
+			else {
+				kfApiCall(player)
+					.then(function(player) {
+						deferred.resolve(player);
+					});
+			}
+			return deferred.promise;
+		};
+
+		//creates a player object from userinput. 
+		var createPlayer = function(query) {
+			var player = {};
+			//if the player is a string, parse for customurl or steamid
+			if (typeof query === 'string') {
+				player.userinput = query;
+				player.ajax = false;
+				SteamService.parseInput(player);
+			}
+			//otherwise it's probably an object already
+			else {
+				player = query;
+				player.query = query.data.summary.steamid;
+			}
+			return player;
+		};
+
+		var checkExist = function(player) {
+			//if the player has a steamid64 and it is 17 digits long.
+			if (player.data && 
+				typeof player.data.summary.steamid === 'string' && 
+				player.data.summary.steamid.length === 17) {
+				//if the player object has this key
+				if (this.players.hasOwnProperty(player.data.summary.steamid)) {
+					return true;
 				}
 			}
-			//if the player was not found
+			//else the player does not exist
 			return false;
 		};
 
-		this.removePlayer = function(steamid) {
-			var playerLength = _this.players.length;
-			for (var i = 0; i < playerLength; i ++) {
-				if (_this.players[i].data.summary.steamid === steamid) {
-					_this.players.splice(i,1);
-					break;
-				}
-			}
-		};
-
-		this.getPlayerByObj = function(player) {
-			player.query = player.data.summary.steamid;
-			var index = _this.players.length;
-			_this.players.push(player);
-			notifyObservers();
-			kfApiCall(index, player, true)
-				.then(function(){
-					notifyObservers();
-				});
-		};
-
-		this.getPlayer = function(userinput, force) {
-			var exist = checkExist(userinput);
-			//create it if it doesn't exist
-			if (!exist) {
-				var player = {
-					"userinput":userinput,
-					"ajax":false
-				};
-				//parse the userinput, returns object with query
-				SteamService.parseInput(player);
-				var index = _this.players.length;
-				//i think this will work
-				_this.players.push(player);
-				//make call because it is new
-				kfApiCall(index, player, true)
-					.then(function(){
-						notifyObservers();
-					});
-			}
-			//no current ajax call and forced
-			else if(!exist.player.ajax && force) {
-				//this force is always true
-				kfApiCall(exist.index, exist.player, force)
-					.then(function(){
-						notifyObservers();
-					});
-			}
-
-		};
-
-		var kfApiCall = function(index, player, force, friends) {
+		var kfApiCall = function(player) {
 	        var deferred = $q.defer();
-	        //if player data exists or is not forced, otherwise make a new request
-	        if(typeof player.data !== undefined && !force) {
-	            deferred.resolve(player.data);
-	        } 
-	        else {
-	            _this.players[index].ajax = true;
-				var url = 'api/steam/1250/userstats/' + player.query;
-	            $http.get(url)
+	        //if we have steamid create that object
+	      	if (player.data && player.data.summary.steamid) {
+            	_this.players[player.data.summary.steamid].ajax = true;
+       			}
+       		//otherwise just use the generic ajax
+       		else {
+       			_this.ajax = true;
+       		}
+			var url = '/api/steam/1250/userstats/' + player.query;
+            $http.get(url)
 	            .success(function(response) {
-	                _this.players[index].ajax = false;
-	                response.summary = SteamService.fullUrls(response.summary);
-	                parseResult(index, response);
-	                deferred.resolve(_this.players[index]);
+	            	//api returns error key if something bad happened
+	            	if (!response.error) {
+		            	_this.players[response.summary.steamid] = {};
+		                _this.players[response.summary.steamid].ajax = false;
+		                if (player.data && !player.data.summary.steamid) {
+		                	_this.ajax = false;
+		                }
+		                response.summary = SteamService.fullUrls(response.summary);
+		                parseResult(response);
+		                deferred.resolve(_this.players[response.summary.steamid]);
+	            	}
 	            })
 	            .error(function(response) {
 	                console.log(response);
 	                deferred.reject(response);
 	            });
-	        }
+
 	        return deferred.promise;
 	    };
 
-	    var parseResult = function(index, data) {
-	    	_this.players[index].data = {};
-	    	_this.players[index].data.summary = data.summary;
-	    	_this.players[index].data.kfstats = data.kfstats;
+	    var parseResult = function(data) {
+	    	var steamid = data.summary.steamid;
+	    	_this.players[steamid].data = {};
+	    	_this.players[steamid].data.summary = data.summary;
+	    	_this.players[steamid].data.maps = data.maps;
+	    	_this.players[steamid].data.kfstats = data.kfstats;
 	    	if (typeof data.kfstats !== 'undefined') {
-	    		_this.players[index].data.perks = perkRank(data.kfstats);
+	    		_this.players[steamid].data.perks = perkRank(data.kfstats);
 	   		}
-	    	_this.players[index].data.maps = data.maps;
 	    };
 
 	    var perkRank = function(kfstats) {
@@ -211,7 +203,6 @@
 	    	return playerPerks;
 
 	    };
-
 	}
 
 })();

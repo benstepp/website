@@ -7,6 +7,8 @@
   @import "settings";
   @import "../../libs/foundation/scss/normalize.scss";
 
+  @import "bsPlayerCard.scss";
+
 // Behold, here are all the Foundation components.
   @import "../../libs/foundation/scss/foundation/components/grid";
   @import "../../libs/foundation/scss/foundation/components/alert-boxes";
@@ -29,31 +31,91 @@
   @import "../../libs/foundation/scss/foundation/components/offcanvas";
   @import "../../libs/foundation/scss/foundation/components/visibility";
 
-.top-bar {
-  border-bottom:2px solid $primary-color;
+.top-bar, .tab-bar {
+  -moz-box-shadow: 0 2px $primary-color;
+  -webkit-box-shadow: 0 2px $primary-color;
+  box-shadow: 0 2px $primary-color;
+}
+
+label {
+    margin-top: rem-calc(16px);
+    padding-left:rem-calc(12px);
+    color:#FFF;
+    margin-bottom:rem-calc(8px);
+}
+
+form input {
+  background: rgba(40, 40, 40, 0.8);
+  color:#FFFFFF;
+  border:none;
+  padding:8px;
+}
+
+form input:hover, form input:focus {
+  outline-offset:0px;
+  outline:1px solid #AAA;
 }
 
 form {
-  margin-top: rem-calc(16px);
-  padding:rem-calc(16px);
-  background-color: rgba(40,40,40,.2);
+  padding:rem-calc(12px);
+  background-color: rgba(20,20,20,0.8);
 }
 
 @media only screen and (min-width: 64.063em) {
-  form {
+  label {
     margin-top:rem-calc(160px);
   }
 }
 
-.main-section > div {
-  height:100%;
-  background-image:url("../img/kf1.jpg");
-  background-size:cover;
-  background-repeat:no-repeat;
-  background-position: center center;
-  background-attachment:fixed;
+.main-bg {
+    z-index:-1;
+    position:fixed;
+    width:200%;
+    height:200%;
+    left:-50%;
+    top:-1%;
+    background-color:#FFF;
+}
+
+.main-bg img {
+    display:block;
+    margin:auto;
+    min-width:50%;
+    min-height:50%;
+    top:0;
+    left:0;
+    right:0;
+    bottom:0;
 }
 
 .off-canvas-wrap, .inner-wrap, .main-section {
-  height:100%
+  min-height:100%
+}
+
+.button {
+  margin-top:rem-calc(12px);
+}
+
+.kf-hr {
+    height:2px;
+    background-color:$primary-color;
+}
+
+/* keeps main section from rubbing up against nav*/
+.main-section > div > div:first-child {
+  margin-top:40px;
+}
+
+#add-players {
+  background-color:rgba(20,20,20,0.8);;
+}
+
+.friend-chooser {
+  background:green;
+  margin-top:10px !important;
+}
+
+.main-section ul {
+  position:relative;
+  overflow:auto;
 }

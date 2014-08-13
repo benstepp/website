@@ -26,14 +26,21 @@
 					controller: 'KillingFloorController',
 					controllerAs: 'kf'
 				}
+			},
+			resolve: {
+				friends: 
 			}
 		});
 
-		$stateProvider.state('players', {
-			url:'/players',
+		var getPlayer = function() {
+
+		};
+
+		$stateProvider.state('addfriends', {
+			url:'/addfriends',
 			views: {
 				'main': {
-					templateUrl: 'partials/players.html',
+					templateUrl: 'partials/addfriends.html',
 					controller: 'KillingFloorController',
 					controllerAs: 'kf'
 				}

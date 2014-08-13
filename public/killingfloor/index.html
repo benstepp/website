@@ -11,7 +11,7 @@
 	<link rel="stylesheet" href="../libs/foundation-icon-fonts/foundation-icons.css">
 
 	<!-- build:css -->
-	<link rel="stylesheet" href="./scss/foundation.css">
+	<link rel="stylesheet" href="./scss/style.css">
 	<!-- endbuild -->
 
 	<link href='//fonts.googleapis.com/css?family=Roboto:400,300' rel='stylesheet' type='text/css'>
@@ -32,7 +32,6 @@
 	<script src="./js/PlayerCardDirective.js"></script>
 	<script src="./js/routes.js"></script>
 	<script src="./js/SteamService.js"></script>
-	<script src="./js/OffCanvasController.js"></script>
 	<script src="./js/app.js"></script>
 	<!-- endbuild -->
 </head>
@@ -40,26 +39,40 @@
 
 
 
-		<div class="off-canvas-wrap" data-ng-controller="OffCanvasController">
+		<div class="off-canvas-wrap">
 			<div class="inner-wrap">
+				<!--Desktop Nav-->
+				<div class="kf-hr show-for-large-up"></div>
 				<nav class="top-bar show-for-large-up">
+					<div class="row">
+					<div class="small-12 columns">
 					<ul class="title-area">
 						<li class="name">
-							<h1><a class="navbar-brand hidden-xs" href="#">website</a></h1>
+							<h1><a class="navbar-brand hidden-xs" href="/">website</a></h1>
 						</li>
 					</ul>
 					<section class="top-bar-section">
 						<ul class="left">
 							<li>
-								<a href="#">KF-MapProgress</a>
+								<a href="/killingfloor/#">KF-MapProgress</a>
 							</li>
 						</ul>
 						<ul class="right">
-							<li><a href="#/players">Players</a></li>
-							<li><a href="#/comparemaps">Compare Maps</a></li>
+							<li>
+								<a href="/killingfloor/#/players">
+									<i class="fi-torsos"></i>Players
+								</a>
+							</li>
+							<li>
+								<a href="/killingfloor/#/comparemaps">
+									<i class="fi-results"></i>Compare Maps
+								</a>
+							</li>
 						</ul>
 					</section>
+					</div></div>
 				</nav>
+				<!--Mobile Nav-->
 				<nav class="tab-bar hide-for-large-up">
 					<section class="middle tab-bar-section">
 						<h1><a class="title">KF-MapProgress</a></h1>
@@ -76,9 +89,14 @@
 						<li><a href="#/comparemaps">Compare Maps</a></li>
 					</ul>
 				</aside>
-
+				<!--Content-->
 				<section class="main-section">
+					<div class="main-bg">
+						<img src="//cdn.akamai.steamstatic.com/steam/apps/1250/ss_8832db701a895499e5a38f95c41787c925f22805.1920x1080.jpg" />
+					</div>
+
 					<div data-ui-view="main">
+
 					</div>
 					<footer class="row">
 						<div class="small-6 columns">
