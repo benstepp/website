@@ -37,6 +37,11 @@
   box-shadow: 0 2px $primary-color;
 }
 
+.top-bar-section ul.left li>a {
+  font-size:rem-calc(16px);
+  font-weight:700;
+}
+
 label {
     margin-top: rem-calc(16px);
     padding-left:rem-calc(12px);
@@ -115,11 +120,6 @@ form {
   overflow:auto;
 }
 
-/*forces footer up against the main ui-view*/
-.main-section div:nth-child(2) {
-  margin-bottom:-7px;
-}
-
 footer {
   font-size:12px;
   border-top:1px $primary-color solid;
@@ -136,4 +136,9 @@ footer i {
 
 footer div:nth-child(2) {
   text-align:right;
+}
+
+.main-view {
+  min-height:100%;
+  margin-bottom:-7px;
 }
