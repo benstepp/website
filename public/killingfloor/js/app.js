@@ -7,6 +7,7 @@
 		//KillingFloor
 		'routes', 
 		'KillingFloorService',
+		'kfFriendsCtrl',
 		'KillingFloorCtrl',
 		'bsPerks',
 		//Steam

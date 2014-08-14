@@ -1,10 +1,10 @@
 (function() {
 	angular
-		.module('KillingFloorCtrl',['KillingFloorService', 'SteamService'])
-		.controller('KillingFloorController', ['$scope', '$location', 'KillingFloorService', 'SteamService', KillingFloorCtrl]);
+		.module('KillingFloorCtrl',['KillingFloorService', 'SteamService', 'ui.router'])
+		.controller('KillingFloorController', ['$scope', '$state', 'KillingFloorService', 'SteamService', KillingFloorCtrl]);
 
-	function KillingFloorCtrl($scope, $location, KillingFloorService, SteamService) {
-		
+	function KillingFloorCtrl($scope, $state, KillingFloorService, SteamService) {
+		console.log($state);
 		var _this = this;
 
 		//object of players with data
@@ -21,7 +21,7 @@
 			'<code>STEAM_0:#:########</code>'
 			].join('');
 
-		this.kfSearch = function(input) {
+		/*this.kfSearch = function(input) {
 			$location.path('/addfriends');
 			if (typeof input === 'string' && input !== "" ) {
 				KillingFloorService.getPlayer(_this.input)
@@ -41,6 +41,14 @@
 						updatePlayers();
 					});
 			}
+		};*/
+
+		this.kfSearch = function(input) {
+			console.log(input);
+			$state.go('comparemaps', 
+				{
+					players: [input]
+				});
 		};
 
 		//Make ajax call to get json of the maps

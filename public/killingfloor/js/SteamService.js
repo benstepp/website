@@ -21,14 +21,17 @@
 
 		this.getFriends = function(input) {
 			var deferred = $q.defer();
-			//if input is specified
-			if (input) {
+			//if input is specified, from either url or userinput
+			if (typeof input !== 'object') {
 				var player = {
-					"userinput":userinput,
+					"userinput":input,
 					"ajax":false
 				};
 				this.parseInput(player);
-				friendApiCall(player);
+				friendApiCall(player)
+					.then(function(friends) {
+						deferred.resolve(_this.friends);
+					});
 			}
 			else {
 				//loop through keys of friends object to see if there are friends
