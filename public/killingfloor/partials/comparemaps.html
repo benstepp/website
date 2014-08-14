@@ -18,17 +18,17 @@
 				<th>
 					{{key}}
 				</th>
-				<td data-ng-repeat-start="player in kf.players" data-ng-show="player.data.kfstats" ng-class-odd="'alternate'">
-					<span class="glyphicon glyphicon-stop" data-ng-show="player.data.maps[$parent.map[0]]"></span>
+				<td data-ng-repeat-start="player in comparemaps.players" data-ng-show="player.data.kfstats" ng-class-odd="'alternate'">
+					<i class="fi-stop" data-ng-show="player.data.maps[$parent.map[0]]"></i>
 				</td>
 				<td data-ng-show="player.data.maps" ng-class-odd="'alternate'">
-					<span class="glyphicon glyphicon-stop" data-ng-show="player.data.maps[$parent.map[1]]"></span>
+					<i class="fi-stop" data-ng-show="player.data.maps[$parent.map[1]]"></i>
 				</td>
 				<td data-ng-show="player.data.maps" ng-class-odd="'alternate'">
-					<span class="glyphicon glyphicon-stop" data-ng-show="player.data.maps[$parent.map[2]]"></span>
+					<i class="fi-stop" data-ng-show="player.data.maps[$parent.map[2]]"></i>
 				</td>
 				<td data-ng-repeat-end="" data-ng-show="player.data.maps" ng-class-odd="'alternate'">
-					<span class="glyphicon glyphicon-stop" data-ng-show="player.data.maps[$parent.map[3]]"></span>
+					<i class="fi-stop" data-ng-show="player.data.maps[$parent.map[3]]"></i>
 				</td>
 			</tr>
 		</tbody>
@@ -36,7 +36,7 @@
 		<tfoot>
 			<tr>
 				<th></th>
-				<td data-ng-repeat-start="player in kf.players" data-ng-show="player.data.kfstats" ng-class-odd="'alternate'">
+				<td data-ng-repeat-start="player in comparemaps.players" data-ng-show="player.data.kfstats" ng-class-odd="'alternate'">
 					<img src="img/normal.png" />
 				</td>
 				<td data-ng-show="player.data.kfstats" ng-class-odd="'alternate'">

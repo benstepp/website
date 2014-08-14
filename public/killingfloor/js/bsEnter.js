@@ -1,14 +1,14 @@
 (function() {
     angular
-        .module('ngEnter', [])
-        .directive('ngEnter', ngEnter);
+        .module('bsEnter', [])
+        .directive('bsEnter', bsEnter);
 
-        function ngEnter(){
+        function bsEnter(){
             return function (scope, element, attrs) {
                 element.bind("keydown keypress", function (event) {
                     if(event.which === 13) {
                         scope.$apply(function (){
-                            scope.$eval(attrs.ngEnter);
+                            scope.$eval(attrs.bsEnter);
                         });
          
                         event.preventDefault();

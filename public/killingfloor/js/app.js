@@ -3,17 +3,17 @@
 		//Vendor Dependencies
 		'ui.router', 
 		'mm.foundation',
-		'ngEnter',
-		//KillingFloor
+		//Custom
+		'bsEnter',
+		//Steam
+		'SteamService',
+		'bsPlayerCard',
+		//KillingFloorSpecific
 		'routes', 
 		'KillingFloorService',
 		'kfFriendsCtrl',
 		'kfInputCtrl',
 		'kfCompareCtrl',
-		'KillingFloorCtrl',
-		'bsPerks',
-		//Steam
-		'SteamService',
-		'bsPlayerCard'
+		'bsPerks'
 		]);
 })();

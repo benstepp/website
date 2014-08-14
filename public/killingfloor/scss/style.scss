@@ -8,6 +8,7 @@
   @import "../../libs/foundation/scss/normalize.scss";
 
   @import "bsPlayerCard.scss";
+  @import "kfMapsTable.scss";
 
 // Behold, here are all the Foundation components.
   @import "../../libs/foundation/scss/foundation/components/grid";
@@ -22,7 +23,6 @@
   @import "../../libs/foundation/scss/foundation/components/inline-lists";
   @import "../../libs/foundation/scss/foundation/components/labels";
   @import "../../libs/foundation/scss/foundation/components/panels";
-  @import "../../libs/foundation/scss/foundation/components/tables";
   @import "../../libs/foundation/scss/foundation/components/tabs";
   @import "../../libs/foundation/scss/foundation/components/thumbs";
   @import "../../libs/foundation/scss/foundation/components/tooltips";
@@ -101,11 +101,6 @@ form {
     background-color:$primary-color;
 }
 
-/* keeps main section from rubbing up against nav*/
-.main-section > div > div:first-child {
-  margin-top:40px;
-}
-
 #add-players {
   background-color:rgba(20,20,20,0.8);;
 }
@@ -118,4 +113,27 @@ form {
 .main-section ul {
   position:relative;
   overflow:auto;
+}
+
+/*forces footer up against the main ui-view*/
+.main-section div:nth-child(2) {
+  margin-bottom:-7px;
+}
+
+footer {
+  font-size:12px;
+  border-top:1px $primary-color solid;
+  background-color:#FFF;
+}
+
+footer i {
+  font-size:18px;
+}
+
+.footer-right a {
+  padding:0px 4px 0px 4px;
+}
+
+footer div:nth-child(2) {
+  text-align:right;
 }

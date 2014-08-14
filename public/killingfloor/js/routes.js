@@ -46,7 +46,8 @@
 		});
 
 		/*
-		The Stat comparison state, expects a comma delimited string of steamids
+		The Stat comparison state, expects a comma delimited string of steamids.
+		Resolves KF player stats
 		*/
 		$stateProvider.state('comparestats', {
 			url:'/comparestats/:players',
@@ -60,6 +61,7 @@
 
 		/*
 		Add Friends State, takes a steamid or customURL as the parameter.
+		Resolves an array of friends
 		*/
 		$stateProvider.state('addfriends', {
 			url:'/addfriends/:player',
