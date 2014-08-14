@@ -5,6 +5,7 @@
 		'mm.foundation',
 		//Custom
 		'bsEnter',
+		'headerCtrl',
 		//Steam
 		'SteamService',
 		'bsPlayerCard',

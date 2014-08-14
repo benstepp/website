@@ -50,23 +50,29 @@
 
 			var deferred = $q.defer();
 
-			//Array of promises for each player AJAX call. 
-			//this is resolved when all are complete using $q.all()
-			var promises = [];
+			//Immediately reject promise if the query is blank.
+			if (query === "") {
+				deferred.reject();
+			}
+			else {
+				//Array of promises for each player AJAX call. 
+				//this is resolved when all are complete using $q.all()
+				var promises = [];
 
-			//Array of comma delimited players as queried from URL
-			var players = query.split(',');
+				//Array of comma delimited players as queried from URL
+				var players = query.split(',');
 
-			//make AJAX call and push each promise to the array
-			angular.forEach(players, function(player) {
-				promises.push(getPlayer(player));
-			});
-
-			//resolve only when all players are resolved.
-			$q.all(promises)
-				.then(function(players) {
-					deferred.resolve(players);
+				//make AJAX call and push each promise to the array
+				angular.forEach(players, function(player) {
+					promises.push(getPlayer(player));
 				});
+
+				//resolve only when all players are resolved.
+				$q.all(promises)
+					.then(function(players) {
+						deferred.resolve(players);
+					});
+			}
 			
 			return deferred.promise;
 

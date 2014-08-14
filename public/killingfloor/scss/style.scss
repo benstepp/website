@@ -30,7 +30,9 @@
   @import "../../libs/foundation/scss/foundation/components/type";
   @import "../../libs/foundation/scss/foundation/components/offcanvas";
   @import "../../libs/foundation/scss/foundation/components/visibility";
-
+.top-bar-section ul li>a:active {
+  background-color:green;
+}
 .top-bar, .tab-bar {
   -moz-box-shadow: 0 2px $primary-color;
   -webkit-box-shadow: 0 2px $primary-color;
@@ -41,6 +43,8 @@
   font-size:rem-calc(16px);
   font-weight:700;
 }
+
+
 
 label {
     margin-top: rem-calc(16px);

@@ -21,8 +21,14 @@
 
 		this.getFriends = function(input) {
 			var deferred = $q.defer();
+
+			//Immediately reject promise if the query is blank.
+			if (input === "") {
+				deferred.reject();
+			}
+
 			//if input is specified, from either url or userinput
-			if (typeof input !== 'object') {
+			else if (typeof input !== 'object') {
 				var player = {
 					"userinput":input,
 					"ajax":false
@@ -33,21 +39,7 @@
 						deferred.resolve(_this.friends);
 					});
 			}
-			else {
-				//loop through keys of friends object to see if there are friends
-				var keys = [];
-				angular.forEach(_this.friends, function(val,key) {
-					keys.push(key);
-				});
-				if (keys.length > 0) {
-					deferred.resolve(_this.friends);
-				}
-				else {
 
-				}
-
-			}
-			
 			return deferred.promise;
 		};
 
