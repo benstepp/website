@@ -8,6 +8,8 @@
 		'routes', 
 		'KillingFloorService',
 		'kfFriendsCtrl',
+		'kfInputCtrl',
+		'kfCompareCtrl',
 		'KillingFloorCtrl',
 		'bsPerks',
 		//Steam

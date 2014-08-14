@@ -7,57 +7,59 @@
 
 		$urlRouterProvider.otherwise('/');
 
+		/*
+		The input state
+		*/
 		$stateProvider.state('/', {
 			url:'/',
 			views: {
 				"main": { 
 					templateUrl:'partials/input.html',
-					controller:'KillingFloorController',
-					controllerAs:'kf'
+					controller:'kfInputController',
+					controllerAs:'input'
 				}
 			}
 		}); 
 
+		/*
+		The Map comparison state, expects a comma delimited string of steamids.
+		Resolves the map json file and player stats for every player.
+		*/
 		$stateProvider.state('comparemaps', {
 			url:'/comparemaps/:players',
 			views: {
 				'main': {
 					templateUrl: 'partials/comparemaps.html',
-					controller: 'KillingFloorController',
-					controllerAs: 'kf'
+					controller: 'kfCompareController',
+					controllerAs: 'comparemaps'
 				}
 			},
 			resolve: {
-				'players': function() {
-					console.log($stateParams);
-					var players = $stateParams.players;
-					var deferred = $q.defer();
-					var playersLength = players.length;
+				KillingFloorService: 'KillingFloorService',
+				kfMaps: ['KillingFloorService', function(KillingFloorService) {
+					return KillingFloorService.getMaps();
+				}],
+				players: ['KillingFloorService', '$stateParams', function(KillingFloorService, $stateParams) {
+					return KillingFloorService.getPlayers($stateParams.players);
+				}]
+			}
+		});
 
-					var newPlayers = [];
-					for (var i = 0; i < playersLength; i ++) {
-						KillingFloorService.getPlayer(players[i])
-							.then(playerCallback(player));
-					}
-					return deferred.promise;
+		/*
+		The Stat comparison state, expects a comma delimited string of steamids
+		*/
+		$stateProvider.state('comparestats', {
+			url:'/comparestats/:players',
+			views: {
+				'main': {
+					templateUrl: 'partials/comparestats.html',
+					controller: 'kfCompareController',
 				}
 			}
 		});
 
-
-		var playerCallback = function(player) {
-			return function() {
-				newPlayers.push(player);
-				//if all ajax calls are done, resolve promise
-				if (newPlayers.length === playersLength) {
-					deferred.resolve(newPlayers);
-				}
-			};
-		};
-
 		/*
 		Add Friends State, takes a steamid or customURL as the parameter.
-
 		*/
 		$stateProvider.state('addfriends', {
 			url:'/addfriends/:player',

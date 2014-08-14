@@ -48,8 +48,6 @@
 
 			}
 			
-			
-
 			return deferred.promise;
 		};
 

@@ -23,17 +23,6 @@
 		}
 		*/
 
-		var observerCallbacks = [];
-		this.registerObserverCallback = function(callback) {
-			observerCallbacks.push(callback);
-		};
-
-		var notifyObservers = function() {
-			angular.forEach(observerCallbacks, function(callback) {
-				callback();
-			});
-		};
-
 		//get kf map json file
 		this.getMaps = function() {
 			var deferred = $q.defer();
@@ -46,19 +35,50 @@
 	            $http.get(url)
 	            .success(function(response) {
 	            	_this.kfMaps = response;
-	            	deferred.resolve(response);
+	            	deferred.resolve(_this.kfMaps);
 	            })
 	            .error(function(response) {
-	                console.log(response);
 	                deferred.reject(response);
 	            });
 	        }
 	        return deferred.promise;			
 		};
 
-		this.getPlayer = function(query) {
-			var player = createPlayer(query);
+		//Called from Routes
+		//Parses then makes ajax calls for each player
+		this.getPlayers = function(query) {
+
 			var deferred = $q.defer();
+
+			//Array of promises for each player AJAX call. 
+			//this is resolved when all are complete using $q.all()
+			var promises = [];
+
+			//Array of comma delimited players as queried from URL
+			var players = query.split(',');
+
+			//make AJAX call and push each promise to the array
+			angular.forEach(players, function(player) {
+				promises.push(getPlayer(player));
+			});
+
+			//resolve only when all players are resolved.
+			$q.all(promises)
+				.then(function(players) {
+					deferred.resolve(players);
+				});
+			
+			return deferred.promise;
+
+		};
+
+
+		var getPlayer = function(query) {
+
+			var deferred = $q.defer();
+
+			var player = createPlayer(query);
+			
 			//this means either the api has been called or it exists
 			if (checkExist(player)) {
 				deferred.resolve(_this.players[player.data.summary.steamid]);
@@ -69,6 +89,7 @@
 						deferred.resolve(player);
 					});
 			}
+			
 			return deferred.promise;
 		};
 

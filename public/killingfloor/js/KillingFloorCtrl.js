@@ -97,7 +97,6 @@
 
 		var init = function() {
 			updatePlayers();
-			console.log(_this.playersArray);
 			getMaps();
 			KillingFloorService.registerObserverCallback(updatePlayers);
 		};

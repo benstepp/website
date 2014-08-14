@@ -1,5 +1,5 @@
 <!--Table of map achievements-->
-<div class="row" id="kf-table" data-ng-show="kf.viewTable">
+<div class="row" id="kf-table">
 	<div class="col-sm-12">
 	<div class="table-container">
 	<table class="kf-table">
@@ -7,14 +7,14 @@
 		<thead>
 			<tr>
 				<th></th>
-				<td data-ng-repeat="player in kf.players" data-ng-show="player.data.kfstats" colspan="4" ng-class-odd="'alternate'">
+				<td data-ng-repeat="player in comparemaps.players" data-ng-show="player.data.kfstats" colspan="4" ng-class-odd="'alternate'">
 					<a data-ng-href="{{player.data.summary.profileUrl}}"><img data-ng-src="{{player.data.summary.avatar}}" /></a>
 				</td>
 			</tr>
 		</thead>
 
 		<tbody>
-			<tr data-ng-repeat="(key,map) in kf.kfMaps">
+			<tr data-ng-repeat="(key,map) in comparemaps.kfMaps">
 				<th>
 					{{key}}
 				</th>
