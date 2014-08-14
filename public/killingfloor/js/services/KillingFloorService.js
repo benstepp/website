@@ -54,6 +54,7 @@
 			if (query === "") {
 				deferred.reject();
 			}
+
 			else {
 				//Array of promises for each player AJAX call. 
 				//this is resolved when all are complete using $q.all()
@@ -86,8 +87,9 @@
 			var player = createPlayer(query);
 			
 			//this means either the api has been called or it exists
-			if (checkExist(player)) {
-				deferred.resolve(_this.players[player.data.summary.steamid]);
+			var exists = checkExist(player);
+			if (exists) {
+				deferred.resolve(exists);
 			}
 			else {
 				kfApiCall(player)
@@ -117,17 +119,31 @@
 		};
 
 		var checkExist = function(player) {
+
+			//false until proven true
+			var exists = false;
+
 			//if the player has a steamid64 and it is 17 digits long.
 			if (player.data && 
 				typeof player.data.summary.steamid === 'string' && 
 				player.data.summary.steamid.length === 17) {
 				//if the player object has this key
 				if (this.players.hasOwnProperty(player.data.summary.steamid)) {
-					return true;
+					exists = player;
 				}
 			}
-			//else the player does not exist
-			return false;
+			//check if the userinput exists in the list of players
+			else {
+				var toCheck = player.userinput;
+				var playersLength = _this.players.length;
+				angular.forEach(_this.players, function(val,key) {
+					if (toCheck === _this.players[key].userinput) {
+						exists = _this.players[key];
+					}
+				});
+			}
+			return exists;
+			
 		};
 
 		var kfApiCall = function(player) {
@@ -145,7 +161,7 @@
 	            .success(function(response) {
 	            	//api returns error key if something bad happened
 	            	if (!response.error) {
-		            	_this.players[response.summary.steamid] = {};
+		            	_this.players[response.summary.steamid] = player;
 		                _this.players[response.summary.steamid].ajax = false;
 		                if (player.data && !player.data.summary.steamid) {
 		                	_this.ajax = false;

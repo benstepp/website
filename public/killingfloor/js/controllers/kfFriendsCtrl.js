@@ -13,5 +13,7 @@
 			$scope.friends.push(val);
 		});
 
+		
+
 	}
 })();

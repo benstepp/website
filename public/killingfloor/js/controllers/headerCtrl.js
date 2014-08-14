@@ -1,9 +1,9 @@
 (function() {
 	angular
 		.module('headerCtrl',['ui.router'])
-		.controller('headerController', ['$scope', '$rootScope', headerController]);
+		.controller('headerController', ['$scope', '$rootScope', '$location',headerController]);
 
-	function headerController($scope, $rootScope) {
+	function headerController($scope, $rootScope, $location) {
 
 		var _this = this;
 
