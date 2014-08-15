@@ -4,7 +4,7 @@
 	<meta charset="UTF-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="Track Killing Floor Map Progression with others using the Steam Web APIs">
+    <meta name="description" content="Track Killing Floor Map and Stats Progression with others using the Steam Web APIs">
 	<title>KF-Progress</title>
 
 	<!-- CSS -->
@@ -58,7 +58,7 @@
 								<a href="/killingfloor/#">KF-Progress</a>
 							</li>
 						</ul>
-						<ul class="right">
+						<ul class="right" data-ng-show="header.state.name !== '/'">
 							<li>
 								<a data-ng-href="#/addfriends/{{header.player}}">
 									<i class="fi-torsos"></i>Add Friends

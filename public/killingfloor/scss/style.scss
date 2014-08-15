@@ -168,3 +168,7 @@ input.inline:focus {
 .back-link {
   margin-left:rem-calc(2px);
 }
+
+.top-bar-section ul li>a:hover {
+  box-shadow: inset 0 -3px 0 0 $primary-color;
+}

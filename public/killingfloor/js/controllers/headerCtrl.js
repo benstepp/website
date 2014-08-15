@@ -12,6 +12,7 @@
 			function(event, toState, toParams, fromState, fromParams) {
 				_this.params = toParams;
 				_this.fromState = fromState;
+				_this.state = toState;
 
 				//if there is a player object, the first player is the main player
 				//bind this so the addfriend link works

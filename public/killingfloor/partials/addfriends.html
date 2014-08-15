@@ -6,8 +6,7 @@
 				<div class="small-12 columns">
 					<p>Select some friends to compare. You can <input class="inline" type="text" placeholder="filter your friends" data-ng-model="addfriends.filter" />, and even <input class="inline" type="text" placeholder="manually add a player" data-ng-model="addfriends.add" data-bs-enter="addfriends.manualAdd()" />. You can't add players with private profiles. When you're done, go back to the 
 					<a class="back-link" data-ng-href="#/{{header.getFromState()}}/{{header.params.players}}">
-						<i data-ng-class="{'fi-map':header.getFromState() === 'comparemaps', 
-						'fi-results':header.getFromState() === 'comparestats'}"></i>
+						<i data-ng-class="{'fi-map':header.getFromState() === 'comparemaps', 'fi-results':header.getFromState() === 'comparestats'}"></i>
 					{{header.getFromState().slice(7)}} comparison
 					</a>.
 					</p>
