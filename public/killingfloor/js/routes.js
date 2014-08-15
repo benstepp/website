@@ -64,17 +64,22 @@
 		Resolves an array of friends
 		*/
 		$stateProvider.state('addfriends', {
-			url:'/addfriends/:player',
+			url:'/addfriends/:players',
 			views: {
 				'main': {
 					templateUrl: 'partials/addfriends.html',
-					controller: 'kfFriendsController'
+					controller: 'kfFriendsController',
+					controllerAs: 'addfriends'
 				}
 			},
 			resolve: {
 				SteamService: 'SteamService',
 				friends: ['SteamService','$stateParams', function(SteamService, $stateParams) {
-					return SteamService.getFriends($stateParams.player);
+					return SteamService.getFriends($stateParams.players);
+				}],
+				KillingFloorService: 'KillingFloorService',
+				players: ['KillingFloorService', function(KillingFloorService) {
+					return KillingFloorService.players;
 				}]
 			}
 		});

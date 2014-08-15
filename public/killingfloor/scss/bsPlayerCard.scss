@@ -1,8 +1,8 @@
 .player-card {
 	height:46px;
-	background-color: rgba(40, 40, 40, 0.8);
+	background-color: #333;
 	padding:4px;
-	border:2px solid #111111;
+	border:2px solid #111;
 	position:relative;
 }
 .player-avatar {
@@ -24,8 +24,10 @@
 
 .player-card-subtext {
 	display:inline-block;
-	font-size:11px;
-	top: -4px;
+	color:#CCC;
+	font-size:rem-calc(11px);
+	top: -16px;
+	left:34px;
 	position:relative;
 	float:left;
 	padding:0px 4px;
@@ -65,3 +67,15 @@
 	top:-46px;
 }
 
+.added {
+	border:2px solid #239649;
+}
+
+a.player-card-subtext:hover {
+	color:#FFF;
+}
+
+.subtextadded {
+	color: #239649 !important;
+	cursor: default !important;
+}

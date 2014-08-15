@@ -11,6 +11,7 @@
 		$rootScope.$on('$stateChangeSuccess', 
 			function(event, toState, toParams, fromState, fromParams) {
 				_this.params = toParams;
+				_this.fromState = fromState;
 
 				//if there is a player object, the first player is the main player
 				//bind this so the addfriend link works
@@ -19,13 +20,21 @@
 				}
 
 				//if the toState is addfriends we need to save the fromParams
-				if (toState.name === 'addfriends') {
+				if (toState.name === 'addfriends' && fromState.name !== '') {
 					_this.params = fromParams;
 				}
 
 			});
 
-
+		//if the from state is empty, default to comparemaps
+		_this.getFromState = function() {
+			if (_this.fromState.name === '') {
+				return 'comparemaps';
+			}
+			else{
+				return _this.fromState.name;
+			}
+		};
 
 	}
 	

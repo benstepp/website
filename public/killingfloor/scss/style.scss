@@ -30,6 +30,7 @@
   @import "../../libs/foundation/scss/foundation/components/type";
   @import "../../libs/foundation/scss/foundation/components/offcanvas";
   @import "../../libs/foundation/scss/foundation/components/visibility";
+  
 .top-bar-section ul li>a:active {
   background-color:green;
 }
@@ -110,13 +111,10 @@ form {
     background-color:$primary-color;
 }
 
-#add-players {
-  background-color:rgba(20,20,20,0.8);;
-}
-
 .friend-chooser {
-  background:green;
-  margin-top:10px !important;
+  background:#FFF;
+  padding-top:10px;
+  margin-top:2px;
 }
 
 .main-section ul {
@@ -144,5 +142,29 @@ footer div:nth-child(2) {
 
 .main-view {
   min-height:100%;
-  margin-bottom:-7px;
+}
+
+input.inline {
+  background:none;
+  box-shadow:none;
+  border:none;
+  border-bottom:2px $primary-color solid;
+  display:inline-block;
+  width:auto;
+  padding:.5rem 2rem 0rem 2rem;
+}
+
+/*bugs in chrome ff and ie*/
+input.inline:first-child {
+  padding-right:0rem;
+}
+
+input.inline:focus {
+  background:none;
+  box-shadow:none;
+  border-bottom-color: scale-color($primary-color, $lightness: -2%);
+}
+
+.back-link {
+  margin-left:rem-calc(2px);
 }

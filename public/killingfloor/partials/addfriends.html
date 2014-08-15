@@ -1,28 +1,40 @@
-<div class="friend-chooser">
-	<div class="row">
-		<div class="small-12 columns">
-			Select some friends to add.
-		</div>
-	</div>
-	<div class="row">
-		<div class="small-12 medium-6 large-6 columns">
-			<input type="text" placeholder="Filter Friends" data-ng-model="filter" />
-		</div>
-		<div class="small-12 medium-6 large-6 columns">
-			Manually Add Player
-		</div>
-	</div>
-	<div class="row">
-		<div class="small-12 columns">
-			<ul class="small-block-grid-1 medium-block-grid-3 large-block-grid-4">
-				<li data-ng-repeat="player in friends | orderBy:'player.data.summary.personaName' | filter:filter">
-					<div data-bs-player-card="player">
-						<!--private-->
-						<span data-ng-show="player.data.summary.communityVisibilityState === 1" class="player-card-subtext player-card-private">This profile is private</span>
-										
-					</div>
-				</li>
-			</ul>
-		</div>
+
+<div class="row">
+		<div class="small-12 columns friend-chooser">
+
+			<div class="row">
+				<div class="small-12 columns">
+					<p>Select some friends to compare. You can <input class="inline" type="text" placeholder="filter your friends" data-ng-model="addfriends.filter" />, and even <input class="inline" type="text" placeholder="manually add a player" data-ng-model="addfriends.add" data-bs-enter="addfriends.manualAdd()" />. You can't add players with private profiles. When you're done, go back to the 
+					<a class="back-link" data-ng-href="#/{{header.getFromState()}}/{{header.params.players}}">
+						<i data-ng-class="{'fi-map':header.getFromState() === 'comparemaps', 
+						'fi-results':header.getFromState() === 'comparestats'}"></i>
+					{{header.getFromState().slice(7)}} comparison
+					</a>.
+					</p>
+				</div>
+			</div>
+			<div class="row">
+				<div class="small-12 columns">
+					<ul class="small-block-grid-1 medium-block-grid-3 large-block-grid-4">
+						<li data-ng-repeat="player in addfriends.friends | orderBy:'data.summary.personaName' | filter:addfriends.filter">
+							<div data-bs-player-card="player" data-ng-class="{added:player.data.kfstats,added:player.added}">
+								<!--private-->
+								<span data-ng-show="player.data.summary.communityVisibilityState === 1" class="player-card-subtext player-card-private">This profile is private</span>
+								
+								<!--add-->
+								<a data-ng-show="player.data.summary.communityVisibilityState !== 1" class="player-card-subtext" data-ng-click="addfriends.addFriend(this.player)" data-ng-class="{subtextadded:player.added}">
+									Add<span data-ng-show="player.added">ed</span>
+								</a>
+
+								<!--remove-->
+								<a data-ng-show="player.added" class="player-card-subtext" data-ng-click="addfriends.removeFriend(this.player)">
+									Remove
+								</a>
+							</div>
+						</li>
+					</ul>
+				</div>
+			</div>
+	
 	</div>
 </div>
