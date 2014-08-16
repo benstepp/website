@@ -1,3 +1,4 @@
+*.css
 dev
 logs
 *.log
@@ -23,3 +24,4 @@ $RECYCLE.BIN/
 *.msp
 .gitattributes
 build
+templates.js

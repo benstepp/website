@@ -1,0 +1,120 @@
+<!doctype html>
+<html lang="en" data-ng-app="app">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Track Killing Floor Map and Stats Progression with others using the Steam Web APIs">
+	<title>KF-Progress</title>
+
+	<!-- build:css -->
+	<link rel="stylesheet" href="../libs/foundation-icon-fonts/foundation-icons.css">
+	<link rel="stylesheet" href="./scss/style.css">
+	<!-- endbuild -->
+
+	<!-- external resources-->
+	<link href='//fonts.googleapis.com/css?family=Roboto:400,300' rel='stylesheet' type='text/css'>
+	<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.20/angular.js"></script>
+
+</head>
+<body data-ng-controller="headerController as header">
+		<div class="off-canvas-wrap">
+			<div class="inner-wrap">
+				<!--Desktop Nav-->
+				<div class="kf-hr show-for-large-up"></div>
+				<nav class="top-bar show-for-large-up">
+					<div class="row">
+					<div class="small-12 columns">
+					<ul class="title-area">
+						<li class="name">
+							<h1><a class="navbar-brand hidden-xs" href="/">website</a></h1>
+						</li>
+					</ul>
+					<section class="top-bar-section">
+						<ul class="left">
+							<li>
+								<a href="/killingfloor/#">KF-Progress</a>
+							</li>
+						</ul>
+						<ul class="right" data-ng-show="header.state.name !== '/'">
+							<li>
+								<a data-ng-href="#/addfriends/{{header.player}}">
+									<i class="fi-torsos"></i>Add Friends
+								</a>
+							</li>
+							<li>
+								<a data-ng-href="#/comparemaps/{{header.params.players}}">
+									<i class="fi-map"></i>Compare Maps
+								</a>
+							</li>
+						</ul>
+					</section>
+					</div></div>
+				</nav>
+				<!--Mobile Nav-->
+				<nav class="tab-bar hide-for-large-up">
+					<section class="middle tab-bar-section">
+						<h1><a class="title">KF-Progress</a></h1>
+					</section>
+					<section class="right-small">
+						<a class="right-off-canvas-toggle menu-icon" href=""><span></span></a>
+					</section>
+				</nav>
+				<aside class="right-off-canvas-menu">
+					<ul class="off-canvas-list">
+						<li><label>website</label></li>
+						<li><label>KF-MapProgress</label></li>
+						<li><a data-ng-href="#/addfriends/{{header.player}}">Add Friends</a></li>
+						<li><a data-ng-href="#/comparemaps/{{header.params.players}}">Compare Maps</a></li>
+					</ul>
+				</aside>
+				<!--Content-->
+				<section class="main-section">
+					<div class="main-bg">
+						<img src="//cdn.akamai.steamstatic.com/steam/apps/1250/ss_8832db701a895499e5a38f95c41787c925f22805.1920x1080.jpg" />
+					</div>
+
+					<div class="main-view" data-ui-view="main">
+
+					</div>
+					<footer>
+						<div class="row">
+							<div class="small-6 columns">
+								<span class="">Powered By <a class="text-muted" href="//www.steampowered.com/">Steam</a></span>
+							</div>
+							<div class="small-6 columns footer-right">
+								<a href="//twitter.com/benstepp">
+									<i class="fi-social-twitter"></i>
+								</a>
+								<a href="//github.com/benstepp">
+									<i class="fi-social-github"></i>
+								</a>	
+							</div>
+						</div>
+					</footer>
+				</section>
+
+				<a class="exit-off-canvas"></a>
+
+			</div>
+		</div>
+		
+		<!-- build:js -->
+		<script src="../libs/angular-ui-router/release/angular-ui-router.js"></script>
+		<script src="../libs/angular-foundation/mm-foundation.js"></script>
+		<script src="./js/directives/BsPerksDirective.js"></script>
+		<script src="./js/controllers/KillingFloorCtrl.js"></script>
+		<script src="./js/services/KillingFloorService.js"></script>
+		<script src="./js/directives/bsEnter.js"></script>
+		<script src="./js/directives/PlayerCardDirective.js"></script>
+		<script src="./js/controllers/kfFriendsCtrl.js"></script>
+		<script src="./js/controllers/kfCompareCtrl.js"></script>
+		<script src="./js/controllers/kfInputCtrl.js"></script>
+		<script src="./js/controllers/headerCtrl.js"></script>
+		<script src="./js/services/SteamService.js"></script>
+		<script src="./js/routes.js"></script>
+		<script src="./js/app.js"></script>
+		<!-- endbuild -->
+
+</body>
+</html>

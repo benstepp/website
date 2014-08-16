@@ -6,7 +6,7 @@
 	function SteamService($http, $q) {
 
 		var _this = this;
-		this.friends = [];
+		this.friends = {};
 
 		var observerCallbacks = [];
 		this.registerObserverCallback = function(callback) {
@@ -19,14 +19,33 @@
 			});
 		};
 
-		this.getFriends = function(userinput) {
-			var player = {
-					"userinput":userinput,
+		this.getFriends = function(input) {
+			var deferred = $q.defer();
+
+			//Immediately reject promise if the query is blank.
+			if (input === "") {
+				deferred.reject();
+			}
+
+			//if input is specified, from either url or userinput
+			else if (typeof input !== 'object') {
+				var player = {
+					"userinput":input,
 					"ajax":false
 				};
-			this.parseInput(player);
+				this.parseInput(player);
+				friendApiCall(player)
+					.then(function(friends) {
+						deferred.resolve(_this.friends);
+					});
+			}
+
+			return deferred.promise;
+		};
+
+		var friendApiCall = function(player) {
 			var deferred = $q.defer();
-	        var url = 'api/steam/friends/'+ player.query;
+	        var url = '/api/steam/friends/'+ player.query;
 	        $http.get(url)
 	            .success(function(response) {
 	            	var friends = response.friends;
@@ -40,14 +59,22 @@
 	            			}
 	            		};
 	            	}
-	            	_this.friends = friends;
-	            	deferred.resolve(friends);
+	            	saveFriends(friends);
+	            	deferred.resolve(_this.friends);
 	            })
 	            .error(function(response) {
 	                console.log(response);
 	                deferred.reject(response);
 	            });
 	        return deferred.promise;		
+		};
+
+		var saveFriends = function(friends) {
+			var length = friends.length;
+			for (var i = 0; i < length; i++) {
+				var friend = friends[i];
+				_this.friends[friends[i].data.summary.steamid] = friend;
+			}
 		};
 
 		this.parseInput = function(player) {

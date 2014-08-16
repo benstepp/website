@@ -7,6 +7,9 @@
 		"angular-ui-router":"~0.2.10",
 		"angular-socket-io":"~0.6.0",
 		"angular-bootstrap":"~0.11.0",
-		"socket.io-client": "~1.0.6"
+		"socket.io-client": "~1.0.6",
+		"foundation":"~5.3.3",
+		"foundation-icon-fonts":"latest",
+		"angular-foundation":"~0.3.0"
 	}	
 }

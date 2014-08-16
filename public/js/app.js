@@ -19,6 +19,8 @@
 		'bsPerks',
 		//Steam
 		'SteamService',
-		'bsPlayerCard'
+		'bsPlayerCard',
+
+		'templates'
 		]);
 })();
