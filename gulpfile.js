@@ -1,7 +1,8 @@
 //modules
 var gulp = require('gulp'),
-	lazypipe = require('lazypipe'),
+	gulpif = require('gulp-if'),
 	rimraf = require('gulp-rimraf'),
+	lazypipe = require('lazypipe'),
 	minifyCss = require('gulp-minify-css'),
 	concat = require('gulp-concat'),
 	jshint = require('gulp-jshint'),
@@ -14,99 +15,162 @@ var gulp = require('gulp'),
 	uncss = require('gulp-uncss'),
 	templateCache = require('gulp-angular-templatecache'),
 	merge = require('merge-stream'),
-	ngannotate = require('gulp-ng-annotate');
+	ngannotate = require('gulp-ng-annotate'),
+	header = require('gulp-header'),
+	footer = require('gulp-footer');
 
 //config
 var config = {
 	killingfloor: {
+		base:'public/killingfloor',
+		outdir:'build/killingfloor',
+
 		js:['public/killingfloor/js/**/*.js', 
 		'public/libs/angular-foundation/mm-foundation.min.js', 
 		'public/libs/angular-ui-router/release/angular-ui-router.min.js'],
 
 		css:['public/killingfloor/scss/style.scss',
 		'public/libs/foundation-icon-fonts/foundation-icons.css'],
-
 		uncss:['public/killingfloor/index.html', 
-		'public/killingfloor/partials/*.html'],
+		'public/killingfloor/partials/addfriends.html',
+		'public/killingfloor/partials/comparemaps.html',
+		'public/killingfloor/partials/input.html'],
 
 		partials:['public/killingfloor/partials/*.html'],
+		//partialsOutdir:'public/killingfloor/js/',
+		partialsOutdir:'build/killingfloor',
 
-		html:['public/killingfloor/index.html']
+		html:['public/killingfloor/index.html'],
+		img:['public/killingfloor/img/**/*'],
+
+
+		libs:['public/libs/foundation-icon-fonts/foundation-icons.woff']
+
+	},
+
+	//total fucking hack because i cant pass arguments to a lazypipe
+	//also errors fucking everywhere but at least it runs
+	false: {
+		uncss:['!public/']
 	}
 };
 
 //path of source files
 var paths = {
-	//killingfloor
-	kfjs: ['public/killingfloor/js/**/*.js', 
-		'public/libs/angular-foundation/mm-foundation.min.js', 
-		'public/libs/angular-ui-router/release/angular-ui-router.min.js'
-		],
-	kfcss: ['public/killingfloor/scss/style.scss',
-		'public/libs/foundation-icon-fonts/foundation-icons.css'],
-	kfuncss: ['public/killingfloor/index.html', 
-		'public/killingfloor/partials/addfriends.html', 
-		'public/killingfloor/partials/comparemaps.html', 
-		'public/killingfloor/partials/input.html'
-	],
-
-	vendor: ['public/libs/socket.io-client/socket.io.js',
-		'public/libs/angular-ui-router/release/angular-ui-router.min.js',
-		'public/libs/angular-bootstrap/ui-bootstrap.min.js',
-		'public/libs/angular-socket-io/socket.min.js',
-		'public/libs/angular-bootstrap/ui-bootstrap-tpls.min.js'],
-	img: ['public/**/img/**/*', '!public/libs/**/*'],
-	css: ['public/**/*.css', '!public/libs/**/*'],
-	scss: ['public/**/*.scss', '!public/libs/**/*'],
-	html: ['public/**/index.html', '!public/libs/**/*'],
 	libs: ['public/libs/**/*']
 };
 
 var date = Date.now();
 
-//JS tasks
-/**
-var jsTasks = lazypipe()
-	.pipe(jshint())
-	.pipe(concat('app.js'))
-	.pipe(uglify({mangle: true}));
+var Tasks = {
 
-var cssTasks = lazypipe()
-	.pipe(sass())
-	.pipe(concat('style.css'))
-	.pipe(minifyCss());
+	//PARTIALS
+	/*partials: lazypipe()
+		//minimize first to avoid new lines and comments being registered
+		.pipe(htmlmin, {
+			collapseWhitespace: true,
+			removeComments: true })
+		//register into a template cache module
+		.pipe(templateCache)
+		.pipe(header, '(function() {')
+		.pipe(footer, '})();'),***/
+	partials: lazypipe()
+		.pipe(htmlmin, {
+			collapseWhitespace: true,
+			removeComments: true }),
 
-*/
+	//HTML
+	html: lazypipe()
+		.pipe(htmlreplace, {
+			'css':'style-' +date+'.min.css',
+			'js':'app-'+date+'.min.js',
+			'vendor':'vendor-'+date+'.min.js'
+		})
+		.pipe(htmlmin, {
+			collapseWhitespace: true,
+			removeComments: true }),
 
+	//CSS
+	css: lazypipe()
+		.pipe(sass)
+		.pipe(concat,'style.css')
 
-//Lazypipe to minimize html and register into angular module
-var partialsTasks = lazypipe()
-	//minimize first to avoid new lines and comments being registered
-	.pipe(htmlmin, {
-		collapseWhitespace: true,
-		removeComments: true })
-	//register into a template cache module
-	.pipe(templateCache);
+		.pipe(minifyCss)
+		.pipe(rename, function(path){
+			path.basename += '-' + date + '.min';
+		}),
 
-//Lazy pipe for html
-var htmlTasks = lazypipe()
-	.pipe(htmlreplace, {
-		'css':'style-' +date+'.min.css',
-		'js':'app-'+date+'.min.js',
-		'vendor':'vendor-'+date+'.min.js'
-	})
-	.pipe(htmlmin, {
-		collapseWhitespace: true,
-		removeComments: true });
+	//IMG
+	img: lazypipe()
+		.pipe(imagemin),
+
+	//JS
+	js: lazypipe()
+		.pipe(jshint)
+		.pipe(concat, 'app.js')
+		.pipe(uglify, {magnle:true})
+		.pipe(rename, function(path){
+			path.basename += '-' + date +'.min';
+		}),
+
+	//LIBS
+	libs: lazypipe()
+		.pipe(rename, function(path) {
+			path.dirname = './';
+		})
+
+};
+
 
 // @srcfiles is a string or array of files
 // @base is the base directory
 // @pipe defines the actions to chain for this pipe
 // @outdir defines the output directory
-function getBuildPipe(src, base, pipe, outdir) {
+// @uncssk false or the key of project from config json
+function getBuildPipe(src, base, pipe, outdir, uncssk) {
+
 	return gulp.src(src, {base:base})
 		.pipe(pipe())
+		/*
+		.pipe(gulpif(uncssk !== false, uncss({
+			html: config[uncssk].uncss
+		})))
+		.pipe(gulpif(uncssk !== false, minifyCss()))
+		*/
 		.pipe(gulp.dest(outdir));
+
+}
+
+//@task is [html,js,partials,css]
+function getBuildStreams(task) {
+	//array of streams to merge and return
+	var streams = [];
+
+	//for each project in config
+	for (var key in config) {
+		//false hack because fuck this shit
+		if (key !== 'false') {
+			var outdir = config[key].outdir;
+			//the outdir is different when doing angular templates
+			if (task === 'partials') {
+				outdir = config[key].partialsOutdir;
+			}
+
+			var uncss = false;
+			//if task is css set key to uncss
+			if (task === 'css') {
+				uncss = key;
+			}
+
+			//get the stream and push into array
+			var stream = getBuildPipe(config[key][task], config[key].base, Tasks[task], outdir, uncss);
+			streams.push(stream);
+		}
+	}
+
+	//return the merged streams for this task
+	return merge(streams);
+
 }
 
 
@@ -115,94 +179,44 @@ gulp.task('clean', function () {
 		.pipe(rimraf());
 });
 
-gulp.task('img', function() {
-	return gulp.src(paths.img, {base:'public/'})
-		.pipe(imagemin())
-		.pipe(gulp.dest('build'));
+//something something don't repeat yourself going on up in here
+
+gulp.task('img', ['clean'], function() {
+	return getBuildStreams('img');
 });
 
-gulp.task('kfjs', function() {
-	return gulp.src(paths.kfjs, {base:'public/'})
-		.pipe(jshint())
-		.pipe(concat('app.js'))
-		.pipe(uglify({mangle: true}))
-		.pipe(rename(function(path){
-			path.dirname += '/killingfloor/';
-			path.basename += '-' + date +'.min';
-		}))
-		.pipe(gulp.dest('build'));
+gulp.task('partials', ['clean'], function() {
+	return getBuildStreams('partials');
 });
 
-gulp.task('kfcss', function() {
-	return gulp.src(paths.kfcss, {base:'public/'})
-		.pipe(sass())
-		.pipe(concat('style.css'))
-		.pipe(uncss({
-			html: paths.kfuncss
-		}))
-		.pipe(minifyCss())
-		.pipe(rename(function(path){
-			path.dirname += '/killingfloor/';
-			path.basename += '-' + date + '.min';
-		}))
-		.pipe(gulp.dest('build'));
+gulp.task('html', ['clean'], function() {
+	return getBuildStreams('html');
 });
 
-gulp.task('kf', function() {
-	var base = 'public/';
-	var outdir = 'build/';
-
-	var html =  getBuildPipe(config.killingfloor.html, base, htmlTasks, outdir);
-	var partials = getBuildPipe(config.killingfloor.html, base, partialsTasks, outdir);
-
-
-	return merge(html, partials);
-
+gulp.task ('css', ['clean'], function() {
+	return getBuildStreams('css');
 });
 
-gulp.task('partials', function() {
-	var base = 'public/';
-	var outdir = 'public/';
-
-	var streams = [];
-
-	for (var key in config) {
-		var partial = getBuildPipe(config[key].partials, base, partialsTasks, outdir);
-		streams.push(partial);
-	}
-
-	return merge(streams);
-
+gulp.task('js', ['clean', 'partials'], function() {
+	return getBuildStreams('js');
 });
 
-gulp.task('html', function() {
-	var base = 'public/';
-	var outdir = 'build/';
-
-	var streams = [];
-
-	for (var key in config) {
-		var html = getBuildPipe(config[key].html, base, htmlTasks, outdir);
-		streams.push(html);
-	}
-
-	return merge(streams);
-});
-
-
-gulp.task('libs', function() {
-	return gulp.src(paths.libs,{base:'public/'})
-		.pipe(gulp.dest('build'));
+gulp.task('libs', ['clean'], function() {
+	return getBuildStreams('libs');
 });
 
 gulp.task('default', function() {
+	gulp.start('clean');
 	gulp.start('img');
+	gulp.start('partials');
 	gulp.start('html');
-	gulp.start('kfjs');
-	gulp.start('kfcss');
+	gulp.start('css');
+	gulp.start('js');
 	gulp.start('libs');
 });
 
+
+//dev shit ill clean up later
 gulp.task('dev2', function() {
 	gulp.watch(paths.scss, function() {
 		gulp.start('scss');

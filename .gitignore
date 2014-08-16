@@ -24,3 +24,4 @@ $RECYCLE.BIN/
 *.msp
 .gitattributes
 build
+templates.js
