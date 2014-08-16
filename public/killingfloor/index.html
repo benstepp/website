@@ -7,37 +7,15 @@
     <meta name="description" content="Track Killing Floor Map and Stats Progression with others using the Steam Web APIs">
 	<title>KF-Progress</title>
 
-	<!-- CSS -->
-	<link rel="stylesheet" href="../libs/foundation-icon-fonts/foundation-icons.css">
-
 	<!-- build:css -->
+	<link rel="stylesheet" href="../libs/foundation-icon-fonts/foundation-icons.css">
 	<link rel="stylesheet" href="./scss/style.css">
 	<!-- endbuild -->
 
+	<!-- external resources-->
 	<link href='//fonts.googleapis.com/css?family=Roboto:400,300' rel='stylesheet' type='text/css'>
-	
-	<!-- JS -->
 	<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.20/angular.js"></script>
 
-	<!-- build:vendor -->
-	<script src="../libs/angular-ui-router/release/angular-ui-router.js"></script>
-	<script src="../libs/angular-foundation/mm-foundation.js"></script>
-	<!-- endbuild -->
-
-	<!-- build:js -->
-	<script src="./js/directives/BsPerksDirective.js"></script>
-	<script src="./js/controllers/KillingFloorCtrl.js"></script>
-	<script src="./js/services/KillingFloorService.js"></script>
-	<script src="./js/directives/bsEnter.js"></script>
-	<script src="./js/directives/PlayerCardDirective.js"></script>
-	<script src="./js/controllers/kfFriendsCtrl.js"></script>
-	<script src="./js/controllers/kfCompareCtrl.js"></script>
-	<script src="./js/controllers/kfInputCtrl.js"></script>
-	<script src="./js/controllers/headerCtrl.js"></script>
-	<script src="./js/services/SteamService.js"></script>
-	<script src="./js/routes.js"></script>
-	<script src="./js/app.js"></script>
-	<!-- endbuild -->
 </head>
 <body data-ng-controller="headerController as header">
 		<div class="off-canvas-wrap">
@@ -117,11 +95,26 @@
 				</section>
 
 				<a class="exit-off-canvas"></a>
+
 			</div>
 		</div>
 		
-
-
+		<!-- build:js -->
+		<script src="../libs/angular-ui-router/release/angular-ui-router.js"></script>
+		<script src="../libs/angular-foundation/mm-foundation.js"></script>
+		<script src="./js/directives/BsPerksDirective.js"></script>
+		<script src="./js/controllers/KillingFloorCtrl.js"></script>
+		<script src="./js/services/KillingFloorService.js"></script>
+		<script src="./js/directives/bsEnter.js"></script>
+		<script src="./js/directives/PlayerCardDirective.js"></script>
+		<script src="./js/controllers/kfFriendsCtrl.js"></script>
+		<script src="./js/controllers/kfCompareCtrl.js"></script>
+		<script src="./js/controllers/kfInputCtrl.js"></script>
+		<script src="./js/controllers/headerCtrl.js"></script>
+		<script src="./js/services/SteamService.js"></script>
+		<script src="./js/routes.js"></script>
+		<script src="./js/app.js"></script>
+		<!-- endbuild -->
 
 </body>
 </html>
