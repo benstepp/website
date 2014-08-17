@@ -25,7 +25,7 @@ db.once('open', function callback () {
 });
 
 //app modules
-require('./server/riftevents/main.js')(app, io);
+//require('./server/riftevents/main.js')(app, io);
 require('./server/steam/main.js')(app, io);
 
 //start app
