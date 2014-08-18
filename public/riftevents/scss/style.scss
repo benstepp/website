@@ -7,8 +7,7 @@
   @import "settings";
   @import "../../libs/foundation/scss/normalize.scss";
 
-  @import "bsPlayerCard.scss";
-  @import "kfMapsTable.scss";
+
 
 // Behold, here are all the Foundation components.
   @import "../../libs/foundation/scss/foundation/components/grid";
@@ -38,7 +37,6 @@
   -moz-box-shadow: 0 2px $primary-color;
   -webkit-box-shadow: 0 2px $primary-color;
   box-shadow: 0 2px $primary-color;
-  z-index:6;
 }
 
 .top-bar-section ul.left li>a {

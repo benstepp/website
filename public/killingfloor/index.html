@@ -14,7 +14,7 @@
 
 	<!-- external resources-->
 	<link href='//fonts.googleapis.com/css?family=Roboto:400,300' rel='stylesheet' type='text/css'>
-	<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.20/angular.min.js"></script>
+	<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.20/angular.js"></script>
 
 </head>
 <body data-ng-controller="headerController as header">
@@ -74,7 +74,7 @@
 						<img src="//cdn.akamai.steamstatic.com/steam/apps/1250/ss_8832db701a895499e5a38f95c41787c925f22805.1920x1080.jpg" />
 					</div>
 
-					<div class="main-view" data-ui-view="main">
+					<div class="main-view" data-ui-view="main" data-bs-content-resize="">
 
 					</div>
 					<footer>
@@ -103,7 +103,7 @@
 		<script src="../libs/angular-ui-router/release/angular-ui-router.js"></script>
 		<script src="../libs/angular-foundation/mm-foundation.js"></script>
 		<script src="./js/directives/BsPerksDirective.js"></script>
-		<script src="./js/controllers/KillingFloorCtrl.js"></script>
+		<script src="./js/directives/bsContentResize.js"></script>
 		<script src="./js/services/KillingFloorService.js"></script>
 		<script src="./js/directives/bsEnter.js"></script>
 		<script src="./js/directives/PlayerCardDirective.js"></script>

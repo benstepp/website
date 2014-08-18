@@ -1,78 +1,116 @@
 <!doctype html>
-<html lang="en" data-ng-app="app" data-ng-controller="HeaderController as header">
+<html lang="en" data-ng-app="app">
 <head>
 	<meta charset="UTF-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="A zone event tracker for Rift by Trion Worlds. ">
-	<title>{{ header.title }}</title>
+    <meta name="description" content="A zone event tracker for RIFT by Trion Worlds. ">
+	<title>Rift Zone Event Tracker</title>
 
-	<!-- CSS -->
-	<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
 	<!-- build:css -->
-	<link rel="stylesheet" href="/style.min.css">
+	<link rel="stylesheet" href="../libs/foundation-icon-fonts/foundation-icons.css">
+	<link rel="stylesheet" href="./scss/style.css">
 	<!-- endbuild -->
+
+	<!-- external resources-->
 	<link href='//fonts.googleapis.com/css?family=Roboto:400,300' rel='stylesheet' type='text/css'>
-	
-	<!-- JS -->
-	<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.20/angular.min.js"></script>
-	<!-- build:vendor -->
-	<script src="vendor.min.js"></script>
-	<!-- endbuild -->
-	<!-- build:js -->
-	<script src="app.min.js"></script>	
-	<!-- endbuild -->
-
-
+	<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.20/angular.js"></script>
 
 </head>
-<body>
+<body data-ng-controller="headerController as header">
+		<div class="off-canvas-wrap">
+			<div class="inner-wrap">
+				<!--Desktop Nav-->
+				<div class="kf-hr show-for-large-up"></div>
+				<nav class="top-bar show-for-large-up">
+					<div class="row">
+					<div class="small-12 columns">
+					<ul class="title-area">
+						<li class="name">
+							<h1><a class="navbar-brand hidden-xs" href="/">website</a></h1>
+						</li>
+					</ul>
+					<section class="top-bar-section">
+						<ul class="left">
+							<li>
+								<a href="/killingfloor/#">Rift Zone Event Tracker</a>
+							</li>
+						</ul>
+						<ul class="right" data-ng-show="header.state.name !== '/'">
+							<li>
+								<a data-ng-href="#/addfriends/{{header.player}}">
+									<i class="fi-torsos"></i>Add Friends
+								</a>
+							</li>
+							<li>
+								<a data-ng-href="#/comparemaps/{{header.params.players}}">
+									<i class="fi-map"></i>Compare Maps
+								</a>
+							</li>
+						</ul>
+					</section>
+					</div></div>
+				</nav>
+				<!--Mobile Nav-->
+				<nav class="tab-bar hide-for-large-up">
+					<section class="middle tab-bar-section">
+						<h1><a class="title">Rift Zone Event Tracker</a></h1>
+					</section>
+					<section class="right-small">
+						<a class="right-off-canvas-toggle menu-icon" href=""><span></span></a>
+					</section>
+				</nav>
+				<aside class="right-off-canvas-menu">
+					<ul class="off-canvas-list">
+						<li><label>website</label></li>
+						<li><label>Rift Zone Event Tracker</label></li>
+						<li><a data-ng-href="#/addfriends/{{header.player}}">Add Friends</a></li>
+						<li><a data-ng-href="#/comparemaps/{{header.params.players}}">Compare Maps</a></li>
+					</ul>
+				</aside>
+				<!--Content-->
+				<section class="main-section">
+					<div class="main-bg">
+						<img src="//cdn.akamai.steamstatic.com/steam/apps/1250/ss_8832db701a895499e5a38f95c41787c925f22805.1920x1080.jpg" />
+					</div>
 
-	<nav class="navbar navbar-default navbar-fixed-top" data-ng-class="header.url" role="navigation">
-		<div class="container">
-			<div class="navbar-header">
-				<button type="button" 
-					class="navbar-toggle" 
-					data-ng-init="navCollapsed = true" 
-					data-ng-click="navCollapsed = !navCollapsed" >
-				<span class="sr-only">Toggle navigation</span>
-				<span class="icon-bar"></span>
-				<span class="icon-bar"></span>
-				<span class="icon-bar"></span>
-				</button>
-				<a class="navbar-brand hidden-xs" href="#">website</a>
-				<a class = "navbar-brand nav-small-brand" 
-					data-ng-class="header.url"
-					data-ng-href="#/{{ header.url }}" 
-					data-ng-hide="header.title === 'website'">{{ header.title }}</a>
+					<div class="main-view" data-ui-view="main">
+
+					</div>
+					<footer>
+						<div class="row">
+							<div class="small-6 columns">
+								<span class="text-muted"><a class="text-muted" href="http://www.riftgame.com/">Rift</a> © <a class="text-muted" href="http://www.trionworlds.com/">Trion Worlds, Inc.</a></span>
+							</div>
+							<div class="small-6 columns footer-right">
+								<a href="//twitter.com/benstepp">
+									<i class="fi-social-twitter"></i>
+								</a>
+								<a href="//github.com/benstepp">
+									<i class="fi-social-github"></i>
+								</a>	
+							</div>
+						</div>
+					</footer>
+				</section>
+
+				<a class="exit-off-canvas"></a>
+
 			</div>
-			<div class="navbar-collapse collapse" 
-				data-ng-class="!navCollapsed && 'in'" 
-				data-ng-click="navCollapsed=true"
-				data-ui-view="navbar-right" >
-
-			</div><!--/.nav-collapse -->
 		</div>
-	</nav>
-
-	<div class="hero-unit" data-ng-class="header.url">
-	<div class="container" id="mainContent" data-ui-view="main">
-
-	</div>
-	</div>
-
-	<footer>
-		<div class="container">
-			<div class="row">
-				<div class="col-sm-6" data-ui-view="footer-left">
-				</div>
-				<div class="col-sm-6">
-					<a class="text-muted footerLink" href="#/contact">Contact</a>
-					<a class="text-muted footerLink" href="#/about">About</a>				
-				</div>
-			</div>
-		</div>
-	</footer>
+		
+		<!-- build:js -->
+		<script src="../libs/angular-ui-router/release/angular-ui-router.js"></script>
+		<script src="../libs/angular-foundation/mm-foundation.js"></script>
+		<script src="../libs/socket.io-client/socket.io.js"></script>
+		<script src="../libs/angular-socket-io/socket.min.js"></script>
+		<script src="./js/controllers/EventsCtrl.js"></script>
+		<script src="./js/services/EventsService.js"></script>
+		<script src="./js/services/SocketFactory.js"></script>
+		<script src="./js/controllers/HeaderCtrl.js"></script>
+		<script src="./js/routes.js"></script>
+		<script src="./js/app.js"></script>
+		<!-- endbuild -->
 
 </body>
 </html>
