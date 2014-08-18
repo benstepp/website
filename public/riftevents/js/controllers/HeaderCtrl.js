@@ -7,33 +7,36 @@
 
 		var _this = this;
 
-		//Binds the header links URLs to include the correct players
-		$rootScope.$on('$stateChangeSuccess', 
-			function(event, toState, toParams, fromState, fromParams) {
-				_this.params = toParams;
-				_this.fromState = fromState;
-				_this.state = toState;
+		_this.locales = {
+			'English':'en-US',
+			'French':'fr-FR',
+			'German':'de-DE'
+		};
 
-				//if there is a player object, the first player is the main player
-				//bind this so the addfriend link works
-				if (toParams.players) {
-					_this.player = toParams.players.split(',')[0];
-				}
+		_this.data = {
+			region: 'US',
+			language: 'English',
+			locale: 'en'
+		};
 
-				//if the toState is addfriends we need to save the fromParams
-				if (toState.name === 'addfriends' && fromState.name !== '') {
-					_this.params = fromParams;
-				}
+		_this.changeRegion = function(region) {
+			this.data.region = region;
+			this.checkLocale();
+		};
 
-			});
+		_this.changeLanguage = function(language) {
+			this.data.language = language;
+			this.data.locale = this.locales[language];
+			this.checkLocale();
+		};
 
-		//if the from state is empty, default to comparemaps
-		_this.getFromState = function() {
-			if (_this.fromState.name === '') {
-				return 'comparemaps';
+		//check difference in time format for US vs GB
+		_this.checkLocale = function() {
+			if (this.data.language === 'English'	&& this.data.region !== 'US') {
+				this.data.locale = 'en-GB';
 			}
-			else{
-				return _this.fromState.name;
+			else if (this.data.language === 'English' ) {
+				this.data.locale = 'en-US';
 			}
 		};
 

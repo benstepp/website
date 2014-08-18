@@ -51,7 +51,8 @@
 					element.css({height:'auto'});
 
 					//then watch for changes in the height of the content
-					//this happens after first digest loop (i think)
+					//this happens after first digest loop
+                    //otherwise we get the height of a loaded dom with no bindings
 					var onloadwatch = scope.$watch(function(){
 						return element.offsetHeight;
 					}, 
