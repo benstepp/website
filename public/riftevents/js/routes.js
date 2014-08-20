@@ -16,7 +16,7 @@
 				"main": { 
 					templateUrl:'partials/events.html',
 					controller:'EventsController',
-					controllerAs:'events'
+					controllerAs:'riftevents'
 				}
 			},
 			resolove: {

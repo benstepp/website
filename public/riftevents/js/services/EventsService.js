@@ -13,7 +13,6 @@
 			if (region !== undefined) {
 				url = '/api/riftevents/'+ region;
 			}
-
 			var deferred = $q.defer();
 			$http.get(url).success(
 				function(res) {

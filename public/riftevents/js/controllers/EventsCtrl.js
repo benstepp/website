@@ -6,6 +6,13 @@
 	function EventsCtrl($scope, EventsService, $interval, $http, socket) {
 		var _this = this;
 
+		_this.data = {
+			region: 'US',
+			language: 'English',
+			locale: 'en'
+		};
+
+
 		this.events = {};
 		//watches for region change in header controller
 		$scope.$watchCollection(
@@ -21,7 +28,7 @@
 		this.reverse = false;
 
 		//get zones json file
-		$http.get("api/riftevents/zones")
+		$http.get("/api/riftevents/zones")
 			.success(function(response){
 				_this.zones = response;
 				_this.updateEvents();
@@ -78,6 +85,9 @@
             return  hr + ":" + min + apm;
         };
 
+        this.changeRegion = function(val) {
+        	console.log(val);
+        };
 
 
 		//init with no region specified
@@ -94,10 +104,12 @@
 
 		//client socket.io
 		socket.on('addEvent', function(data) {
+			console.log(data);
 			this.msg = data;
 		});
 
 		socket.on('removeEvent', function(data) {
+			console.log(data);
 			this.msg = data;
 		});
 	}

@@ -6,6 +6,7 @@
 		'btford.socket-io',
 		'SocketFactory',
 		//Custom
+		'bsContentResize',
 		'HeaderCtrl',
 		//RiftEvents
 		'routes', 

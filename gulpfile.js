@@ -53,6 +53,7 @@ var config = {
 		outdir:'build/riftevents',
 
 		css:['public/riftevents/scss/style.scss',
+		'public/riftevents/scss/*.scss',
 		'public/libs/foundation-icon-fonts/foundation-icons.css'],
 	},
 
