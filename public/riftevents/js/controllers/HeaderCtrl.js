@@ -13,10 +13,11 @@
 			'German':'de-DE'
 		};
 
+		//initialize data (use local storage later);
 		_this.data = {
 			region: 'US',
 			language: 'English',
-			locale: 'en'
+			locale: 'en-US'
 		};
 
 		_this.changeRegion = function(region) {

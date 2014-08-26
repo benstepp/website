@@ -7,6 +7,13 @@
 		var _this = this;
 		this.zoneEvents = {};
 
+		this.getZones = function() {
+			$http.get("/api/riftevents/zones")
+				.success(function() {
+
+				});
+		};
+
 		this.getEvents = function(region) {
 			//if region is specified change the url
 			var url = '/api/riftevents/';

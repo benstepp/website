@@ -1,6 +1,7 @@
 module.exports = function(zEvents, socket) {
 
 	zEvents.on('add', function(data) {
+		console.log(data);
     		socket.emit('addEvent', data);
 	});
 

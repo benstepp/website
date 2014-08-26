@@ -19,7 +19,7 @@
 					controllerAs:'riftevents'
 				}
 			},
-			resolove: {
+			resolve: {
 				EventsService: 'EventsService',
 				events: ['EventsService', function(EventsService) {
 					return EventsService.getEvents();
@@ -28,25 +28,22 @@
 		}); 
 
 		/*
-		The Map comparison state, expects a comma delimited string of steamids.
-		Resolves the map json file and player stats for every player.
+		The active zone event state requires valid region and locale parameters
+		otherwise it will default to US/en
 		*/
-		$stateProvider.state('comparemaps', {
-			url:'/comparemaps/:players',
+		$stateProvider.state('active', {
+			url:'/active/:region/:locale',
 			views: {
 				'main': {
-					templateUrl: 'partials/comparemaps.html',
-					controller: 'kfCompareController',
-					controllerAs: 'comparemaps'
+					templateUrl: 'partials/events.html',
+					controller: 'EventsController',
+					controllerAs: 'riftevents'
 				}
 			},
 			resolve: {
-				KillingFloorService: 'KillingFloorService',
-				kfMaps: ['KillingFloorService', function(KillingFloorService) {
-					return KillingFloorService.getMaps();
-				}],
-				players: ['KillingFloorService', '$stateParams', function(KillingFloorService, $stateParams) {
-					return KillingFloorService.getPlayers($stateParams.players);
+				EventsService: 'EventsService',
+				events: ['EventsService', function(EventsService) {
+					return EventsService.getEvents();
 				}]
 			}
 		});

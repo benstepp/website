@@ -11,10 +11,12 @@ var shards = require('./config/shards.js');
 //zones
 var zones = require('./config/zones.json').zones;
 var zonesLength = zones.length;
+var Zone = require('./models/zone.js');
 
 //events
 var eventsList = require('./config/events.json').events;
 var eventsListLength = eventsList.length;
+var Event = require('./models/event.js');
 
 var ZoneEvent = function(trionAuth) {
 
@@ -39,7 +41,6 @@ var ZoneEvent = function(trionAuth) {
 			this.events[key][shards[key][i].shardName] = [];
 		}
 	}
-
 
 	//http request the events for a single shard 
 	var getEvents = function(shard) {
@@ -73,7 +74,9 @@ var ZoneEvent = function(trionAuth) {
 		});
 	};
 
-	//remove zones without an event occuring
+	//sorts through trion data and removes zones without an event occuring
+	// @shard is the object for the shard from shards.js
+	// @body is the response body from the trion api request
 	var parseEvents = function(shard, body) {
 		var zones = body.data;
 		var zoneLength = zones.length;
@@ -81,9 +84,11 @@ var ZoneEvent = function(trionAuth) {
 		//remove all zones without events on the shard
 		for (var i = 0; i < zoneLength; i++) {
 			if (_.has(zones[i], 'name')) {
-				zoneEvents.push(zones[i]);
+				var newEvent = createEvent(zones[i], shard);
+				zoneEvents.push(newEvent);
 			}		
 		}
+
 		//save the events if they are different
 		if(checkZoneEvents(shard, zoneEvents)) {
 			_this.lastUpdated = Date.now();
@@ -92,35 +97,46 @@ var ZoneEvent = function(trionAuth) {
 		}
 	};
 
-	//checks if the zone events have changed
+	// @event is the object from trion with a name and started field
+	// @shard is the object for the shard from shards.js
+	var createEvent = function(event, shard) {
+
+		var locales = ['de','en','fr'];
+		var newEvent = {};
+		/*
+			{
+				zone: zoneId from trion && _id of Zone in db
+				started: started from trion
+				shard: shardName
+				name_xx: name of event from trion
+			}
+		*/
+
+		//save the name of the event by the locale of the shard
+		var nameLocale = 'name_' + shard.locale;
+		newEvent[nameLocale] = event.name;
+		newEvent.zone = event.zoneId;
+		newEvent.started = event.started;
+		newEvent.shard = shard.shardName;
+
+		return newEvent;
+
+	};
+
+
 	var checkZoneEvents = function(shard, newEvents) {
 		var oldEvents = _this.events[shard.region][shard.shardName];
+
 		//we call socket here because we already calculated data needed.
 		var addedEvents = _.difference(newEvents, oldEvents);
 		var removedEvents = _.difference(oldEvents,newEvents);
 		ioEvents(shard, addedEvents, removedEvents);
-		return addedEvents;
+
+		//return both the added and removed events. 
+		return addedEvents.concat(removedEvents);
 	};
 
-	var localeCheck = function(shard, events) {
-		var eventsLength = events.length;
-		var localeName = 'name_'+shard.locale;
-		for (var i = 0; i <eventsLength;i++) {
-			//sets the zone to an id number
-			events[i].zone = getZoneId(events[i], localeName);
-			events[i].name_en = getNames(events[i], localeName, 'name_en');
-			events[i].name_fr = getNames(events[i], localeName, 'name_fr');
-			events[i].name_de = getNames(events[i], localeName, 'name_de');
-			events[i].shard = shard.shardName;
-			if (typeof events[i].name !== undefined) {
-				delete events[i].name;
-			}
-			if (typeof events[i].zoneId !== undefined) {
-				delete events[i].zoneId;
-			}
-		}
-		return events;
-	};
+
 
 	var getZoneId = function(event, localeName) {
 		for (var j = 0; j < zonesLength; j++) {
@@ -185,20 +201,19 @@ var ZoneEvent = function(trionAuth) {
 		var addedCount = addedEvents.length;
 		var removedCount = removedEvents.length;
 		if (addedCount > 0) {
-
-			var added = localeCheck(shard,addedEvents);
 			var addedJson = {
 				action: "add",
-				events: added
+				events: addedEvents
 			};
+			
 			_this.emit('add', addedJson);
 		}
 		if (removedCount > 0) {
-			var removed = localeCheck(shard,removedEvents);
 			var removedJson = {
 				action: "remove",
-				events: removed
+				events: removedEvents
 			};
+
 			_this.emit('remove', removedJson);
 		}
 	};
