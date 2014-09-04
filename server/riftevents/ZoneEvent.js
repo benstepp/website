@@ -9,8 +9,6 @@ var trionhosts = require('./config/trionhosts.js');
 //Shard Id List
 var shards = require('./config/shards.js');
 //zones
-var zones = require('./config/zones.json').zones;
-var zonesLength = zones.length;
 var Zone = require('./models/zone.js');
 
 //events
@@ -123,45 +121,46 @@ var ZoneEvent = function(trionAuth) {
 
 	};
 
-
 	var checkZoneEvents = function(shard, newEvents) {
 		var oldEvents = _this.events[shard.region][shard.shardName];
 
 		//we call socket here because we already calculated data needed.
-		var addedEvents = _.difference(newEvents, oldEvents);
-		var removedEvents = _.difference(oldEvents,newEvents);
+		var addedEvents = eventDifference(newEvents, oldEvents);
+		var removedEvents = eventDifference(oldEvents,newEvents);
+		
 		ioEvents(shard, addedEvents, removedEvents);
 
 		//return both the added and removed events. 
 		return addedEvents.concat(removedEvents);
 	};
 
+	var eventDifference = function(arrayOne, arrayTwo) {
+		var arrayOneLength = arrayOne.length || 1;
+		var arrayTwoLength = arrayTwo.length || 1;
+		var difference = [];
 
+		outerLoop:
+		for (var i=0; i < arrayOneLength; i++) {
 
-	var getZoneId = function(event, localeName) {
-		for (var j = 0; j < zonesLength; j++) {
-			if (zones[j][localeName] === event.zone) {
-				return j;
-			}
-		}
-	};
-
-	var getNames = function(event, localeName, toLocale) {
-		//return if locale of server is same as requested
-		if (localeName === toLocale) {
-			return event.name;
-		}
-		//otherwise search through events list for the event
-		else {
-			for (var j = 0;j < eventsListLength;j++) {
-				if(eventsList[j][localeName] === event.name) {
-					return eventsList[j][toLocale];
+			innerLoop:
+			for (var j=0;j < arrayTwoLength; j++) {
+				var isEqual = _.isEqual(arrayOne[i], arrayTwo[j]);
+				//if they are the same, continue
+				if(isEqual) {
+					continue outerLoop;
+				}
+				//if they are not the same, and on last of index second array
+				if(!isEqual && j+1 === arrayTwoLength) {
+					difference.push(arrayOne[i]);
 				}
 			}
-			//return name if not in json yet
-			return event.name;
+
 		}
+
+		return difference;
 	};
+
+
 
 	var packEvents = function() {
 		var packed = {
@@ -175,10 +174,10 @@ var ZoneEvent = function(trionAuth) {
 			for (var shard in _this.events[region]) {
 				//for each event
 				var shardLength = _this.events[region][shard].length;
+				var eventCounter = 1;
 				for (var i = 0; i < shardLength; i++) {
 					var newEvent = _this.events[region][shard][i];
-					//newEvent.shard = shard;
-					eventArray.push(newEvent);
+					var dbName = newEvent.name_en || newEvent.name_fr || newEvent.name_de;
 				}
 			}
 			packed[region].events = eventArray;
