@@ -3,6 +3,7 @@ var request = require('request');
 var util = require('util');
 var EventEmitter = require('events').EventEmitter;
 var _ = require('lodash');
+var q = require('q');
 
 //Trion URLs 
 var trionhosts = require('./config/trionhosts.js');
@@ -127,7 +128,7 @@ var ZoneEvent = function(trionAuth) {
 		//we call socket here because we already calculated data needed.
 		var addedEvents = eventDifference(newEvents, oldEvents);
 		var removedEvents = eventDifference(oldEvents,newEvents);
-		
+
 		ioEvents(shard, addedEvents, removedEvents);
 
 		//return both the added and removed events. 
@@ -161,33 +162,104 @@ var ZoneEvent = function(trionAuth) {
 	};
 
 
-
+	//packs the events into a single array separated by region.
 	var packEvents = function() {
+		var events = _this.events;
+
 		var packed = {
 			EU:{},
 			US:{}
 		};
+
+		var promises = [];
+
 		//for each region
-		for (var region in _this.events) {
+		for (var region in events) {
+
 			//for each shard
 			var eventArray = [];
-			for (var shard in _this.events[region]) {
+			for (var shard in events[region]) {
+
 				//for each event
-				var shardLength = _this.events[region][shard].length;
+				var shardLength = events[region][shard].length;
 				var eventCounter = 1;
 				for (var i = 0; i < shardLength; i++) {
-					var newEvent = _this.events[region][shard][i];
-					var dbName = newEvent.name_en || newEvent.name_fr || newEvent.name_de;
+					var newEvent = events[region][shard][i];
+					eventArray.push(newEvent);
 				}
+
 			}
-			packed[region].events = eventArray;
-			packed[region].lastUpdated = _this.lastUpdated;
-			_this.emit('newEvents', packed, _this.lastUpdated);
+
+			//packedEvents is a promise for every event in a region.
+			var packedEvents = getEventNames(eventArray, region);
+			promises.push(packedEvents);
+
+			packedEvents.then(function(events) {
+				//pull and delete the region from events argument.
+				var reg = events.region;
+				delete events.region;
+
+				packed[reg].events = events;
+			});
+			
 		}
+
+		q.all(promises).then(function() {
+			_this.emit('newEvents', packed, _this.lastUpdated);
+		});
+		
+	};
+
+	//gets the full names for each event in each language
+	var getEventNames = function(eventArray, reg) {
+		
+			var deferred = q.defer();
+			
+			//Array of promises for each event
+			var promises = [];
+
+			var length = eventArray.length;
+			for (var i=0; i < length; i++) {
+				//this pulls the name_** for the event object
+				var dbQuery = _.omit(eventArray[i], ['zone', 'started', 'shard']);
+				promises.push(dbEventQuery(dbQuery,eventArray[i]));
+			}
+			
+			q.all(promises).then(function(events) {
+				//set region here to pass it to packEvents function.
+				//q library can only have one argument in .then function call
+				events.region = reg;
+
+				deferred.resolve(events);
+			});
+			
+			return deferred.promise;
+		
+	};
+
+	var dbEventQuery = function(dbQuery,event) {
+		var deferred = q.defer();
+		
+		Event.findOne(dbQuery, function dbCallback(err,ev) {
+			var newEvent = event;
+
+			//if the event is not in databse translations don't get set
+			if (ev !== null) {
+				newEvent.name_de = ev.name_de;
+				newEvent.name_en = ev.name_en;
+				newEvent.name_fr = ev.name_fr;
+			}
+			
+			deferred.resolve(newEvent);
+		});
+
+		return deferred.promise;
 	};
 
 	//updates all events on shards
 	var updateEvents = function() {
+		_this.lastChecked = Date.now();
+
 		for (var k in shards) {
 			var shardCount = shards[k].length;
 			for (var i = 0; i < shardCount; i++) {

@@ -6,6 +6,7 @@
   		"url": "git://github.com:benstepp/riftevents.git"
 	},
 	"dependencies": {
+		"q":"~1.0.1",
 		"express": "~4.4.5",
 		"mongoose": "~3.8.12",
 		"mongoose-unique-validator": "~0.3.0",
