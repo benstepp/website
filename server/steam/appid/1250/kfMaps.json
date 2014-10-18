@@ -4,6 +4,7 @@
 	"Bedlam":["WinAsylumNormal","WinAsylumHard","WinAsylumSuicidal","WinAsylumHell"],
 	"Biohazard":["WinBiohazardNormal","WinBiohazardHard","WinBiohazardSuicidal","WinBiohazardHell"],
 	"Biotics Lab":["WinBioticsLabNormal","WinBioticsLabHard","WinBioticsLabSuicidal","WinBioticsLabHell"],
+	"Clandestine":["WinClandestineNormal","WinClandestineHard","WinClandestineSuicidal","Hell"],
 	"Crash":["WinCrashNormal","WinCrashHard","WinCrashSuicidal","WinCrashHell"],
 	"Departed":["WinDepartedNormal","WinDepartedHard","WinDepartedSuicidal","WinDepartedHell"],
 	"Farm":["WinFarmNormal","WinFarmHard","WinFarmSuicidal","WinFarmHell"],

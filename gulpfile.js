@@ -48,12 +48,22 @@ var config = {
 
 	},
 
+	riftevents: {
+		base:'public/riftevents',
+		outdir:'build/riftevents',
+
+		css:['public/riftevents/scss/style.scss',
+		'public/riftevents/scss/*.scss',
+		'public/libs/foundation-icon-fonts/foundation-icons.css'],
+	},
+
 	//total fucking hack because i cant pass arguments to a lazypipe
 	//also errors fucking everywhere but at least it runs
 	false: {
 		uncss:['!public/']
 	}
 };
+
 
 //path of source files
 var paths = {
@@ -218,14 +228,14 @@ gulp.task('default', function() {
 
 //dev shit ill clean up later
 gulp.task('dev2', function() {
-	gulp.watch(paths.scss, function() {
+	gulp.watch(config.riftevents.css, function() {
 		gulp.start('scss');
 	});
 });
 
 gulp.task('scss', function() {
-	return gulp.src(paths.scss, {base:'public/'})
+	return gulp.src(config.riftevents.css, {base:'public/riftevents'})
 		.pipe(sass())
 		.pipe(minifyCss())
-		.pipe(gulp.dest('public'));
+		.pipe(gulp.dest('public/riftevents'));
 });

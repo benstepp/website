@@ -6,20 +6,17 @@ module.exports = function(app, io) {
 //database
 var Event = require('./models/event');
 var Zone = require('./models/zone');
-//mongoose.connect(db.url);
 
 //Development only
 if (process.env.NODE_ENV == 'development') {
 	require('../../dev/updatedb')(Zone, Event, db);
 }
 
-
 //login to rift mobile services
 var trionAuth = require('./riftauth');
 trionAuth.on('ready', function(tAuth) {
 	//load up ZoneEvent class module with session cookies
 	var ZoneEvent = require('./ZoneEvent.js');
-
 	var zEvents = new ZoneEvent(tAuth);
 
 	//create routes with our zoneevents class
@@ -33,5 +30,6 @@ trionAuth.on('ready', function(tAuth) {
 	});
 
 });
+
 
 };

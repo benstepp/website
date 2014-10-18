@@ -68,7 +68,12 @@ var TrionAuth = function() {
 		authRequest('auth', postData, authCallback);
 	}
 	else {
-		_this.emit('ready', _this);
+		//a timeout was the best i could think of here
+		//otherwise you are emitting inside this module before the main module
+		//gets to parse that section of code. ie. emitting to no listener
+		setTimeout(function() {
+			_this.emit('ready', _this);
+		},1000);
 	}
 };
 

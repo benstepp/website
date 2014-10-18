@@ -1,12 +1,19 @@
 (function() {
 	angular
 		.module('EventsCtrl',['EventsService'])
-		.controller('EventsController', ['$scope','EventsService','$interval','$http','socket',EventsCtrl]);
+		.controller('EventsController', ['$scope','zones', 'events', 'EventsService','$interval','$http','socket',EventsCtrl]);
 
-	function EventsCtrl($scope, EventsService, $interval, $http, socket) {
+	function EventsCtrl($scope, zones, events, EventsService, $interval, $http, socket) {
 		var _this = this;
 
-		this.events = {};
+		_this.data = {
+			region: 'US',
+			language: 'English',
+			locale: 'en'
+		};
+
+		this.zones = zones;
+		this.events = events;
 		//watches for region change in header controller
 		$scope.$watchCollection(
 			'header.data', 
@@ -19,13 +26,6 @@
 		//defines a sorting predicate
 		this.predicate = "";
 		this.reverse = false;
-
-		//get zones json file
-		$http.get("api/riftevents/zones")
-			.success(function(response){
-				_this.zones = response;
-				_this.updateEvents();
-			});
 
 		this.sort = function(str) {
 			//only reverse if it is already the sort method
@@ -78,6 +78,9 @@
             return  hr + ":" + min + apm;
         };
 
+        this.changeRegion = function(val) {
+        	console.log(val);
+        };
 
 
 		//init with no region specified
@@ -94,10 +97,12 @@
 
 		//client socket.io
 		socket.on('addEvent', function(data) {
+			console.log(data);
 			this.msg = data;
 		});
 
 		socket.on('removeEvent', function(data) {
+			console.log(data);
 			this.msg = data;
 		});
 	}

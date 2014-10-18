@@ -1,16 +1,13 @@
-.navbar-default.riftevents {
-	border-color:#663399;
+
+.table-container {
+	display:inline-block;
+	background-color:#FFFFFF;
+	padding:12px;
+	margin-left:auto;
+	margin-right:auto;
+	min-height:100%;
 }
 
-th > a, .nav-small-brand.navbar-brand.riftevents {
-	color:#663399;
-	font-weight:700;
-}
-
-th > a:hover, .nav-small-brand.navbar-brand.riftevents:hover {
-	color:#8A45CF;
-	text-decoration:none;
-}
 
 table.rift-table thead {
 	border-bottom:1px solid #663399;
@@ -38,10 +35,9 @@ table.rift-table {
 }
 
 #rift-table {
-	padding-top:30px;
 	overflow:auto;
 	color:#333333;
 	background:none;
-	height:100%;
 	text-align:center;
+	font-size:14px;
 }

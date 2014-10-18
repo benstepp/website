@@ -5,6 +5,7 @@
 		'mm.foundation',
 		//Custom
 		'bsEnter',
+		'bsContentResize',
 		'headerCtrl',
 		//Steam
 		'SteamService',
