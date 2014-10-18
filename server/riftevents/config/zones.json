@@ -1,139 +1,139 @@
 {
 	"zones": [
 		{
-			"_id": "0",
+			"_id": "12",
 			"name_en":"Silverwood",
 			"name_fr":"Bois d'Argent",
 			"name_de":"Silberwald"
 		},
 		{
-			"_id": "1",
+			"_id": "19",
 			"name_en":"Freemarch",
 			"name_fr":"Libremarche",
 			"name_de":"Freimark"
 		},
 		{
-			"_id": "2",
+			"_id": "1481781477",
 			"name_en":"Stonefield",
 			"name_fr":"Champ de pierre",
 			"name_de":"Steinfeld"
 		},
 		{
-			"_id": "3",
+			"_id": "27",
 			"name_en":"Gloamwood",
 			"name_fr":"Bois du Crépuscule",
 			"name_de":"Dämmerwald"
 		},
 		{
-			"_id": "4",
+			"_id": "26580443",
 			"name_en":"Scarlet Gorge",
 			"name_fr":"Gorges Écarlates",
 			"name_de":"Scharlachrote Schlucht"
 		},
 		{
-			"_id": "5",
+			"_id": "20",
 			"name_en":"Scarwood Reach",
 			"name_fr":"Étendue de Bois Meurtris",
 			"name_de":"Wundwaldregion"
 		},
 		{
-			"_id": "6",
+			"_id": "22",
 			"name_en":"Iron Pine Peak",
 			"name_fr":"Pic du Pin de fer",
 			"name_de":"Eisenkieferngipfel"
 		},
 		{
-			"_id": "7",
+			"_id": "24",
 			"name_en":"Moonshade Highlands",
 			"name_fr":"Hautes-Terres d'Ombrelune",
 			"name_de":"Mondschattenberge"
 		},
 		{
-			"_id": "8",
+			"_id": "336995470",
 			"name_en":"Droughtlands",
 			"name_fr":"Plaines Arides",
 			"name_de":"Ödlande"
 		},
 		{
-			"_id": "9",
+			"_id": "6",
 			"name_en":"Shimmersand",
 			"name_fr":"Sable-chatoyant",
 			"name_de":"Schimmersand"
 		},
 		{
-			"_id": "10",
+			"_id": "26",
 			"name_en":"Stillmoor",
 			"name_fr":"Mornelande",
 			"name_de":"Stillmoor"
 		},
 		{
-			"_id": "11",
+			"_id": "1992854106",
 			"name_en":"Ember Isle",
 			"name_fr":"Île de Braise",
 			"name_de":"Glutinsel"
 		},
 		{
-			"_id": "12",
+			"_id": "479431687",
 			"name_en":"Kingdom of Pelladane",
 			"name_fr":"Royaume de Pelladane",
 			"name_de":"Königreich Pelladane"
 		},
 		{
-			"_id": "13",
+			"_id": "1770829751",
 			"name_en":"Cape Jule",
 			"name_fr":"Cap Yule",
 			"name_de":"Kap Jul"
 		},
 		{
-			"_id": "14",
+			"_id": "1494372221",
 			"name_en":"Seratos",
 			"name_fr":"Serratos",
 			"name_de":"Seratos"
 		},
 		{
-			"_id": "15",
+			"_id": "1967477725",
 			"name_en":"City Core",
 			"name_fr":"Cœur de la Cité",
 			"name_de":"Stadtkern"
 		},
 		{
-			"_id": "16",
+			"_id": "1213399942",
 			"name_en":"Eastern Holdings",
 			"name_fr":"Fiefs de l'Orient",
 			"name_de":"Östliche Besitztümer"
 		},
 		{
-			"_id": "17",
+			"_id": "1446819710",
 			"name_en":"Ardent Domain",
 			"name_fr":"Contrée Ardente",
 			"name_de":"Eiferer-Reich"
 		},
 		{
-			"_id": "18",
+			"_id": "1300766935",
 			"name_en":"Kingsward",
 			"name_fr":"Protectorat du Roi",
 			"name_de":"Königszirkel"
 		},
 		{
-			"_id": "19",
+			"_id": "956914599",
 			"name_en":"Morban",
 			"name_fr":"Morban",
 			"name_de":"Morban"
 		},
 		{
-			"_id": "20",
+			"_id": "798793247",
 			"name_en":"Steppes of Infinity",
 			"name_fr":"Steppes de l'Infini",
 			"name_de":"Steppen der Unendlichkeit"
 		},
 		{
-			"_id": "21",
+			"_id": "790513416",
 			"name_en":"Ashora",
 			"name_fr":"Ashora",
 			"name_de":"Ashora"
 		},
 		{
-			"_id": "22",
+			"_id": "282584906",
 			"name_en":"The Dendrome",
 			"name_fr":"Le Rhizome",
 			"name_de":"Das Dendrom"

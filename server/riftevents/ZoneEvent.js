@@ -277,7 +277,7 @@ var ZoneEvent = function(trionAuth) {
 				events: addedEvents
 			};
 			
-			_this.emit('add', addedJson);
+			//_this.emit('add', addedJson);
 		}
 		if (removedCount > 0) {
 			var removedJson = {
@@ -285,7 +285,7 @@ var ZoneEvent = function(trionAuth) {
 				events: removedEvents
 			};
 
-			_this.emit('remove', removedJson);
+			//_this.emit('remove', removedJson);
 		}
 	};
 

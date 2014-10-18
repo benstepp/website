@@ -5,7 +5,7 @@
 
 	function routes($stateProvider,$urlRouterProvider) {
 
-		$urlRouterProvider.otherwise('/');
+		$urlRouterProvider.otherwise('active');
 
 		/*
 		The table state
@@ -14,13 +14,14 @@
 			url:'/',
 			views: {
 				"main": { 
-					templateUrl:'partials/events.html',
-					controller:'EventsController',
-					controllerAs:'riftevents'
+					templateUrl:'partials/events.html'
 				}
 			},
 			resolve: {
 				EventsService: 'EventsService',
+				zones:['EventsService', function(EventsService) {
+					return EventsService.getZones();
+				}],
 				events: ['EventsService', function(EventsService) {
 					return EventsService.getEvents();
 				}]
@@ -42,8 +43,11 @@
 			},
 			resolve: {
 				EventsService: 'EventsService',
-				events: ['EventsService', function(EventsService) {
-					return EventsService.getEvents();
+				zones:['EventsService', function(EventsService) {
+					return EventsService.getZones();
+				}],
+				events: ['EventsService', function(EventsService, $stateParams) {
+					return EventsService.getEvents($stateParams.region);
 				}]
 			}
 		});

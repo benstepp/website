@@ -1,9 +1,9 @@
 (function() {
 	angular
 		.module('EventsCtrl',['EventsService'])
-		.controller('EventsController', ['$scope','EventsService','$interval','$http','socket',EventsCtrl]);
+		.controller('EventsController', ['$scope','zones', 'events', 'EventsService','$interval','$http','socket',EventsCtrl]);
 
-	function EventsCtrl($scope, EventsService, $interval, $http, socket) {
+	function EventsCtrl($scope, zones, events, EventsService, $interval, $http, socket) {
 		var _this = this;
 
 		_this.data = {
@@ -12,8 +12,8 @@
 			locale: 'en'
 		};
 
-
-		this.events = {};
+		this.zones = zones;
+		this.events = events;
 		//watches for region change in header controller
 		$scope.$watchCollection(
 			'header.data', 
@@ -26,13 +26,6 @@
 		//defines a sorting predicate
 		this.predicate = "";
 		this.reverse = false;
-
-		//get zones json file
-		$http.get("/api/riftevents/zones")
-			.success(function(response){
-				_this.zones = response;
-				_this.updateEvents();
-			});
 
 		this.sort = function(str) {
 			//only reverse if it is already the sort method

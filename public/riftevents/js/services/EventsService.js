@@ -6,15 +6,33 @@
 	function EventsService($http, $q) {
 		var _this = this;
 		this.zoneEvents = {};
+		this.zones = {};
 
 		this.getZones = function() {
-			$http.get("/api/riftevents/zones")
-				.success(function() {
+			console.log('called');
+			var deferred = $q.defer();
 
-				});
+			//if (_this.zones !== false) {
+			//	deferred.resolve(_this.zones);
+			//}
+			//else {
+				$http.get("/api/riftevents/zones")
+					.success(function(zones) {
+						var unpackedZones = {};
+						angular.forEach(zones, function(zone,key) {
+							var _id = zone._id;
+							delete zone._id;
+							unpackedZones[_id] = zone;
+						});
+						deferred.resolve(unpackedZones);
+					});
+			//}
+
+			return deferred.promise;
 		};
 
 		this.getEvents = function(region) {
+
 			//if region is specified change the url
 			var url = '/api/riftevents/';
 			if (region !== undefined) {
