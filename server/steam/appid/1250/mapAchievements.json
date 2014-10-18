@@ -4,6 +4,7 @@
 	"WinAsylumNormal","WinAsylumHard","WinAsylumSuicidal","WinAsylumHell",
 	"WinBiohazardNormal","WinBiohazardHard","WinBiohazardSuicidal","WinBiohazardHell",
 	"WinBioticsLabNormal","WinBioticsLabHard","WinBioticsLabSuicidal","WinBioticsLabHell",
+	"WinClandestineNormal","WinClandestineHard","WinClandestineSuicidal","WinClandestineHell",
 	"WinCrashNormal","WinCrashHard","WinCrashSuicidal","WinCrashHell",
 	"WinDepartedNormal","WinDepartedHard","WinDepartedSuicidal","WinDepartedHell",
 	"WinFarmNormal","WinFarmHard","WinFarmSuicidal","WinFarmHell",
