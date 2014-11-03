@@ -86,6 +86,14 @@ function createItem(data) {
 
 	this.calling = getCalling(data);
 	this.role = getRole(data);
+
+	//rename the ability object
+	if (typeof this.onEquip === 'object' && typeof this.onEquip.Ability === 'object') {
+		this.onEquip.ability_de = this.onEquip.Ability.German;
+		this.onEquip.ability_en = this.onEquip.Ability.English;
+		this.onEquip.ability_fr = this.onEquip.Ability.French;
+		delete this.onEquip.Ability;
+	}
 	
 }
 
@@ -167,7 +175,7 @@ function getRole(data) {
 }
 
 function saveItem(itemm) {
-	var deferred = q.defer();d
+	var deferred = q.defer();
 	var newItem = new item(itemm);
 
 	newItem.save(function(err) {

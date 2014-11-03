@@ -1,4 +1,6 @@
-var drops = require();
+var drops = require('./drops.js').then(function(data) {
+	drops = data;
+});
 
 module.exports = function(router) {
 
@@ -6,10 +8,9 @@ module.exports = function(router) {
 		next();
 	});
 
-	router.route('/experts')
+	router.route('/expert/:lang')
 		.get(function(req, res) {
-
-
+			res.json(drops[req.params.lang].expert);
 		});
 
 
