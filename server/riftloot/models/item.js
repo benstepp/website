@@ -19,8 +19,10 @@ var ItemSchema = new Schema({
 	calling: Array,
 	role: String,
 
-	onEquip: Schema.Types.Mixed
+	onEquip: Schema.Types.Mixed,
+
+	drop: Schema.Types.Mixed
 });
 
 
-module.exports = mongoose.model('item', ItemSchema);
+module.exports = mongoose.model('riftloot', ItemSchema);

@@ -2,7 +2,8 @@ var fs = require('fs'),
 	q = require('q'),
 	mongoose = require('mongoose'),
 	xmlstream = require('xml-stream'),
-	item = require('../server/riftloot/models/item.js');
+	item = require('./models/item.js'),
+	dropLocations = require('./config/dropLocations.js');
 
 //connect to database
 mongoose.connect('mongodb://localhost/');
@@ -11,26 +12,28 @@ db.on('error', console.error.bind(console, 'connection error:'));
 db.once('open', function callback () {
 	console.log('connected to database');
 
-	getBulkXML()
+	/*getBulkXML()
 		.then(function(data) {
-			console.log('finished adding' + data.length + 'items to database');
-		});
+			console.log('finished adding ' + data.length + ' items to database');
+			saveDropLocations();
+		});*/
 
 });
 
 
 function getBulkXML(sortFunction) {
 		var deferred = q.defer();
-		var stream = fs.createReadStream('../dev/items.xml');
+		//this is the items.xml from ftp://ftp.trionworlds.com/rift/data/
+		var stream = fs.createReadStream('./dev/items.xml');
 		var xml = new xmlstream(stream);
 		var results = [];
 
 		xml.on('endElement: Item', function(data) {
 				if (sort(data)) {
-					xml.pause();
+					//xml.pause();
 					var parsedItem = new createItem(data);
 					saveItem(parsedItem).then(function(err) {
-						xml.resume();
+						//xml.resume();
 					});
 
 					results.push(parsedItem);
@@ -40,8 +43,13 @@ function getBulkXML(sortFunction) {
 			});
 
 		xml.on('end', function() {
+			fs.writeFile('./dev/items.json', JSON.stringify({items:results}), function(err){
+				if (err) {console.log(err);}
+				else {console.log('json of parsed items.xml saved');}
+			});
 			deferred.resolve(results);
 		});
+
 
 		return deferred.promise;
 }
@@ -178,7 +186,7 @@ function saveItem(itemm) {
 	var deferred = q.defer();
 	var newItem = new item(itemm);
 
-	newItem.save(function(err) {
+	newItem.save({upsert:true},function(err) {
 		if (err) {
 			console.log(err);
 			deferred.reject();
@@ -191,4 +199,40 @@ function saveItem(itemm) {
 	return deferred.promise;
 }
 
+function saveDropLocations() {
+	var promises = [];
 
+	for (var tier in dropLocations) {
+		for (var instance in dropLocations[tier]) {
+			for (var boss in dropLocations[tier][instance]) {
+				var bossLength = dropLocations[tier][instance][boss].length;
+				for (var i = 0;i < bossLength; i++) {
+					var dropPromise = saveItemDrop(dropLocations[tier][instance][boss][i], boss, instance, tier);
+					promises.push(dropPromise);
+				}
+			}
+		}
+	}
+
+	q.all(promises).then(function(){
+		console.log('drop info saved');
+	});
+
+}
+
+function saveItemDrop(itemDropName, bossC, instanceC, tierC) {
+	var deferred = q.defer();
+
+	item.findOneAndUpdate({name_en:itemDropName}, 
+		{drop:{
+			tier:tierC,
+			instance:instanceC,
+			boss:bossC
+		}},
+		function(err,result) {
+			if (err) { console.log(err); }
+			else { deferred.resolve(); }
+		});
+
+	return deferred.promise;
+}
