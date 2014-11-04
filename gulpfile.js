@@ -57,6 +57,17 @@ var config = {
 		'public/libs/foundation-icon-fonts/foundation-icons.css'],
 	},
 
+	riftloot: {
+		base:'public/riftloot',
+		outdir:'build/riftloot',
+
+		js:['public/riftloot/js/**/*.js'],
+
+		css:['public/riftloot/scss/style.scss',
+		'public/libs/foundation-icon-fonts/foundation-icons.css'],
+
+	},
+
 	//total fucking hack because i cant pass arguments to a lazypipe
 	//also errors fucking everywhere but at least it runs
 	false: {
@@ -228,14 +239,14 @@ gulp.task('default', function() {
 
 //dev shit ill clean up later
 gulp.task('dev2', function() {
-	gulp.watch(config.riftevents.css, function() {
+	gulp.watch(config.riftloot.css, function() {
 		gulp.start('scss');
 	});
 });
 
 gulp.task('scss', function() {
-	return gulp.src(config.riftevents.css, {base:'public/riftevents'})
+	return gulp.src(config.riftloot.css, {base:'public/riftloot'})
 		.pipe(sass())
 		.pipe(minifyCss())
-		.pipe(gulp.dest('public/riftevents'));
+		.pipe(gulp.dest('public/riftloot'));
 });
