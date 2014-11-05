@@ -12,11 +12,11 @@ db.on('error', console.error.bind(console, 'connection error:'));
 db.once('open', function callback () {
 	console.log('connected to database');
 
-	/*getBulkXML()
+	getBulkXML()
 		.then(function(data) {
 			console.log('finished adding ' + data.length + ' items to database');
-			saveDropLocations();
-		});*/
+			//saveDropLocations();
+		});
 
 });
 
