@@ -1,0 +1,32 @@
+.rift-tooltip {
+	display:block;
+	white-space:normal;
+	margin:0px;
+	background-color:#222;
+	padding:4px 8px;
+	border: 1px solid #C2AC7D;
+}
+
+.tooltip-hr {
+    height:1px;
+    background-color:green;
+    clear:both;
+}
+
+.tooltip-name {
+	font-size:14px;
+	font-weight:400;
+}
+
+.tooltip-bind {
+	font-size:11px;
+}
+
+.tooltip-slot {
+	font-size:11px;
+}
+
+.tooltip-stat {
+	color:#eee;
+	font-weight:300;
+}

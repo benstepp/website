@@ -1,0 +1,225 @@
+<!doctype html>
+<html lang="en" data-ng-app="app">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="A loot table RIFT:Nightmare Tide by Trion Worlds. ">
+	<title>Rift: Nightmare Tide Loot Table</title>
+
+	<!-- build:css -->
+	<link rel="stylesheet" href="../libs/foundation-icon-fonts/foundation-icons.css">
+	<link rel="stylesheet" href="./scss/style.css">
+	<!-- endbuild -->
+
+	<!-- external resources-->
+	<link href='//fonts.googleapis.com/css?family=Roboto:400,300,700' rel='stylesheet' type='text/css'>
+	<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.20/angular.min.js"></script>
+
+</head>
+<body data-ng-controller="headerController as header">
+		<div class="off-canvas-wrap">
+			<div class="inner-wrap">
+				<!--Desktop Nav-->
+				<div class="kf-hr show-for-large-up"></div>
+				<nav class="top-bar show-for-large-up">
+					<div class="row">
+					<div class="small-20 columns">
+					<ul class="title-area">
+						<li class="name">
+							<h1><a class="navbar-brand hidden-xs" href="/">website</a></h1>
+						</li>
+					</ul>
+					<section class="top-bar-section">
+						<ul class="left">
+							<li>
+								<a href="/riftloot/#">Rift: Nightmare Tide Loot Table</a>
+							</li>
+						</ul>
+						<ul class="right" data-ng-show="header.state.name !== '/'">
+							<li class="has-dropdown">
+								<a data-dropdown-toggle="#top-bar-class">
+									Class: <span data-ng-bind="header.cap(header.data.class)"></span>
+								</a>
+								<ul class="f-dropdown" id="top-bar-class">
+									<li>
+									<a data-ng-href="#/{{header.data.loot}}/{{header.data.tier}}/all/{{header.data.locale}}">All</a>
+									</li>
+									<li>
+									<a data-ng-href="#/{{header.data.loot}}/{{header.data.tier}}/cleric/{{header.data.locale}}">Cleric</a>
+									</li>
+									<li>
+									<a data-ng-href="#/{{header.data.loot}}/{{header.data.tier}}/mage/{{header.data.locale}}">Mage</a>
+									</li>
+									<li>
+									<a data-ng-href="#/{{header.data.loot}}/{{header.data.tier}}/rogue/{{header.data.locale}}">Rogue</a>
+									</li>
+									<li>
+									<a data-ng-href="#/{{header.data.loot}}/{{header.data.tier}}/warrior/{{header.data.locale}}">Warrior</a>
+									</li>
+								</ul>
+							</li>
+							<li class="has-dropdown">
+								<a data-dropdown-toggle="#top-bar-tier">
+									Tier: <span data-ng-bind="header.cap(header.data.tier)"></span>
+								</a>
+								<ul class="f-dropdown" id="top-bar-tier">
+									<li>
+									<a data-ng-href="#/{{header.data.loot}}/all/{{header.data.class}}/{{header.data.locale}}">All</a>
+									</li>
+									<li>
+									<a data-ng-href="#/{{header.data.loot}}/expert/{{header.data.class}}/{{header.data.locale}}">Expert</a>
+									</li>
+									<li>
+									<a data-ng-href="#/{{header.data.loot}}/raid/{{header.data.class}}/{{header.data.locale}}">Raid I</a>
+									</li>
+								</ul>
+							</li>
+							<li class="has-dropdown">
+								<a data-dropdown-toggle="#top-bar-language">
+									Language: {{header.data.language}}
+								</a>
+								<ul class="f-dropdown" id="top-bar-language">
+									<li>
+									<a data-ng-href="#/{{header.data.loot}}/{{header.data.tier}}/{{header.data.class}}/en">English</a>
+									</li>
+									<li>
+									<a data-ng-href="#/{{header.data.loot}}/{{header.data.tier}}/{{header.data.class}}/fr">French</a>
+									</li>
+									<li>
+									<a data-ng-href="#/{{header.data.loot}}/{{header.data.tier}}/{{header.data.class}}/de">German</a>
+									</li>
+								</ul>
+							</li>
+						</ul>
+					</section>
+					</div></div>
+				</nav>
+				<!--Mobile Nav-->
+				<nav class="tab-bar hide-for-large-up">
+					<section class="middle tab-bar-section">
+						<h1><a class="title" href="/riftevents/#">Rift: Nightmare Tide Loot Table</a></h1>
+					</section>
+					<section class="right-small">
+						<a class="right-off-canvas-toggle menu-icon" href=""><span></span></a>
+					</section>
+				</nav>
+				<aside class="right-off-canvas-menu">
+					<ul class="off-canvas-list">
+						<li><label>website</label></li>
+						<li><label>Rift: Nightmare Tide Loot Table</label></li>
+						<li class="has-dropdown">
+							<a class="no-pointer">
+								Class: <span data-ng-bind="header.cap(header.data.class)"></span>
+							</a>
+							<ul>
+								<li>
+								<a data-ng-href="#/{{header.data.loot}}/{{header.data.tier}}/all/{{header.data.locale}}">All</a>
+								</li>
+								<li>
+								<a data-ng-href="#/{{header.data.loot}}/{{header.data.tier}}/cleric/{{header.data.locale}}">Cleric</a>
+								</li>
+								<li>
+								<a data-ng-href="#/{{header.data.loot}}/{{header.data.tier}}/mage/{{header.data.locale}}">Mage</a>
+								</li>
+								<li>
+								<a data-ng-href="#/{{header.data.loot}}/{{header.data.tier}}/rogue/{{header.data.locale}}">Rogue</a>
+								</li>
+								<li>
+								<a data-ng-href="#/{{header.data.loot}}/{{header.data.tier}}/warrior/{{header.data.locale}}">Warrior</a>
+								</li>
+							</ul>
+						</li>
+						<li class="has-dropdown">
+							<a class="no-pointer">
+								Tier: <span data-ng-bind="header.cap(header.data.tier)"></span>
+							</a>
+							<ul>
+								<li>
+								<a data-ng-href="#/{{header.data.loot}}/all/{{header.data.class}}/{{header.data.locale}}">All</a>
+								</li>
+								<li>
+								<a data-ng-href="#/{{header.data.loot}}/expert/{{header.data.class}}/{{header.data.locale}}">Expert</a>
+								</li>
+								<li>
+								<a data-ng-href="#/{{header.data.loot}}/raid/{{header.data.class}}/{{header.data.locale}}">Raid I</a>
+								</li>
+							</ul>
+						</li>
+						<li class="has-dropdown">
+							<a class="no-pointer">
+								Language: {{header.data.language}}
+							</a>
+							<ul>
+								<li>
+								<a data-ng-href="#/{{header.data.loot}}/{{header.data.tier}}/{{header.data.class}}/en">English</a>
+								</li>
+								<li>
+								<a data-ng-href="#/{{header.data.loot}}/{{header.data.tier}}/{{header.data.class}}/fr">French</a>
+								</li>
+								<li>
+								<a data-ng-href="#/{{header.data.loot}}/{{header.data.tier}}/{{header.data.class}}/de">German</a>
+								</li>
+							</ul>
+						</li>
+					</ul>
+				</aside>
+				<!--Content-->
+				<section class="main-section">
+					<div class="main-bg">
+					</div>
+
+					<div class="main-view" data-ui-view="main">
+
+					</div>
+					
+					<footer>
+						<div class="row">
+							<div class="small-10 columns">
+								<span class="text-muted"><a class="text-muted" href="http://www.riftgame.com/">Rift</a> © <a class="text-muted" href="http://www.trionworlds.com/">Trion Worlds, Inc.</a></span>
+							</div>
+							<div class="small-10 columns footer-right">
+								<a href="//steamcommunity.com/id/fooman">
+									<i class="fi-social-steam"></i>
+								</a>
+								<a href="//twitter.com/benstepp">
+									<i class="fi-social-twitter"></i>
+								</a>
+								<a href="//github.com/benstepp">
+									<i class="fi-social-github"></i>
+								</a>	
+							</div>
+						</div>
+					</footer>
+				</section>
+
+				<a class="exit-off-canvas"></a>
+
+			</div>
+		</div>
+		
+		<!-- build:js -->
+		<script src="../libs/angular-ui-router/release/angular-ui-router.js"></script>
+		<script src="../libs/angular-foundation/mm-foundation.js"></script>
+		<script src="./js/controllers/LootCtrl.js"></script>
+		<script src="./js/services/LootService.js"></script>
+		<script src="./js/controllers/HeaderCtrl.js"></script>
+		<script src="./js/directives/bsContentResize.js"></script>
+		<script src="./js/directives/bsRiftTooltip.js"></script>
+		<script src="./js/filters/getOrder.js"></script>
+		<script src="./js/routes.js"></script>
+		<script src="./js/app.js"></script>
+		<!-- endbuild -->
+		<script>
+		  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+		  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+		  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+		  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+		  ga('create', 'UA-56469501-1', 'auto');
+		  ga('send', 'pageview');
+
+		</script>
+
+</body>
+</html>

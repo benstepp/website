@@ -15,6 +15,7 @@
 		"request": "~2.37.0",
 		"lodash":"~2.4.1",
 		"socket.io":"~1.0.6",
+		"xml-stream":"~0.4.5",
 		"gulp":"~3.8.6",
 		"gulp-concat":"~2.3.4",
 		"gulp-uglify":"~0.3.1",

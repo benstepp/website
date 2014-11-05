@@ -1,0 +1,208 @@
+@charset "UTF-8";
+// Foundation by ZURB
+// foundation.zurb.com
+// Licensed under MIT Open Source
+
+// Make sure the charset is set appropriately
+  @import "settings";
+  @import "rift-table.scss";
+  @import "rift-tooltip.scss";
+  @import "../../libs/foundation/scss/normalize.scss";
+
+// Behold, here are all the Foundation components.
+  @import "../../libs/foundation/scss/foundation/components/grid";
+  @import "../../libs/foundation/scss/foundation/components/alert-boxes";
+  @import "../../libs/foundation/scss/foundation/components/block-grid";
+  @import "../../libs/foundation/scss/foundation/components/buttons";
+  @import "../../libs/foundation/scss/foundation/components/clearing";
+  @import "../../libs/foundation/scss/foundation/components/dropdown";
+  @import "../../libs/foundation/scss/foundation/components/dropdown-buttons";
+  @import "../../libs/foundation/scss/foundation/components/forms";
+  @import "../../libs/foundation/scss/foundation/components/icon-bar";
+  @import "../../libs/foundation/scss/foundation/components/inline-lists";
+  @import "../../libs/foundation/scss/foundation/components/labels";
+  @import "../../libs/foundation/scss/foundation/components/panels";
+  @import "../../libs/foundation/scss/foundation/components/tabs";
+  @import "../../libs/foundation/scss/foundation/components/thumbs";
+  @import "../../libs/foundation/scss/foundation/components/tooltips";
+  @import "../../libs/foundation/scss/foundation/components/top-bar";
+  @import "../../libs/foundation/scss/foundation/components/type";
+  @import "../../libs/foundation/scss/foundation/components/offcanvas";
+  @import "../../libs/foundation/scss/foundation/components/visibility";
+  
+
+.row {
+  max-width:100%
+}
+
+.top-bar-section ul li>a:active {
+  background-color:green;
+}
+.top-bar, .tab-bar {
+  -moz-box-shadow: 0 2px $primary-color;
+  -webkit-box-shadow: 0 2px $primary-color;
+  box-shadow: 0 2px $primary-color;
+}
+
+.top-bar-section ul.left li>a {
+  font-size:rem-calc(16px);
+  font-weight:700;
+}
+
+.top-bar-section .has-dropdown > a:after {
+    border-color: #ddd rgba(0, 0, 0, 0) rgba(0, 0, 0, 0);
+}
+.top-bar-section .has-dropdown > a:hover:after {
+    border-color: $primary-color rgba(0, 0, 0, 0) rgba(0, 0, 0, 0);
+}
+.top-bar-section .has-dropdown > a:active:after {
+    border-color: $primary-color rgba(0, 0, 0, 0) rgba(0, 0, 0, 0);
+}
+.top-bar-section > ul > li > a:hover {
+  box-shadow: inset 0 -3px 0 0 $primary-color;
+}
+.top-bar-section > ul > li > a:active {
+  box-shadow: inset 0 -3px 0 0 $primary-color;
+}
+
+.has-dropdown > ul > li > a:hover {
+  background-color: #eee !important;
+}
+
+.f-dropdown {
+  box-shadow: 2px 2px 2px #ddd;
+  width:100% !important;
+}
+.f-dropdown:before {
+  display:none;
+}
+.f-dropdown:after {
+  display:none;
+}
+
+
+.main-bg {
+    z-index:-1;
+    position:fixed;
+    width:200%;
+    height:200%;
+    left:-50%;
+    top:-1%;
+    background-color:#FFF;
+}
+
+.main-bg img {
+    display:block;
+    margin:auto;
+    min-width:50%;
+    min-height:50%;
+    top:0;
+    left:0;
+    right:0;
+    bottom:0;
+}
+
+.off-canvas-wrap, .inner-wrap, .main-section {
+  min-height:100%
+}
+
+.kf-hr {
+    height:2px;
+    background-color:$primary-color;
+}
+
+footer {
+  font-size:12px;
+  border-top:1px $primary-color solid;
+  background-color:#FFF;
+}
+
+footer i {
+  font-size:18px;
+}
+
+.footer-right a {
+  padding:0px 4px 0px 4px;
+}
+
+footer div:nth-child(2) {
+  text-align:right;
+}
+
+.main-view {
+  min-height:100%;
+}
+
+
+
+.f-dropdown li {
+  float:none !important;
+}
+
+.dungeon {
+  background-color:#f5f5f5;
+  border:1px solid #333;
+  margin:20px 0px;
+  text-align:left;
+}
+
+.splash-btn {
+  display:block;
+  padding:20px;
+  margin:20px;
+  background-color:$primary-color;
+  color:#fff;
+  font-size:18px;
+}
+
+.disabled {
+  background-color:#333;
+}
+
+.boss {
+  list-style-type: none;
+  border:1px #333 solid;
+  padding:0px;
+  margin:0px;
+}
+
+.boss >li {
+  padding:2px 6px;
+}
+
+.boss-grid {
+  padding:8px;
+}
+
+.boss-name {
+  background-color:#333;
+  color:#fff;
+  font-weight:700;
+}
+
+.item-name {
+  font-size:12px;
+  overflow:hidden;
+  text-overflow:clip;
+  white-space:nowrap;
+  font-weight:400;
+}
+
+h5 {
+  margin:6px 10px;
+  padding:2px 12px;
+  font-weight:700;
+  border-bottom:2px solid $primary-color;
+}
+
+.rare {
+  color:#226DD4;
+}
+
+.epic {
+  color:#CC33FF;
+}
+
+.no-pointer {
+  cursor:default !important;
+}

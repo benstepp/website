@@ -48,13 +48,38 @@ var config = {
 
 	},
 
-	riftevents: {
+	/*riftevents: {
 		base:'public/riftevents',
 		outdir:'build/riftevents',
 
 		css:['public/riftevents/scss/style.scss',
 		'public/riftevents/scss/*.scss',
 		'public/libs/foundation-icon-fonts/foundation-icons.css'],
+	},*/
+
+	riftloot: {
+		base:'public/riftloot',
+		outdir:'build/riftloot',
+
+		js:['public/riftloot/js/**/*.js',
+		'public/libs/angular-foundation/mm-foundation.min.js',
+		'public/libs/angular-ui-router/release/angular-ui-router.min.js'],
+
+		css:['public/riftloot/scss/style.scss',
+		'public/libs/foundation-icon-fonts/foundation-icons.css'],
+
+		uncss:['public/riftloot/index.html',
+		'public/riftloot/partials/splash.html',
+		'public/riftloot/partials/location.html'],
+
+		partials:['public/riftloot/partials/*.html'],
+		partialsOutdir:'build/riftloot',
+
+		html:['public/riftloot/index.html'],
+		img:['public/riftloot/img/**/*'],
+
+		libs:['public/libs/foundation-icon-fonts/foundation-icons.woff']
+
 	},
 
 	//total fucking hack because i cant pass arguments to a lazypipe
@@ -228,14 +253,14 @@ gulp.task('default', function() {
 
 //dev shit ill clean up later
 gulp.task('dev2', function() {
-	gulp.watch(config.riftevents.css, function() {
+	gulp.watch(config.riftloot.css, function() {
 		gulp.start('scss');
 	});
 });
 
 gulp.task('scss', function() {
-	return gulp.src(config.riftevents.css, {base:'public/riftevents'})
+	return gulp.src(config.riftloot.css, {base:'public/riftloot'})
 		.pipe(sass())
 		.pipe(minifyCss())
-		.pipe(gulp.dest('public/riftevents'));
+		.pipe(gulp.dest('public/riftloot'));
 });

@@ -1,6 +1,7 @@
 //modules
 var express = require('express');
 var mongoose = require('mongoose');
+var _ = require('lodash');
 var bodyParser = require('body-parser');
 var morgan = require('morgan');
 
@@ -26,7 +27,8 @@ db.once('open', function callback () {
 
 //app modules
 require('./server/riftevents/main.js')(app, io);
-require('./server/steam/main.js')(app, io);
+require('./server/steam/main.js')(app, io,_);
+require('./server/riftloot')(app, io, _);
 
 //start app
 http.listen(port);
