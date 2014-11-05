@@ -102,6 +102,13 @@ function createItem(data) {
 		this.onEquip.ability_fr = this.onEquip.Ability.French;
 		delete this.onEquip.Ability;
 	}
+
+	//include itemset info
+	if(defined(data.ItemSet)) {
+		this.itemset_de = data.ItemSet.FamilyName.German;
+		this.itemset_en = data.ItemSet.FamilyName.English;
+		this.itemset_fr = data.ItemSet.FamilyName.French;
+	}
 	
 }
 

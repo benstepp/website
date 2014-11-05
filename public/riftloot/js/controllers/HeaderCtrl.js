@@ -9,11 +9,23 @@
 
 		//initialize data (use local storage later);
 		_this.data = {
-			tier: 'Expert',
-			class: 'All',
+			loot: 'location',
+			tier: 'expert',
+			class: 'all',
 			language: 'English',
 			locale: 'en'
 		};
+
+		//capitalizes first letter of a string (for the nav titles)
+		_this.cap = function(string) {
+			return string.charAt(0).toUpperCase() + string.slice(1);
+		};
+
+		//Binds the header links URLs to hide navbar if on splash page
+		$rootScope.$on('$stateChangeSuccess', 
+			function(event, toState, toParams, fromState, fromParams) {
+				_this.state = toState;
+			});
 
 	}
 	

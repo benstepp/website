@@ -33,45 +33,45 @@
 					<section class="top-bar-section">
 						<ul class="left">
 							<li>
-								<a href="/riftevents/#">Rift Zone Event Tracker</a>
+								<a href="/riftloot/#">Rift: Nightmare Tide Loot Table</a>
 							</li>
 						</ul>
 						<ul class="right" data-ng-show="header.state.name !== '/'">
 							<li class="has-dropdown">
 								<a data-dropdown-toggle="#top-bar-class">
-									Class: {{header.data.class}}
+									Class: <span data-ng-bind="header.cap(header.data.class)"></span>
 								</a>
 								<ul class="f-dropdown" id="top-bar-class">
 									<li>
-									<a data-ng-href="#/{{header.data.tier}}/All/{{header.data.locale}}">All</a>
+									<a data-ng-href="#/{{header.data.loot}}/{{header.data.tier}}/all/{{header.data.locale}}">All</a>
 									</li>
 									<li>
-									<a data-ng-href="#/{{header.data.tier}}/Cleric/{{header.data.locale}}">Cleric</a>
+									<a data-ng-href="#/{{header.data.loot}}/{{header.data.tier}}/cleric/{{header.data.locale}}">Cleric</a>
 									</li>
 									<li>
-									<a data-ng-href="#/{{header.data.tier}}/Mage/{{header.data.locale}}">Mage</a>
+									<a data-ng-href="#/{{header.data.loot}}/{{header.data.tier}}/mage/{{header.data.locale}}">Mage</a>
 									</li>
 									<li>
-									<a data-ng-href="#/{{header.data.tier}}/Rogue/{{header.data.locale}}">Rogue</a>
+									<a data-ng-href="#/{{header.data.loot}}/{{header.data.tier}}/rogue/{{header.data.locale}}">Rogue</a>
 									</li>
 									<li>
-									<a data-ng-href="#/{{header.data.tier}}/Warrior/{{header.data.locale}}">Warrior</a>
+									<a data-ng-href="#/{{header.data.loot}}/{{header.data.tier}}/warrior/{{header.data.locale}}">Warrior</a>
 									</li>
 								</ul>
 							</li>
 							<li class="has-dropdown">
 								<a data-dropdown-toggle="#top-bar-tier">
-									Tier: {{header.data.tier}}
+									Tier: <span data-ng-bind="header.cap(header.data.tier)"></span>
 								</a>
 								<ul class="f-dropdown" id="top-bar-tier">
 									<li>
-									<a data-ng-href="#/All/{{header.data.class}}/{{header.data.locale}}">All</a>
+									<a data-ng-href="#/{{header.data.loot}}/all/{{header.data.class}}/{{header.data.locale}}">All</a>
 									</li>
 									<li>
-									<a data-ng-href="#/Expert/{{header.data.class}}/{{header.data.locale}}">Expert</a>
+									<a data-ng-href="#/{{header.data.loot}}/expert/{{header.data.class}}/{{header.data.locale}}">Expert</a>
 									</li>
 									<li>
-									<a data-ng-href="#/Raid/{{header.data.class}}/{{header.data.locale}}">Raid I</a>
+									<a data-ng-href="#/{{header.data.loot}}/raid/{{header.data.class}}/{{header.data.locale}}">Raid I</a>
 									</li>
 								</ul>
 							</li>
@@ -81,13 +81,13 @@
 								</a>
 								<ul class="f-dropdown" id="top-bar-language">
 									<li>
-									<a data-ng-href="#/active/{{header.data.region}}/en">English</a>
+									<a data-ng-href="#/{{header.data.loot}}/{{header.data.region}}/en">English</a>
 									</li>
 									<li>
-									<a data-ng-href="#/active/{{header.data.region}}/fr">French</a>
+									<a data-ng-href="#/{{header.data.loot}}/{{header.data.region}}/fr">French</a>
 									</li>
 									<li>
-									<a data-ng-href="#/active/{{header.data.region}}/de">German</a>
+									<a data-ng-href="#/{{header.data.loot}}/{{header.data.region}}/de">German</a>
 									</li>
 								</ul>
 							</li>
@@ -133,6 +133,9 @@
 								<span class="text-muted"><a class="text-muted" href="http://www.riftgame.com/">Rift</a> © <a class="text-muted" href="http://www.trionworlds.com/">Trion Worlds, Inc.</a></span>
 							</div>
 							<div class="small-6 columns footer-right">
+								<a href="//steamcommunity.com/id/fooman">
+									<i class="fi-social-steam"></i>
+								</a>
 								<a href="//twitter.com/benstepp">
 									<i class="fi-social-twitter"></i>
 								</a>

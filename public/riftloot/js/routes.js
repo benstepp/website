@@ -8,45 +8,33 @@
 		$urlRouterProvider.otherwise('/');
 
 		/*
-		The table state
+		The splash state
 		*/
 		$stateProvider.state('/', {
 			url:'/',
 			views: {
 				"main": { 
-					templateUrl:'partials/events.html'
+					templateUrl:'partials/splash.html'
 				}
-			},
-			resolve: {
-				LootService: 'LootService',
-				zones:['LootService', function(LootService) {
-					return LootService.getZones();
-				}],
-				events: ['LootService', function(LootService) {
-					return LootService.getEvents();
-				}]
 			}
 		}); 
 
 		/*
-		The loot state
+		The location state
 		*/
-		$stateProvider.state('loot', {
-			url:'/:tier/:class/:locale',
+		$stateProvider.state('location', {
+			url:'/location/:tier/:class/:locale',
 			views: {
 				'main': {
-					templateUrl: 'partials/events.html',
-					controller: 'EventsController',
-					controllerAs: 'riftevents'
+					templateUrl: 'partials/location.html',
+					controller: 'LootController',
+					controllerAs: 'riftloot'
 				}
 			},
 			resolve: {
 				LootService: 'LootService',
-				zones:['LootService', function(LootService) {
-					return LootService.getZones();
-				}],
-				events: ['LootService', function(LootService, $stateParams) {
-					return LootService.getEvents($stateParams.region);
+				loot: ['LootService','$stateParams', function(LootService, $stateParams) {
+					return LootService.getLoot($stateParams.tier);
 				}]
 			}
 		});
