@@ -1,10 +1,21 @@
 <div class="row" id="rift-table">
-	<div class="col-md-12">
-		<section class="dungeon">
-			
-			
-		</section>
+	<div class="small-30 large-30 columns">
+		
+		<section class="dungeon" data-ng-repeat="(dungeon,obj) in riftloot.loot.expert">
+			<h5>{{dungeon}}: Expert</h5>
+			<div class="row">
+			<ul class="small-block-grid-1 medium-block-grid-2 large-block-grid-5">
+				<li data-ng-repeat="(bossName,boss) in obj | getOrder:'order'">
+					<ul class="boss">
+						<li class="boss-title">{{boss.name}}</li>
+						<li data-ng-repeat="item in boss.loot">{{item.name_en}}</li>
 
+
+					</ul>
+				</li>
+			</ul>
+			</div>
+		</section>
 		
 	</div>
 </div>

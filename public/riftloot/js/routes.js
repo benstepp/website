@@ -34,7 +34,7 @@
 			resolve: {
 				LootService: 'LootService',
 				loot: ['LootService','$stateParams', function(LootService, $stateParams) {
-					return LootService.getLoot($stateParams.tier);
+					return LootService.getLoot($stateParams.tier,$stateParams.locale);
 				}]
 			}
 		});

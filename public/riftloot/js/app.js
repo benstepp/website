@@ -9,6 +9,7 @@
 		//RiftEvents
 		'routes', 
 		'LootService',
-		'LootCtrl'
+		'LootCtrl',
+		'getOrder'
 		]);
 })();

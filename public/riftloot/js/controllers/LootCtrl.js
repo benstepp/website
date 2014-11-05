@@ -7,5 +7,11 @@
 		var _this = this;
 
 		_this.loot = loot;
+
+		_this.getOrder = function() {
+			return function(obj) {
+				return obj.value.order;
+			};
+		};
 	}
 })();

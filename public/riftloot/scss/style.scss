@@ -29,6 +29,11 @@
   @import "../../libs/foundation/scss/foundation/components/offcanvas";
   @import "../../libs/foundation/scss/foundation/components/visibility";
   
+
+.row {
+  max-width:100%
+}
+
 .top-bar-section ul li>a:active {
   background-color:green;
 }
@@ -135,7 +140,6 @@ footer div:nth-child(2) {
 
 .dungeon {
   background-color:green;
-  height:100px;
 }
 
 .splash-btn {
