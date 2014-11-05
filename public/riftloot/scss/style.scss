@@ -150,7 +150,13 @@ footer div:nth-child(2) {
   display:block;
   padding:20px;
   margin:20px;
-  background-color:red;
+  background-color:$primary-color;
+  color:#fff;
+  font-size:18px;
+}
+
+.disabled {
+  background-color:#333;
 }
 
 .boss {
@@ -195,4 +201,8 @@ h5 {
 
 .epic {
   color:#CC33FF;
+}
+
+.no-pointer {
+  cursor:default !important;
 }

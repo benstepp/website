@@ -11,7 +11,6 @@
 		'LootService',
 		'LootCtrl',
 		'getOrder',
-		'bsRiftTooltip',
-		'tooltipHtml'
+		'bsRiftTooltip'
 		]);
 })();

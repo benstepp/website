@@ -5,10 +5,28 @@
 
 	function LootService($http, $q) {
 		var _this = this;
-		_this.loot = {};
-
+		_this.loot = {
+			de: {},
+			en: {},
+			fr: {}
+		};
 
 		_this.getLoot = function(tier,locale) {
+			var deferred = $q.defer();
+			if (_this.loot[locale][tier]) {
+				deferred.resolve(_this.loot[locale][tier]);
+			}
+			else {
+				_this.lootApiCall(tier,locale).then(function(data) {
+					_this.loot[locale][tier] = data;
+					deferred.resolve(data);
+				});
+			}
+
+			return deferred.promise;
+		};
+
+		_this.lootApiCall = function(tier,locale) {
 	        var deferred = $q.defer();
 	        
 			var url = '/api/riftloot/' + tier + '/' + locale + '/';
