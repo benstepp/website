@@ -1,5 +1,5 @@
-var riftloot = require('./models/item.js');
-var _ = require('lodash');
+var dropLocations = require('./config/dropLocations.js'),
+	dropsByLocation = require('./dropsByLocation.js');
 
 module.exports = function(router) {
 
@@ -7,12 +7,12 @@ module.exports = function(router) {
 		next();
 	});
 
-	router.route('/expert/')
+	router.route('/expert/:locale')
 		.get(function(req, res) {
-			riftloot.find({"drop.tier":"expert"}, function(err, results) {
-				if (err) {console.log(err);}
-				res.json(results);
-			});
+			var response = new dropsByLocation(dropLocations,req.params.locale)
+				.then(function(jsonResponse) {
+					res.json(jsonResponse);
+				});
 		});
 
 

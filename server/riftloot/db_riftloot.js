@@ -15,7 +15,7 @@ db.once('open', function callback () {
 	getBulkXML()
 		.then(function(data) {
 			console.log('finished adding ' + data.length + ' items to database');
-			//saveDropLocations();
+			saveDropLocations();
 		});
 
 });
@@ -227,10 +227,10 @@ function saveDropLocations() {
 
 }
 
-function saveItemDrop(itemDropName, bossC, instanceC, tierC) {
+function saveItemDrop(itemId, bossC, instanceC, tierC) {
 	var deferred = q.defer();
 
-	item.findOneAndUpdate({name_en:itemDropName}, 
+	item.findByIdAndUpdate(itemId, 
 		{drop:{
 			tier:tierC,
 			instance:instanceC,
