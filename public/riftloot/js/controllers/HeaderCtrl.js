@@ -7,6 +7,12 @@
 
 		var _this = this;
 
+		var languages = {
+			de: 'German',
+			en: 'English',
+			fr: 'French'
+		};
+
 		//initialize data (use local storage later);
 		_this.data = {
 			loot: 'location',
@@ -25,6 +31,12 @@
 		$rootScope.$on('$stateChangeSuccess', 
 			function(event, toState, toParams, fromState, fromParams) {
 				_this.state = toState;
+				if (toState.name !== '/') {
+					_this.data.tier = toParams.tier;
+					_this.data.class = toParams.class;
+					_this.data.locale = toParams.locale;
+					_this.data.language = languages[toParams.locale];
+				}
 			});
 
 	}

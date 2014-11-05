@@ -9,11 +9,12 @@
 				<li data-ng-repeat="(bossName,boss) in obj | getOrder:'order'">
 					<ul class="boss">
 						<li class="boss-name">{{boss.name}}</li>
-						<li data-ng-repeat="item in boss.loot | orderBy:'name_en'" class="item-name">
-							{{item.name_en}}
+						<li data-ng-repeat="item in boss.loot | orderBy:'name_de ||name_en || name_fr'" 
+						class="item-name" 
+						data-ng-class="item.rarity.toLowerCase()"
+						data-ng-hide="riftloot.hideItem(item)">
+							<div bs-rift-tooltip="item"></div>
 						</li>
-
-
 					</ul>
 				</li>
 			</ul>

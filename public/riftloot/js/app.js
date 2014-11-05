@@ -6,10 +6,12 @@
 		//Custom
 		'bsContentResize',
 		'HeaderCtrl',
-		//RiftEvents
+		//RiftLoot
 		'routes', 
 		'LootService',
 		'LootCtrl',
-		'getOrder'
+		'getOrder',
+		'bsRiftTooltip',
+		'tooltipHtml'
 		]);
 })();

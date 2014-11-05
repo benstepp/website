@@ -6,6 +6,7 @@
 // Make sure the charset is set appropriately
   @import "settings";
   @import "rift-table.scss";
+  @import "rift-tooltip.scss";
   @import "../../libs/foundation/scss/normalize.scss";
 
 // Behold, here are all the Foundation components.
@@ -139,9 +140,9 @@ footer div:nth-child(2) {
 }
 
 .dungeon {
-  background-color:#eee;
+  background-color:#f5f5f5;
   border:1px solid #333;
-  margin:10px 0px;
+  margin:20px 0px;
   text-align:left;
 }
 
@@ -178,9 +179,20 @@ footer div:nth-child(2) {
   overflow:hidden;
   text-overflow:clip;
   white-space:nowrap;
+  font-weight:400;
 }
 
 h5 {
-  margin:4px 10px;
+  margin:6px 10px;
+  padding:2px 12px;
   font-weight:700;
+  border-bottom:2px solid $primary-color;
+}
+
+.rare {
+  color:#226DD4;
+}
+
+.epic {
+  color:#CC33FF;
 }

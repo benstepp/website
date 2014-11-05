@@ -63,7 +63,7 @@ var config = {
 
 		js:['public/riftloot/js/**/*.js'],
 
-		css:['public/riftloot/scss/style.scss',
+		css:['public/riftloot/scss/*.scss',
 		'public/libs/foundation-icon-fonts/foundation-icons.css'],
 
 	},
