@@ -139,7 +139,10 @@ footer div:nth-child(2) {
 }
 
 .dungeon {
-  background-color:green;
+  background-color:#eee;
+  border:1px solid #333;
+  margin:10px 0px;
+  text-align:left;
 }
 
 .splash-btn {
@@ -147,4 +150,37 @@ footer div:nth-child(2) {
   padding:20px;
   margin:20px;
   background-color:red;
+}
+
+.boss {
+  list-style-type: none;
+  border:1px #333 solid;
+  padding:0px;
+  margin:0px;
+}
+
+.boss >li {
+  padding:2px 6px;
+}
+
+.boss-grid {
+  padding:8px;
+}
+
+.boss-name {
+  background-color:#333;
+  color:#fff;
+  font-weight:700;
+}
+
+.item-name {
+  font-size:12px;
+  overflow:hidden;
+  text-overflow:clip;
+  white-space:nowrap;
+}
+
+h5 {
+  margin:4px 10px;
+  font-weight:700;
 }

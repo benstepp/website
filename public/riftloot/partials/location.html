@@ -4,16 +4,20 @@
 		<section class="dungeon" data-ng-repeat="(dungeon,obj) in riftloot.loot.expert">
 			<h5>{{dungeon}}: Expert</h5>
 			<div class="row">
-			<ul class="small-block-grid-1 medium-block-grid-2 large-block-grid-5">
+			<div class="small-30 columns">
+			<ul class="small-block-grid-1 medium-block-grid-2 large-block-grid-5 boss-grid">
 				<li data-ng-repeat="(bossName,boss) in obj | getOrder:'order'">
 					<ul class="boss">
-						<li class="boss-title">{{boss.name}}</li>
-						<li data-ng-repeat="item in boss.loot">{{item.name_en}}</li>
+						<li class="boss-name">{{boss.name}}</li>
+						<li data-ng-repeat="item in boss.loot | orderBy:'name_en'" class="item-name">
+							{{item.name_en}}
+						</li>
 
 
 					</ul>
 				</li>
 			</ul>
+			</div>
 			</div>
 		</section>
 		
