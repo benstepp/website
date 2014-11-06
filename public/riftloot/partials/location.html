@@ -1,7 +1,7 @@
 <div class="row" id="rift-table">
 	<div class="small-30 large-30 columns">
 		
-		<section class="dungeon" data-ng-repeat="(dungeon,obj) in riftloot.loot.expert">
+		<section class="dungeon" data-ng-repeat="(dungeon,obj) in riftloot.loot.expert" data-ng-hide="header.data.expanded">
 			<h5>{{dungeon}}: Expert</h5>
 			<div class="row">
 			<div class="small-30 columns">
@@ -19,6 +19,14 @@
 				</li>
 			</ul>
 			</div>
+			</div>
+		</section>
+
+		<section class="dungeon" data-ng-repeat="(dungeon,obj) in riftloot.loot.expert" data-ng-show="header.data.expanded">
+			<div class="row">
+				<div class="small-30 medium-15 large-3 columns">
+					<div></div>
+				</div>
 			</div>
 		</section>
 		

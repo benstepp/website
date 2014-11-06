@@ -91,6 +91,9 @@ function createItem(data) {
 	if (defined(data.ArmorType)) {
 		this.armorType = data.ArmorType;
 	}
+	if (defined(data.WeaponType)) {
+		this.weaponType = data.WeaponType;
+	}
 
 	this.calling = getCalling(data);
 	this.role = getRole(data);

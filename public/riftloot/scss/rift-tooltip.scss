@@ -1,4 +1,6 @@
 .rift-tooltip {
+	font-weight:300;
+	font-size:11px;
 	display:block;
 	white-space:normal;
 	margin:0px;
@@ -18,15 +20,6 @@
 	font-weight:400;
 }
 
-.tooltip-bind {
-	font-size:11px;
-}
-
-.tooltip-slot {
-	font-size:11px;
-}
-
-.tooltip-stat {
+.tooltip-text {
 	color:#eee;
-	font-weight:300;
 }

@@ -15,6 +15,7 @@ var ItemSchema = new Schema({
 	slot: String,
 	armor: String,
 	armorType: String,
+	weaponType: String,
 
 	calling: Array,
 	role: String,
