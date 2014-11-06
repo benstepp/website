@@ -1,8 +1,10 @@
 var fs = require('fs'),
 	q = require('q'),
+	_ = require('lodash'),
 	mongoose = require('mongoose'),
 	xmlstream = require('xml-stream'),
 	item = require('./models/item.js'),
+	itemKeys = require('./config/itemKeys.js'),
 	dropLocations = require('./config/dropLocations.js');
 
 //connect to database
@@ -32,6 +34,7 @@ function getBulkXML(sortFunction) {
 				if (sort(data)) {
 					//xml.pause();
 					var parsedItem = new createItem(data);
+					parsedItem = renameKeys(parsedItem);
 					saveItem(parsedItem).then(function(err) {
 						//xml.resume();
 					});
@@ -86,10 +89,13 @@ function createItem(data) {
 		this.slot = data.Slot;
 	}
 	if (defined(data.Armor)) {
-		this.Armor = data.Armor; 
+		this.armor = data.Armor; 
 	}
 	if (defined(data.ArmorType)) {
-		this.ArmorType = data.ArmorType;
+		this.armorType = data.ArmorType;
+	}
+	if (defined(data.WeaponType)) {
+		this.weaponType = data.WeaponType;
 	}
 
 	this.calling = getCalling(data);
@@ -191,9 +197,9 @@ function getRole(data) {
 
 function saveItem(itemm) {
 	var deferred = q.defer();
-	var newItem = new item(itemm);
+	var newItem = new item(itemm).toObject();
 
-	newItem.save({upsert:true},function(err) {
+	item.update({_id:newItem._id},newItem,{upsert:true},function(err) {
 		if (err) {
 			console.log(err);
 			deferred.reject();
@@ -242,4 +248,38 @@ function saveItemDrop(itemId, bossC, instanceC, tierC) {
 		});
 
 	return deferred.promise;
+}
+
+function renameKeys(itemm) {
+	//renames the stat names in the onEquip object
+	if(defined(itemm.onEquip)) {
+		var newEquip = {};
+		for (var k in itemm.onEquip){
+			if (typeof itemKeys[k] !== 'undefined') {
+				newEquip[itemKeys[k]] = itemm.onEquip[k];
+			}
+			else {
+				newEquip[k] = itemm.onEquip[k];
+			}
+		}
+		delete itemm.onEquip[k];
+		itemm.onEquip = newEquip;
+	}
+
+	//renames the weapon type
+	if(defined(itemm.weaponType)) {
+		if(typeof itemKeys[itemm.weaponType] !== 'undefined') {
+			itemm.weaponType = itemKeys[itemm.weaponType];
+		}
+	}
+
+	//renames the itemslot
+	if(defined(itemm.slot)) {
+		if(typeof itemKeys[itemm.slot] !== 'undefined') {
+			itemm.slot = itemKeys[itemm.slot];
+		}
+	}
+
+	return itemm;
+	
 }
