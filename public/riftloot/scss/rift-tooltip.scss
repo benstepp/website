@@ -11,8 +11,11 @@
 
 .tooltip-hr {
     height:1px;
-    background-color:green;
     clear:both;
+    background: -webkit-radial-gradient(#eee, #444, #222);
+    background: -o-radial-gradient(#eee, #444, #222);
+    background: -moz-radial-gradient(#eee, #444, #222);
+    background: radial-gradient(#eee, #444, #222);
 }
 
 .tooltip-name {
