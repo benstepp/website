@@ -86,10 +86,10 @@ function createItem(data) {
 		this.slot = data.Slot;
 	}
 	if (defined(data.Armor)) {
-		this.Armor = data.Armor; 
+		this.armor = data.Armor; 
 	}
 	if (defined(data.ArmorType)) {
-		this.ArmorType = data.ArmorType;
+		this.armorType = data.ArmorType;
 	}
 
 	this.calling = getCalling(data);
