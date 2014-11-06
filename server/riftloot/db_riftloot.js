@@ -5,7 +5,6 @@ var fs = require('fs'),
 	xmlstream = require('xml-stream'),
 	item = require('./models/item.js'),
 	itemKeys = require('./config/itemKeys.js'),
-	statOrder = require('./config/itemStatOrder.js'),
 	dropLocations = require('./config/dropLocations.js');
 
 //connect to database

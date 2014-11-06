@@ -8,6 +8,7 @@ var itemKeys = {
 	SpellCriticalHit: "Spell Critical Hit",
 	CriticalHit: "Physical Crit",
 	HitBonus: "Hit",
+	ResistanceAll: "Resist All",
 
 	OneHand: "One Hand",
 	TwoHanded: "Two Handed",

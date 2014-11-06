@@ -11,11 +11,12 @@
 
 .tooltip-hr {
     height:1px;
+    margin:4px auto;
     clear:both;
-    background: -webkit-radial-gradient(#eee, #444, #222);
-    background: -o-radial-gradient(#eee, #444, #222);
-    background: -moz-radial-gradient(#eee, #444, #222);
-    background: radial-gradient(#eee, #444, #222);
+    background: -webkit-radial-gradient(#eee, #292929, #222);
+    background: -o-radial-gradient(#eee, #292929, #222);
+    background: -moz-radial-gradient(#eee, #292929, #222);
+    background: radial-gradient(#eee, #292929, #222);
 }
 
 .tooltip-name {
@@ -25,4 +26,9 @@
 
 .tooltip-text {
 	color:#eee;
+}
+
+.tooltip-drop {
+	font-size:10px;
+	color:#C2AC7D;
 }
