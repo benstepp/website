@@ -26,7 +26,7 @@ db.once('open', function callback () {
 function getBulkXML(sortFunction) {
 		var deferred = q.defer();
 		//this is the items.xml from ftp://ftp.trionworlds.com/rift/data/
-		var stream = fs.createReadStream('./dev/items.xml');
+		var stream = fs.createReadStream('../../dev/Items.xml');
 		var xml = new xmlstream(stream);
 		var results = [];
 
