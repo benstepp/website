@@ -50,6 +50,26 @@ var dropLocations = {
 			"Lord Arak": ["9E97D2980101010101","C9C5AABA0201010101","BAA392880701010101","BDA2B3BC0101010101","CEC3A7C60501010101","E8F2D0CA0301010101","DB8BCACD0701B5BAC5F80FC60AC801","8DD4AF3F01010101","988B88970201010101","DC8CC5930101010101","EADA85A30301010101"]
 		}
 
+	},
+
+	raid1: {
+
+		"Rhen of Fate": {
+			"Ungolok":["BC989FF40601010101"],
+			"Skelf Council":[],
+			"Drekanoth of Fate":[],
+			"Finric": []
+
+		},
+
+		"Mount Sharax": {
+			"Bulf":[],
+			"Jinoscoth":[],
+			"Izkinra":[],
+			"The Yrlwalach":[],
+			"Threngar":[]
+		}
+
 	}
 
 };

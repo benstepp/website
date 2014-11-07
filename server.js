@@ -7,7 +7,7 @@ var morgan = require('morgan');
 
 //config
 var port = process.env.PORT || 3000;
-var env = process.env.NODE_ENV || 'production';
+var env = process.env.NODE_ENV || 'development';
 
 //Execute app
 var app = express();

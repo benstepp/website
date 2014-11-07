@@ -7,11 +7,6 @@ module.exports = function(app, io) {
 var Event = require('./models/event');
 var Zone = require('./models/zone');
 
-//Development only
-if (process.env.NODE_ENV == 'development') {
-	require('../../dev/updatedb')(Zone, Event, db);
-}
-
 //login to rift mobile services
 var trionAuth = require('./riftauth');
 trionAuth.on('ready', function(tAuth) {
