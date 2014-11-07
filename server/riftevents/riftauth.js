@@ -1,10 +1,10 @@
 //Required modules
-var request = require('request');
-var querystring = require('querystring');
-var util = require('util');
-var EventEmitter = require('events').EventEmitter;
+var request = require('request'),
+	querystring = require('querystring'),
+	util = require('util'),
+	EventEmitter = require('events').EventEmitter,
 //Trion URLS 
-var trionhosts = require('./config/trionhosts.js');
+	trionhosts = require('./config/trionhosts.js');
 
 //Login to authentication server
 var TrionAuth = function() {

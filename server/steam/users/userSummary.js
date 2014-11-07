@@ -1,13 +1,10 @@
 //libs
-var request = require('request');
-
-//configs
-var apiKey = require('../config/apiKey.json').apiKey;
-var idFinder = require('./idFinder.js');
-
+var request = require('request'),
 //database
-var SteamUser = require('../models/steamUser');
-
+	SteamUser = require('../models/steamUser'),
+//configs
+	apiKey = require('../config/apiKey.json').apiKey,
+	idFinder = require('./idFinder.js');
 
 var UserSummary = function(query, callback) {
 	//use _this because of request library

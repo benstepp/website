@@ -1,6 +1,6 @@
-var mongoose = require('mongoose');
-var uniqueValidator = require('mongoose-unique-validator');
-var Schema = mongoose.Schema;
+var mongoose = require('mongoose'),
+	uniqueValidator = require('mongoose-unique-validator'),
+	Schema = mongoose.Schema;
 
 var EventSchema = new Schema({
 	name_en: {type:String, unique:true}, //English

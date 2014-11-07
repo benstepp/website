@@ -1,13 +1,13 @@
 //modules
-var express = require('express');
-var mongoose = require('mongoose');
-var _ = require('lodash');
-var bodyParser = require('body-parser');
-var morgan = require('morgan');
+var express = require('express'),
+	mongoose = require('mongoose'),
+	_ = require('lodash'),
+	bodyParser = require('body-parser'),
+	morgan = require('morgan'),
 
 //config
-var port = process.env.PORT || 3000;
-var env = process.env.NODE_ENV || 'development';
+	port = process.env.PORT || 3000,
+	env = process.env.NODE_ENV || 'development';
 
 //Execute app
 var app = express();
