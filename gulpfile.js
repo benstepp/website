@@ -13,7 +13,7 @@ var gulp = require('gulp'),
 	htmlreplace = require('gulp-html-replace'),
 	sass = require('gulp-sass'),
 	uncss = require('gulp-uncss'),
-	templateCache = require('gulp-angular-templatecache'),
+	html2js = require('gulp-html2js'),
 	merge = require('merge-stream'),
 	ngannotate = require('gulp-ng-annotate'),
 	header = require('gulp-header'),
@@ -100,59 +100,64 @@ var date = Date.now();
 var Tasks = {
 
 	//PARTIALS
-	/*partials: lazypipe()
-		//minimize first to avoid new lines and comments being registered
+	partials: function() {
+		return lazypipe()
 		.pipe(htmlmin, {
 			collapseWhitespace: true,
 			removeComments: true })
-		//register into a template cache module
-		.pipe(templateCache)
+		.pipe(html2js)
 		.pipe(header, '(function() {')
-		.pipe(footer, '})();'),***/
-	partials: lazypipe()
-		.pipe(htmlmin, {
-			collapseWhitespace: true,
-			removeComments: true }),
+		.pipe(footer, '})();');
+	},
 
 	//HTML
-	html: lazypipe()
-		.pipe(htmlreplace, {
-			'css':'style-' +date+'.min.css',
-			'js':'app-'+date+'.min.js',
-			'vendor':'vendor-'+date+'.min.js'
-		})
-		.pipe(htmlmin, {
-			collapseWhitespace: true,
-			removeComments: true }),
+	html: function() {
+		return lazypipe()
+			.pipe(htmlreplace, {
+				'css':'style-' +date+'.min.css',
+				'js':'app-'+date+'.min.js',
+				'vendor':'vendor-'+date+'.min.js'
+			})
+			.pipe(htmlmin, {
+				collapseWhitespace: true,
+				removeComments: true });
+		},
 
 	//CSS
-	css: lazypipe()
-		.pipe(sass)
-		.pipe(concat,'style.css')
-
-		.pipe(minifyCss)
-		.pipe(rename, function(path){
-			path.basename += '-' + date + '.min';
-		}),
+	css: function(uncssHtml) {
+		return lazypipe()
+			.pipe(sass)
+			.pipe(concat,'style.css')
+			.pipe(minifyCss)
+			.pipe(rename, function(path){
+				path.basename += '-' + date + '.min';
+			});
+	},
 
 	//IMG
-	img: lazypipe()
-		.pipe(imagemin),
+	img: function() {
+		return lazypipe()
+				.pipe(imagemin);
+	},
 
 	//JS
-	js: lazypipe()
+	js: function() {
+		return lazypipe()
 		.pipe(jshint)
 		.pipe(concat, 'app.js')
 		.pipe(uglify, {magnle:true})
 		.pipe(rename, function(path){
 			path.basename += '-' + date +'.min';
-		}),
+		});
+	},
 
 	//LIBS
-	libs: lazypipe()
-		.pipe(rename, function(path) {
-			path.dirname = './';
-		})
+	libs: function() {
+		return lazypipe()
+			.pipe(rename, function(path) {
+				path.dirname = './';
+			});
+	}
 
 };
 
