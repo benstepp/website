@@ -3,7 +3,7 @@
 	"main": "server.js",
 	"repository": {
   		"type": "git",
-  		"url": "git://github.com:benstepp/riftevents.git"
+  		"url": "git://github.com:benstepp/website.git"
 	},
 	"dependencies": {
 		"q":"~1.0.1",
