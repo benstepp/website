@@ -3,7 +3,7 @@ I'm learning how to make a website. This site is currently hosted at: http://fig
 
 
 ###Getting Started
-Requires npm, node-gyp, bower, and gulp to be installed globally.
+Requires npm, node-gyp, bower, and gulp.
 
 ```bash
 $ npm install
