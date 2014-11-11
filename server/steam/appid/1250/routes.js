@@ -1,6 +1,6 @@
-var kfMaps = require('./kfMaps.json');
-var userSummary = require('../../users/userSummary.js');
-var KillingFloorStats = require('./KillingFloorStats.js');
+var kfMaps = require('./kfMaps.json'),
+	userSummary = require('../../users/userSummary.js'),
+	KillingFloorStats = require('./KillingFloorStats.js');
 
 module.exports = function(router) {
 

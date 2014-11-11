@@ -19,7 +19,8 @@
 			tier: 'expert',
 			class: 'all',
 			language: 'English',
-			locale: 'en'
+			locale: 'en',
+			expanded: true
 		};
 
 		//capitalizes first letter of a string (for the nav titles)

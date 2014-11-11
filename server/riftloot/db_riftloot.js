@@ -25,8 +25,16 @@ db.once('open', function callback () {
 
 function getBulkXML(sortFunction) {
 		var deferred = q.defer();
+
 		//this is the items.xml from ftp://ftp.trionworlds.com/rift/data/
-		var stream = fs.createReadStream('../../dev/Items.xml');
+		//issue with windows/linux file systems even though folder structure is the same
+		var fileLocation = '../../dev/Items.xml';
+
+		if (process.env.NODE_ENV == "development") {
+			fileLocation = './dev/Items.xml';
+		}
+
+		var stream = fs.createReadStream(fileLocation);
 		var xml = new xmlstream(stream);
 		var results = [];
 
@@ -46,10 +54,12 @@ function getBulkXML(sortFunction) {
 			});
 
 		xml.on('end', function() {
-			fs.writeFile('./dev/items.json', JSON.stringify({items:results}), function(err){
-				if (err) {console.log(err);}
-				else {console.log('json of parsed items.xml saved');}
-			});
+			if(process.env.NODE_ENV == 'development') {
+				fs.writeFile('./dev/items.json', JSON.stringify({items:results}), function(err){
+					if (err) {console.log(err);}
+					else {console.log('json of parsed items.xml saved');}
+				});
+			}
 			deferred.resolve(results);
 		});
 

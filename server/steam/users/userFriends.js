@@ -1,13 +1,12 @@
 //libs
-var request = require('request');
-var userSummary = require('./userSummary.js');
+var request = require('request'),
+	util = require('util'),
 //database
-var SteamUser = require('../models/steamUser');
-
+	SteamUser = require('../models/steamUser'),
 //configs
-var apiKey = require('../config/apiKey.json').apiKey;
-var idFinder = require('./idFinder.js');
-var util = require('util');
+	apiKey = require('../config/apiKey.json').apiKey,
+	idFinder = require('./idFinder.js'),
+	userSummary = require('./userSummary.js');
 
 var userFriends = function(query, callback) {
 

@@ -1,21 +1,21 @@
 //Modules
-var request = require('request');
-var util = require('util');
-var EventEmitter = require('events').EventEmitter;
-var _ = require('lodash');
-var q = require('q');
+var request = require('request'),
+	util = require('util'),
+	EventEmitter = require('events').EventEmitter,
+	_ = require('lodash'),
+	q = require('q'),
 
 //Trion URLs 
-var trionhosts = require('./config/trionhosts.js');
+	trionhosts = require('./config/trionhosts.js'),
 //Shard Id List
-var shards = require('./config/shards.js');
+	shards = require('./config/shards.js'),
 //zones
-var Zone = require('./models/zone.js');
+	Zone = require('./models/zone.js'),
 
 //events
-var eventsList = require('./config/events.json').events;
-var eventsListLength = eventsList.length;
-var Event = require('./models/event.js');
+	eventsList = require('./config/events.json').events,
+	eventsListLength = eventsList.length,
+	Event = require('./models/event.js');
 
 var ZoneEvent = function(trionAuth) {
 

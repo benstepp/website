@@ -1,11 +1,10 @@
-var request = require('request');
-var util = require('util');
-var _ = require('lodash');
+var request = require('request'),
+	util = require('util'),
+	_ = require('lodash'),
 
-
-var mapAchievements = require('./mapAchievements.json').mapAchievements;
-var apiKey = require('../../config/apiKey.json').apiKey;
-var userSummary = require('../../users/userSummary.js');
+	mapAchievements = require('./mapAchievements.json').mapAchievements,
+	apiKey = require('../../config/apiKey.json').apiKey,
+	userSummary = require('../../users/userSummary.js');
 
 var KillingFloorStats = function(query, callback) {
 

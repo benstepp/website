@@ -1,5 +1,5 @@
-var request = require('request');
-var apiKey = require('../config/apiKey.json').apiKey;
+var request = require('request'),
+	apiKey = require('../config/apiKey.json').apiKey;
 
 var idFinder = function(query, callback) {
 	//use _this because of request library

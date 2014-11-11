@@ -1,5 +1,5 @@
-var userSummary = require('./users/userSummary.js');
-var userFriends = require('./users/userFriends.js');
+var userSummary = require('./users/userSummary.js'),
+	userFriends = require('./users/userFriends.js');
 
 module.exports = function(router) {
 
