@@ -25,7 +25,7 @@ module.exports = function(router) {
 
 	router.route('/raid1/:locale')
 		.get(function(req,res) {
-			var response = new dropsByLocation({raid:dropLocations.raid1},req.params.locale)
+			var response = new dropsByLocation({raid1:dropLocations.raid1},req.params.locale)
 				.then(function(jsonResponse) {
 					res.json(jsonResponse);
 				});
