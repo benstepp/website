@@ -30,7 +30,7 @@ function getBulkXML(sortFunction) {
 		//issue with windows/linux file systems even though folder structure is the same
 		var fileLocation = '../../dev/Items.xml';
 
-		if (process.env.NODE_ENV == "'development'") {
+		if (process.env.NODE_ENV == "development") {
 			fileLocation = './dev/Items.xml';
 		}
 
