@@ -80,12 +80,6 @@ var config = {
 
 		libs:['public/libs/foundation-icon-fonts/foundation-icons.woff']
 
-	},
-
-	//total fucking hack because i cant pass arguments to a lazypipe
-	//also errors fucking everywhere but at least it runs
-	false: {
-		uncss:['!public/']
 	}
 };
 
@@ -128,6 +122,7 @@ var Tasks = {
 		return lazypipe()
 			.pipe(sass)
 			.pipe(concat,'style.css')
+			//.pipe(uncss,{html:uncssHtml})
 			.pipe(minifyCss)
 			.pipe(rename, function(path){
 				path.basename += '-' + date + '.min';
@@ -170,13 +165,7 @@ var Tasks = {
 function getBuildPipe(src, base, pipe, outdir, uncssk) {
 
 	return gulp.src(src, {base:base})
-		.pipe(pipe())
-		/*
-		.pipe(gulpif(uncssk !== false, uncss({
-			html: config[uncssk].uncss
-		})))
-		.pipe(gulpif(uncssk !== false, minifyCss()))
-		*/
+		.pipe(pipe(uncssk)())
 		.pipe(gulp.dest(outdir));
 
 }
@@ -188,24 +177,23 @@ function getBuildStreams(task) {
 
 	//for each project in config
 	for (var key in config) {
-		//false hack because fuck this shit
-		if (key !== 'false') {
-			var outdir = config[key].outdir;
-			//the outdir is different when doing angular templates
-			if (task === 'partials') {
-				outdir = config[key].partialsOutdir;
-			}
 
-			var uncss = false;
-			//if task is css set key to uncss
-			if (task === 'css') {
-				uncss = key;
-			}
-
-			//get the stream and push into array
-			var stream = getBuildPipe(config[key][task], config[key].base, Tasks[task], outdir, uncss);
-			streams.push(stream);
+		var outdir = config[key].outdir;
+		//the outdir is different when doing angular templates
+		if (task === 'partials') {
+			outdir = config[key].partialsOutdir;
 		}
+
+		var uncss = false;
+		//if task is css set key to uncss
+		if (task === 'css') {
+			uncss = key;
+		}
+
+		//get the stream and push into array
+		var stream = getBuildPipe(config[key][task], config[key].base, Tasks[task], outdir, uncss);
+		streams.push(stream);
+
 	}
 
 	//return the merged streams for this task
