@@ -26,5 +26,14 @@
 				return false;
 			}
 		};
+
+		_this.getTier = function(tier) {
+			var readable = {
+				expert:'Expert',
+				raid1:'Raid I'
+			};
+			return readable[tier];
+		};
+
 	}
 })();

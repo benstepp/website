@@ -98,10 +98,10 @@ var Tasks = {
 		return lazypipe()
 		.pipe(htmlmin, {
 			collapseWhitespace: true,
-			removeComments: true })
-		.pipe(html2js)
-		.pipe(header, '(function() {')
-		.pipe(footer, '})();');
+			removeComments: true });
+		//.pipe(html2js)
+		//.pipe(header, '(function() {')
+		//.pipe(footer, '})();');
 	},
 
 	//HTML

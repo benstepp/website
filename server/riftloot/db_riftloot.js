@@ -27,12 +27,8 @@ function getBulkXML(sortFunction) {
 		var deferred = q.defer();
 
 		//this is the items.xml from ftp://ftp.trionworlds.com/rift/data/
-		//issue with windows/linux file systems even though folder structure is the same
-		var fileLocation = '../../dev/Items.xml';
-
-		if (process.env.NODE_ENV == "development") {
-			fileLocation = './dev/Items.xml';
-		}
+		//only works if you call this file from base directory
+		var fileLocation = './dev/Items.xml';
 
 		var stream = fs.createReadStream(fileLocation);
 		var xml = new xmlstream(stream);

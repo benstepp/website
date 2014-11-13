@@ -20,7 +20,8 @@
 			class: 'all',
 			language: 'English',
 			locale: 'en',
-			expanded: true
+			tooltipExpanded: true,
+			bossCollapse: true
 		};
 
 		//capitalizes first letter of a string (for the nav titles)

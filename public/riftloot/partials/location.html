@@ -1,47 +1,28 @@
 <div class="row" id="rift-table">
 	<div class="small-30 large-30 columns">
-		
-		<section class="dungeon" data-ng-repeat="(dungeon,obj) in riftloot.loot.expert" data-ng-show="header.data.expanded">
-			<h5>{{dungeon}}: Expert</h5>
-			<div class="row">
-			<div class="small-30 columns">
-			<ul class="small-block-grid-1 medium-block-grid-2 large-block-grid-5 boss-grid">
-				<li data-ng-repeat="(bossName,boss) in obj | getOrder:'order'">
-					<ul class="boss">
-						<li class="boss-name">{{boss.name}}</li>
-						<li data-ng-repeat="item in boss.loot | orderBy:'name_de ||name_en || name_fr'" 
-						class="item-name" 
-						data-ng-class="item.rarity.toLowerCase()"
-						data-ng-hide="riftloot.hideItem(item)">
-							<div bs-rift-tooltip="item"></div>
-						</li>
-					</ul>
-				</li>
-			</ul>
-			</div>
-			</div>
-		</section>
-
-		<section class="dungeon" data-ng-repeat="(dungeon,obj) in riftloot.loot.raid1" data-ng-show="header.data.expanded">
-			<h5>{{dungeon}}: Raid I</h5>
-			<div class="row">
-			<div class="small-30 columns">
-			<ul class="small-block-grid-1 medium-block-grid-2 large-block-grid-5 boss-grid">
-				<li data-ng-repeat="(bossName,boss) in obj | getOrder:'order'">
-					<ul class="boss">
-						<li class="boss-name">{{boss.name}}</li>
-						<li data-ng-repeat="item in boss.loot | orderBy:'name_de ||name_en || name_fr'" 
-						class="item-name" 
-						data-ng-class="item.rarity.toLowerCase()"
-						data-ng-hide="riftloot.hideItem(item)">
-							<div bs-rift-tooltip="item"></div>
-						</li>
-					</ul>
-				</li>
-			</ul>
-			</div>
-			</div>
-		</section>
+		<div data-ng-repeat="(tier,objec) in riftloot.loot">
+			<section class="dungeon" data-ng-repeat="(dungeon,obj) in objec" data-ng-show="!header.data.bossColapse">
+				<h5>{{dungeon}}: <span data-ng-bind="riftloot.getTier(tier)"></span></h5>
+				<div class="row">
+				<div class="small-30 columns">
+				<ul class="small-block-grid-1 medium-block-grid-2 large-block-grid-5 boss-grid">
+					<li data-ng-repeat="(bossName,boss) in obj | getOrder:'order'">
+						<ul class="boss">
+							<li class="boss-name">{{boss.name}}</li>
+							<li data-ng-repeat="item in boss.loot | orderBy:'name_de ||name_en || name_fr'" 
+							class="item-name" 
+							data-ng-class="item.rarity.toLowerCase()"
+							data-ng-hide="riftloot.hideItem(item)">
+								<span data-ng-show="!header.data.tooltipExpanded">{{item.name_en || item.name_de ||item.name_fr}}</span>
+								<div bs-rift-tooltip="item"></div>
+							</li>
+						</ul>
+					</li>
+				</ul>
+				</div>
+				</div>
+			</section>
+		</div>
 		
 	</div>
 </div>
