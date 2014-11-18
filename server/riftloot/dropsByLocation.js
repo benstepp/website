@@ -57,17 +57,26 @@ var dropsByLocation = function(jsonDrops,locale,callback) {
 			if (!_.isUndefined(newItem.onEquip) && !_.isUndefined(newItem.onEquip.ability_de)) {
 				newItem.onEquip = _.omit(newItem.onEquip,['ability_en','ability_fr']);
 			}
+			if (!_.isUndefined(newItem.onEquip) && !_.isUndefined(newItem.onEquip.onUse_de)) {
+				newItem.onEquip = _.omit(newItem.onEquip,['onUse_en','onUse_fr']);
+			}
 		}
 		if(locale === 'en') {
 			newItem = _.omit(newItem,['name_de','name_fr','itemset_de','itemset_fr']);
 			if (!_.isUndefined(newItem.onEquip) && !_.isUndefined(newItem.onEquip.ability_en)) {
 				newItem.onEquip = _.omit(newItem.onEquip,['ability_de','ability_fr']);
 			}
+			if (!_.isUndefined(newItem.onEquip) && !_.isUndefined(newItem.onEquip.onUse_en)) {
+				newItem.onEquip = _.omit(newItem.onEquip,['onUse_de','onUse_fr']);
+			}
 		}
 		if(locale === 'fr') {
 			newItem = _.omit(newItem,['name_de','name_en','itemset_de','itemset_de']);
 			if (!_.isUndefined(newItem.onEquip) && !_.isUndefined(newItem.onEquip.ability_fr)) {
 				newItem.onEquip = _.omit(newItem.onEquip,['ability_de','ability_en']);
+			}
+			if (!_.isUndefined(newItem.onEquip) && !_.isUndefined(newItem.onEquip.onUse_fr)) {
+				newItem.onEquip = _.omit(newItem.onEquip,['onUse_de','onUse_en']);
 			}
 		}
 		return newItem;
