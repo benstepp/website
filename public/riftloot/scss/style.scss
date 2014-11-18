@@ -5,7 +5,6 @@
 
 // Make sure the charset is set appropriately
   @import "settings";
-  @import "rift-table.scss";
   @import "rift-tooltip.scss";
   @import "../../libs/foundation/scss/normalize.scss";
 
@@ -193,6 +192,7 @@ h5 {
   padding:2px 12px;
   font-weight:700;
   border-bottom:2px solid $primary-color;
+  cursor:pointer;
 }
 
 .rare {
