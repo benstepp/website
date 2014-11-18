@@ -115,6 +115,12 @@ function createItem(data) {
 		delete this.onEquip.Ability;
 	}
 
+	if (typeof data.OnUse !== 'undefined') {
+		this.onEquip.onUse_de = data.OnUse.Ability.German;
+		this.onEquip.onUse_en = data.OnUse.Ability.English;
+		this.onEquip.onUse_fr = data.OnUse.Ability.French;
+	}
+
 	//include itemset info
 	if(defined(data.ItemSet)) {
 		this.itemset_de = data.ItemSet.FamilyName.German;
