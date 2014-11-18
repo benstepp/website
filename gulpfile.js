@@ -37,7 +37,6 @@ var config = {
 		'public/killingfloor/partials/input.html'],
 
 		partials:['public/killingfloor/partials/*.html'],
-		//partialsOutdir:'public/killingfloor/js/',
 		partialsOutdir:'build/killingfloor',
 
 		html:['public/killingfloor/index.html'],
@@ -68,9 +67,9 @@ var config = {
 		css:['public/riftloot/scss/style.scss',
 		'public/libs/foundation-icon-fonts/foundation-icons.css'],
 
-		uncss:['public/riftloot/index.html',
-		'public/riftloot/partials/splash.html',
-		'public/riftloot/partials/location.html'],
+		uncss:['/public/riftloot/index.html',
+		'/public/riftloot/partials/splash.html',
+		'/public/riftloot/partials/location.html'],
 
 		partials:['public/riftloot/partials/*.html'],
 		partialsOutdir:'build/riftloot',
@@ -79,6 +78,27 @@ var config = {
 		img:['public/riftloot/img/**/*'],
 
 		libs:['public/libs/foundation-icon-fonts/foundation-icons.woff']
+
+	},
+
+	index: {
+		base:'public',
+		outdir:'build',
+
+		js:['public/js/**/*.js',
+		'public/libs/angular-bootstrap/ui-bootstrap.min.js'],
+
+		css:['public/scss/style.scss'],
+
+		uncss:[],
+
+		partials:['public/partials/*.html'],
+		partialsOutdir:'build/',
+
+		html:['public/index.html'],
+		img:['public/img/**/*'],
+
+		libs:['public/libs/font-awesome/fonts/fontawesome-webfont.woff']
 
 	}
 };
@@ -127,6 +147,7 @@ var Tasks = {
 			.pipe(rename, function(path){
 				path.basename += '-' + date + '.min';
 			});
+
 	},
 
 	//IMG
