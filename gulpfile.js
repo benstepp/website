@@ -37,7 +37,6 @@ var config = {
 		'public/killingfloor/partials/input.html'],
 
 		partials:['public/killingfloor/partials/*.html'],
-		//partialsOutdir:'public/killingfloor/js/',
 		partialsOutdir:'build/killingfloor',
 
 		html:['public/killingfloor/index.html'],
@@ -68,9 +67,9 @@ var config = {
 		css:['public/riftloot/scss/style.scss',
 		'public/libs/foundation-icon-fonts/foundation-icons.css'],
 
-		uncss:['public/riftloot/index.html',
-		'public/riftloot/partials/splash.html',
-		'public/riftloot/partials/location.html'],
+		uncss:['/public/riftloot/index.html',
+		'/public/riftloot/partials/splash.html',
+		'/public/riftloot/partials/location.html'],
 
 		partials:['public/riftloot/partials/*.html'],
 		partialsOutdir:'build/riftloot',
@@ -127,6 +126,7 @@ var Tasks = {
 			.pipe(rename, function(path){
 				path.basename += '-' + date + '.min';
 			});
+
 	},
 
 	//IMG
