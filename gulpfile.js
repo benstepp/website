@@ -79,6 +79,27 @@ var config = {
 
 		libs:['public/libs/foundation-icon-fonts/foundation-icons.woff']
 
+	},
+
+	index: {
+		base:'public',
+		outdir:'build',
+
+		js:['public/js/**/*.js',
+		'public/libs/angular-bootstrap/ui-bootstrap.min.js'],
+
+		css:['public/scss/style.scss'],
+
+		uncss:[],
+
+		partials:['public/partials/*.html'],
+		partialsOutdir:'build/',
+
+		html:['public/index.html'],
+		img:['public/img/**/*'],
+
+		libs:['public/libs/font-awesome/fonts/fontawesome-webfont.woff']
+
 	}
 };
 

@@ -4,16 +4,17 @@
 	<meta charset="UTF-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="A zone event tracker for Rift by Trion Worlds. ">
-	<title>{{ header.title }}</title>
+    <meta name="description" content="The personal projects of Benjamin Stepp">
+	<title>FIGHTINGDRAGONSWITHTAYLORSWIFT</title>
 
+	
+	<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
 	<!-- build:css -->
 	<link rel="stylesheet" href="/scss/style.css">
 	<!-- endbuild -->
 	<link href='//fonts.googleapis.com/css?family=Roboto:400,300' rel='stylesheet' type='text/css'>
 	
-	<!-- JS -->
-	<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.20/angular.min.js"></script>
+
 
 
 </head>
@@ -35,7 +36,7 @@
 				<a class = "navbar-brand nav-small-brand" 
 					data-ng-class="header.url"
 					data-ng-href="#/{{ header.url }}" 
-					data-ng-hide="header.title === 'website'">{{ header.title }}</a>
+					data-ng-hide="header.title === 'website'"></a>
 			</div>
 			<div class="navbar-collapse collapse" 
 				data-ng-class="!navCollapsed && 'in'" 
@@ -47,33 +48,19 @@
 	</nav>
 
 	<div class="hero-unit" data-ng-class="header.url">
-	<div class="container" id="mainContent" data-ui-view="main">
+	<div class="container" id="mainContent" data-ui-view="main" style="margin-top:60px;">
+
+	<a href="/killingfloor">KF-Progress</a><br>
+	<a href="/riftloot">Rift: Nightmare Tide Loot Table</a>
 
 	</div>
 	</div>
 
-	<footer>
-		<div class="container">
-			<div class="row">
-				<div class="col-sm-6" data-ui-view="footer-left">
-				</div>
-				<div class="col-sm-6">
-					<a class="text-muted footerLink" href="#/contact">Contact</a>
-					<a class="text-muted footerLink" href="#/about">About</a>				
-				</div>
-			</div>
-		</div>
-	</footer>
 
-	<script src="../libs/angular-ui-router/release/angular-ui-router.js"></script>
-	<script src="../libs/angular-foundation/mm-foundation.js"></script>
-	<script src="./js/controllers/HeaderCtrl.js"></script>
-	<script src="./js/controllers/EventsCtrl.js"></script>
-	<script src="./js/services/EcentsService.js"></script>
-	<script src="./js/services/SocketFactory.js"></script>
-
-	<script src="./js/app.js"></script>
-	<script src="./js/routes.js"></script>
+	<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.3.2/angular.min.js"></script>
+	<!-- build:js -->
+	<script src="../libs/angular-bootstrap/ui-bootstrap.min.js"></script>
+	<!-- endbuild -->
 
 </body>
 </html>
