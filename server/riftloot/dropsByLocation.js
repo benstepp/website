@@ -2,7 +2,7 @@ var q = require('q'),
 	_ = require('lodash'),
 	riftloot = require('./models/item.js');
 
-var dropsByLocation = function(jsonDrops,locale,callback) {
+var dropsByLocation = function(jsonDrops,locale) {
 
 	var _this = this;
 
