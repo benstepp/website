@@ -38,12 +38,12 @@ module.exports = function(router) {
 	//
 	//Drops By Role
 	//
-	router.route('role/:calling/:role/:locale')
+	/*router.route('role/:calling/:role/:locale')
 		.get(function(req,res) {
 			var response = new dropsByRole(req.params.calling,req.params.role,req.params.locale)
 				.then(function(jsonResponse) {
 					res.json(jsonResponse);
 				});
-		});
+		});*/
 
 };				
