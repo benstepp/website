@@ -68,8 +68,7 @@ function sort(data) {
 
 	if (	parseInt(data.RequiredLevel) !== 65 ||
 			data.Rarity === "Common" || 
-			data.Rarity === "Uncommon" ||
-			data.SoulboundTrigger !== "BindOnPickup" ) {
+			data.Rarity === "Uncommon") {
 		return false;
 	}
 
@@ -115,7 +114,7 @@ function createItem(data) {
 		delete this.onEquip.Ability;
 	}
 
-	if (typeof data.OnUse !== 'undefined') {
+	if (typeof data.OnUse !== 'undefined' && typeof data.OnUse.Ability !== 'undefined') {
 		this.onEquip.onUse_de = data.OnUse.Ability.German;
 		this.onEquip.onUse_en = data.OnUse.Ability.English;
 		this.onEquip.onUse_fr = data.OnUse.Ability.French;

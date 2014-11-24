@@ -1,5 +1,6 @@
 var dropLocations = require('./config/dropLocations.js'),
-	dropsByLocation = require('./dropsByLocation.js');
+	dropsByLocation = require('./dropsByLocation.js'),
+	dropsByRole = require('./dropsByRole.js');
 
 module.exports = function(router) {
 
@@ -7,6 +8,9 @@ module.exports = function(router) {
 		next();
 	});
 
+	//
+	//Drops By Location Routes
+	//
 	router.route('/all/:locale')
 		.get(function(req,res) {
 			var response = new dropsByLocation(dropLocations,req.params.locale)
@@ -31,5 +35,15 @@ module.exports = function(router) {
 				});
 		});
 
+	//
+	//Drops By Role
+	//
+	/*router.route('role/:calling/:role/:locale')
+		.get(function(req,res) {
+			var response = new dropsByRole(req.params.calling,req.params.role,req.params.locale)
+				.then(function(jsonResponse) {
+					res.json(jsonResponse);
+				});
+		});*/
 
 };				
