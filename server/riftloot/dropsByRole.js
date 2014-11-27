@@ -5,7 +5,7 @@ var q = require('q'),
 
 var dropsByRole = function(calling,role,locale) {
 
-	var _this = this;
+	var _this = {};
 
 	var allDeferred = q.defer();
 
