@@ -1,6 +1,8 @@
-var dropLocations = require('./config/dropLocations.js'),
+var validator = require('validator'),
+	dropLocations = require('./config/dropLocations.js'),
 	dropsByLocation = require('./dropsByLocation.js'),
-	dropsByRole = require('./dropsByRole.js');
+	dropsByRole = require('./dropsByRole.js'),
+	validApiOptions = require('./config/validApiOptions.js');
 
 module.exports = function(router) {
 
@@ -13,26 +15,46 @@ module.exports = function(router) {
 	//
 	router.route('/all/:locale')
 		.get(function(req,res) {
-			var response = new dropsByLocation(dropLocations,req.params.locale)
-				.then(function(jsonResponse){
-					res.json(jsonResponse);
-				});
+			if(validator.isAlpha(req.params.locale) && 
+			validator.isIn(req.params.locale.toLowerCase(),validApiOptions.locale)) {
+				var response = new dropsByLocation(dropLocations,req.params.locale)
+					.then(function(jsonResponse){
+						res.json(jsonResponse);
+					});
+			}
+			else {
+				res.json({error:"Invalid API Options provided."});
+			}
 		});
 
 	router.route('/expert/:locale')
 		.get(function(req, res) {
-			var response = new dropsByLocation({expert:dropLocations.expert},req.params.locale)
-				.then(function(jsonResponse) {
-					res.json(jsonResponse);
-				});
+			if(validator.isAlpha(req.params.locale) && 
+			validator.isIn(req.params.locale.toLowerCase(),validApiOptions.locale)) {
+				var response = new dropsByLocation({expert:dropLocations.expert},req.params.locale)
+					.then(function(jsonResponse) {
+						res.json(jsonResponse);
+					});
+			}
+			else {
+				res.json({error:"Invalid API Options provided."});
+			}
+
 		});
 
 	router.route('/raid1/:locale')
-		.get(function(req,res) {
-			var response = new dropsByLocation({raid1:dropLocations.raid1},req.params.locale)
-				.then(function(jsonResponse) {
-					res.json(jsonResponse);
-				});
+		.get(function(req, res) {
+			if(validator.isAlpha(req.params.locale) && 
+			validator.isIn(req.params.locale.toLowerCase(),validApiOptions.locale)) {
+				var response = new dropsByLocation({raid1:dropLocations.raid1},req.params.locale)
+					.then(function(jsonResponse) {
+						res.json(jsonResponse);
+					});
+			}
+			else {
+				res.json({error:"Invalid API Options provided."});
+			}
+
 		});
 
 	//
