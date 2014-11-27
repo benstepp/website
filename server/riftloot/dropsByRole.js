@@ -25,7 +25,8 @@ var dropsByRole = function(calling,role,locale) {
 	var dbQuery = function(slot) {
 		var deferred = q.defer();
 
-		riftloot.find();
+		riftloot.find({slot:slot})
+			.where();
 
 		return deferred.promise;
 	};

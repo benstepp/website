@@ -199,10 +199,10 @@ function getRole(data) {
 
 	//tank shit
 	if (defined(data.OnEquip.Guard) || defined(data.OnEquip.ShieldBlock) || defined(data.OnEquip.Dodge)) {
-		return "Tank";
+		return "tank";
 	}
 	else {
-		return "DPS";
+		return "dps";
 	}
 }
 
