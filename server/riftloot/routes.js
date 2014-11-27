@@ -29,7 +29,7 @@ module.exports = function(router) {
 					drops[tier] = dropLocations[tier];
 				}
 
-				var response = new dropsByLocation(drops,locale)
+				var response = dropsByLocation(drops,locale)
 					.then(function(jsonResponse){
 						res.json(jsonResponse);
 					});
