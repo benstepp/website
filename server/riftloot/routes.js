@@ -45,14 +45,14 @@ module.exports = function(router) {
 	//
 	//Drops By Role
 	//
-	router.route('role/:calling/:role/:locale')
+	router.route('/role/:calling/:role/:locale')
 		.get(function(req,res) {
 			if(validator.isAlpha(req.params.calling) &&
 			validator.isIn(req.params.calling.toLowerCase(),validApiOptions.calling) &&
 			validator.isAlpha(req.params.role) &&
 			validator.isIn(req.params.role.toLowerCase(),validApiOptions.role) &&
 			validator.isAlpha(req.params.locale) &&
-			validator.isIn(req.params.local.toLowerCase(),validApiOptions.locale)) {
+			validator.isIn(req.params.locale.toLowerCase(),validApiOptions.locale)) {
 
 				var calling = validator.toString(req.params.calling).toLowerCase();
 				var role = validator.toString(req.params.role).toLowerCase();

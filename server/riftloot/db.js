@@ -142,7 +142,7 @@ function getCalling(data) {
 
 	//if no stats
 	if (!defined(data.OnEquip)) {
-		return ["Cleric", "Mage", "Rogue", "Warrior"];
+		return ["cleric", "mage", "rogue", "warrior"];
 	}
 
 	//int/wis items
@@ -151,13 +151,13 @@ function getCalling(data) {
 			wisdom = parseInt(data.OnEquip.Wisdom);
 
 		if(intelligence === wisdom) {
-			return ["Cleric", "Mage"];
+			return ["cleric", "mage"];
 		}
 		if(intelligence > wisdom) {
-			return ["Mage"];
+			return ["mage"];
 		}
 		if(wisdom > intelligence) {
-			return ["Cleric"];
+			return ["cleric"];
 		}
 
 	}
@@ -168,20 +168,20 @@ function getCalling(data) {
 			dexterity = parseInt(data.OnEquip.Dexterity);
 
 		if(strength === dexterity) {
-			return ["Rogue", "Warrior"];
+			return ["rogue", "warrior"];
 		}
 		if(strength > dexterity) {
-			return ["Warrior"];
+			return ["warrior"];
 		}
 		if(dexterity > strength) {
-			return ["Rogue"];
+			return ["rogue"];
 		}
 
 	}
 
 	//pure endurance items (like seals)
 	if (defined(data.OnEquip.Endurance)) {
-		return ["Cleric", "Mage", "Rogue", "Warrior"];
+		return ["cleric", "mage", "rogue", "warrior"];
 	}
 
 	//idk

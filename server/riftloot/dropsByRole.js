@@ -18,6 +18,7 @@ var dropsByRole = function(calling,role,locale) {
 		});
 
 		q.all(promises).then(function(){
+			console.log('qall');
 			allDeferred.resolve(_this);
 		});
 	};
@@ -25,8 +26,16 @@ var dropsByRole = function(calling,role,locale) {
 	var dbQuery = function(slot) {
 		var deferred = q.defer();
 
-		riftloot.find({slot:slot})
-			.where();
+		riftloot.find({calling:calling})
+			//.where(slot).equals(slot)
+			//.where(role).equals(role)
+			.exec(function(err,res) {
+					_this[slot] = res;
+					deferred.resolve();
+			});
+
+
+
 
 		return deferred.promise;
 	};

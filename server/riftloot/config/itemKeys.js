@@ -10,7 +10,7 @@ var itemKeys = {
 	HitBonus: "Hit",
 	ResistanceAll: "Resist All",
 
-	OneHand: "One Hand",
+	OneHand: "One Handed",
 	TwoHanded: "Two Handed",
 	Earring_2: "Earring",
 	Weapon_Ranged: "Ranged",

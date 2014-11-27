@@ -15,8 +15,8 @@
 		};
 
 		_this.hideItem = function(item) {
-			var toShow = $scope.header.cap($scope.header.data.class);
-			if (toShow === 'All') {
+			var toShow = $scope.header.data.class;
+			if (toShow === 'all') {
 				return false;
 			}
 			else if(item.calling.indexOf(toShow) === -1) {
