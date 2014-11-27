@@ -29,7 +29,7 @@
 		_this.lootApiCall = function(tier,locale) {
 	        var deferred = $q.defer();
 	        
-			var url = '/api/riftloot/' + tier + '/' + locale + '/';
+			var url = '/api/riftloot/location/' + tier + '/' + locale + '/';
             $http.get(url)
 	            .success(function(response) {
 	            	var items = orderLoot(response);
