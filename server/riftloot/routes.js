@@ -13,49 +13,33 @@ module.exports = function(router) {
 	//
 	//Drops By Location Routes
 	//
-	router.route('/all/:locale')
+	router.route('/location/:tier/:locale')
 		.get(function(req,res) {
 			if(validator.isAlpha(req.params.locale) && 
-			validator.isIn(req.params.locale.toLowerCase(),validApiOptions.locale)) {
-				var response = new dropsByLocation(dropLocations,req.params.locale)
+			validator.isIn(req.params.locale.toLowerCase(),validApiOptions.locale) &&
+			validator.isAlphanumeric(req.params.tier) &&
+			validator.isIn(req.params.tier.toLowerCase(),validApiOptions.tier)) {
+
+				var locale = validator.toString(req.params.locale);
+				var tier = validator.toString(req.params.tier);
+				var drops = dropLocations;
+				//if tier is specified send a different object
+				if (tier !== 'all') {
+					drops = {};
+					drops[tier] = dropLocations[tier];
+				}
+
+				var response = new dropsByLocation(drops,locale)
 					.then(function(jsonResponse){
 						res.json(jsonResponse);
 					});
+
 			}
 			else {
-				res.json({error:"Invalid API Options provided."});
+				res.json({error:validApiOptions.error});
 			}
 		});
 
-	router.route('/expert/:locale')
-		.get(function(req, res) {
-			if(validator.isAlpha(req.params.locale) && 
-			validator.isIn(req.params.locale.toLowerCase(),validApiOptions.locale)) {
-				var response = new dropsByLocation({expert:dropLocations.expert},req.params.locale)
-					.then(function(jsonResponse) {
-						res.json(jsonResponse);
-					});
-			}
-			else {
-				res.json({error:"Invalid API Options provided."});
-			}
-
-		});
-
-	router.route('/raid1/:locale')
-		.get(function(req, res) {
-			if(validator.isAlpha(req.params.locale) && 
-			validator.isIn(req.params.locale.toLowerCase(),validApiOptions.locale)) {
-				var response = new dropsByLocation({raid1:dropLocations.raid1},req.params.locale)
-					.then(function(jsonResponse) {
-						res.json(jsonResponse);
-					});
-			}
-			else {
-				res.json({error:"Invalid API Options provided."});
-			}
-
-		});
 
 	//
 	//Drops By Role
@@ -67,5 +51,13 @@ module.exports = function(router) {
 					res.json(jsonResponse);
 				});
 		});*/
+
+	//
+	//Catch all for bad API options
+	//
+	router.route('*')
+		.get(function(req,res) {
+			 res.json({error:validApiOptions.error});
+		});
 
 };				
