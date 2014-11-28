@@ -79,10 +79,10 @@
 	    var orderStats = function(item) {
 			var statOrder = {
 				main: {
-					Mage:["Intelligence","Wisdom"],
-					Cleric:["Wisdom","Intelligence"],
-					Rogue:["Dexterity","Strength"],
-					Warrior:["Strength","Dexterity"]
+					mage:["Intelligence","Wisdom"],
+					cleric:["Wisdom","Intelligence"],
+					rogue:["Dexterity","Strength"],
+					warrior:["Strength","Dexterity"]
 				},
 				rest: ["Endurance",
 				"Block","Guard","Dodge",
