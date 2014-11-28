@@ -147,8 +147,8 @@ function getCalling(data) {
 
 	//int/wis items
 	if (defined(data.OnEquip.Intelligence) || defined(data.OnEquip.Wisdom)) {
-		var intelligence = parseInt(data.OnEquip.Intelligence),
-			wisdom = parseInt(data.OnEquip.Wisdom);
+		var intelligence = parseInt(data.OnEquip.Intelligence) || 0,
+			wisdom = parseInt(data.OnEquip.Wisdom) || 0;
 
 		if(intelligence === wisdom) {
 			return ["cleric", "mage"];
@@ -164,8 +164,8 @@ function getCalling(data) {
 
 	//str and dex items
 	if (defined(data.OnEquip.Strength) || defined(data.OnEquip.Dexterity)) {
-		var strength = parseInt(data.OnEquip.Strength),
-			dexterity = parseInt(data.OnEquip.Dexterity);
+		var strength = parseInt(data.OnEquip.Strength) || 0,
+			dexterity = parseInt(data.OnEquip.Dexterity) || 0;
 
 		if(strength === dexterity) {
 			return ["rogue", "warrior"];
