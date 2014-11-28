@@ -4,7 +4,7 @@ var q = require('q'),
 
 var dropsByLocation = function(jsonDrops,locale) {
 
-	var _this = this;
+	var _this = {};
 
 	var allDeferred = q.defer();
 

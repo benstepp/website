@@ -142,46 +142,46 @@ function getCalling(data) {
 
 	//if no stats
 	if (!defined(data.OnEquip)) {
-		return ["Cleric", "Mage", "Rogue", "Warrior"];
+		return ["cleric", "mage", "rogue", "warrior"];
 	}
 
 	//int/wis items
 	if (defined(data.OnEquip.Intelligence) || defined(data.OnEquip.Wisdom)) {
-		var intelligence = parseInt(data.OnEquip.Intelligence),
-			wisdom = parseInt(data.OnEquip.Wisdom);
+		var intelligence = parseInt(data.OnEquip.Intelligence) || 0,
+			wisdom = parseInt(data.OnEquip.Wisdom) || 0;
 
 		if(intelligence === wisdom) {
-			return ["Cleric", "Mage"];
+			return ["cleric", "mage"];
 		}
 		if(intelligence > wisdom) {
-			return ["Mage"];
+			return ["mage"];
 		}
 		if(wisdom > intelligence) {
-			return ["Cleric"];
+			return ["cleric"];
 		}
 
 	}
 
 	//str and dex items
 	if (defined(data.OnEquip.Strength) || defined(data.OnEquip.Dexterity)) {
-		var strength = parseInt(data.OnEquip.Strength),
-			dexterity = parseInt(data.OnEquip.Dexterity);
+		var strength = parseInt(data.OnEquip.Strength) || 0,
+			dexterity = parseInt(data.OnEquip.Dexterity) || 0;
 
 		if(strength === dexterity) {
-			return ["Rogue", "Warrior"];
+			return ["rogue", "warrior"];
 		}
 		if(strength > dexterity) {
-			return ["Warrior"];
+			return ["warrior"];
 		}
 		if(dexterity > strength) {
-			return ["Rogue"];
+			return ["rogue"];
 		}
 
 	}
 
 	//pure endurance items (like seals)
 	if (defined(data.OnEquip.Endurance)) {
-		return ["Cleric", "Mage", "Rogue", "Warrior"];
+		return ["cleric", "mage", "rogue", "warrior"];
 	}
 
 	//idk
@@ -199,10 +199,10 @@ function getRole(data) {
 
 	//tank shit
 	if (defined(data.OnEquip.Guard) || defined(data.OnEquip.ShieldBlock) || defined(data.OnEquip.Dodge)) {
-		return "Tank";
+		return "tank";
 	}
 	else {
-		return "DPS";
+		return "dps";
 	}
 }
 

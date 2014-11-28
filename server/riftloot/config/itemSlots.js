@@ -1,5 +1,5 @@
 var itemSlots = [
-	'Helm',
+	'Helmet',
 	'Shoulders',
 	'Cape',
 	'Chest',
