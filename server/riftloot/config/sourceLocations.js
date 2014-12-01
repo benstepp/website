@@ -1,8 +1,16 @@
 var sourceLocations = {
-	crafted:[],
-	worldVendor:[],
-	expertVendor:[],
-	raidVendor:[]
+	crafted:[
+
+	],
+	worldVendor:[
+
+	],
+	expertVendor:[
+
+	],
+	raidVendor:[
+
+	]
 };
 
 module.exports = sourceLocations;
