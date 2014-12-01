@@ -1,8 +1,9 @@
 <div class="row">
 	<div class="small-30 large-30 columns">
 		<h3>Don't mind me just testing things on live server</h3>
-		<section class="slot" ng-repeat="slot in lootByRole.slots">
+		<section class="dungeon" ng-repeat="slot in lootByRole.slots" bs-collapse-dungeon="">
 			<h5>
+			<i ng-class="{'fi-plus':!expanded,'fi-minus':expanded}"></i>
 			<span ng-bind="slot"></span>
 			</h5>
 			<ul class="small-block-grid-1 medium-block-grid-2 large-block-grid-5 boss-grid">
