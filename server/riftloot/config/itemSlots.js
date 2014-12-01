@@ -9,6 +9,7 @@ var itemSlots = [
 	'Feet',
 	'Earring',
 	'Ring',
+	'Seal',
 	'Trinket',
 	'One Handed',
 	'Two Handed',

@@ -1,7 +1,7 @@
 var validator = require('validator'),
 	dropLocations = require('./config/dropLocations.js'),
-	dropsByLocation = require('./dropsByLocation.js'),
-	dropsByRole = require('./dropsByRole.js'),
+	dropsByLocation = require('./drops/dropsByLocation.js'),
+	dropsByRole = require('./drops/dropsByRole.js'),
 	validApiOptions = require('./config/validApiOptions.js');
 
 module.exports = function(router) {

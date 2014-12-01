@@ -1,7 +1,7 @@
 var q = require('q'),
 	_ = require('lodash'),
-	riftloot = require('./models/item.js'),
-	itemSlots = require('./config/itemSlots.js');
+	riftloot = require('../models/item.js'),
+	itemSlots = require('../config/itemSlots.js');
 
 var dropsByRole = function(calling,role,locale) {
 
@@ -27,15 +27,12 @@ var dropsByRole = function(calling,role,locale) {
 		var deferred = q.defer();
 
 		riftloot.find({calling:calling})
-			//.where(slot).equals(slot)
-			//.where(role).equals(role)
+			.where('role').equals(role)
+			.where('slot').equals(slot)
 			.exec(function(err,res) {
 					_this[slot] = res;
 					deferred.resolve();
 			});
-
-
-
 
 		return deferred.promise;
 	};
