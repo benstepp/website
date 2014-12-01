@@ -1,14 +1,17 @@
 var sourceLocations = {
-	crafted:[
+	"Crafted":[
 
 	],
-	worldVendor:[
+	"World Vendor":[
 
 	],
-	expertVendor:[
+	"Expert Vendor":[
 
 	],
-	raidVendor:[
+	"Raid Vendor":[
+
+	],
+	"World Event": [
 
 	]
 };
