@@ -34,7 +34,27 @@
 			resolve: {
 				LootService: 'LootService',
 				loot: ['LootService','$stateParams', function(LootService, $stateParams) {
-					return LootService.getLoot($stateParams.tier,$stateParams.locale);
+					return LootService.getItemsByLocation($stateParams.tier,$stateParams.locale);
+				}]
+			}
+		});
+
+		/*
+		The role state
+		*/
+		$stateProvider.state('role', {
+			url:'/role/:calling/:role/:locale',
+			views: {
+				'main': {
+					templateUrl: 'partials/role.html',
+					controller: 'RoleController',
+					controllerAs: 'lootByRole'
+				}
+			},
+			resolve: {
+				LootService: 'LootService',
+				loot: ['LootService','$stateParams', function(LootService, $stateParams) {
+					return LootService.getItemsByRole($stateParams.calling,$stateParams.role,$stateParams.locale);
 				}]
 			}
 		});
