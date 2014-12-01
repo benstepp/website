@@ -6,7 +6,7 @@
 			<span ng-bind="slot"></span>
 			</h5>
 			<ul class="small-block-grid-1 medium-block-grid-2 large-block-grid-5 boss-grid">
-				<li ng-repeat="item in lootByRole.loot[slot]">
+				<li ng-repeat="item in lootByRole.loot[slot]" ng-class="item.rarity.toLowerCase()">
 					<div bs-rift-tooltip="item"></div>
 				</li>
 
