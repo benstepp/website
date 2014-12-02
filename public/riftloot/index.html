@@ -14,7 +14,7 @@
 
 	<!-- external resources-->
 	<link href='//fonts.googleapis.com/css?family=Roboto:400,300,700' rel='stylesheet' type='text/css'>
-	<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.20/angular.min.js"></script>
+	<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.3.4/angular.min.js"></script>
 
 </head>
 <body data-ng-controller="headerController as header">
@@ -36,30 +36,43 @@
 								<a href="/riftloot/#">Rift: Nightmare Tide Loot Table</a>
 							</li>
 						</ul>
-						<ul class="right" data-ng-show="header.state.name !== '/'">
+						<ul class="right" ng-show="header.state.name !== '/'">
 							<li class="has-dropdown">
 								<a data-dropdown-toggle="#top-bar-class">
 									Class: <span data-ng-bind="header.cap(header.data.class)"></span>
 								</a>
 								<ul class="f-dropdown" id="top-bar-class">
-									<li>
-									<a data-ng-href="#/{{header.data.loot}}/{{header.data.tier}}/all/{{header.data.locale}}">All</a>
+									<li ng-show="header.state.name !=='role'">
+									<a data-ng-href="{{header.getCallingUrl('all')}}">All</a>
 									</li>
 									<li>
-									<a data-ng-href="#/{{header.data.loot}}/{{header.data.tier}}/cleric/{{header.data.locale}}">Cleric</a>
+									<a data-ng-href="{{header.getCallingUrl('cleric')}}">Cleric</a>
 									</li>
 									<li>
-									<a data-ng-href="#/{{header.data.loot}}/{{header.data.tier}}/mage/{{header.data.locale}}">Mage</a>
+									<a data-ng-href="{{header.getCallingUrl('mage')}}">Mage</a>
 									</li>
 									<li>
-									<a data-ng-href="#/{{header.data.loot}}/{{header.data.tier}}/rogue/{{header.data.locale}}">Rogue</a>
+									<a data-ng-href="{{header.getCallingUrl('rogue')}}">Rogue</a>
 									</li>
 									<li>
-									<a data-ng-href="#/{{header.data.loot}}/{{header.data.tier}}/warrior/{{header.data.locale}}">Warrior</a>
+									<a data-ng-href="{{header.getCallingUrl('warrior')}}">Warrior</a>
 									</li>
 								</ul>
 							</li>
-							<li class="has-dropdown">
+							<li class="has-dropdown" ng-show="header.state.name === 'role'">
+								<a data-dropdown-toggle="#top-bar-role">
+									Role: <span data-ng-bind="header.cap(header.data.role)"></span>
+								</a>
+								<ul class="f-dropdown" id="top-bar-role">
+									<li>
+									<a data-ng-href="#/{{header.state.name}}/{{header.data.class}}/dps/{{header.data.locale}}">DPS</a>
+									</li>
+									<li>
+									<a data-ng-href="#/{{header.state.name}}/{{header.data.class}}/tank/{{header.data.locale}}">Tank</a>
+									</li>
+								</ul>
+							</li>
+							<li class="has-dropdown" ng-show="header.state.name === 'location'">
 								<a data-dropdown-toggle="#top-bar-tier">
 									Tier: <span data-ng-bind="header.cap(header.data.tier)"></span>
 								</a>
@@ -202,6 +215,7 @@
 		<script src="../libs/angular-ui-router/release/angular-ui-router.js"></script>
 		<script src="../libs/angular-foundation/mm-foundation.js"></script>
 		<script src="./js/controllers/LootCtrl.js"></script>
+		<script src="./js/controllers/RoleCtrl.js"></script>
 		<script src="./js/services/LootService.js"></script>
 		<script src="./js/controllers/HeaderCtrl.js"></script>
 		<script src="./js/directives/bsContentResize.js"></script>

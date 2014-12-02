@@ -10,6 +10,7 @@
 		'routes', 
 		'LootService',
 		'LootCtrl',
+		'RoleCtrl',
 		'getOrder',
 		'bsRiftTooltip',
 		'bsCollapseDungeon'

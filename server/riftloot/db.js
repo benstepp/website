@@ -145,6 +145,24 @@ function getCalling(data) {
 		return ["cleric", "mage", "rogue", "warrior"];
 	}
 
+	if(defined(data.ArmorType)) {
+		switch(data.ArmorType) {
+			case "Plate":
+				return ["warrior"];
+			case "Leather":
+				return["rogue"];
+			case "Chain":
+				return["cleric"];
+			case "Cloth":
+				if (data.Slot !== 'Cape'){
+					return ["mage"];
+				}
+				break;
+			
+			default:break;
+		}
+	}
+
 	//int/wis items
 	if (defined(data.OnEquip.Intelligence) || defined(data.OnEquip.Wisdom)) {
 		var intelligence = parseInt(data.OnEquip.Intelligence) || 0,
@@ -201,9 +219,17 @@ function getRole(data) {
 	if (defined(data.OnEquip.Guard) || defined(data.OnEquip.ShieldBlock) || defined(data.OnEquip.Dodge)) {
 		return "tank";
 	}
-	else {
+
+	//if it has a main stat it's probably a dps item
+	if(defined(data.OnEquip.Dexterity) || defined(data.OnEquip.Intelligence) || defined(data.OnEquip.Strength) || defined(data.OnEquip.Wisdom)) {
 		return "dps";
 	}
+
+	//otherwise it's probably endurance only and tank item
+	else {
+		return "tank";
+	}
+
 }
 
 function saveItem(itemm) {
