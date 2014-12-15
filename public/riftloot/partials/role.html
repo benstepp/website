@@ -21,7 +21,7 @@
 				<li ng-repeat="item in lootByRole.loot[lootByRole.slot] | orderBy:'itemValue':true" ng-class="item.rarity.toLowerCase()">
 					<div bs-rift-tooltip="item">
 						<div class="tooltip-hr"></div>
-						<div class="tooltip-value">Value: {{lootByRole.getValue(item)}}</div>
+						<div class="tooltip-value">Value: {{lootByRole.getReadableValue(lootByRole.getValue(item))}}</div>
 					</div>
 				</li>
 

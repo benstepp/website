@@ -50,11 +50,15 @@
 				});
 
 			}
-			itemValue = new Number(itemValue).toFixed(2);
+			itemValue = new Number(itemValue);
 			item.itemValue = itemValue;
 			return itemValue;
 
 		};
+
+		_this.getReadableValue = function(num) {
+			return num.toFixed(2);
+		}
 
 		//watches the statWeight object for changes
 		$scope.$watchCollection(angular.bind(this,function(statWeights){return this.statWeights}), 
