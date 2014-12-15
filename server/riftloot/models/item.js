@@ -22,7 +22,10 @@ var ItemSchema = new Schema({
 
 	onEquip: Schema.Types.Mixed,
 
-	drop: Schema.Types.Mixed
+	drop: Schema.Types.Mixed,
+
+	upgradePaths: Array,
+
 });
 
 

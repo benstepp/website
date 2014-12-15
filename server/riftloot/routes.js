@@ -1,5 +1,5 @@
 var validator = require('validator'),
-	dropLocations = require('./config/dropLocations.js'),
+	dropLocations = require('./db/dropLocations.js'),
 	dropsByLocation = require('./drops/dropsByLocation.js'),
 	dropsByRole = require('./drops/dropsByRole.js'),
 	validApiOptions = require('./config/validApiOptions.js');
