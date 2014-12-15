@@ -8,6 +8,7 @@ $side-nav-background:#222;
 	height:100vh;
 	z-index:12;
 	top:$topbar-height +4;
+	bottom:-($topbar-height +4);
 	left:0;
 	@extend .show-for-large-up;
 	color:#ddd;
@@ -24,6 +25,7 @@ $side-nav-background:#222;
 }
 
 .side-nav-link {
+	cursor:pointer;
 	padding-left:8px;
 }
 

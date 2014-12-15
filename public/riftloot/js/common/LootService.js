@@ -141,19 +141,19 @@
 	    };
 
 	    var orderStats = function(item) {
-			var statOrder = {
-				main: {
-					mage:["Intelligence","Wisdom"],
-					cleric:["Wisdom","Intelligence"],
-					rogue:["Dexterity","Strength"],
-					warrior:["Strength","Dexterity"]
-				},
-				rest: ["Endurance",
-				"Block","Guard","Dodge",
-				"Attack Power","Spell Power","Crit Power","Physical Crit","Spell Critical Hit",
-				"Resist All"
-				],
-			};
+	    	var statOrder = {
+	    		main: {
+	    			mage:["Intelligence","Wisdom"],
+	    			cleric:["Wisdom","Intelligence"],
+	    			rogue:["Dexterity","Strength"],
+	    			warrior:["Strength","Dexterity"]
+	    		},
+	    		rest: ["Endurance",
+	    		"Block","Guard","Dodge",
+	    		"Attack Power","Spell Power","Crit Power","Physical Crit","Spell Critical Hit",
+	    		"Resist All"
+	    		]
+	    	};
 			//console.log(item);
 			if(typeof item.onEquip !== 'undefined') {
 				var newEquip = {};

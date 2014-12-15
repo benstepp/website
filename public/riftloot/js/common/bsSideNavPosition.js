@@ -10,7 +10,7 @@
                 link: function (scope, element, attrs) {
 
                     var moveSideNav = function() {
-                        var scrollDistance = $window.scrollY;
+                        var scrollDistance = $window.pageYOffset;
                         //make sure the top value is either positive or 0
                         var newTop = (scope.init - scrollDistance)>0 ? (scope.init - scrollDistance) : 0;
                         element.css({top:newTop+'px'});
@@ -21,14 +21,14 @@
                         //this is the height of the topbar-nav 
                         scope.init = element[0].offsetTop;
 
-                    //add a watcher for scroll and resize events
-                    angular.element($window).bind('resize',function() {
-                        moveSideNav();
-                    });
+                        //add a watcher for scroll and resize events
+                        angular.element($window).bind('resize',function() {
+                            moveSideNav();
+                        });
 
-                    angular.element($window).bind('scroll',function() {
-                        moveSideNav();
-                    });
+                        angular.element($window).bind('scroll',function() {
+                            moveSideNav();
+                        });
 
                     }
                 }

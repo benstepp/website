@@ -8,6 +8,8 @@
 		_this.slots = ['Helmet','Shoulders','Cape','Chest','Gloves','Belt','Legs','Feet','Earring','Ring','Seal','Trinket','One Handed','Two Handed','Ranged'];
 		_this.loot = loot;
 
+		_this.statWeights = {};
+
 		_this.getOrder = function() {
 			return function(obj) {
 				return obj.value.order;
@@ -27,9 +29,36 @@
 			}
 		};
 
-		_this.selectSlot = function(link) {
-			console.log(link);
-		}
+		_this.selectSlot = function(slot) {
+			_this.slot = slot;
+		};
+
+		_this.getValue = function(item) {
+			var itemValue = 0;
+
+			//only if item has stats defined
+			if (typeof item.onEquip !== 'undefined') {
+
+				angular.forEach(item.onEquip,function(val) {
+					//if it has a stat weight
+					if (typeof _this.statWeights[val.name] !== 'undefined') {
+						var stat = item.onEquip[val.name].value;
+						var weight = _this.statWeights[val.name];
+						itemValue += stat*weight;
+					}
+				});
+
+			}
+			item.itemValue = itemValue;
+			return itemValue;
+
+		};
+
+		//watches the statWeight object for changes
+		$scope.$watchCollection(angular.bind(this,function(statWeights){return this.statWeights}), 
+			function(newVal,oldVal) {
+			
+		});
 
 	}
 })();

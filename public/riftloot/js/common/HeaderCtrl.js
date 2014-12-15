@@ -17,7 +17,7 @@
 		_this.data = {
 			loot: 'location',
 			tier: 'expert',
-			class: 'warrior',
+			calling: 'warrior',
 			role: 'dps',
 			language: 'English',
 			locale: 'en',
@@ -49,10 +49,17 @@
 				_this.state = toState;
 				if (toState.name === 'location') {
 					_this.data.tier = toParams.tier;
-					_this.data.class = toParams.class;
+					_this.data.calling = toParams.calling;
+				}
+				if (toState.name === 'role') {
+					_this.data.calling = toParams.calling;
+					_this.data.role = toParams.role;
+				}
+				if (toState.name !== '/') {
 					_this.data.locale = toParams.locale;
 					_this.data.language = languages[toParams.locale];
 				}
+
 			});
 
 	}

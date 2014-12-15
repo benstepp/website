@@ -14,6 +14,8 @@
 		'getOrder',
 		'bsRiftTooltip',
 		'bsCollapseDungeon',
-		'bsSideNavPosition'
+		'bsSideNavPosition',
+		'bsSlotSelector',
+		'bsStatWeightForm'
 		]);
 })();
