@@ -267,7 +267,7 @@ gulp.task('default', function() {
 
 //dev shit ill clean up later
 gulp.task('dev2', function() {
-	gulp.watch(config.riftloot.css, function() {
+	gulp.watch('./public/riftloot/**/*.scss', function() {
 		gulp.start('scss');
 	});
 });

@@ -27,5 +27,9 @@
 			}
 		};
 
+		_this.selectSlot = function(link) {
+			console.log(link);
+		}
+
 	}
 })();

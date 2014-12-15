@@ -5,9 +5,9 @@
 
 // Make sure the charset is set appropriately
   @import "settings";
-  @import "rift-tooltip.scss";
-  @import "../../libs/foundation/scss/normalize.scss";
 
+  @import "../../libs/foundation/scss/normalize.scss";
+  @import "../../libs/foundation/scss/foundation/components/global";
 // Behold, here are all the Foundation components.
   @import "../../libs/foundation/scss/foundation/components/grid";
   @import "../../libs/foundation/scss/foundation/components/alert-boxes";
@@ -29,7 +29,8 @@
   @import "../../libs/foundation/scss/foundation/components/offcanvas";
   @import "../../libs/foundation/scss/foundation/components/visibility";
   
-
+  @import "rift-tooltip.scss";
+  @import "./side-nav.scss";
 .row {
   max-width:100%
 }

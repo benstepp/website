@@ -13,6 +13,7 @@
 		'RoleCtrl',
 		'getOrder',
 		'bsRiftTooltip',
-		'bsCollapseDungeon'
+		'bsCollapseDungeon',
+		'bsSideNavPosition'
 		]);
 })();
