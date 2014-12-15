@@ -9,6 +9,7 @@
 		_this.loot = loot;
 
 		_this.statWeights = {};
+		_this.statWeightDefaults = {};
 
 		_this.getOrder = function() {
 			return function(obj) {
@@ -41,14 +42,15 @@
 
 				angular.forEach(item.onEquip,function(val) {
 					//if it has a stat weight
-					if (typeof _this.statWeights[val.name] !== 'undefined') {
+					if (typeof _this.statWeights[val.name] !== 'undefined' || typeof _this.statWeightDefaults[val.name] !== 'undefined') {
 						var stat = item.onEquip[val.name].value;
-						var weight = _this.statWeights[val.name];
+						var weight = _this.statWeights[val.name] || _this.statWeightDefaults[val.name];
 						itemValue += stat*weight;
 					}
 				});
 
 			}
+			itemValue = new Number(itemValue).toFixed(2);
 			item.itemValue = itemValue;
 			return itemValue;
 

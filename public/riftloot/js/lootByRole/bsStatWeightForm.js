@@ -12,7 +12,8 @@
                 scope:{
                     role:"=role",
                     calling:"=calling",
-                    statWeights:"=statWeights"
+                    statWeights:"=statWeights",
+                    statWeightDefaults:"=statWeightDefaults"
                 },
 
                 //holy fuck this is a pain in the ass to maintain
@@ -111,9 +112,11 @@
                        } 
 
                        if (scope.role === 'tank' && val === 'Endurance') {
+                            scope.statWeightDefaults[val] = 1;
                             return 1;
                        }   
                        else {
+                        scope.statWeightDefaults[val] = defaults[scope.calling][val] || 0;
                         return defaults[scope.calling][val] || 0;
                        }
 
