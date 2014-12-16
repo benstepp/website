@@ -52,7 +52,7 @@ function getBulkXML(sortFunction) {
 
 		xml.on('end', function() {
 			if(process.env.NODE_ENV == 'development') {
-				fs.writeFile('../dev/items.json', JSON.stringify({items:results}), function(err){
+				fs.writeFile('./dev/items.json', JSON.stringify({items:results}), function(err){
 					if (err) {console.log(err);}
 					else {console.log('json of parsed items.xml saved');}
 				});

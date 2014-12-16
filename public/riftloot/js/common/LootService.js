@@ -65,7 +65,7 @@
 
 	    _this.getItemsByRole = function(calling,role,locale) {
 	    	var deferred = $q.defer();
-	    	console.log(Object.keys(_this.itemsByRole[calling][role][locale]).length);
+
 	    	if(Object.keys(_this.itemsByRole[calling][role][locale]).length > 0) {
 	    		deferred.resolve(_this.itemsByRole[calling][role][locale]);
 	    	}
