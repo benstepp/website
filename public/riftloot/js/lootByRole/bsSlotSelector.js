@@ -22,7 +22,6 @@
                     if (typeof scope.selectSlot === 'undefined') {
                         scope.selectSlot = function() {
                             scope.selected = true;
-                            console.log(scope);
                         };
                     }
                 

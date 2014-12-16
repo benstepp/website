@@ -6,6 +6,7 @@
 	function RoleCtrl($scope, loot, LootService, $interval, $http) {
 		var _this = this;
 		_this.slots = ['Helmet','Shoulders','Cape','Chest','Gloves','Belt','Legs','Feet','Earring','Ring','Seal','Trinket','One Handed','Two Handed','Ranged'];
+		_this.slot='Helmet';
 		_this.loot = loot;
 
 		_this.statWeights = {};
@@ -18,7 +19,7 @@
 		};
 
 		_this.hideItem = function(item) {
-			var toShow = $scope.header.data.class;
+			var toShow = $scope.header.data.calling;
 			if (toShow === 'all') {
 				return false;
 			}

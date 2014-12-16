@@ -94,13 +94,13 @@
 								</a>
 								<ul class="f-dropdown" id="top-bar-language">
 									<li>
-									<a data-ng-href="#/{{header.data.loot}}/{{header.data.tier}}/{{header.data.calling}}/en">English</a>
+									<a data-ng-href="{{header.getLocaleUrl('en')}}">English</a>
 									</li>
 									<li>
-									<a data-ng-href="#/{{header.data.loot}}/{{header.data.tier}}/{{header.data.calling}}/fr">French</a>
+									<a data-ng-href="{{header.getLocaleUrl('fr')}}">French</a>
 									</li>
 									<li>
-									<a data-ng-href="#/{{header.data.loot}}/{{header.data.tier}}/{{header.data.calling}}/de">German</a>
+									<a data-ng-href="{{header.getLocaleUrl('de')}}">German</a>
 									</li>
 								</ul>
 							</li>

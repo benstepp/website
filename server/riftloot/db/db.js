@@ -29,7 +29,7 @@ function getBulkXML(sortFunction) {
 
 		//this is the items.xml from ftp://ftp.trionworlds.com/rift/data/
 		//only works if you call this file from base directory
-		var fileLocation = '../dev/Items.xml';
+		var fileLocation = './dev/Items.xml';
 
 		var stream = fs.createReadStream(fileLocation);
 		var xml = new xmlstream(stream);
