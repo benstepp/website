@@ -1,4 +1,5 @@
-var itemSlots = [
+var itemSlots = {
+	cleric:[
 	'Helmet',
 	'Shoulders',
 	'Cape',
@@ -8,12 +9,69 @@ var itemSlots = [
 	'Legs',
 	'Feet',
 	'Earring',
+	'Neck',
 	'Ring',
 	'Seal',
 	'Trinket',
 	'One Handed',
 	'Two Handed',
 	'Ranged'
-];
+	],
+	mage:[
+	'Helmet',
+	'Shoulders',
+	'Cape',
+	'Chest',
+	'Gloves',
+	'Belt',
+	'Legs',
+	'Feet',
+	'Earring',
+	'Neck',
+	'Ring',
+	'Seal',
+	'Trinket',
+	'One Handed',
+	'OffHand',
+	'Two Handed',
+	'Ranged'
+	],
+	rogue:[
+	'Helmet',
+	'Shoulders',
+	'Cape',
+	'Chest',
+	'Gloves',
+	'Belt',
+	'Legs',
+	'Feet',
+	'Earring',
+	'Neck',
+	'Ring',
+	'Seal',
+	'Trinket',
+	'One Handed',
+	'Ranged'
+	],
+	warrior:[
+	'Helmet',
+	'Shoulders',
+	'Cape',
+	'Chest',
+	'Gloves',
+	'Belt',
+	'Legs',
+	'Feet',
+	'Earring',
+	'Neck',
+	'Ring',
+	'Seal',
+	'Trinket',
+	'One Handed',
+	'OffHand',
+	'Two Handed',
+	'Ranged'
+	],
+};
 
 module.exports = itemSlots;
