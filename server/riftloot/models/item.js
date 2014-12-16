@@ -24,6 +24,10 @@ var ItemSchema = new Schema({
 
 	drop: Schema.Types.Mixed,
 
+	itemset_en: String,
+	itemset_fr: String,
+	itemset_de: String,
+
 	upgradePaths: Array,
 
 });

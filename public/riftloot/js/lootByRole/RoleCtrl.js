@@ -5,7 +5,7 @@
 
 	function RoleCtrl($scope, loot, LootService, $interval, $http) {
 		var _this = this;
-		_this.slots = ['Helmet','Shoulders','Cape','Chest','Gloves','Belt','Legs','Feet','Earring','Ring','Seal','Trinket','One Handed','Two Handed','Ranged'];
+		_this.slots = ['Helmet','Shoulders','Cape','Chest','Gloves','Belt','Legs','Feet','Earring','Neck','Ring','Seal','Trinket','One Handed','Off Hand','Two Handed','Ranged','Greater Essence','Lesser Essence'];
 		_this.slot='Helmet';
 		_this.loot = loot;
 

@@ -91,8 +91,12 @@ function createItem(data) {
 	this.icon = data.Icon;
 	this.onEquip = data.OnEquip;
 
-	if (defined(data.Slot)) {
-		this.slot = data.Slot;
+	if(defined(data.SpellDamage)) {
+		this.onEquip.SpellPower = parseInt(data.SpellDamage) + parseInt(this.onEquip.SpellPower);
+	}
+
+	if (defined(data.Slot) || defined(data.RiftGem)) {
+		this.slot = data.Slot || (data.RiftGem + ' Essence');
 	}
 	if (defined(data.Armor)) {
 		this.armor = data.Armor; 
@@ -316,6 +320,14 @@ function renameKeys(itemm) {
 		if(typeof itemKeys[itemm.slot] !== 'undefined') {
 			itemm.slot = itemKeys[itemm.slot];
 		}
+	}
+
+	//adds the number of items in an itemset to the itemset key
+	if(defined(itemm.itemset_en)) {
+		itemm.itemset_de += itemKeys[itemm.itemset_en];
+		itemm.itemset_en += itemKeys[itemm.itemset_en];
+		itemm.itemset_fr += itemKeys[itemm.itemset_en];
+
 	}
 
 	return itemm;

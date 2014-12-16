@@ -112,8 +112,8 @@
                        } 
 
                        if (scope.role === 'tank' && val === 'Endurance') {
-                            scope.statWeightDefaults[val] = 1;
-                            return 1;
+                            scope.statWeightDefaults[val] = 2;
+                            return 2;
                        }   
                        else {
                         scope.statWeightDefaults[val] = defaults[scope.calling][val] || 0;
