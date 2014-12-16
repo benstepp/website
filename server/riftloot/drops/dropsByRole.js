@@ -1,7 +1,7 @@
 var q = require('q'),
 	_ = require('lodash'),
 	riftloot = require('../models/item.js'),
-	itemSlots = require('../config/itemSlots.js'),
+	itemSlotsTotal = require('../config/itemSlots.js'),
 	localeCheck = require('./localeCheck.js');
 
 var dropsByRole = function(calling,role,locale) {
@@ -9,6 +9,8 @@ var dropsByRole = function(calling,role,locale) {
 	var _this = {};
 
 	var allDeferred = q.defer();
+
+	var itemSlots = itemSlotsTotal[calling];
 
 	var getDrops = function() {
 		var promises = [];
