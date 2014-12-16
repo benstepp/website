@@ -23,7 +23,7 @@
 		The location state
 		*/
 		$stateProvider.state('location', {
-			url:'/location/:tier/:class/:locale',
+			url:'/location/:tier/:calling/:locale',
 			views: {
 				'main': {
 					templateUrl: 'partials/location.html',

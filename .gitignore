@@ -2,7 +2,7 @@
 dev
 logs
 *.log
-db
+
 public/libs
 *.sublime-project
 *.sublime-workspace

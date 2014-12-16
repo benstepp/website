@@ -17,7 +17,7 @@
 		_this.data = {
 			loot: 'location',
 			tier: 'expert',
-			class: 'warrior',
+			calling: 'warrior',
 			role: 'dps',
 			language: 'English',
 			locale: 'en',
@@ -43,16 +43,38 @@
 			}
 		};
 
+		_this.getLocaleUrl = function(locale) {
+			if (typeof _this.state !== 'undefined') {
+				if(_this.data.loot === 'location') {
+					return '#/'+_this.data.loot+'/'+_this.data.tier+'/'+_this.data.calling+'/'+locale;
+				}
+				if(_this.data.loot === 'role') {
+					return '#/'+_this.data.loot+'/'+_this.data.calling+'/'+_this.data.role+'/'+locale;
+				}
+				else {
+					return "";
+				}
+			}
+		}
+
 		//Binds the header links URLs to hide navbar if on splash page
 		$rootScope.$on('$stateChangeSuccess', 
 			function(event, toState, toParams, fromState, fromParams) {
 				_this.state = toState;
 				if (toState.name === 'location') {
 					_this.data.tier = toParams.tier;
-					_this.data.class = toParams.class;
+					_this.data.calling = toParams.calling;
+				}
+				if (toState.name === 'role') {
+					_this.data.calling = toParams.calling;
+					_this.data.role = toParams.role;
+				}
+				if (toState.name !== '/') {
+					_this.data.loot = toState.name;
 					_this.data.locale = toParams.locale;
 					_this.data.language = languages[toParams.locale];
 				}
+
 			});
 
 	}

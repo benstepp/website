@@ -3,9 +3,10 @@ var fs = require('fs'),
 	_ = require('lodash'),
 	mongoose = require('mongoose'),
 	xmlstream = require('xml-stream'),
-	item = require('./models/item.js'),
-	itemKeys = require('./config/itemKeys.js'),
-	dropLocations = require('./config/dropLocations.js');
+	item = require('../models/item.js'),
+	itemKeys = require('../config/itemKeys.js'),
+	dropLocations = require('./dropLocations.js'),
+	upgradePaths = require('./upgradePaths.js');
 
 //connect to database
 mongoose.connect('mongodb://localhost/');

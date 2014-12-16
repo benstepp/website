@@ -39,7 +39,7 @@
 						<ul class="right" ng-show="header.state.name !== '/'">
 							<li class="has-dropdown">
 								<a data-dropdown-toggle="#top-bar-class">
-									Class: <span data-ng-bind="header.cap(header.data.class)"></span>
+									Class: <span data-ng-bind="header.cap(header.data.calling)"></span>
 								</a>
 								<ul class="f-dropdown" id="top-bar-class">
 									<li ng-show="header.state.name !=='role'">
@@ -65,10 +65,10 @@
 								</a>
 								<ul class="f-dropdown" id="top-bar-role">
 									<li>
-									<a data-ng-href="#/{{header.state.name}}/{{header.data.class}}/dps/{{header.data.locale}}">DPS</a>
+									<a data-ng-href="#/{{header.state.name}}/{{header.data.calling}}/dps/{{header.data.locale}}">DPS</a>
 									</li>
 									<li>
-									<a data-ng-href="#/{{header.state.name}}/{{header.data.class}}/tank/{{header.data.locale}}">Tank</a>
+									<a data-ng-href="#/{{header.state.name}}/{{header.data.calling}}/tank/{{header.data.locale}}">Tank</a>
 									</li>
 								</ul>
 							</li>
@@ -78,13 +78,13 @@
 								</a>
 								<ul class="f-dropdown" id="top-bar-tier">
 									<li>
-									<a data-ng-href="#/{{header.data.loot}}/all/{{header.data.class}}/{{header.data.locale}}">All</a>
+									<a data-ng-href="#/{{header.data.loot}}/all/{{header.data.calling}}/{{header.data.locale}}">All</a>
 									</li>
 									<li>
-									<a data-ng-href="#/{{header.data.loot}}/expert/{{header.data.class}}/{{header.data.locale}}">Expert</a>
+									<a data-ng-href="#/{{header.data.loot}}/expert/{{header.data.calling}}/{{header.data.locale}}">Expert</a>
 									</li>
 									<li>
-									<a data-ng-href="#/{{header.data.loot}}/raid1/{{header.data.class}}/{{header.data.locale}}">Raid I</a>
+									<a data-ng-href="#/{{header.data.loot}}/raid1/{{header.data.calling}}/{{header.data.locale}}">Raid I</a>
 									</li>
 								</ul>
 							</li>
@@ -94,13 +94,13 @@
 								</a>
 								<ul class="f-dropdown" id="top-bar-language">
 									<li>
-									<a data-ng-href="#/{{header.data.loot}}/{{header.data.tier}}/{{header.data.class}}/en">English</a>
+									<a data-ng-href="{{header.getLocaleUrl('en')}}">English</a>
 									</li>
 									<li>
-									<a data-ng-href="#/{{header.data.loot}}/{{header.data.tier}}/{{header.data.class}}/fr">French</a>
+									<a data-ng-href="{{header.getLocaleUrl('fr')}}">French</a>
 									</li>
 									<li>
-									<a data-ng-href="#/{{header.data.loot}}/{{header.data.tier}}/{{header.data.class}}/de">German</a>
+									<a data-ng-href="{{header.getLocaleUrl('de')}}">German</a>
 									</li>
 								</ul>
 							</li>
@@ -123,7 +123,7 @@
 						<li><label>Rift: Nightmare Tide Loot Table</label></li>
 						<li class="has-dropdown">
 							<a class="no-pointer">
-								Class: <span data-ng-bind="header.cap(header.data.class)"></span>
+								Class: <span data-ng-bind="header.cap(header.data.calling)"></span>
 							</a>
 							<ul>
 								<li>
@@ -149,13 +149,13 @@
 							</a>
 							<ul>
 								<li>
-								<a data-ng-href="#/{{header.data.loot}}/all/{{header.data.class}}/{{header.data.locale}}">All</a>
+								<a data-ng-href="#/{{header.data.loot}}/all/{{header.data.calling}}/{{header.data.locale}}">All</a>
 								</li>
 								<li>
-								<a data-ng-href="#/{{header.data.loot}}/expert/{{header.data.class}}/{{header.data.locale}}">Expert</a>
+								<a data-ng-href="#/{{header.data.loot}}/expert/{{header.data.calling}}/{{header.data.locale}}">Expert</a>
 								</li>
 								<li>
-								<a data-ng-href="#/{{header.data.loot}}/raid/{{header.data.class}}/{{header.data.locale}}">Raid I</a>
+								<a data-ng-href="#/{{header.data.loot}}/raid/{{header.data.calling}}/{{header.data.locale}}">Raid I</a>
 								</li>
 							</ul>
 						</li>
@@ -165,13 +165,13 @@
 							</a>
 							<ul>
 								<li>
-								<a data-ng-href="#/{{header.data.loot}}/{{header.data.tier}}/{{header.data.class}}/en">English</a>
+								<a data-ng-href="#/{{header.data.loot}}/{{header.data.tier}}/{{header.data.calling}}/en">English</a>
 								</li>
 								<li>
-								<a data-ng-href="#/{{header.data.loot}}/{{header.data.tier}}/{{header.data.class}}/fr">French</a>
+								<a data-ng-href="#/{{header.data.loot}}/{{header.data.tier}}/{{header.data.calling}}/fr">French</a>
 								</li>
 								<li>
-								<a data-ng-href="#/{{header.data.loot}}/{{header.data.tier}}/{{header.data.class}}/de">German</a>
+								<a data-ng-href="#/{{header.data.loot}}/{{header.data.tier}}/{{header.data.calling}}/de">German</a>
 								</li>
 							</ul>
 						</li>
@@ -182,7 +182,7 @@
 					<div class="main-bg">
 					</div>
 
-					<div class="main-view" data-ui-view="main">
+					<div class="main-view" data-ui-view="main" bs-content-resize>
 
 					</div>
 					
@@ -214,14 +214,17 @@
 		<!-- build:js -->
 		<script src="../libs/angular-ui-router/release/angular-ui-router.js"></script>
 		<script src="../libs/angular-foundation/mm-foundation.js"></script>
-		<script src="./js/controllers/LootCtrl.js"></script>
-		<script src="./js/controllers/RoleCtrl.js"></script>
-		<script src="./js/services/LootService.js"></script>
-		<script src="./js/controllers/HeaderCtrl.js"></script>
-		<script src="./js/directives/bsContentResize.js"></script>
-		<script src="./js/directives/bsRiftTooltip.js"></script>
-		<script src="./js/directives/bsCollapseDungeon.js"></script>
-		<script src="./js/filters/getOrder.js"></script>
+		<script src="./js/lootByLocation/LootCtrl.js"></script>
+		<script src="./js/lootByRole/RoleCtrl.js"></script>
+		<script src="./js/lootByRole/bsSlotSelector.js"></script>
+		<script src="./js/lootByRole/bsStatWeightForm.js"></script>
+		<script src="./js/common/LootService.js"></script>
+		<script src="./js/common/HeaderCtrl.js"></script>
+		<script src="./js/common/bsContentResize.js"></script>
+		<script src="./js/common/bsRiftTooltip.js"></script>
+		<script src="./js/common/bsCollapseDungeon.js"></script>
+		<script src="./js/common/getOrder.js"></script>
+		<script src="./js/common/bsSideNavPosition.js"></script>
 		<script src="./js/routes.js"></script>
 		<script src="./js/app.js"></script>
 		<!-- endbuild -->

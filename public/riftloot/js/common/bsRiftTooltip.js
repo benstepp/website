@@ -21,8 +21,9 @@
                     '<div class="tooltip-hr"></div>',
                     '<div class="tooltip-text" data-ng-show="item.armor">Armor: {{::item.armor}}</div>',
                     '<div class="tooltip-text" data-ng-repeat="(stat,bonus) in item.onEquip | getOrder:\'bonus.order\'">{{::bonus.name}} +{{::bonus.value}}</div>',
-                    '<div class="tooltip-hr"></div>',
-                    '<div class="tooltip-drop">{{::item.drop.boss}} in {{::item.drop.instance}}</div>',
+                    '<div class="tooltip-hr" ng-show="item.drop"></div>',
+                    '<div class="tooltip-drop" ng-show="item.drop">{{::item.drop.boss}} in {{::item.drop.instance}}</div>',
+                    '<div ng-transclude></div>',
                 '</div>'].join(''),
 
             link: function(scope, elem, attrs) {

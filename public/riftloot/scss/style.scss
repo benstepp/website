@@ -5,9 +5,9 @@
 
 // Make sure the charset is set appropriately
   @import "settings";
-  @import "rift-tooltip.scss";
-  @import "../../libs/foundation/scss/normalize.scss";
 
+  @import "../../libs/foundation/scss/normalize.scss";
+  @import "../../libs/foundation/scss/foundation/components/global";
 // Behold, here are all the Foundation components.
   @import "../../libs/foundation/scss/foundation/components/grid";
   @import "../../libs/foundation/scss/foundation/components/alert-boxes";
@@ -29,7 +29,9 @@
   @import "../../libs/foundation/scss/foundation/components/offcanvas";
   @import "../../libs/foundation/scss/foundation/components/visibility";
   
-
+  @import "rift-tooltip.scss";
+  @import "./side-nav.scss";
+  @import "./loot-by-role.scss";
 .row {
   max-width:100%
 }
@@ -111,6 +113,7 @@
 }
 
 footer {
+  clear:both;
   font-size:12px;
   border-top:1px $primary-color solid;
   background-color:#FFF;
@@ -143,6 +146,10 @@ footer div:nth-child(2) {
   border:1px solid #333;
   margin:20px 0px;
   text-align:left;
+}
+
+ul.dungeon {
+  padding-top:8px;
 }
 
 .splash-btn {
