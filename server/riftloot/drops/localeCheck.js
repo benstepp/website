@@ -28,7 +28,7 @@ var localeCheck = function(item,locale) {
 		}
 		
 		if(locale === 'fr') {
-			newItem = _.omit(newItem,['name_de','name_en','itemset_de','itemset_de']);
+			newItem = _.omit(newItem,['name_de','name_en','itemset_de','itemset_en']);
 			if (!_.isUndefined(newItem.onEquip) && !_.isUndefined(newItem.onEquip.ability_fr)) {
 				newItem.onEquip = _.omit(newItem.onEquip,['ability_de','ability_en']);
 			}

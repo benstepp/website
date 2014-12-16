@@ -5,7 +5,7 @@
 
 	function RoleCtrl($scope, loot, LootService, $interval, $http) {
 		var _this = this;
-		_this.slots = ['Helmet','Shoulders','Cape','Chest','Gloves','Belt','Legs','Feet','Earring','Ring','Seal','Trinket','One Handed','Two Handed','Ranged'];
+		_this.slots = ['Helmet','Shoulders','Cape','Chest','Gloves','Belt','Legs','Feet','Earring','Neck','Ring','Seal','Trinket','One Handed','Off Hand','Two Handed','Ranged','Greater Essence','Lesser Essence'];
 		_this.slot='Helmet';
 		_this.loot = loot;
 
@@ -51,10 +51,26 @@
 				});
 
 			}
+
+			//if armor is weighted
+			if (typeof _this.statWeights["Armor"] !== 'undefined') {
+				itemValue += (_this.statWeights["Armor"]*item.armor);
+			}
+
+			//so items with set bonuses are invisibly higher than items without setbonus to the user
+			if (typeof item.itemset_en !== 'undefined' || typeof item.itemset_de !== 'undefined' || typeof item.itemset_fr !== 'undefined' ) {
+				itemValue += 0.0000001;
+			}
+
 			itemValue = new Number(itemValue);
 			item.itemValue = itemValue;
 			return itemValue;
 
+		};
+
+		_this.hideSlot = function(slot) {
+			var availableSlots = Object.keys(_this.loot);
+			return availableSlots.indexOf(slot) === -1 ? true : false;
 		};
 
 		_this.getReadableValue = function(num) {

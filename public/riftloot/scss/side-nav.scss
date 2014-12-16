@@ -18,18 +18,23 @@ $side-nav-background:#222;
 }
 
 @media #{$large-up} {
-	.main-content,footer {
+	.main-content,footer.side-nav-push {
 		padding-left: $side-nav-width + $column-gutter/2;
 	}	
 
 }
 
 .side-nav-link {
+	font-size: rem-calc(14px);
 	cursor:pointer;
 	padding-left:8px;
+	overflow:hidden;
+	text-overflow:clip;
+	white-space:nowrap;
 }
 
 .side-nav-link::after {
+	cursor:default;
 	content: "";
 	display:block;
 	height:1px;

@@ -14,8 +14,11 @@ var itemSlots = {
 	'Seal',
 	'Trinket',
 	'One Handed',
+	'Off Hand',
 	'Two Handed',
-	'Ranged'
+	'Ranged',
+	'Lesser Essence',
+	'Greater Essence'
 	],
 	mage:[
 	'Helmet',
@@ -32,9 +35,11 @@ var itemSlots = {
 	'Seal',
 	'Trinket',
 	'One Handed',
-	'OffHand',
+	'Off Hand',
 	'Two Handed',
-	'Ranged'
+	'Ranged',
+	'Lesser Essence',
+	'Greater Essence'
 	],
 	rogue:[
 	'Helmet',
@@ -51,7 +56,9 @@ var itemSlots = {
 	'Seal',
 	'Trinket',
 	'One Handed',
-	'Ranged'
+	'Ranged',
+	'Lesser Essence',
+	'Greater Essence'
 	],
 	warrior:[
 	'Helmet',
@@ -68,9 +75,11 @@ var itemSlots = {
 	'Seal',
 	'Trinket',
 	'One Handed',
-	'OffHand',
+	'Off Hand',
 	'Two Handed',
-	'Ranged'
+	'Ranged',
+	'Lesser Essence',
+	'Greater Essence'
 	],
 };
 
