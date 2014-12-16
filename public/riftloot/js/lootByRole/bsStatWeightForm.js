@@ -53,7 +53,8 @@
                 link: function (scope, element, attrs) {
                     if (typeof scope.init === 'undefined') {
                         scope.init = true;
-                    
+                        scope.statWeightDefaults = {};
+                        
                     scope.statOrder = {
                         main: {
                             mage:["Intelligence","Wisdom"],

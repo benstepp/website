@@ -51,6 +51,12 @@
 				});
 
 			}
+
+			//so items with set bonuses are invisibly higher than items without setbonus to the user
+			if (typeof item.itemset_en !== 'undefined' || typeof item.itemset_de !== 'undefined' || typeof item.itemset_fr !== 'undefined' ) {
+				itemValue += 0.0000001;
+			}
+			
 			itemValue = new Number(itemValue);
 			item.itemValue = itemValue;
 			return itemValue;
