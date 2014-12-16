@@ -25,11 +25,16 @@ $side-nav-background:#222;
 }
 
 .side-nav-link {
+	font-size: rem-calc(14px);
 	cursor:pointer;
 	padding-left:8px;
+	overflow:hidden;
+	text-overflow:clip;
+	white-space:nowrap;
 }
 
 .side-nav-link::after {
+	cursor:default;
 	content: "";
 	display:block;
 	height:1px;

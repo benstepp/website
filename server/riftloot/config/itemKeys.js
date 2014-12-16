@@ -13,6 +13,7 @@ var itemKeys = {
 	ResistanceLife: "Death Resist",
 	ResistanceDeath: "Life Resist",
 	ResistanceEarth: "Earth Resist",
+	ResistanceFire: "Fire Resist",
 	ResistanceWater: "Water Resist",
 	ResistanceAir: "Air Resist",
 
