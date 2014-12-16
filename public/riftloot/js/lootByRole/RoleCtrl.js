@@ -56,11 +56,16 @@
 			if (typeof item.itemset_en !== 'undefined' || typeof item.itemset_de !== 'undefined' || typeof item.itemset_fr !== 'undefined' ) {
 				itemValue += 0.0000001;
 			}
-			
+
 			itemValue = new Number(itemValue);
 			item.itemValue = itemValue;
 			return itemValue;
 
+		};
+
+		_this.hideSlot = function(slot) {
+			var availableSlots = Object.keys(_this.loot);
+			return availableSlots.indexOf(slot) === -1 ? true : false;
 		};
 
 		_this.getReadableValue = function(num) {
