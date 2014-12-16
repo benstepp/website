@@ -324,9 +324,10 @@ function renameKeys(itemm) {
 
 	//adds the number of items in an itemset to the itemset key
 	if(defined(itemm.itemset_en)) {
-		itemm.itemset_de += itemKeys[itemm.itemset_en];
-		itemm.itemset_en += itemKeys[itemm.itemset_en];
-		itemm.itemset_fr += itemKeys[itemm.itemset_en];
+		var setCount = itemKeys[itemm.itemset_en];
+		itemm.itemset_de += setCount;
+		itemm.itemset_en += setCount;
+		itemm.itemset_fr += setCount;
 
 	}
 
