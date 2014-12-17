@@ -55,7 +55,7 @@
 					return "";
 				}
 			}
-		}
+		};
 
 		//Binds the header links URLs to hide navbar if on splash page
 		$rootScope.$on('$stateChangeSuccess', 

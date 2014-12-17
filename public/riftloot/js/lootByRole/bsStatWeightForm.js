@@ -65,7 +65,7 @@
                         scope.statWeightDefaults = {};
                         scope.getGrid = function() {
                             return 'large-block-grid-'+scope.stats.length;
-                        }
+                        };
 
                         scope.default = function(val) {
 

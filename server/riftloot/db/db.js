@@ -91,6 +91,10 @@ function createItem(data) {
 	this.icon = data.Icon;
 	this.onEquip = data.OnEquip;
 
+	if(defined(data.SoulBoundTrigger)) {
+		this.bind = data.SoulBoundTrigger;
+	}
+
 	if(defined(data.SpellDamage)) {
 		this.onEquip.SpellPower = parseInt(data.SpellDamage) + parseInt(this.onEquip.SpellPower);
 	}

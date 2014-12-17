@@ -53,8 +53,8 @@
 			}
 
 			//if armor is weighted
-			if (typeof _this.statWeights["Armor"] !== 'undefined') {
-				itemValue += (_this.statWeights["Armor"]*item.armor);
+			if (typeof _this.statWeights.Armor !== 'undefined') {
+				itemValue += (_this.statWeights.Armor*item.armor);
 			}
 
 			//so items with set bonuses are invisibly higher than items without setbonus to the user
@@ -62,7 +62,7 @@
 				itemValue += 0.0000001;
 			}
 
-			itemValue = new Number(itemValue);
+			itemValue = Number(itemValue);
 			item.itemValue = itemValue;
 			return itemValue;
 
@@ -75,10 +75,13 @@
 
 		_this.getReadableValue = function(num) {
 			return num.toFixed(2);
-		}
+		};
 
 		//watches the statWeight object for changes
-		$scope.$watchCollection(angular.bind(this,function(statWeights){return this.statWeights}), 
+		$scope.$watchCollection(
+			angular.bind(this,function(statWeights) {
+				return this.statWeights;
+			}), 
 			function(newVal,oldVal) {
 			
 		});
