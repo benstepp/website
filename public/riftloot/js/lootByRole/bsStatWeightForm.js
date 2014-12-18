@@ -118,18 +118,18 @@
                                 "Endurance":2,
                                 "Armor":0.02
                                }
-                           } 
+                           };
 
                             scope.statWeightDefaults[val] = defaults[scope.calling][val] || 0;
                             return defaults[scope.calling][val] || 0;
 
 
-                        }
+                        };
 
 
                     }
                 }
-        }
+        };
 
     }
 

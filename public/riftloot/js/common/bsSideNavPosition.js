@@ -18,8 +18,14 @@
 
                     //initialize if it hasn't been
                     if (typeof scope.init === 'undefined') {
-                        //this is the height of the topbar-nav 
-                        scope.init = element[0].offsetTop;
+                        //gets the base height of 'top' css value for side-nav
+                        scope.init = parseInt($window.getComputedStyle(element[0], null).top);
+
+                        //push the footer if there is one present
+                        if($window.document.getElementsByTagName('footer')[0]) {
+                            var footer = angular.element($window.document.getElementsByTagName('footer')[0]);
+                            footer.addClass('side-nav-push');
+                        }
 
                         //add a watcher for scroll and resize events
                         angular.element($window).bind('resize',function() {
