@@ -3,7 +3,7 @@
         .module('bsStatWeightForm', [])
         .directive('bsStatWeightForm', ['$compile', bsStatWeightForm]);
 
-        function bsStatWeightForm($compile){
+        function bsStatWeightForm($compile) {
 
             return {
                 restrict: 'A',
@@ -129,8 +129,8 @@
 
                     }
                 }
-        };
+            };
 
-    }
+        }
 
 })();
