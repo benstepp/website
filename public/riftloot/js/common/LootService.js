@@ -15,6 +15,7 @@
 		activate();
 
 		function activate() {
+
 			_this.itemsByLocation = {
 				de: {},
 				en: {},
@@ -74,28 +75,22 @@
 	    };
 
 	    function getItemsByRole(calling,role,locale) {
-	    	var deferred = $q.defer();
+	    	var items = _this.itemsByRole[calling][role][locale];
+	    	var apiCallNeeded = Object.keys(items).length === 0;
 
-	    	if(Object.keys(_this.itemsByRole[calling][role][locale]).length > 0) {
-	    		deferred.resolve(_this.itemsByRole[calling][role][locale]);
-	    	}
-	    	else {
-	    		roleApiCall(calling,role,locale).then(function(data) {
-	    			_this.itemsByRole[calling][role][locale] = data;
-	    			deferred.resolve(data);
-	    		});
-	    	}
-
-	    	return deferred.promise;
+	    	//returns either the items from the service or a promise from the apiCall
+	    	return (apiCallNeeded ? rollApiCall(calling,role,locale) : items);
 	    }
 
-	    var roleApiCall = function(calling,role,locale) {
+	    function rollApiCall(calling,role,locale) {
 	    	var deferred = $q.defer();
 
 	    	var url = '/api/riftloot/role/'+calling+'/'+role+'/'+locale+'/';
+
 	    	$http.get(url)
 	    		.success(function(response) {
 	    			var items = orderRole(response);
+	    			_this.itemsByRole[calling][role][locale] = response;
 	    			deferred.resolve(items);
 	    		})
 	    		.error(function(response) {
