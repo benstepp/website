@@ -85,45 +85,52 @@
 	    function orderLoot(loot) {
 	    	var newLoot = {};
 	    	var i = 0;
-	    	for (var tier in loot) {
+
+	    	//for every tier
+	    	angular.forEach(loot, function(tierObject,tier) {
 	    		newLoot[tier] = {};
-	    		for (var instance in loot[tier]) {
+
+	    		//for every instance in the tier
+	    		angular.forEach(tierObject, function(instanceObject,instance) {
 	    			newLoot[tier][instance] = {};
-	    			for (var boss in loot[tier][instance]) {
+
+	    			//for every boss in the instance
+	    			angular.forEach(instanceObject, function(bossObject,boss) {
+	    				//puts a reference to the drop location of every item in each item object
+	    				var itemArray = angular.forEach(bossObject, function(item,key) {
+	    					item.drop = {};
+	    					item.drop.boss = boss;
+	    					item.drop.instance = instance;
+	    					item.drop.tier = tier;
+	    				});
+
+	    				//sorts the stats on each item object into readable order
+	    				itemArray = angular.forEach(itemArray, function(val) {
+	    					orderStats(val);
+	    				});
+
 	    				newLoot[tier][instance][boss] = {};
-	    				newLoot[tier][instance][boss].loot = loot[tier][instance][boss];
+	    				newLoot[tier][instance][boss].loot = itemArray;
 	    				newLoot[tier][instance][boss].order = i;
 	    				i++; 
-	    				angular.forEach(newLoot[tier][instance][boss].loot, function(val,key) {
-	    					val.drop = {};
-	    					val.drop.boss = boss;
-	    					val.drop.instance = instance;
-	    					val.drop.tier = tier;
-	    				});
-	    			}
-	    		}
-	    	}
-	    	for(var t in newLoot) {
-	    		for(var ins in newLoot[t]) {
-	    			for (var bos in newLoot[t][ins]) {
-	    				var lootArray = angular.forEach(newLoot[t][ins][bos].loot, function(value){
-	    					orderStats(value);
-	    				});
-	    			}
-	    		}
-	    	}
+
+	    			});
+
+	    		});
+
+	    	});
 
 	    	return newLoot;
 	    }
 
 	    function orderRole(items) {
 	    	var newItems = {};
-	    	for (var slot in items) {
+	    	angular.forEach(items,function(arrayOfItems, slot) {
 	    		newItems[slot] = [];
-	    		angular.forEach(items[slot], function(val) {
+	    		angular.forEach(arrayOfItems, function(val) {
 	    			newItems[slot].push(orderStats(val));
 	    		});
-	    	}
+	    	});
 	    	return newItems;
 	    }
 
