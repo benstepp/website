@@ -79,26 +79,25 @@
 	    	var apiCallNeeded = Object.keys(items).length === 0;
 
 	    	//returns either the items from the service or a promise from the apiCall
-	    	return (apiCallNeeded ? rollApiCall(calling,role,locale) : items);
+	    	return (apiCallNeeded ? rollApiCall(calling,role,locale).then(promiseCallback) : items);
+
+	    	function promiseCallback(items) {
+	    		_this.itemsByRole[calling][role][locale] = items.data;
+	    		return items.data;
+	    	}
 	    }
 
 	    function rollApiCall(calling,role,locale) {
-	    	var deferred = $q.defer();
-
 	    	var url = '/api/riftloot/role/'+calling+'/'+role+'/'+locale+'/';
 
-	    	$http.get(url)
+	    	return $http.get(url)
 	    		.success(function(response) {
-	    			var items = orderRole(response);
-	    			_this.itemsByRole[calling][role][locale] = response;
-	    			deferred.resolve(items);
+	    			return orderRole(response);
 	    		})
 	    		.error(function(response) {
-	    			deferred.reject();
+	    			return response;
 	    		});
-
-	    	return deferred.promise;
-	    };
+	    }
 
 	    var orderLoot = function(loot) {
 	    	var newLoot = {};
