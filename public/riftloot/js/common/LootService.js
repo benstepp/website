@@ -43,63 +43,46 @@
 		}
 
 		function getItemsByLocation(tier,locale) {
-			var deferred = $q.defer();
+			var items = _this.itemsByLocation[locale][tier];
+			var apiCallNeeded = (typeof items === 'undefined');
 
-			if (_this.itemsByLocation[locale][tier]) {
-				deferred.resolve(_this.itemsByLocation[locale][tier]);
-			}
-			else {
-				lootApiCall(tier,locale).then(function(data) {
-					_this.itemsByLocation[locale][tier] = data;
-					deferred.resolve(data);
-				});
-			}
+			//returns either the items from the service or a promise from the ApiCall
+			return $q.when(apiCallNeeded ? lootApiCall(tier,locale) : items);
 
-			return deferred.promise;
 		}
 
-		var lootApiCall = function(tier,locale) {
-	        var deferred = $q.defer();
-	        
+		function lootApiCall(tier,locale) {
 			var url = '/api/riftloot/location/' + tier + '/' + locale + '/';
-            $http.get(url)
-	            .success(function(response) {
-	            	var items = orderLoot(response);
-	            	deferred.resolve(items);
-	            })
-	            .error(function(response) {
-	                deferred.reject();
-	            });
 
-	        return deferred.promise;
-	    };
+            return $http.get(url)
+            	.then(function(res) {
+            		var items = orderLoot(res.data);
+            		_this.itemsByLocation[locale] = items;
+            		return items;
+            	});
+
+	    }
 
 	    function getItemsByRole(calling,role,locale) {
 	    	var items = _this.itemsByRole[calling][role][locale];
 	    	var apiCallNeeded = Object.keys(items).length === 0;
 
 	    	//returns either the items from the service or a promise from the apiCall
-	    	return (apiCallNeeded ? rollApiCall(calling,role,locale).then(promiseCallback) : items);
+	    	return $q.when(apiCallNeeded ? rollApiCall(calling,role,locale) : items);
 
-	    	function promiseCallback(items) {
-	    		_this.itemsByRole[calling][role][locale] = items.data;
-	    		return items.data;
-	    	}
 	    }
 
 	    function rollApiCall(calling,role,locale) {
 	    	var url = '/api/riftloot/role/'+calling+'/'+role+'/'+locale+'/';
 
-	    	return $http.get(url)
-	    		.success(function(response) {
-	    			return orderRole(response);
-	    		})
-	    		.error(function(response) {
-	    			return response;
-	    		});
+	    	return $http.get(url).then(function(res) {
+	    		var items = orderRole(res.data);
+	    		_this.itemsByRole[calling][role][locale] = items;
+	    		return items;
+	    	});
 	    }
 
-	    var orderLoot = function(loot) {
+	    function orderLoot(loot) {
 	    	var newLoot = {};
 	    	var i = 0;
 	    	for (var tier in loot) {
@@ -131,9 +114,9 @@
 	    	}
 
 	    	return newLoot;
-	    };
+	    }
 
-	    var orderRole = function(items) {
+	    function orderRole(items) {
 	    	var newItems = {};
 	    	for (var slot in items) {
 	    		newItems[slot] = [];
@@ -142,9 +125,9 @@
 	    		});
 	    	}
 	    	return newItems;
-	    };
+	    }
 
-	    var orderStats = function(item) {
+	    function orderStats(item) {
 	    	var statOrder = {
 	    		main: {
 	    			mage:["Intelligence","Wisdom"],
@@ -158,7 +141,7 @@
 	    		"Resist All"
 	    		]
 	    	};
-			//console.log(item);
+
 			if(typeof item.onEquip !== 'undefined') {
 				var newEquip = {};
 				//just use first calling
@@ -201,13 +184,12 @@
 					iterator++;
 					delete item.onEquip[ke];
 				}
-
 				item.onEquip = newEquip;
 				
 			}
 			return item;
 
-	    };
+	    }
 
 	}
 
