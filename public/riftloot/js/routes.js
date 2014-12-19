@@ -1,4 +1,6 @@
 (function() {
+	'use strict';
+
 	angular
 		.module('routes',['ui.router', 'LootService'])
 		.config(['$stateProvider','$urlRouterProvider', routes]);
