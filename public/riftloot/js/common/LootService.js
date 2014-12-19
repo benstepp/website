@@ -1,37 +1,47 @@
 (function() {
+	'use-strict';
+
 	angular
 		.module('LootService',[])
 		.service('LootService',['$http', '$q', LootService]);
 
 	function LootService($http, $q) {
 		var _this = this;
+		_this.itemsByLocation = {};
+		_this.itemsByRole = {};
+		_this.getItemsByLocation = getItemsByLocation;
+		_this.getItemsByRole = getItemsByRole;
 
-		_this.itemsByLocation = {
-			de: {},
-			en: {},
-			fr: {}
-		};
+		activate();
 
-		_this.itemsByRole = {
-			cleric:{
-				dps:{de:{},en:{},fr:{}},
-				tank:{de:{},en:{},fr:{}}
-			},
-			mage:{
-				dps:{de:{},en:{},fr:{}},
-				tank:{de:{},en:{},fr:{}}
-			},
-			rogue:{
-				dps:{de:{},en:{},fr:{}},
-				tank:{de:{},en:{},fr:{}}
-			},
-			warrior:{
-				dps:{de:{},en:{},fr:{}},
-				tank:{de:{},en:{},fr:{}}
-			}
-		};
+		function activate() {
+			_this.itemsByLocation = {
+				de: {},
+				en: {},
+				fr: {}
+			};
 
-		_this.getItemsByLocation = function(tier,locale) {
+			_this.itemsByRole = {
+				cleric:{
+					dps:{de:{},en:{},fr:{}},
+					tank:{de:{},en:{},fr:{}}
+				},
+				mage:{
+					dps:{de:{},en:{},fr:{}},
+					tank:{de:{},en:{},fr:{}}
+				},
+				rogue:{
+					dps:{de:{},en:{},fr:{}},
+					tank:{de:{},en:{},fr:{}}
+				},
+				warrior:{
+					dps:{de:{},en:{},fr:{}},
+					tank:{de:{},en:{},fr:{}}
+				}
+			};
+		}
+
+		function getItemsByLocation(tier,locale) {
 			var deferred = $q.defer();
 
 			if (_this.itemsByLocation[locale][tier]) {
@@ -45,7 +55,7 @@
 			}
 
 			return deferred.promise;
-		};
+		}
 
 		var lootApiCall = function(tier,locale) {
 	        var deferred = $q.defer();
@@ -63,7 +73,7 @@
 	        return deferred.promise;
 	    };
 
-	    _this.getItemsByRole = function(calling,role,locale) {
+	    function getItemsByRole(calling,role,locale) {
 	    	var deferred = $q.defer();
 
 	    	if(Object.keys(_this.itemsByRole[calling][role][locale]).length > 0) {
@@ -77,7 +87,7 @@
 	    	}
 
 	    	return deferred.promise;
-	    };
+	    }
 
 	    var roleApiCall = function(calling,role,locale) {
 	    	var deferred = $q.defer();
