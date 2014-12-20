@@ -96,17 +96,17 @@
 
 	    			//for every boss in the instance
 	    			angular.forEach(instanceObject, function(bossObject,boss) {
-	    				//puts a reference to the drop location of every item in each item object
+	    				
 	    				var itemArray = angular.forEach(bossObject, function(item,key) {
-	    					item.drop = {};
-	    					item.drop.boss = boss;
-	    					item.drop.instance = instance;
-	    					item.drop.tier = tier;
-	    				});
+	    					//puts a reference to the drop location of every item in each item object
+	    					item.drop = {
+	    						boss:boss,
+	    						instance:instance,
+	    						tier:tier
+	    					};
+	    					//gets the readable stat order for each item
+	    					orderStats(item);
 
-	    				//sorts the stats on each item object into readable order
-	    				itemArray = angular.forEach(itemArray, function(val) {
-	    					orderStats(val);
 	    				});
 
 	    				newLoot[tier][instance][boss] = {};
