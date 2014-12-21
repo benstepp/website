@@ -1,4 +1,6 @@
 (function() {
+	'use-strict';
+
 	angular
 		.module('HeaderCtrl',['ui.router'])
 		.controller('headerController', ['$scope', '$rootScope', '$location',headerController]);

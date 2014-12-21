@@ -68,6 +68,7 @@ function getBulkXML(sortFunction) {
 function sort(data) {
 
 	if (	parseInt(data.RequiredLevel) !== 65 ||
+			(data.RiftGem && parseInt(data.RequiredLevel) !== 60 ) ||
 			data.Rarity === "Common" || 
 			data.Rarity === "Uncommon") {
 		return false;

@@ -47,16 +47,16 @@
 			var apiCallNeeded = (typeof items === 'undefined');
 
 			//returns either the items from the service or a promise from the ApiCall
-			return $q.when(apiCallNeeded ? lootApiCall(tier,locale) : items);
+			return $q.when(apiCallNeeded ? locationApiCall(tier,locale) : items);
 
 		}
 
-		function lootApiCall(tier,locale) {
+		function locationApiCall(tier,locale) {
 			var url = '/api/riftloot/location/' + tier + '/' + locale + '/';
 
             return $http.get(url)
             	.then(function(res) {
-            		var items = orderLoot(res.data);
+            		var items = orderLocation(res.data);
             		_this.itemsByLocation[locale] = items;
             		return items;
             	});
@@ -82,7 +82,7 @@
 	    	});
 	    }
 
-	    function orderLoot(loot) {
+	    function orderLocation(loot) {
 	    	var newLoot = {};
 	    	var i = 0;
 
