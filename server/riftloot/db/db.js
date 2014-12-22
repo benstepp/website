@@ -66,17 +66,35 @@ function getBulkXML(sortFunction) {
 
 //Determines whether or not the item is an expert or higher item for the Nightmare Tide expansion
 function sort(data) {
+	var keepItem = false;
 
-	if (	parseInt(data.RequiredLevel) !== 65 ||
-			(data.RiftGem && parseInt(data.RequiredLevel) !== 60 ) ||
+	//why are level 65 greaters actually required level 60?
+	//trino pls
+	if (	data.RiftGem && 
+				parseInt(data.RequiredLevel) === 60 &&
+				data.OnEquip ) {
+		if (data.OnEquip.ResistanceAll > 100 || 
+			data.OnEquip.ResistanceLife > 100 ||
+			data.OnEquip.ResistanceDeath > 100 ||
+			data.OnEquip.ResistanceEarth > 100 ||
+			data.OnEquip.ResistanceFire > 100 ||
+			data.OnEquip.ResistanceWater > 100 ||
+			data.OnEquip.ResistanceAir > 100) {
+			keepItem = true;
+		}
+	}
+
+	else if (	parseInt(data.RequiredLevel) !== 65 ||
 			data.Rarity === "Common" || 
 			data.Rarity === "Uncommon") {
-		return false;
+		keepItem = false;
 	}
 
 	else {
-		return true;
+		keepItem = true;
 	}
+
+	return keepItem;
 
 }
 
