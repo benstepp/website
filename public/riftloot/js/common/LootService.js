@@ -47,7 +47,7 @@
 			var apiCallNeeded = (typeof items === 'undefined');
 
 			//returns either the items from the service or a promise from the ApiCall
-			return $q.when(apiCallNeeded ? locationApiCall(tier,locale) : items);
+			return $q.when(apiCallNeeded ? locationApiCall(tier,locale) : _this.itemsByLocation[locale]);
 
 		}
 

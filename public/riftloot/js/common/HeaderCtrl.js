@@ -2,10 +2,10 @@
 	'use-strict';
 
 	angular
-		.module('HeaderCtrl',['ui.router'])
-		.controller('headerController', ['$scope', '$rootScope', '$location',headerController]);
+		.module('HeaderCtrl',['ui.router','AppDataService'])
+		.controller('headerController', ['$scope', '$rootScope', '$location','AppDataService',headerController]);
 
-	function headerController($scope, $rootScope, $location) {
+	function headerController($scope, $rootScope, $location,AppDataService) {
 
 		var _this = this;
 
@@ -22,7 +22,7 @@
 			calling: 'warrior',
 			role: 'dps',
 			language: 'English',
-			locale: 'en',
+			locale: AppDataService.retrieveData('locale'),
 			tooltipExpanded: true
 		};
 
@@ -57,6 +57,10 @@
 					return "";
 				}
 			}
+		};
+
+		_this.setLocale = function(locale) {
+			AppDataService.saveData('locale',locale);
 		};
 
 		//Binds the header links URLs to hide navbar if on splash page
