@@ -1,24 +1,30 @@
 (function() {
 	angular
-		.module('RoleCtrl',['LootService'])
-		.controller('RoleController', ['$scope','loot', 'LootService','$interval','$http',RoleCtrl]);
+		.module('RoleCtrl',['LootService','AppDataService'])
+		.controller('RoleController', ['$scope','loot', 'LootService','$interval','$http', 'AppDataService',RoleCtrl]);
 
-	function RoleCtrl($scope, loot, LootService, $interval, $http) {
+	function RoleCtrl($scope, loot, LootService, $interval, $http, AppDataService) {
 		var _this = this;
-		_this.slots = ['Helmet','Shoulders','Cape','Chest','Gloves','Belt','Legs','Feet','Earring','Neck','Ring','Seal','Trinket','One Handed','Off Hand','Two Handed','Ranged','Greater Essence','Lesser Essence'];
-		_this.slot='Helmet';
-		_this.loot = loot;
 
+		_this.slots = ['Helmet','Shoulders','Cape','Chest','Gloves','Belt','Legs','Feet','Earring','Neck','Ring','Seal','Trinket','One Handed','Off Hand','Two Handed','Ranged','Greater Essence','Lesser Essence'];
+		_this.loot = loot;
 		_this.statWeights = {};
 		_this.statWeightDefaults = {};
+		_this.slot = getSavedSlot();
+		_this.getOrder = getOrder;
+		_this.hideItem = hideItem;
+		_this.selectSlot = selectSlot;
+		_this.getValue = getValue;
+		_this.hideSlot = hideSlot;
+		_this.getReadableValue = getReadableValue;
 
-		_this.getOrder = function() {
+		function getOrder() {
 			return function(obj) {
 				return obj.value.order;
 			};
-		};
+		}
 
-		_this.hideItem = function(item) {
+		function hideItem(item) {
 			var toShow = $scope.header.data.calling;
 			if (toShow === 'all') {
 				return false;
@@ -29,13 +35,14 @@
 			else{
 				return false;
 			}
-		};
+		}
 
-		_this.selectSlot = function(slot) {
+		function selectSlot(slot) {
 			_this.slot = slot;
-		};
+			AppDataService.saveData('slot',slot);
+		}
 
-		_this.getValue = function(item) {
+		function getValue(item) {
 			var itemValue = 0;
 
 			//only if item has stats defined
@@ -66,16 +73,23 @@
 			item.itemValue = itemValue;
 			return itemValue;
 
-		};
+		}
 
-		_this.hideSlot = function(slot) {
+		function hideSlot(slot) {
 			var availableSlots = Object.keys(_this.loot);
 			return availableSlots.indexOf(slot) === -1 ? true : false;
-		};
+		}
 
-		_this.getReadableValue = function(num) {
+		function getReadableValue(num) {
 			return num.toFixed(2);
-		};
+		}
+
+		function getSavedSlot() {
+			var availableSlots = Object.keys(_this.loot);
+			var savedSlot = AppDataService.retrieveData('slot');
+			//defaults to helmet if the particular slot is not available for that calling
+			return availableSlots.indexOf(savedSlot) !== -1 ? savedSlot : 'Helmet';
+		}
 
 		//watches the statWeight object for changes
 		$scope.$watchCollection(

@@ -46,9 +46,10 @@
 
         function init() {
         	//Determine whether or not local storage is supported
+        	//from github.com/agrublev/angularLocalStorage
+        	//MIT Licence
 			var storage = (typeof $window.localStorage === 'undefined') ? undefined : $window.localStorage;
 			supported = (typeof storage !== 'undefined');
-			//safari throws error in private browsing mode
 			if (supported) {
 				var testKey = '__' + Math.round(Math.random() * 1e7);
 				try {
@@ -64,12 +65,13 @@
 			if (supported) {
 				var stored = angular.fromJson(localStorage.getItem("riftlootData")) || {};
 
-				//loop through the keys incase the user's localstorage is from an older app version
-				var storedKeys = stored ? Object.keys(stored) : [];
+				//loop through the keys incase the user's localStorage is from an older app version
 				var dataKeys = Object.keys(riftlootData);
 				angular.forEach(dataKeys, function(key) {
 					riftlootData[key] = stored[key] || riftlootData[key];
 				});
+				//save the data object in case of version changes
+				localStorage.riftlootData = angular.toJson(riftlootData);
 			}
 
         }
