@@ -14,7 +14,7 @@
 
 	<!-- external resources-->
 	<link href='//fonts.googleapis.com/css?family=Roboto:400,300,700' rel='stylesheet' type='text/css'>
-	<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.3.4/angular.min.js"></script>
+	<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.3.4/angular.js"></script>
 
 </head>
 <body data-ng-controller="headerController as header">
@@ -110,6 +110,9 @@
 				</nav>
 				<!--Mobile Nav-->
 				<nav class="tab-bar hide-for-large-up">
+					<section class="left-small">
+						<a class="left-off-canvas-toggle menu-icon" href=""><span></span></a>
+					</section>
 					<section class="middle tab-bar-section">
 						<h1><a class="title" href="/riftloot/#">Rift: NT Loot Table</a></h1>
 					</section>
@@ -183,7 +186,7 @@
 						<img src="img/riftsdragons.jpg" />
 					</div>
 
-					<div class="main-view" data-ui-view="main" bs-content-resize>
+					<div class="main-view" data-ui-view="main" bs-content-resize="true">
 
 					</div>
 					

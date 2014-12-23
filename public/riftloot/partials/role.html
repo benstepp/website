@@ -10,16 +10,16 @@
 			<div class="small-30 columns">
 				<form class="dungeon">
 					<h5>Stat Weights</h5>
-					<div bs-stat-weight-form calling="header.data.calling" role="header.data.role" stat-weights="lootByRole.statWeights" stat-weight-defaults="lootByRole.statWeightDefaults"></div>
+					<div bs-stat-weight-form calling="::header.data.calling" role="::header.data.role" stat-weights="lootByRole.statWeights" stat-weight-defaults="lootByRole.statWeightDefaults"></div>
 					<div class="form-footnote">Stat weights change based on your current gear and role. The default values not intended for players of all gear levels.</div>
 				</form>
 			</div>
 		</div>
-		<div class="row" ng-show="lootByRole.slot">
+		<div class="row">
 			<div class="small-30 columns">
 			<ul class="small-block-grid-1 medium-block-grid-2 large-block-grid-5 dungeon">
-				<li ng-repeat="item in lootByRole.loot[lootByRole.slot] | orderBy:'itemValue':true" ng-class="item.rarity.toLowerCase()">
-					<div bs-rift-tooltip="item">
+				<li ng-repeat="item in lootByRole.loot[lootByRole.slot] | orderBy:'itemValue':true" ng-class="::item.rarity.toLowerCase()">
+					<div bs-rift-tooltip="::item">
 						<div class="tooltip-hr"></div>
 						<div class="tooltip-value">Value: {{lootByRole.getReadableValue(lootByRole.getValue(item))}}</div>
 					</div>

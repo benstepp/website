@@ -2,19 +2,28 @@ $side-nav-width:rem-calc(120);
 $side-nav-background:#222;
 
 .side-nav {
-	position:fixed;
 	background-color:$side-nav-background;
-	width:$side-nav-width;
-	height:100vh;
-	z-index:12;
-	top:$topbar-height +4;
-	bottom:-($topbar-height +4);
-	left:0;
-	@extend .show-for-large-up;
 	color:#ddd;
-	overflow-x:hidden;
-	overflow-y:auto;
+	box-shadow: inset -10px 0 10px -10px #000;
+	display:block;
+	top:0;
+	bottom:0;
+
+	@media #{$large-up} {
+
+		position:fixed;
+		width:$side-nav-width;
+		height:100vh;
+		z-index:12;
+		top:$topbar-height +4;
+		bottom:-($topbar-height +4);
+		left:0;
+		overflow-x:hidden;
+		overflow-y:auto;
+	}
 }
+
+
 
 @media #{$large-up} {
 	.main-content,footer.side-nav-push {
@@ -40,7 +49,7 @@ $side-nav-background:#222;
 	height:1px;
 	margin:0px 8px;
 	clear:both;
-	background-color:scale-color($side-nav-background, $lightness: +10%)
+	background-color:lighten($side-nav-background, 10%)
 }
 
 .side-nav-collapse {
@@ -55,7 +64,21 @@ $side-nav-background:#222;
 }
 
 .side-nav-selected {
-	background-color:#aaa;
-	color:#333;
+	background-color:lighten($side-nav-background,10%);
+	color:#eee;
+	transition: all 0.6s ease 0s;
+	box-shadow: inset -10px 0 10px -10px #000;
+}
+
+/*This pseudo element is to cover up the side-nav divider that isnt full width*/
+.side-nav-selected::before {
+	content:"";
+	display:block;
+	clear:both;
+	width:100%;
+	height:2px;
+	margin-top:-2px;
+	background-color:lighten($side-nav-background,10%);
+	box-shadow: inset -10px 0 10px -10px #000;
 	transition: all 0.6s ease 0s;
 }

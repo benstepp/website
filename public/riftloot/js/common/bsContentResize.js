@@ -1,12 +1,16 @@
 (function() {
     angular
         .module('bsContentResize', [])
-        .directive('bsContentResize', ['$window', bsContentResize]);
+        .directive('bsContentResize', ['$window', '$rootScope',bsContentResize]);
 
-        function bsContentResize($window, $scope){
-            
+        function bsContentResize($window, $scope, $rootScope){
+            var directive = {
+                restrict:'EA',
+                link:link,
+            };
+            return directive;
 
-            return function (scope, element, attrs) {
+            function link(scope, element, attrs) {
 
                 var getUsedHeight = function() {
                 	//start with a 0 height
@@ -54,7 +58,7 @@
 					//this happens after first digest loop
                     //otherwise we get the height of a loaded dom with no bindings
 					var onloadwatch = scope.$watch(function(){
-						return element.offsetHeight;
+						return element[0].offsetHeight;
 					}, 
 
 					//when the height is changed, calculate its new height
@@ -68,8 +72,12 @@
 						}
 						//set the defaultHeight to the height of combined child nodes
 						scope.defaultHeight = height;
-						//remove this watch function
-						onloadwatch();
+
+						//remove this watch function if content is not dynamic
+                        //value of this directive when an attribute determines this
+                        if (!element[0].attributes['bs-content-resize'].value) {
+                            onloadwatch();
+                        }
 						//finally resize content based on new height
 						resizeContent();
 					});
@@ -80,7 +88,7 @@
                 	resizeContent();
                 });
 
-            };
+            }
 
 
         }

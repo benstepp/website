@@ -1,7 +1,7 @@
 <div class="row">
 	<div class="small-30 large-30 columns">
 		<div ng-repeat="(tier,objec) in ::riftloot.loot">
-			<section class="dungeon" ng-repeat="(dungeon,obj) in ::objec" ng-show="::!header.data.bossColapse" bs-collapse-dungeon="">
+			<section class="dungeon" ng-repeat="(dungeon,obj) in ::objec" bs-collapse-dungeon="">
 				<h5>
 				<i ng-class="{'fi-plus':!expanded,'fi-minus':expanded}"></i>
 				<span ng-bind="::dungeon"></span>: 
