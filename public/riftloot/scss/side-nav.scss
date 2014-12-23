@@ -2,20 +2,25 @@ $side-nav-width:rem-calc(120);
 $side-nav-background:#222;
 
 .side-nav {
-	position:fixed;
+	@extend .left-off-canvas-menu;
 	background-color:$side-nav-background;
-	width:$side-nav-width;
-	height:100vh;
-	z-index:12;
-	top:$topbar-height +4;
-	bottom:-($topbar-height +4);
-	left:0;
-	@extend .show-for-large-up;
 	color:#ddd;
-	overflow-x:hidden;
-	overflow-y:auto;
 	box-shadow: inset -10px 0 10px -10px #000;
+
+	@media #{$large-up} {
+		position:fixed;
+		width:$side-nav-width;
+		height:100vh;
+		z-index:12;
+		top:$topbar-height +4;
+		bottom:-($topbar-height +4);
+		left:0;
+		overflow-x:hidden;
+		overflow-y:auto;
+	}
 }
+
+
 
 @media #{$large-up} {
 	.main-content,footer.side-nav-push {
