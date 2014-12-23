@@ -1,24 +1,23 @@
-<div class="row" id="rift-table">
+<div class="row">
 	<div class="small-30 large-30 columns">
-		<div ng-repeat="(tier,objec) in riftloot.loot">
-			<section class="dungeon" ng-repeat="(dungeon,obj) in objec" ng-show="!header.data.bossColapse" bs-collapse-dungeon="">
+		<div ng-repeat="(tier,objec) in ::riftloot.loot">
+			<section class="dungeon" ng-repeat="(dungeon,obj) in ::objec" ng-show="::!header.data.bossColapse" bs-collapse-dungeon="">
 				<h5>
 				<i ng-class="{'fi-plus':!expanded,'fi-minus':expanded}"></i>
-				<span ng-bind="dungeon"></span>: 
-				<span ng-bind="riftloot.getTier(tier)"></span>
+				<span ng-bind="::dungeon"></span>: 
+				<span ng-bind="::riftloot.getTier(tier)"></span>
 				</h5>
 				<div class="row">
 				<div class="small-30 columns">
 				<ul class="small-block-grid-1 medium-block-grid-2 large-block-grid-5 boss-grid">
-					<li ng-repeat="(bossName,boss) in obj | getOrder:'order'">
+					<li ng-repeat="(bossName,boss) in ::obj | getOrder:'::order'">
 						<ul class="boss">
-							<li class="boss-name">{{boss.name}}</li>
-							<li ng-repeat="item in boss.loot | orderBy:'name_de ||name_en || name_fr'" 
+							<li class="boss-name">{{::boss.name}}</li>
+							<li ng-repeat="item in ::boss.loot | orderBy:'name_de ||name_en || name_fr'" 
 							class="item-name" 
-							ng-class="item.rarity.toLowerCase()"
-							ng-hide="riftloot.hideItem(item)">
-								<span ng-show="!header.data.tooltipExpanded">{{item.name_en || item.name_de ||item.name_fr}}</span>
-								<div bs-rift-tooltip="item"></div>
+							ng-class="::item.rarity.toLowerCase()"
+							ng-hide="::riftloot.hideItem(item)">
+								<div bs-rift-tooltip="::item"></div>
 							</li>
 						</ul>
 					</li>
