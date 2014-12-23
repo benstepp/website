@@ -18,6 +18,7 @@
 		'bsCollapseDungeon',
 		'bsSideNavPosition',
 		'bsSlotSelector',
-		'bsStatWeightForm'
+		'bsStatWeightForm',
+		'AppDataService'
 		]);
 })();
