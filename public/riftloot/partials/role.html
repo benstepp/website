@@ -1,7 +1,7 @@
 <div class="row">
 	<aside class="side-nav" bs-side-nav-position="">
-		<div ng-repeat="slot in lootByRole.slots">
-			<div bs-slot-selector="slot" bs-activate-slot="lootByRole.selectSlot(slot);" ng-hide="lootByRole.hideSlot(slot);"></div>
+		<div ng-repeat="slot in ::lootByRole.slots">
+			<div bs-slot-selector="::slot" bs-activate-slot="::lootByRole.selectSlot(slot);" ng-hide="::lootByRole.hideSlot(slot);"></div>
 		</div>
 	</aside>
 
@@ -10,7 +10,7 @@
 			<div class="small-30 columns">
 				<form class="dungeon">
 					<h5>Stat Weights</h5>
-					<div bs-stat-weight-form calling="::header.data.calling" role="::header.data.role" stat-weights="lootByRole.statWeights" stat-weight-defaults="lootByRole.statWeightDefaults"></div>
+					<div bs-stat-weight-form calling="::header.data.calling" role="::header.data.role" stat-weights="lootByRole.statWeights" stat-weight-defaults="::lootByRole.statWeightDefaults"></div>
 					<div class="form-footnote">Stat weights change based on your current gear and role. The default values not intended for players of all gear levels.</div>
 				</form>
 			</div>
