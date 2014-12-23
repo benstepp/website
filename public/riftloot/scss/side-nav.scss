@@ -2,12 +2,15 @@ $side-nav-width:rem-calc(120);
 $side-nav-background:#222;
 
 .side-nav {
-	@extend .left-off-canvas-menu;
 	background-color:$side-nav-background;
 	color:#ddd;
 	box-shadow: inset -10px 0 10px -10px #000;
+	display:block;
+	top:0;
+	bottom:0;
 
 	@media #{$large-up} {
+
 		position:fixed;
 		width:$side-nav-width;
 		height:100vh;
