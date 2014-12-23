@@ -3,7 +3,7 @@
         .module('bsStatWeightForm', [])
         .directive('bsStatWeightForm', ['$compile', bsStatWeightForm]);
 
-        function bsStatWeightForm($compile){
+        function bsStatWeightForm($compile) {
 
             return {
                 restrict: 'A',
@@ -65,7 +65,7 @@
                         scope.statWeightDefaults = {};
                         scope.getGrid = function() {
                             return 'large-block-grid-'+scope.stats.length;
-                        }
+                        };
 
                         scope.default = function(val) {
 
@@ -118,19 +118,19 @@
                                 "Endurance":2,
                                 "Armor":0.02
                                }
-                           } 
+                           };
 
                             scope.statWeightDefaults[val] = defaults[scope.calling][val] || 0;
                             return defaults[scope.calling][val] || 0;
 
 
-                        }
+                        };
 
 
                     }
                 }
-        }
+            };
 
-    }
+        }
 
 })();

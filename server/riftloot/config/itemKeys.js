@@ -39,6 +39,7 @@ var itemKeys = {
 
 	//item set bonuses. these are not changed but concatenated
 	"Embrace of Nightmares": " (0/4)",
+	"Ethereal Mastery": " (0/2)",
     "Experience Boost": " (0/2)",
     "Mounting Speed Boost": " (0/2)",
     "Notoriety Boost": " (0/2)",

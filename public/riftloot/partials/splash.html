@@ -1,12 +1,101 @@
-<div class="row" id="rift-table">
+<div class="row">
 	<div class="medium-30 large-15 columns">
-		<a class="splash-btn" data-ng-href="#/location/{{header.data.tier}}/{{header.data.calling}}/{{header.data.locale}}">
-			loot by location
-		</a>
+		<h1 class="splash-header">loot by location</h1>
+		<div class="row">
+			<div class="small-30 medium-15 columns">
+				<a class="location-btn" data-ng-href="#/location/expert/all/{{header.data.locale}}">
+					expert
+				</a>
+			</div>
+			<div class="small-30 medium-15 columns">
+				<a class="location-btn" data-ng-href="#/location/raid1/all/{{header.data.locale}}">
+					raid i
+				</a>
+			</div>
+		</div>
 	</div>
-	<div class="medium-30 large-15 columns">
-		<a class="splash-btn" data-ng-href="#/role/{{header.data.calling}}/{{header.data.role}}/{{header.data.locale}}">
-			loot by slot
-		</a>
+	<div class="small-30 columns hide-for-large-up role-divider"></div>
+	<div class="medium-30 large-15 columns bg-role">
+			<h1 class="splash-header">loot by role</h1>
+			<div class="row">
+				<div class="small-30 columns">
+					<div class="calling-box cleric">
+						<img src="img/icon_cleric.png" />
+						<div>
+							<div class="row">
+								<div class="small-30 columns calling-title">cleric</div>
+							</div>
+							<div class="row">
+								<div class="small-30 medium-15 columns">
+									<a class="calling-link cleric" ng-href="#/role/cleric/dps/{{header.data.locale}}">Damage</a>
+								</div>
+								<div class="small-30 medium-15 columns">
+									<a class="calling-link cleric" ng-href="#/role/cleric/tank/{{header.data.locale}}">Tank</a>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="small-30 columns">
+					<div class="calling-box mage">
+						<img src="img/icon_mage.png" />
+						<div>
+							<div class="row">
+								<div class="small-30 columns calling-title">mage</div>
+							</div>
+							<div class="row">
+								<div class="small-30 medium-15 columns">
+									<a class="calling-link mage" ng-href="#/role/mage/dps/{{header.data.locale}}">Damage</a>
+								</div>
+								<div class="small-30 medium-15 columns">
+									<a class="calling-link mage" ng-href="#/role/mage/tank/{{header.data.locale}}">Tank</a>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="small-30 columns">
+					<div class="calling-box rogue">
+						<img src="img/icon_rogue.png" />
+						<div>
+							<div class="row">
+								<div class="small-30 columns calling-title">rogue</div>
+							</div>
+							<div class="row">
+								<div class="small-30 medium-15 columns">
+									<a class="calling-link rogue" ng-href="#/role/rogue/dps/{{header.data.locale}}">Damage</a>
+								</div>
+								<div class="small-30 medium-15 columns">
+									<a class="calling-link rogue" ng-href="#/role/rogue/tank/{{header.data.locale}}">Tank</a>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>			
+			<div class="row">
+				<div class="small-30 columns">
+					<div class="calling-box warrior">
+						<img src="img/icon_warrior.png" />
+						<div>
+							<div class="row">
+								<div class="small-30 columns calling-title">warrior</div>
+							</div>
+							<div class="row">
+								<div class="small-30 medium-15 columns">
+									<a class="calling-link warrior" ng-href="#/role/warrior/dps/{{header.data.locale}}">Damage</a>
+								</div>
+								<div class="small-30 medium-15 columns">
+									<a class="calling-link warrior" ng-href="#/role/warrior/tank/{{header.data.locale}}">Tank</a>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
 	</div>
 </div>

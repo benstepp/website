@@ -1,146 +1,140 @@
 (function() {
+	'use-strict';
+
 	angular
 		.module('LootService',[])
 		.service('LootService',['$http', '$q', LootService]);
 
 	function LootService($http, $q) {
 		var _this = this;
+		_this.itemsByLocation = {};
+		_this.itemsByRole = {};
+		_this.getItemsByLocation = getItemsByLocation;
+		_this.getItemsByRole = getItemsByRole;
 
-		_this.itemsByLocation = {
-			de: {},
-			en: {},
-			fr: {}
-		};
+		activate();
 
-		_this.itemsByRole = {
-			cleric:{
-				dps:{de:{},en:{},fr:{}},
-				tank:{de:{},en:{},fr:{}}
-			},
-			mage:{
-				dps:{de:{},en:{},fr:{}},
-				tank:{de:{},en:{},fr:{}}
-			},
-			rogue:{
-				dps:{de:{},en:{},fr:{}},
-				tank:{de:{},en:{},fr:{}}
-			},
-			warrior:{
-				dps:{de:{},en:{},fr:{}},
-				tank:{de:{},en:{},fr:{}}
-			}
-		};
+		function activate() {
 
-		_this.getItemsByLocation = function(tier,locale) {
-			var deferred = $q.defer();
+			_this.itemsByLocation = {
+				de: {},
+				en: {},
+				fr: {}
+			};
 
-			if (_this.itemsByLocation[locale][tier]) {
-				deferred.resolve(_this.itemsByLocation[locale][tier]);
-			}
-			else {
-				lootApiCall(tier,locale).then(function(data) {
-					_this.itemsByLocation[locale][tier] = data;
-					deferred.resolve(data);
-				});
-			}
+			_this.itemsByRole = {
+				cleric:{
+					dps:{de:{},en:{},fr:{}},
+					tank:{de:{},en:{},fr:{}}
+				},
+				mage:{
+					dps:{de:{},en:{},fr:{}},
+					tank:{de:{},en:{},fr:{}}
+				},
+				rogue:{
+					dps:{de:{},en:{},fr:{}},
+					tank:{de:{},en:{},fr:{}}
+				},
+				warrior:{
+					dps:{de:{},en:{},fr:{}},
+					tank:{de:{},en:{},fr:{}}
+				}
+			};
+		}
 
-			return deferred.promise;
-		};
+		function getItemsByLocation(tier,locale) {
+			var items = _this.itemsByLocation[locale][tier];
+			var apiCallNeeded = (typeof items === 'undefined');
 
-		var lootApiCall = function(tier,locale) {
-	        var deferred = $q.defer();
-	        
+			//returns either the items from the service or a promise from the ApiCall
+			return $q.when(apiCallNeeded ? locationApiCall(tier,locale) : items);
+
+		}
+
+		function locationApiCall(tier,locale) {
 			var url = '/api/riftloot/location/' + tier + '/' + locale + '/';
-            $http.get(url)
-	            .success(function(response) {
-	            	var items = orderLoot(response);
-	            	deferred.resolve(items);
-	            })
-	            .error(function(response) {
-	                deferred.reject();
-	            });
 
-	        return deferred.promise;
-	    };
+            return $http.get(url)
+            	.then(function(res) {
+            		var items = orderLocation(res.data);
+            		_this.itemsByLocation[locale] = items;
+            		return items;
+            	});
 
-	    _this.getItemsByRole = function(calling,role,locale) {
-	    	var deferred = $q.defer();
+	    }
 
-	    	if(Object.keys(_this.itemsByRole[calling][role][locale]).length > 0) {
-	    		deferred.resolve(_this.itemsByRole[calling][role][locale]);
-	    	}
-	    	else {
-	    		roleApiCall(calling,role,locale).then(function(data) {
-	    			_this.itemsByRole[calling][role][locale] = data;
-	    			deferred.resolve(data);
-	    		});
-	    	}
+	    function getItemsByRole(calling,role,locale) {
+	    	var items = _this.itemsByRole[calling][role][locale];
+	    	var apiCallNeeded = Object.keys(items).length === 0;
 
-	    	return deferred.promise;
-	    };
+	    	//returns either the items from the service or a promise from the apiCall
+	    	return $q.when(apiCallNeeded ? rollApiCall(calling,role,locale) : items);
 
-	    var roleApiCall = function(calling,role,locale) {
-	    	var deferred = $q.defer();
+	    }
 
+	    function rollApiCall(calling,role,locale) {
 	    	var url = '/api/riftloot/role/'+calling+'/'+role+'/'+locale+'/';
-	    	$http.get(url)
-	    		.success(function(response) {
-	    			var items = orderRole(response);
-	    			deferred.resolve(items);
-	    		})
-	    		.error(function(response) {
-	    			deferred.reject();
+
+	    	return $http.get(url).then(function(res) {
+	    		var items = orderRole(res.data);
+	    		_this.itemsByRole[calling][role][locale] = items;
+	    		return items;
+	    	});
+	    }
+
+	    function orderLocation(loot) {
+	    	var newItems = {};
+	    	var i = 0;
+
+	    	//for every tier
+	    	angular.forEach(loot, function(tierObject,tier) {
+	    		newItems[tier] = {};
+
+	    		//for every instance in the tier
+	    		angular.forEach(tierObject, function(instanceObject,instance) {
+	    			newItems[tier][instance] = {};
+
+	    			//for every boss in the instance
+	    			angular.forEach(instanceObject, function(bossObject,boss) {
+	    				
+	    				var itemArray = angular.forEach(bossObject, function(item,key) {
+	    					//puts a reference to the drop location of every item in each item object
+	    					item.drop = {
+	    						boss:boss,
+	    						instance:instance,
+	    						tier:tier
+	    					};
+	    					//gets the readable stat order for each item
+	    					orderStats(item);
+
+	    				});
+
+	    				newItems[tier][instance][boss] = {};
+	    				newItems[tier][instance][boss].loot = itemArray;
+	    				newItems[tier][instance][boss].order = i;
+	    				i++; 
+
+	    			});
+
 	    		});
 
-	    	return deferred.promise;
-	    };
+	    	});
 
-	    var orderLoot = function(loot) {
-	    	var newLoot = {};
-	    	var i = 0;
-	    	for (var tier in loot) {
-	    		newLoot[tier] = {};
-	    		for (var instance in loot[tier]) {
-	    			newLoot[tier][instance] = {};
-	    			for (var boss in loot[tier][instance]) {
-	    				newLoot[tier][instance][boss] = {};
-	    				newLoot[tier][instance][boss].loot = loot[tier][instance][boss];
-	    				newLoot[tier][instance][boss].order = i;
-	    				i++; 
-	    				angular.forEach(newLoot[tier][instance][boss].loot, function(val,key) {
-	    					val.drop = {};
-	    					val.drop.boss = boss;
-	    					val.drop.instance = instance;
-	    					val.drop.tier = tier;
-	    				});
-	    			}
-	    		}
-	    	}
-	    	for(var t in newLoot) {
-	    		for(var ins in newLoot[t]) {
-	    			for (var bos in newLoot[t][ins]) {
-	    				var lootArray = angular.forEach(newLoot[t][ins][bos].loot, function(value){
-	    					orderStats(value);
-	    				});
-	    			}
-	    		}
-	    	}
+	    	return newItems;
+	    }
 
-	    	return newLoot;
-	    };
-
-	    var orderRole = function(items) {
+	    function orderRole(items) {
 	    	var newItems = {};
-	    	for (var slot in items) {
+	    	angular.forEach(items,function(arrayOfItems, slot) {
 	    		newItems[slot] = [];
-	    		angular.forEach(items[slot], function(val) {
+	    		angular.forEach(arrayOfItems, function(val) {
 	    			newItems[slot].push(orderStats(val));
 	    		});
-	    	}
+	    	});
 	    	return newItems;
-	    };
+	    }
 
-	    var orderStats = function(item) {
+	    function orderStats(item) {
 	    	var statOrder = {
 	    		main: {
 	    			mage:["Intelligence","Wisdom"],
@@ -154,7 +148,7 @@
 	    		"Resist All"
 	    		]
 	    	};
-			//console.log(item);
+
 			if(typeof item.onEquip !== 'undefined') {
 				var newEquip = {};
 				//just use first calling
@@ -197,13 +191,12 @@
 					iterator++;
 					delete item.onEquip[ke];
 				}
-
 				item.onEquip = newEquip;
 				
 			}
 			return item;
 
-	    };
+	    }
 
 	}
 

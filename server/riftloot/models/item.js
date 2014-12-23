@@ -11,6 +11,7 @@ var ItemSchema = new Schema({
 	rarity: String,
 	value: String,
 	icon: String,
+	bind: String,
 
 	slot: String,
 	armor: String,

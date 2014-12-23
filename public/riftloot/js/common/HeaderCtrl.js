@@ -1,4 +1,6 @@
 (function() {
+	'use-strict';
+
 	angular
 		.module('HeaderCtrl',['ui.router'])
 		.controller('headerController', ['$scope', '$rootScope', '$location',headerController]);
@@ -55,7 +57,7 @@
 					return "";
 				}
 			}
-		}
+		};
 
 		//Binds the header links URLs to hide navbar if on splash page
 		$rootScope.$on('$stateChangeSuccess', 

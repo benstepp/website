@@ -1,4 +1,6 @@
 (function() {
+	'use-strict';
+	
 	angular.module('app', [
 		//Vendor Dependencies
 		'ui.router', 
@@ -16,6 +18,7 @@
 		'bsCollapseDungeon',
 		'bsSideNavPosition',
 		'bsSlotSelector',
-		'bsStatWeightForm'
+		'bsStatWeightForm',
+		'AppDataService'
 		]);
 })();

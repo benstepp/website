@@ -31,6 +31,7 @@
   
   @import "rift-tooltip.scss";
   @import "./side-nav.scss";
+  @import "./splash.scss";
   @import "./loot-by-role.scss";
 .row {
   max-width:100%
@@ -40,6 +41,7 @@
   background-color:green;
 }
 .top-bar, .tab-bar {
+  z-index:2;
   -moz-box-shadow: 0 2px $primary-color;
   -webkit-box-shadow: 0 2px $primary-color;
   box-shadow: 0 2px $primary-color;
@@ -150,16 +152,6 @@ footer div:nth-child(2) {
 
 ul.dungeon {
   padding-top:8px;
-}
-
-.splash-btn {
-  display:block;
-  padding:20px;
-  margin:20px;
-  background-color:$primary-color;
-  color:#fff;
-  font-size:18px;
-  text-align:center;
 }
 
 .disabled {
