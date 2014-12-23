@@ -83,16 +83,16 @@
 	    }
 
 	    function orderLocation(loot) {
-	    	var newLoot = {};
+	    	var newItems = {};
 	    	var i = 0;
 
 	    	//for every tier
 	    	angular.forEach(loot, function(tierObject,tier) {
-	    		newLoot[tier] = {};
+	    		newItems[tier] = {};
 
 	    		//for every instance in the tier
 	    		angular.forEach(tierObject, function(instanceObject,instance) {
-	    			newLoot[tier][instance] = {};
+	    			newItems[tier][instance] = {};
 
 	    			//for every boss in the instance
 	    			angular.forEach(instanceObject, function(bossObject,boss) {
@@ -109,9 +109,9 @@
 
 	    				});
 
-	    				newLoot[tier][instance][boss] = {};
-	    				newLoot[tier][instance][boss].loot = itemArray;
-	    				newLoot[tier][instance][boss].order = i;
+	    				newItems[tier][instance][boss] = {};
+	    				newItems[tier][instance][boss].loot = itemArray;
+	    				newItems[tier][instance][boss].order = i;
 	    				i++; 
 
 	    			});
@@ -120,7 +120,7 @@
 
 	    	});
 
-	    	return newLoot;
+	    	return newItems;
 	    }
 
 	    function orderRole(items) {
