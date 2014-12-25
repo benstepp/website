@@ -37,9 +37,10 @@
                     var mobileParent = angular.element($window.document.querySelector('.inner-wrap'));
                     var parent = angular.element(element[0]).parent();
                     var elem = angular.element(element[0]);
+                    var windowWidth = $window.innerWidth;
 
                     //foundation medium down breakpoint
-                    if ($window.innerWidth <= 1024 && parent !== mobileParent) {
+                    if (windowWidth <= 1024 && parent !== mobileParent) {
                         elem.addClass('left-off-canvas-menu');
                         mobileParent.append(elem);
                         return true;
@@ -50,6 +51,11 @@
                         elem.removeClass('left-off-canvas-menu');
                         scope.parent.append(elem);
                         return false;
+                    }
+
+                    //if the parent is already set we still need to return something
+                    else {
+                        return (windowWidth <= 1024);
                     }
 
                 }
