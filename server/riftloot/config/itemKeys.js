@@ -24,6 +24,7 @@ var itemKeys = {
 	Weapon_Ranged: "Ranged",
 	Trinket_2: "Trinket",
 
+	"1h_axe": "Axe",
 	"1h_dagger": "Dagger",
 	"1h_mace": "Mace",
 	"1h_sword": "Sword",

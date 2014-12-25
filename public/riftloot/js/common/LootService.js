@@ -12,9 +12,9 @@
 		_this.getItemsByLocation = getItemsByLocation;
 		_this.getItemsByRole = getItemsByRole;
 
-		activate();
+		init();
 
-		function activate() {
+		function init() {
 
 			_this.itemsByLocation = {
 				de: {},

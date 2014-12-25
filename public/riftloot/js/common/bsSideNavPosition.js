@@ -16,8 +16,11 @@
             function link(scope, element, attrs) {
 
                 function moveSideNav() {
-                    var mobile = moveElement();
+                    var mobile = moveElement(); //boolean based on screen width
+
+                    //the mobile version of the menu doesn't need to be moved vertically.
                     if (!mobile) {
+                        //get the original top value if it hasn't been seen yet for large screens
                         if (typeof scope.topVal==='undefined') {
                             scope.topVal = parseInt($window.getComputedStyle(element[0], null).top);
                         }
@@ -41,7 +44,9 @@
                         mobileParent.append(elem);
                         return true;
                     }
-                    else {
+
+                    //foundation large up 
+                    else if (parent !== scope.parent) {
                         elem.removeClass('left-off-canvas-menu');
                         scope.parent.append(elem);
                         return false;
@@ -51,8 +56,10 @@
 
                 //initialize if it hasn't been
                 function init() {
-                    //gets the base height of 'top' css value for side-nav
+                    //gets a reference for the original parent of the side bar
                     scope.parent = angular.element(element[0]).parent();
+
+                    //run once to check for mobile screen size
                     moveSideNav();
 
                     //push the footer if there is one present
