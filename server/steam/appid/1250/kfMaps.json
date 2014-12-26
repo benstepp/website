@@ -29,6 +29,7 @@
 	"Steamland Objective":["WinSteamLandObjNormal","WinSteamLandObjHard","WinSteamLandObjSuicidal","WinSteamLandObjHell"],
 	"Stronghold":["WinStrongholdNormal","WinStrongholdHard","WinStrongholdSuicidal","WinStrongholdHell"],
 	"Suburbia":["WinSuburbiaNormal","WinSuburbiaHard","WinSuburbiaSuicidal","WinSuburbiaHell"],
+	"Thrills Chills":["WinThrillsChillsNormal","WinThrillsChillsHard","WinThrillsChillsSuicidal","WinThrillsChillsHell"],
 	"Transit":["WinTransitNormal","WinTransitHard","WinTransitSuicidal","WinTransitHell"],
 	"Transit Objective":["WinTransitObjNormal","WinTransitObjHard","WinTransitObjSuicidal","WinTransitObjHell"],
 	"Waterworks":["WinWaterworksNormal","WinWaterworksHard","WinWaterworksSuicidal","WinWaterworksHell"],
