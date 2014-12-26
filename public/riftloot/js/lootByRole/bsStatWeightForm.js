@@ -71,11 +71,11 @@
 
                            var defaults = {
                                mage: {
-                                    "Intelligence":1.02,
-                                    "Wisdom":0.48,
+                                    "Intelligence":1.01,
+                                    "Wisdom":0.46,
                                     "Spell Power":1,
-                                    "Crit Power":1.3888,
-                                    "Spell Critical Hit":0.52,
+                                    "Crit Power":0.96,
+                                    "Spell Critical Hit":0.50,
                                     "Guard": 0.6,
                                     "Dodge": 0.2,
                                     "Block": 0.4,
