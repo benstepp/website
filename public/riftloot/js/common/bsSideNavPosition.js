@@ -30,6 +30,10 @@
                         var newTop = (scope.topVal - scrollDistance)>0 ? (scope.topVal - scrollDistance) : 0;
                         element.css({top:newTop+'px'});
                     }
+                    //if it is mobile we remove inline style to fallback to the defined style in css
+                    else {
+                        element.removeAttr('style');
+                    }
 
                 }
 
@@ -37,10 +41,10 @@
                     var mobileParent = angular.element($window.document.querySelector('.inner-wrap'));
                     var parent = angular.element(element[0]).parent();
                     var elem = angular.element(element[0]);
-                    var windowWidth = $window.innerWidth;
+                    var mobile = ($window.innerWidth <= 1024);
 
                     //foundation medium down breakpoint
-                    if (windowWidth <= 1024 && parent !== mobileParent) {
+                    if (mobile && parent !== mobileParent) {
                         elem.addClass('left-off-canvas-menu');
                         mobileParent.append(elem);
                         return true;
@@ -55,7 +59,7 @@
 
                     //if the parent is already set we still need to return something
                     else {
-                        return (windowWidth <= 1024);
+                        return (mobile);
                     }
 
                 }
