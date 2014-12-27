@@ -22,6 +22,9 @@
 .tooltip-name {
 	font-size:13px;
 	font-weight:400;
+	cursor:pointer;
+	overflow-x:visible;
+	position:relative;
 }
 
 .tooltip-text {
@@ -42,3 +45,22 @@
 	font-size:10px;
 	color:#6BD9CF;
 }
+
+.tooltip-name.not-expanded:hover::before {
+	font-family: "foundation-icons";
+	font-size:12px;
+	content:"\f176";
+	width:16px;
+	height:16px;
+	display:inline-block;
+	float:right;
+	position:absolute;
+	color:#e5e5e5;
+	left:-4px;
+}
+
+.tooltip-name.expanded:hover::before {
+	@extend .tooltip-name.not-expanded:hover::before;
+	content:"\f199";
+}
+

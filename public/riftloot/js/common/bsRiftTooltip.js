@@ -15,7 +15,7 @@
             },
 
             template: ['<div class="rift-tooltip">',
-                    '<div ng-class="{{ ::item.rarity.toLowerCase() }}" class="tooltip-name" ng-click="toggleCollapse();">{{ ::(item.name_de || item.name_en || item.name_fr) }}</div>',
+                    '<div ng-class="{expanded:expanded,\'not-expanded\':!expanded}" class="tooltip-name" ng-click="toggleCollapse();">{{ ::(item.name_de || item.name_en || item.name_fr) }}</div>',
                     '<div ng-hide="expanded">',
                     '<div class="tooltip-bind tooltip-text">Bind on Pickup</div>',
                     '<span class="left tooltip-text">{{ ::item.slot }}</span>',
