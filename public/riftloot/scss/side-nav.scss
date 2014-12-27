@@ -31,7 +31,12 @@ $side-nav-background:#222;
 
 }
 
-.side-nav-link {
+.side-nav-link.exit-off-canvas {
+	position:static;
+	background:transparent;
+	border:none;
+	box-shadow:none;
+
 	font-size: rem-calc(14px);
 	line-height:rem-calc(14px);
 	cursor:pointer;
