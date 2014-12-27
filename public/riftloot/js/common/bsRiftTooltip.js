@@ -22,7 +22,7 @@
                     '<span class="right tooltip-text">{{ ::(item.armorType || item.weaponType || "Accessory") }}</span>',
                     '<div class="tooltip-hr"></div>',
                     '<div class="tooltip-text" ng-show="::(item.armor || false)">Armor: {{ ::(item.armor || false) }}</div>',
-                    '<div class="tooltip-text" ng-repeat="(stat,bonus) in ::item.onEquip | getOrder:\'bonus.order\':false">{{ ::bonus.name }} +{{ ::bonus.value }}</div>',
+                    '<div class="tooltip-text" ng-repeat="(stat,bonus) in ::item.onEquip | getOrder:\'order\':false">{{ ::bonus.name }} +{{ ::bonus.value }}</div>',
                     '<div class="tooltip-hr" ng-show="::(item.itemset_de ||item.itemset_en || item.itemset_fr || false)"></div>',
                     '<div class="tooltip-set" ng-show="::(item.itemset_de ||item.itemset_en || item.itemset_fr || false)">{{ ::(item.itemset_de || item.itemset_en || item.itemset_fr || false) }}</div>',
                     '<div class="tooltip-hr" ng-show="::(item.drop ||false)"></div>',
