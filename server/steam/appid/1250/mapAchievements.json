@@ -29,6 +29,7 @@
 	"WinSteamLandObjNormal","WinSteamLandObjHard","WinSteamLandObjSuicidal","WinSteamLandObjHell",
 	"WinStrongholdNormal","WinStrongholdHard","WinStrongholdSuicidal","WinStrongholdHell",
 	"WinSuburbiaNormal","WinSuburbiaHard","WinSuburbiaSuicidal","WinSuburbiaHell",
+	"WinThrillsChillsNormal","WinThrillsChillsHard","WinThrillsChillsSuicidal","WinThrillsChillsHell",
 	"WinTransitNormal","WinTransitHard","WinTransitSuicidal","WinTransitHell",
 	"WinTransitObjNormal","WinTransitObjHard","WinTransitObjSuicidal","WinTransitObjHell",
 	"WinWaterworksNormal","WinWaterworksHard","WinWaterworksSuicidal","WinWaterworksHell",
