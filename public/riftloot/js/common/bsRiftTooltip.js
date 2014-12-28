@@ -37,12 +37,13 @@
 
                 //initialize the tooltip expanded status
                 if (typeof scope.expanded === 'undefined') {
-                    scope.expanded = (isMobile || scope.forceCollapse) || false;
+                    scope.expanded = (scope.forceCollapse || isMobile) || false;
                 }
                 
                 //Toggle the visibility of the tooltip without watchers
                 scope.toggleTooltip = function() {
                     var statBlock = angular.element(elem.children()[1]);
+                    scope.expanded = !scope.expanded;
                     statBlock.toggleClass('ng-hide');
                 };
 
