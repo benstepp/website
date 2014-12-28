@@ -15,8 +15,8 @@
             },
 
             template: ['<div class="rift-tooltip">',
-                    '<div ng-class="{expanded:expanded,\'not-expanded\':!expanded}" class="tooltip-name" ng-click="toggleCollapse();">{{ ::(item.name_de || item.name_en || item.name_fr) }}</div>',
-                    '<div ng-hide="expanded">',
+                    '<div ng-class="{expanded:expanded,\'not-expanded\':!expanded}" class="tooltip-name" ng-click="toggleTooltip();">{{ ::(item.name_de || item.name_en || item.name_fr) }}</div>',
+                    '<div>',
                     '<div class="tooltip-bind tooltip-text">Bind on Pickup</div>',
                     '<span class="left tooltip-text">{{ ::item.slot }}</span>',
                     '<span class="right tooltip-text">{{ ::(item.armorType || item.weaponType || "Accessory") }}</span>',
@@ -39,10 +39,11 @@
                 if (typeof scope.expanded === 'undefined') {
                     scope.expanded = (isMobile || scope.forceCollapse) || false;
                 }
-
-                //toggles the visibility of the tooltip
-                scope.toggleCollapse = function() {
-                    scope.expanded = !scope.expanded;
+                
+                //Toggle the visibility of the tooltip without watchers
+                scope.toggleTooltip = function() {
+                    var statBlock = angular.element(elem.children()[1]);
+                    statBlock.toggleClass('ng-hide');
                 };
 
             }
