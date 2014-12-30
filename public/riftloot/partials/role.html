@@ -20,8 +20,10 @@
 			<ul class="small-block-grid-1 medium-block-grid-2 large-block-grid-5 dungeon">
 				<li ng-repeat="item in lootByRole.loot[lootByRole.slot] | orderBy:'itemValue':true" ng-class="::(item.rarity.toLowerCase())">
 					<div bs-rift-tooltip="::item">
+						<div>
 						<div class="tooltip-hr"></div>
 						<div class="tooltip-value">Value: {{lootByRole.getReadableValue(lootByRole.getValue(item))}}</div>
+						</div>
 					</div>
 				</li>
 

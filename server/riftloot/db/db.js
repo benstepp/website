@@ -115,7 +115,8 @@ function createItem(data) {
 	}
 
 	if(defined(data.SpellDamage)) {
-		this.onEquip.SpellPower = parseInt(data.SpellDamage) + parseInt(this.onEquip.SpellPower);
+		var currentSpellDamage = parseInt(this.onEquip.SpellPower) || 0;
+		this.onEquip.SpellPower = parseInt(data.SpellDamage) + currentSpellDamage;
 	}
 
 	if (defined(data.Slot) || defined(data.RiftGem)) {
