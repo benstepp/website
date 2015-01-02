@@ -8,8 +8,8 @@
 		<div class="small-30 columns main-content">
 		<div class="row collapse">
 			<div class="small-30 columns">
-				<form class="dungeon">
-					<h5>Stat Weights</h5>
+				<form class="dungeon" bs-collapse-dungeon>
+					<h5><i ng-class="{'fi-plus':!expanded,'fi-minus':expanded}"></i> Stat Weights</h5>
 					<div bs-stat-weight-form calling="::header.data.calling" role="::header.data.role" stat-weights="lootByRole.statWeights" stat-weight-defaults="::lootByRole.statWeightDefaults"></div>
 					<div class="form-footnote">Stat weights change based on your current gear and role. The default values not intended for players of all gear levels.</div>
 				</form>
