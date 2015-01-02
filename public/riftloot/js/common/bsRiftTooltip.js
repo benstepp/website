@@ -17,7 +17,7 @@
             template: ['<div class="rift-tooltip">',
                     '<div ng-class="{expanded:expanded,\'not-expanded\':!expanded}" class="tooltip-name" ng-click="toggleTooltip();">{{ ::(item.name_de || item.name_en || item.name_fr) }}</div>',
                     '<div>',
-                    '<div class="tooltip-bind tooltip-text">Bind on Pickup</div>',
+                    '<div class="tooltip-bind tooltip-text">{{ ::item.bind }}</div>',
                     '<span class="left tooltip-text">{{ ::item.slot }}</span>',
                     '<span class="right tooltip-text">{{ ::(item.armorType || item.weaponType || "Accessory") }}</span>',
                     '<div class="tooltip-hr"></div>',

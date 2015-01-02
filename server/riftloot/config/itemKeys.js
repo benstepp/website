@@ -1,6 +1,9 @@
 //a list of keys and values that are to be renamed from the items.xml
 
 var itemKeys = {
+    BindOnPickup: "Bind on Pickup",
+    BindOnEquip: "Bind on Equip",
+
     AttackPower: "Attack Power",
     SpellPower: "Spell Power",
     CritPowerRating: "Crit Power",

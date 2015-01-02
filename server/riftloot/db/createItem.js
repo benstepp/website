@@ -14,8 +14,8 @@ var createItem = function(data) {
 	this.onEquip = data.OnEquip;
 	this.drop = {};
 
-	if(defined(data.SoulBoundTrigger)) {
-		this.bind = data.SoulBoundTrigger;
+	if(defined(data.SoulboundTrigger) || defined(data.AccountBound)) {
+		this.bind = data.SoulboundTrigger || 'Bound to Account';
 	}
 
 	if(defined(data.SpellDamage)) {
@@ -193,6 +193,10 @@ function renameKeys(itemm) {
 		if(typeof itemKeys[itemm.slot] !== 'undefined') {
 			itemm.slot = itemKeys[itemm.slot];
 		}
+	}
+
+	if(defined(itemm.bind)) {
+		itemm.bind = itemKeys[itemm.bind] || itemm.bind;
 	}
 
 	//adds the number of items in an itemset to the itemset key
