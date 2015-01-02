@@ -14,10 +14,10 @@ var createItem = function(data) {
 	this.onEquip = data.OnEquip;
 	this.drop = {};
 
-	if(defined(data.SoulboundTrigger) || defined(data.AccountBound)) {
-		this.bind = data.SoulboundTrigger || 'Bound to Account';
-	}
-
+	//some items in xml do not have a BoA flag, so we will default to it if the BoE/BoP flag isn't there
+	//the flag that _should_ be there is data.AccountBound which is an xml node with no text.
+	this.bind = data.SoulboundTrigger || 'Bound to Account';
+	
 	if(defined(data.SpellDamage)) {
 		var currentSpellDamage = parseInt(this.onEquip.SpellPower) || 0;
 		this.onEquip.SpellPower = parseInt(data.SpellDamage) + currentSpellDamage;
