@@ -128,25 +128,38 @@
 							<a class="no-pointer">
 								Class: <span data-ng-bind="header.cap(header.data.calling)"></span>
 							</a>
+								<ul>
+									<li ng-show="header.state.name !=='role'">
+									<a data-ng-href="{{header.getCallingUrl('all')}}">All</a>
+									</li>
+									<li>
+									<a data-ng-href="{{header.getCallingUrl('cleric')}}">Cleric</a>
+									</li>
+									<li>
+									<a data-ng-href="{{header.getCallingUrl('mage')}}">Mage</a>
+									</li>
+									<li>
+									<a data-ng-href="{{header.getCallingUrl('rogue')}}">Rogue</a>
+									</li>
+									<li>
+									<a data-ng-href="{{header.getCallingUrl('warrior')}}">Warrior</a>
+									</li>
+								</ul>
+						</li>
+						<li class="has-dropdown" ng-show="header.state.name === 'role'">
+							<a>
+								Role: <span data-ng-bind="header.cap(header.data.role)"></span>
+							</a>
 							<ul>
 								<li>
-								<a data-ng-href="#/{{header.data.loot}}/{{header.data.tier}}/all/{{header.data.locale}}">All</a>
+								<a data-ng-href="#/{{header.state.name}}/{{header.data.calling}}/dps/{{header.data.locale}}">DPS</a>
 								</li>
 								<li>
-								<a data-ng-href="#/{{header.data.loot}}/{{header.data.tier}}/cleric/{{header.data.locale}}">Cleric</a>
-								</li>
-								<li>
-								<a data-ng-href="#/{{header.data.loot}}/{{header.data.tier}}/mage/{{header.data.locale}}">Mage</a>
-								</li>
-								<li>
-								<a data-ng-href="#/{{header.data.loot}}/{{header.data.tier}}/rogue/{{header.data.locale}}">Rogue</a>
-								</li>
-								<li>
-								<a data-ng-href="#/{{header.data.loot}}/{{header.data.tier}}/warrior/{{header.data.locale}}">Warrior</a>
+								<a data-ng-href="#/{{header.state.name}}/{{header.data.calling}}/tank/{{header.data.locale}}">Tank</a>
 								</li>
 							</ul>
 						</li>
-						<li class="has-dropdown">
+						<li class="has-dropdown" ng-show="header.state.name === 'location'">
 							<a class="no-pointer">
 								Tier: <span data-ng-bind="header.cap(header.data.tier)"></span>
 							</a>
@@ -168,13 +181,13 @@
 							</a>
 							<ul>
 								<li>
-								<a data-ng-href="#/{{header.data.loot}}/{{header.data.tier}}/{{header.data.calling}}/en">English</a>
+								<a data-ng-href="{{header.getLocaleUrl('en')}}" ng-click="header.setLocale('en');">English</a>
 								</li>
 								<li>
-								<a data-ng-href="#/{{header.data.loot}}/{{header.data.tier}}/{{header.data.calling}}/fr">French</a>
+								<a data-ng-href="{{header.getLocaleUrl('fr')}}" ng-click="header.setLocale('fr');">French</a>
 								</li>
 								<li>
-								<a data-ng-href="#/{{header.data.loot}}/{{header.data.tier}}/{{header.data.calling}}/de">German</a>
+								<a data-ng-href="{{header.getLocaleUrl('de')}}" ng-click="header.setLocale('de');">German</a>
 								</li>
 							</ul>
 						</li>

@@ -1,4 +1,6 @@
-var kfMaps = require('./kfMaps.json'),
+var validator = require('validator'),
+	validApiOptions = require('../../config/validApiOptions'),
+	kfMaps = require('./kfMaps.json'),
 	userSummary = require('../../users/userSummary.js'),
 	KillingFloorStats = require('./KillingFloorStats.js');
 
@@ -11,12 +13,14 @@ module.exports = function(router) {
 
 	router.route('/userstats/:user')
 		.get(function(req, res) {
-			if (typeof req.params.user !== undefined) {
+			if (validator.isAlphanumeric(req.params.user)) {
 				//get user summary
 				var user = new userSummary(req.params.user, function(data) {
 					res.json(data);
 				});
-
+			}
+			else {
+				res.json({error:validApiOptions.error});
 			}
 
 		});
@@ -28,10 +32,13 @@ module.exports = function(router) {
 
 	router.route('/1250/userstats/:user')
 		.get(function(req, res) {
-			if (typeof req.param.user !== undefined) {
+			if (validator.isAlphanumeric(req.params.user)) {
 				var stats = new KillingFloorStats(req.params.user, function(data) {
 					res.json(data);
 				});
+			}
+			else {
+				res.json({error:validApiOptions.error});
 			}
 		});
 };				

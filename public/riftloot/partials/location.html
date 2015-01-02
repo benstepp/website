@@ -10,7 +10,7 @@
 				<div class="row">
 				<div class="small-30 columns">
 				<ul class="small-block-grid-1 medium-block-grid-2 large-block-grid-5 boss-grid">
-					<li ng-repeat="(bossName,boss) in ::obj | getOrder:'::order'">
+					<li ng-repeat="(bossName,boss) in ::obj | getOrder:'order'">
 						<ul class="boss">
 							<li class="boss-name">{{::boss.name}}</li>
 							<li ng-repeat="item in ::boss.loot | orderBy:'name_de ||name_en || name_fr'" 
