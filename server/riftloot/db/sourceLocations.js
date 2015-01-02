@@ -15,7 +15,7 @@ var sourceLocations = {
 
 	],
 
-	"World Event": [
+	"World Event Vendor": [
 
 	],
 
