@@ -3,7 +3,7 @@ var _ = require('lodash'),
 	checks = {
 	isExpertVendor: isExpertVendor,
 	isMauraderBox: isMauraderBox,
-	isRaidVendor: isRaidVendor,
+	isRaidIVendor: isRaidIVendor,
 	isWorldVendor: isWorldVendor
 	},
 
@@ -30,8 +30,8 @@ function isMauraderBox(item) {
 	return (item.name_en.indexOf("Marauder's") !== -1) ? "Marauder's Supply Cache": false;
 }
 
-function isRaidVendor(item) {
-	return (item.name_en.indexOf("Frost Keeper's") !== -1) ? "Raid Vendor": false;
+function isRaidIVendor(item) {
+	return (item.name_en.indexOf("Frost Keeper's") !== -1) ? "Raid I Vendor": false;
 }
 
 function isWorldVendor(item) {
