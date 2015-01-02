@@ -33,20 +33,25 @@
                 '</div>'].join(''),
 
             link: function(scope, elem, attrs) {
-                //foundation small down breakpoint
-                var isMobile = ($window.innerWidth <= 640);
-
-                //initialize the tooltip expanded status
-                if (typeof scope.expanded === 'undefined') {
-                    scope.expanded = (scope.forceCollapse || isMobile) || false;
-                }
-                
                 //Toggle the visibility of the tooltip without watchers
                 scope.toggleTooltip = function() {
                     var statBlock = angular.element(elem.children()[1]);
                     scope.expanded = !scope.expanded;
                     statBlock.toggleClass('ng-hide');
                 };
+
+                //foundation small down breakpoint
+                var isMobile = ($window.innerWidth <= 640);
+
+                //initialize the tooltip expanded status
+                if (typeof scope.expanded === 'undefined') {
+                    scope.expanded = !(scope.forceCollapse || isMobile);
+
+                    //if mobile
+                    if(!scope.expanded) {
+                        scope.toggleTooltip();
+                    }
+                }
 
             }
 
