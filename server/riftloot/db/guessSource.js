@@ -15,7 +15,6 @@ var _ = require('lodash'),
 			}
 		});
 		if (source) {
-			item.drop = {};
 			item.drop.other = source;
 		}
 		return item;

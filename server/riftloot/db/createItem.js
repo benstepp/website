@@ -12,6 +12,7 @@ var createItem = function(data) {
 	this.value = data.Value;
 	this.icon = data.Icon;
 	this.onEquip = data.OnEquip;
+	this.drop = {};
 
 	if(defined(data.SoulBoundTrigger)) {
 		this.bind = data.SoulBoundTrigger;

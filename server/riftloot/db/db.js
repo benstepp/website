@@ -100,15 +100,25 @@ function sort(data) {
 //save the item to the database
 function saveItem(itemm) {
 	var deferred = q.defer();
-	var newItem = new item(itemm).toObject();
+	var newItem = new item(itemm);
 
-	item.update({_id:newItem._id},newItem,{upsert:true},function(err) {
+	//Can't figure out how to use the newItem, so delete old one and shove new one in it's place
+	item.findByIdAndRemove(newItem._id,
+		function(err,doc) {
 		if (err) {
 			console.log(err);
 			deferred.reject();
 		}
 		else{
-			deferred.resolve();
+			newItem.save(function(err) {
+				if (err) {
+					console.log(err);
+					deferred.reject();
+				}
+				else {
+					deferred.resolve();				
+				}
+			});
 		}
 	});
 
