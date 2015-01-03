@@ -1,4 +1,4 @@
-var zones = require('./config/zones.json').zones;
+var zones = require('./config/zones.js');
 
 module.exports = function(router,Events, zEvents){
 

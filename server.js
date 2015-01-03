@@ -25,7 +25,7 @@ db.once('open', function callback () {
 });
 
 //app modules
-//require('./server/riftevents')(app, io);
+require('./server/riftevents')(app, io);
 require('./server/steam')(app, io,_);
 require('./server/riftloot')(app, io, _);
 

@@ -56,6 +56,10 @@ var config = {
 		'public/libs/foundation-icon-fonts/foundation-icons.css'],
 	},*/
 
+	riftevents2: {
+		css:['public/riftevents2/scss/style.scss']
+	},
+
 	riftloot: {
 		base:'public/riftloot',
 		outdir:'build/riftloot',
@@ -267,13 +271,13 @@ gulp.task('default', function() {
 
 //dev shit ill clean up later
 gulp.task('dev2', function() {
-	gulp.watch('./public/riftloot/**/*.scss', function() {
+	gulp.watch('./public/riftevents2/**/*.scss', function() {
 		gulp.start('scss');
 	});
 });
 
 gulp.task('scss', function() {
-	return gulp.src(config.riftloot.css, {base:'public/riftloot'})
+	return gulp.src(config.riftevents2.css, {base:'public/riftloot'})
 		.pipe(sass())
 		.pipe(minifyCss())
 		.pipe(gulp.dest('public/riftloot'));
