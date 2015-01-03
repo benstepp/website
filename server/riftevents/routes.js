@@ -27,22 +27,14 @@ module.exports = function(router,Events, zEvents){
 			res.json(zones);
 		});
 
-	router.route('/:region')
-		//Get all events /api/riftevents/events/
+	router.route('/events')
 		.get(function(req, res) {
-			//if valid region send just that region
-			if (req.params.region === 'US' || 
-				req.params.region ==='EU') {
-				res.json(events[req.params.region]);
-			}
-			//if incorrect region token, just send everything
-			else {
 				res.json(events);
-			}
 		});
-	//otherwise send everything
-	router.route('/')
-		.get(function(req, res) {
-			res.json(events);
+
+	router.route('*')
+		.get(function(req,res) {
+			res.json({error:'true'});
 		});
+
 };

@@ -11,8 +11,10 @@
 		'routes',
 
 		'EventsService',
-		'sideNavController'
+		'sideNavController',
 
+		//Individual Views
+		'EventsController'
 
 
 		]);
