@@ -4,9 +4,9 @@
 <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
  viewBox="0 0 100 100" enable-background="new 0 0 100 100" xml:space="preserve">
 
-<a id="social-link" xlink:href="//github.com">
+<a id="social-link" xlink:href="" target="_blank">
 	<g>
-		<rect width="100px" height="100px" fill="transparent"/>
+		<rect x="0" y="0" width="100px" height="100px"/>
 	</g>
 
 <!-- Github - From Foundation Icons by Zurb MIT Licence-->
@@ -87,8 +87,13 @@
 		width:100%;
 		height:100%;
 	}
+
+	rect {
+		fill-opacity:0.0;
+	}
+
 	]]></style>
-	
+
 	<script><![CDATA[
 		(function() {
 			window.onload = function() {
