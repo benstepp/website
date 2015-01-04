@@ -6,7 +6,7 @@
 
 <a id="social-link" xlink:href="" target="_blank">
 	<!-- Full size rectangle to pick up mouse hover for links -->
-	<g>
+	<g id="link-mask">
 		<rect x="0" y="0" width="100px" height="100px"/>
 	</g>
 
@@ -54,6 +54,11 @@
 </g>
 </a>
 
+<g id="menu" class="sprite">
+	<!--From Material Design icons by Google (CC by 4.0)-->
+	<path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/>
+</g>
+
 <def>
 	<style><![CDATA[
 	.sprite { display:none; }
@@ -88,7 +93,6 @@
 	<script><![CDATA[
 		(function() {
 			//the hash of the url referenced
-			console.log(window.location);
 			var socialKey = window.location.search.slice(1);
 			document.getElementById(socialKey).style.display = "block";
 
@@ -101,6 +105,17 @@
 			
 			if (typeof links[socialKey] !== 'undefined') {
 				document.getElementById("social-link").setAttribute("xlink:href",links[socialKey]);
+			}
+			//not a link and we are trying to show a non-social icon
+			else {
+				document.getElementById(socialKey).style.display = "block";
+				var svg = document.getElementsByTagName('svg')[0]
+				svg.setAttribute("viewBox","0 0 24 24");
+				svg.setAttribute("enable-background","0 0 24 24");
+				svg.setAttribute("width", "24px");
+				svg.setAttribute("height","24px");
+				document.getElementById("social-link").style.display = "none";
+				document.getElementById("link-mask").style.display = "none";
 			}
 		})();
 	]]></script>

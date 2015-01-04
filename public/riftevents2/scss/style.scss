@@ -1,8 +1,11 @@
 button.menu-icon {
 	background:none;
 	border:none;
-	color:inherit;
 	padding:20px;
+}
+
+.menu-icon object {
+	pointer-events:none;
 }
 
 footer {
