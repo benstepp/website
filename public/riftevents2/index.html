@@ -16,10 +16,7 @@
 		<md-toolbar layout="column" class="md-default-theme">
 			<div flex>
 				<button class="menu-icon" hide-gt-lg ng-click="sideNav.openLeftMenu()">
-				<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
-    				<path d="M0 0h24v24h-24z" fill="none"/>
-    				<path d="M20 11h-12.17l5.59-5.59-1.42-1.41-8 8 8 8 1.41-1.41-5.58-5.59h12.17v-2z"/>
-				</svg>
+					<object type="image/svg+xml" data="img/sprites.svg?left-arrow" width="24" height="24"></object>
 				</button>
 			</div>
 		</md-toolbar>
@@ -27,13 +24,14 @@
 			<md-list>
 				<md-item>
 					<md-item-content>
-						<div class="md-tile-left">
-							<object type="image/svg+xml" data="img/settings.svg?q=test" width="24" height="24"></object>
-						</div>
-						<div class="md-tile-content">
-							Settings
-						</div>
+							<md-button flex layout="row" layout-align="start center" class="side-nav-link">
+								<div>
+								<object type="image/svg+xml" data="img/sprites.svg?settings" width="24" height="24"></object>
+								</div>
+								<div>Settings</div>
+							</md-button>
 					</md-item-content>
+					<md-divider></md-divider>
 				</md-item>
 			</md-list>
 			<footer layout="column">
