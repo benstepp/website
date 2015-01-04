@@ -52,20 +52,12 @@
 	C83.704,32.071,86.383,29.288,88.5,26.12z"/>
 </g>
 </a>
-<!-- Menu Icon - From Material Design Icons by Google (CC by 4.0) -->
-<g id="menu" class="menu-icon sprite">
-	<path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/>
-</g>
 
 <def>
 	<style><![CDATA[
 	.sprite { display:none; }
 
 	.sprite:target { display:inline; }
-
-	.menu-icon {
-		background-size: 24px 24px;
-	}
 
 	.social-icon {
 		fill:#ddd;
@@ -110,6 +102,7 @@
 				if (typeof links[socialKey] !== 'undefined') {
 					document.getElementById("social-link").setAttribute("xlink:href",links[socialKey]);
 				}
+
 			};
 		})();
 	]]></script>

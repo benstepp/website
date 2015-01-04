@@ -11,12 +11,21 @@ footer {
 	bottom:0;
 }
 
+footer md-divider {
+	margin-bottom:12px;
+}
+
 .social-container {
 	padding:12px 12px;
 }
 
 .social-link {
 	display:inline-block;
-	position:relative;
 	margin:0px 6px;
+}
+
+.footer-link {
+	text-align:center;
+	font-size:14px;
+	text-decoration:none;
 }
