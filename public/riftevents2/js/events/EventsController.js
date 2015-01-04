@@ -5,11 +5,15 @@
 
 	function EventsController($scope, zones, events, EventsService, $interval, $http) {
 		var _this = this;
+
 		_this.zones = zones;
 		_this.events = events;
-		console.log(zones);
-		console.log(events);
+		_this.getZone = getZone;
 
+
+		function getZone(id) {
+			return _this.zones.ref[id].name_en;
+		}
 
 	}
 

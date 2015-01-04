@@ -32,12 +32,12 @@
 			},
 			resolve: {
 				EventsService: 'EventsService',
-				events: ['EventsService', function(EventsService) {
-					return EventsService.getEvents();
-				}],
 				zones: ['EventsService', function(EventsService) {
 					return EventsService.getZones();
 				}],
+				events: ['EventsService', function(EventsService) {
+					return EventsService.getEvents();
+				}]
 			}
 		});
 

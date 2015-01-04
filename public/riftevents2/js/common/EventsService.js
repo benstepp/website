@@ -38,6 +38,13 @@
             parsedZones.order = [];
             parsedZones.ref = {};
 
+            //indexes of the start/end of each expansion
+            parsedZones.count = {
+                "Nightmare Tide":[0,2],
+                "Storm Legion":[3,13],
+                "Chocolate":[14,25]
+            };
+
             angular.forEach(zonesFromServer, function(zone) {
                 parsedZones.order.push(zone._id);
                 parsedZones.ref[zone._id] = zone;
@@ -63,10 +70,26 @@
         function eventsApiCall() {
         	return $http.get("/api/riftevents/events")
         		.then(function(res) {
-        			zoneEvents = res.data;
-        			return res.data;
+        			zoneEvents = parseEvents(res.data);
+        			return zoneEvents;
         		});
         }
 
+        function parseEvents(data) {
+            angular.forEach(data, function(region){
+                angular.forEach(region, function(eventArray) {
+                    angular.forEach(eventArray, function(ev){
+                        ev.order = zones.order.indexOf(ev.zone.toString());
+                    });
+                    eventArray.sort(eventSort);
+                });
+            });
+
+            function eventSort(a,b) {
+                return a.order - b.order;
+            }
+
+            return data;
+        }
     }
 })();

@@ -1,1 +1,15 @@
-<div>this is the event view</div>
+<md-list>
+	<md-item ng-repeat="event in riftevents.events.US.events">
+		<md-item-content>
+			<div class="md-tile-left">
+				<img class="rift-plane"></img>
+			</div>
+			<div class="md-tile-content">
+				<h3>{{ ::event.name_en }}</h3>
+				<h4>{{ ::riftevents.getZone(event.zone) }} - {{ ::event.shard }}</h4>
+				<p>{{ ::event.started }}</p>
+			</div>
+		</md-item-content>
+		<md-divider ng-if="!$last"></md-divider>
+	</md-item>
+</md-list>

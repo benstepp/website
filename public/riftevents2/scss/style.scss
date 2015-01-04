@@ -9,10 +9,8 @@ footer {
 	position:absolute;
 	width:100%;
 	bottom:0;
-}
-
-footer md-divider {
-	margin-bottom:12px;
+	padding:12px;
+	text-align:center;
 }
 
 .social-container {
@@ -24,8 +22,14 @@ footer md-divider {
 	margin:0px 6px;
 }
 
-.footer-link {
-	text-align:center;
-	font-size:14px;
+.footer-link > span {
+	font-size:13px;
 	text-decoration:none;
+}
+
+.rift-plane {
+	width:64px;
+	height:64px;
+	background-color:blue;
+	margin:12px;
 }

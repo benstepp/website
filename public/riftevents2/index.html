@@ -12,10 +12,10 @@
 
 <body layout="row" ng-controller="sideNavController as sideNav">
 
-	<md-sidenav md-component-id="left" layout="column" class="md-sidenav-left md-whiteframe-z2">
+	<md-sidenav md-component-id="left" layout="column" md-is-locked-open="$media('gt-lg')" class="md-sidenav-left md-whiteframe-z2">
 		<md-toolbar layout="column" class="md-default-theme">
 			<div flex>
-				<button class="menu-icon" ng-click="sideNav.openLeftMenu()">
+				<button class="menu-icon" hide-gt-lg ng-click="sideNav.openLeftMenu()">
 				<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
     				<path d="M0 0h24v24h-24z" fill="none"/>
     				<path d="M20 11h-12.17l5.59-5.59-1.42-1.41-8 8 8 8 1.41-1.41-5.58-5.59h12.17v-2z"/>
@@ -37,9 +37,9 @@
 			</ul>
 			<footer layout="column">
 				<md-divider></md-divider>
-				<a class="footer-link" href="/">
+				<md-button class="footer-link" href="/">
 					FIGHTINGDRAGONSWITHTAYLORSWIFT
-				</a>
+				</md-button>
 				<div layout="row" layout-align="center center" flex class="social-container">
 					<div class="social-link">
 						<object type="image/svg+xml" data="img/sprites.svg#github" width="32" height="32"></object>
@@ -51,8 +51,8 @@
 						<object type="image/svg+xml" data="img/sprites.svg#steam" width="32" height="32"></object>
 					</div>
 				</div>
-				<div class="footer-link">
-					<a href="//www.riftgame.com/" class="footer-link">Rift</a> © <a href="//www.trionworlds.com/" class="footer-link">Trion Worlds, Inc.</a>
+				<div>
+					<md-button href="//www.riftgame.com/" class="footer-link">Rift</md-button> © <md-button href="//www.trionworlds.com/" class="footer-link">Trion Worlds, Inc.</md-button>
 				</div>
 			</footer>
 		</md-content>
@@ -61,7 +61,7 @@
 	<md-content flex layout="column">
 		<md-toolbar layout="row" class="md-default-theme">
 			<div layout="row" flex>
-				<button class="menu-icon" ng-click="sideNav.openLeftMenu()">
+				<button class="menu-icon" hide-gt-lg ng-click="sideNav.openLeftMenu()">
 					<!--From Material Design icons by Google (CC by 4.0)-->
 					<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/></svg>
 				</button>
@@ -76,11 +76,9 @@
 			</div>
 		</md-toolbar>
 		<md-content class="md-padding" layout="column">
-		<h1>content</h1>
-		<p>sup</p>
-
-		<div ui-view="main"></div>
-
+			<div ui-view="main">
+				
+			</div>
 		</md-content>
 	</md-content>
 

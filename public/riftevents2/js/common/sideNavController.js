@@ -39,8 +39,13 @@
             var isChromium = window.chrome,
                 vendorName = window.navigator.vendor;
             if(isChromium !== null && isChromium !== undefined && vendorName === "Google Inc.") {
-               isChrome = true;
+                isChrome = true;
+
+                angular.element($window).bind('resize',function() {
+                    objectReplacer();
+                });
             }
+            
         }
     }
 })();
