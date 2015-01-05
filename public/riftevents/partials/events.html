@@ -1,30 +1,21 @@
-<div class="row" id="rift-table">
-	<div class="col-md-12">
-		<div class="table-container">
-		<table class="rift-table">
-		
-			<thead>
-				<tr>
-					<th><a href="" data-ng-click="riftevents.sort('shard')">Shard</a></th>
-					<th><a href="" data-ng-click="riftevents.sort('zone')">Zone</a></th>
-					<th><a href="" data-ng-click="riftevents.sort('name')">Event</a></th>
-					<th><a href="" data-ng-click="riftevents.sort('level')">Level</a></th>
-					<th><a href="" data-ng-click="riftevents.sort('started')">Started</a></th>
-				</tr>
-			</thead>
-
-			<tbody>
-				<tr data-ng-repeat="event in riftevents.events | orderBy:riftevents.predicate:reverse">
-					<td>{{ event.shard }}</td>
-					<td>{{ event.zone }}</td>
-					<td>{{ event.name }}</td>
-					<td>f</td>
-					<td>{{ event.time }}</td>
-				</tr>
-			</tbody>
-
-		</table>
-		</div>
-	</div>
-
+<div layout="row">
+<md-list flex>
+	<md-item ng-repeat="event in riftevents.events.US.events" ng-class="{tagged:event.tagged}">
+		<md-item-content>
+			<div class="md-tile-left">
+				<md-checkbox ng-model="event.tagged" aria-label="Tagged" ng-click="riftevents.initEventCollapse(event)" class="no-label md-primary hue-2">
+				</md-checkbox>
+			</div>
+			<div class="md-tile-content">
+				<h3>{{ ::event.name_en }}</h3>
+				<h4>{{ ::riftevents.getZone(event.zone) }} - {{ ::event.shard }}</h4>
+				<p>{{ riftevents.getDisplayedTime(event.started) }}</p>
+			</div>
+			<div class="md-tile-right">
+				<img class="event-img"></img>
+			</div>
+		</md-item-content>
+		<md-divider ng-if="!$last"></md-divider>
+	</md-item>
+</md-list>
 </div>

@@ -1,16 +1,21 @@
 (function() {
+	'use-strict';
+	
 	angular.module('app', [
 		//Vendor Dependencies
 		'ui.router', 
-		'mm.foundation',
-		'btford.socket-io',
-		'SocketFactory',
-		//Custom
-		'bsContentResize',
-		'HeaderCtrl',
-		//RiftEvents
-		'routes', 
+		'ngMaterial',
+
+		//Global App Modules
+		'mdTheme',
+		'routes',
+
 		'EventsService',
-		'EventsCtrl'
+		'sideNavController',
+
+		//Individual Views
+		'EventsController'
+
+
 		]);
 })();
