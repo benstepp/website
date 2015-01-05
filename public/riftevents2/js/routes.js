@@ -41,6 +41,18 @@
 			}
 		});
 
+		/*
+		The settings state
+		*/
+		$stateProvider.state('settings', {
+			url:'/settings',
+			views: {
+				'main': { 
+					templateUrl:'partials/settings.html'
+				}
+			}
+		}); 
+
 	}
 
 })();
