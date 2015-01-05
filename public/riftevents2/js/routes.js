@@ -9,20 +9,11 @@
 
 		$urlRouterProvider.otherwise('/');
 
-		$stateProvider.state('/', {
-			url:'/',
-			views: {
-				'main': { 
-					templateUrl:'partials/splash.html'
-				}
-			}
-		}); 
-
 		/*
 		The event state
 		*/
-		$stateProvider.state('event', {
-			url:'/events',
+		$stateProvider.state('/', {
+			url:'/',
 			views: {
 				'main': {
 					templateUrl: 'partials/events.html',

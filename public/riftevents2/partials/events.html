@@ -1,15 +1,21 @@
-<md-list>
-	<md-item ng-repeat="event in riftevents.events.US.events">
+<div layout="row">
+<md-list flex>
+	<md-item ng-repeat="event in riftevents.events.US.events" ng-class="{tagged:event.tagged}">
 		<md-item-content>
 			<div class="md-tile-left">
-				<img class="rift-plane"></img>
+				<md-checkbox ng-model="event.tagged" aria-label="Tagged" ng-click="riftevents.initEventCollapse(event)" class="no-label md-primary hue-2">
+				</md-checkbox>
 			</div>
 			<div class="md-tile-content">
 				<h3>{{ ::event.name_en }}</h3>
 				<h4>{{ ::riftevents.getZone(event.zone) }} - {{ ::event.shard }}</h4>
-				<p>{{ ::event.started }}</p>
+				<p>{{ riftevents.getDisplayedTime(event.started) }}</p>
+			</div>
+			<div class="md-tile-right">
+				<img class="event-img"></img>
 			</div>
 		</md-item-content>
 		<md-divider ng-if="!$last"></md-divider>
 	</md-item>
 </md-list>
+</div>

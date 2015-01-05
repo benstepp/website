@@ -1,7 +1,9 @@
-button.menu-icon {
+button.md-button.menu-icon {
 	background:none;
 	border:none;
-	padding:20px;
+	padding:12px;
+	margin:8px;
+	border-radius:50%;
 }
 
 .menu-icon object {
@@ -35,6 +37,11 @@ footer {
 	height:64px;
 	background-color:blue;
 	margin:12px;
+	border-radius:50%;
+}
+
+.md-tile-content > p {
+	color:rgba(0,0,0,.54);
 }
 
 .md-button.side-nav-link {
@@ -44,4 +51,15 @@ footer {
 
 .side-nav-link object {
 	margin: 0 20px 0 0;
+}
+
+.tagged {
+	color:rgba(0,0,0,0.26);
+}
+.tagged p {
+	color:inherit;
+}
+
+.no-label div.md-label {
+	border:none;
 }

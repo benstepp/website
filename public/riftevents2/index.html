@@ -10,73 +10,67 @@
 <link href='//fonts.googleapis.com/css?family=Roboto:400,300' rel='stylesheet' type='text/css'>
 </head>
 
-<body layout="row" ng-controller="sideNavController as sideNav">
-
-	<md-sidenav md-component-id="left" layout="column" md-is-locked-open="$media('gt-lg')" class="md-sidenav-left md-whiteframe-z2">
-		<md-toolbar layout="column" class="md-default-theme">
-			<div flex>
-				<button class="menu-icon" hide-gt-lg ng-click="sideNav.openLeftMenu()">
-					<object type="image/svg+xml" data="img/sprites.svg?left-arrow" width="24" height="24"></object>
-				</button>
-			</div>
-		</md-toolbar>
-		<md-content flex>
-			<md-list>
-				<md-item>
-					<md-item-content>
-							<md-button flex layout="row" layout-align="start center" class="side-nav-link" href="#/settings">
-								<div>
-								<object type="image/svg+xml" data="img/sprites.svg?settings" width="24" height="24"></object>
-								</div>
-								<div>Settings</div>
-							</md-button>
-					</md-item-content>
-					<md-divider></md-divider>
-				</md-item>
-			</md-list>
-			<footer layout="column">
-				<md-divider></md-divider>
-				<md-button class="footer-link" href="/">
-					FIGHTINGDRAGONSWITHTAYLORSWIFT
-				</md-button>
-				<div layout="row" layout-align="center center" flex class="social-container">
-					<div class="social-link">
-						<object type="image/svg+xml" data="img/sprites.svg?github" width="32" height="32"></object>
-					</div>
-					<div class="social-link">
-						<object type="image/svg+xml" data="img/sprites.svg?twitter" width="32" height="32"></object>
-					</div>
-					<div class="social-link">
-						<object type="image/svg+xml" data="img/sprites.svg?steam" width="32" height="32"></object>
-					</div>
-				</div>
-				<div>
-					<md-button href="//www.riftgame.com/" class="footer-link">Rift</md-button> © <md-button href="//www.trionworlds.com/" class="footer-link">Trion Worlds, Inc.</md-button>
-				</div>
-			</footer>
-		</md-content>
-	</md-sidenav>
+<body layout="row" flex ng-controller="sideNavController as sideNav">
 
 	<md-content flex layout="column">
+
+		<!-- Top Bar -->
 		<md-toolbar layout="row" class="md-default-theme">
 			<div layout="row" flex>
-				<button class="menu-icon" hide-gt-lg ng-click="sideNav.openLeftMenu()">
+				<md-button class="menu-icon" hide-gt-lg ng-click="sideNav.openLeftMenu()" aria-label="Toggle Navigation">
 					<object type="image/svg+xml" data="img/sprites.svg?menu" width="24" height="24"></object>
-				</button>
+				</md-button>
 				<h2 class="md-toolbar-tools">
 				<a href="/riftevents2">Rift Zone Event Tracker</a>
 				</h2>
-				<div layout="row" layout-align="end center">
-				<a></a>
-				
-				</div>
-				
 			</div>
 		</md-toolbar>
-		<md-content class="md-padding" layout="column">
-			<div ui-view="main">
-				
-			</div>
+
+		<md-content layout="row" flex>
+
+		<!-- Sidenav -->
+		<md-sidenav md-component-id="left" layout="column" md-is-locked-open="$media('gt-lg')" class="md-sidenav-left md-whiteframe-z2">
+			<md-content flex>
+				<md-list>
+					<md-item>
+						<md-item-content>
+								<md-button flex layout="row" layout-align="start center" class="side-nav-link" href="#/settings" ng-click="sideNav.openLeftMenu()">
+									<div>
+									<object type="image/svg+xml" data="img/sprites.svg?settings" width="24" height="24"></object>
+									</div>
+									<div>Settings</div>
+								</md-button>
+						</md-item-content>
+						<md-divider></md-divider>
+					</md-item>
+				</md-list>
+				<footer layout="column">
+					<md-divider></md-divider>
+					<md-button class="footer-link" href="/">
+						FIGHTINGDRAGONSWITHTAYLORSWIFT
+					</md-button>
+					<div layout="row" layout-align="center center" flex class="social-container">
+						<div class="social-link">
+							<object type="image/svg+xml" data="img/sprites.svg?github" width="32" height="32"></object>
+						</div>
+						<div class="social-link">
+							<object type="image/svg+xml" data="img/sprites.svg?twitter" width="32" height="32"></object>
+						</div>
+						<div class="social-link">
+							<object type="image/svg+xml" data="img/sprites.svg?steam" width="32" height="32"></object>
+						</div>
+					</div>
+					<div>
+						<md-button href="//www.riftgame.com/" class="footer-link">Rift</md-button> © <md-button href="//www.trionworlds.com/" class="footer-link">Trion Worlds, Inc.</md-button>
+					</div>
+				</footer>
+			</md-content>
+		</md-sidenav>
+
+		<!-- Main Content Area -->
+		<md-content layout="column" class="md-padding" flex ui-view="main">
+		</md-content>
+
 		</md-content>
 	</md-content>
 
