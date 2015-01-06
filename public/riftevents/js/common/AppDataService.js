@@ -74,7 +74,8 @@
                     'Nightmare Tide':true,
                     'Storm Legion':true,
                     'Chocolate':true
-                }
+                },
+                perms: false
             };
         var observerCallbacks = [];
         var supported;

@@ -2,10 +2,10 @@
     'use strict';
 
     angular
-        .module('SettingsController',['AppDataService'])
-        .controller('SettingsController', ['$scope','AppDataService','zones',SettingsController]);
+        .module('SettingsController',['AppDataService','NotificationService'])
+        .controller('SettingsController', ['$scope','AppDataService','NotificationService','zones',SettingsController]);
 
-    function SettingsController($scope, AppDataService,zones) {
+    function SettingsController($scope, AppDataService,NotificationService,zones) {
         var _this = this;
 
         _this.data = {};
@@ -13,6 +13,11 @@
         _this.toggleRegion = toggleRegion;
         _this.togglePvp = togglePvp;
         _this.toggleExpansion = toggleExpansion;
+
+        _this.notifications = NotificationService.supported;
+        _this.notificationPermission = (NotificationService.permission === 'granted') ? true : false;
+        _this.exampleNotification = exampleNotification;
+        _this.requestPermission = NotificationService.requestPermission;
 
         init();
 
@@ -46,6 +51,10 @@
             angular.forEach(_this.zones.expansion[exp], function(val,key) {
                 _this.data.zone[val._id] = _this.data.expansion[exp];
             });
+        }
+
+        function exampleNotification() {
+            new Notification('Example Event',{body:'Zone on Shard'});
         }
 
         function init() {
