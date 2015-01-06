@@ -3,12 +3,13 @@
 
     angular
         .module('SettingsController',['AppDataService'])
-        .controller('SettingsController', ['$scope','AppDataService',SettingsController]);
+        .controller('SettingsController', ['$scope','AppDataService','zones',SettingsController]);
 
-    function SettingsController($scope, AppDataService) {
+    function SettingsController($scope, AppDataService,zones) {
         var _this = this;
 
         _this.data = {};
+        _this.zones = zones;
         _this.toggleRegion = toggleRegion;
         _this.togglePvp = togglePvp;
 
@@ -40,6 +41,10 @@
         	});
         }
 
+        function getShards() {
+            console.log(zones);
+        }
+        getShards();
         function init() {
         	//get from data service
         	_this.data = AppDataService.retrieveData();

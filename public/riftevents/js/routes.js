@@ -43,6 +43,12 @@
 					controller: 'SettingsController',
 					controllerAs: 'settings'
 				}
+			},
+			resolve: {
+				EventsService: 'EventsService',
+				zones: ['EventsService', function(EventsService) {
+					return EventsService.getZones();
+				}]
 			}
 		}); 
 

@@ -76,9 +76,10 @@
         }
 
         function parseEvents(data) {
-            angular.forEach(data, function(region){
+            angular.forEach(data, function(region,regionName){
                 angular.forEach(region, function(eventArray) {
                     angular.forEach(eventArray, function(ev){
+                        ev.region = regionName;
                         ev.order = zones.order.indexOf(ev.zone.toString());
                     });
                     eventArray.sort(eventSort);

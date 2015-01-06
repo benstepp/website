@@ -1,23 +1,24 @@
 <form flex>
 	<section class="md-whiteframe-z1">
-	<h3>Language</h3>
 
-	<md-radio-group ng-model="settings.data.language">
-		<md-radio-button value="English" aria-label="English">English</md-radio-button>
-		<md-radio-button value="French" aria-label="French">French</md-radio-button>
-		<md-radio-button value="German" aria-label="German">German</md-radio-button>
-	</md-radio-group>
+		<h3 class="settings-header">Language</h3>
+		<md-radio-group ng-model="settings.data.language">
+			<md-radio-button value="English" aria-label="English">English</md-radio-button>
+			<md-radio-button value="French" aria-label="French">French</md-radio-button>
+			<md-radio-button value="German" aria-label="German">German</md-radio-button>
+		</md-radio-group>
+
 	</section>
 
 	<section class="md-whiteframe-z1">
-	<h3>Desktop Notifications</h3>
+	<h3 class="settings-header">Desktop Notifications</h3>
 	</section>
 
 
 	<section class="md-whiteframe-z1">
 		<div layout="row">
-			<h3 flex="50">Shards</h3>
-			<md-switch ng-model="settings.data.pvp" class="md-warn" ng-change="settings.togglePvp(this)" flex="50">PvP</md-switch>
+			<h3 flex="50" class="settings-header">Shards</h3>
+			<md-switch ng-model="settings.data.pvp" class="md-warn strong" ng-change="settings.togglePvp(this)" flex="50">PvP</md-switch>
 		</div>
 		<div layout-gt-sm="row" layout-sm="column">
 			<div flex-gt-sm="50" flex-sm="100" class="shard-container">
@@ -44,10 +45,26 @@
 		</div>
 	</section>
 	<section class="md-whiteframe-z1">
-		<div layout="row">
-			<h3>Events</h3>
+		<div layout="column">
+			<h3 class="settings-header">Zones</h3>
+			<div layout-gt-sm="row" layout-sm="column">
+				<div layout="column" flex-gt-sm="50" flex-sm="100">
+					<div>
+						<md-switch class="strong">Nightmare Tide</md-switch>
+						<md-switch></md-switch>
+						<md-switch></md-switch>
+						<md-switch></md-switch>
+					</div>
+					<md-divider></md-divider>
+					<div>
+						<md-switch class="strong">Storm Legion</md-switch>
+					</div>
+				</div>
+				<div layout="column" flex-gt-sm="50" flex-sm="100">
+					<md-switch class="strong">Chocolate</md-switch>
+				</div>
+			</div>
 		</div>
-		<div layout="row"></div>
 		
 	</section>
 </form>
