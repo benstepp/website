@@ -13,9 +13,8 @@
         _this.toggleRegion = toggleRegion;
         _this.togglePvp = togglePvp;
         _this.toggleExpansion = toggleExpansion;
-
         _this.notifications = NotificationService.supported;
-        _this.notificationPermission = (NotificationService.permission === 'granted') ? true : false;
+        
         _this.exampleNotification = exampleNotification;
         _this.requestPermission = NotificationService.requestPermission;
 
@@ -53,6 +52,10 @@
             });
         }
 
+        function toggleNotification() {
+            AppDataService.saveData('notify',_this.data.notify);
+        }
+
         function exampleNotification() {
             new Notification('Example Event',{body:'Zone on Shard'});
         }
@@ -60,6 +63,12 @@
         function init() {
         	//get from data service
         	_this.data = AppDataService.retrieveData();
+
+            //promise for notification permission
+            //requests if we have asked for it previously
+            NotificationService.hasPermission().then(function(data) {
+                _this.notificationPermission = data;
+            });
 
             //add watcher to data to save on user input
             $scope.$watch(function() {

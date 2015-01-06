@@ -21,9 +21,9 @@
 		</div>
 
 		<div layout="column">
-			<md-switch ng-model="settings.notificationPermission" ng-change="settings.requestPermission()">Desktop Notifications</md-switch>
-			<div>
-			<md-button ng-click="settings.exampleNotification()">Example Notification</md-button>
+			<md-switch ng-model="settings.data.notify" ng-change="settings.requestPermission()">Desktop Notifications</md-switch>
+			<div ng-if="settings.data.notify">
+			<md-button ng-click="settings.exampleNotification()" class=" md-primary md-raised md-hue-3">Example Notification</md-button>
 			</div>
 		</div>
 

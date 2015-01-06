@@ -75,7 +75,8 @@
                     'Storm Legion':true,
                     'Chocolate':true
                 },
-                perms: false
+                perms: false,
+                notify: false
             };
         var observerCallbacks = [];
         var supported;
