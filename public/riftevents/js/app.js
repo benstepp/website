@@ -14,7 +14,8 @@
 		'sideNavController',
 
 		//Individual Views
-		'EventsController'
+		'EventsController',
+		'SettingsController'
 
 
 		]);

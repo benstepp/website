@@ -2,7 +2,7 @@
 	<section>
 	<h3>Language</h3>
 
-	<md-radio-group>
+	<md-radio-group ng-model="settings.data.language">
 		<md-radio-button value="English" aria-label="English">English</md-radio-button>
 		<md-radio-button value="French" aria-label="French">French</md-radio-button>
 		<md-radio-button value="German" aria-label="German">German</md-radio-button>
@@ -17,24 +17,24 @@
 	
 	<section>
 	<h3>Region</h3>
-	<md-switch>US</md-switch>
-	<md-switch>EU</md-switch>
+	<md-switch ng-model="settings.data.region.US.act" ng-change="settings.toggleRegion('US')">US</md-switch>
+	<md-switch ng-model="settings.data.region.EU.act" ng-change="settings.toggleRegion('EU')">EU</md-switch>
 	</section>
 
 	
 	<section>
 	<h3>Shards</h3>
-	<md-switch>Bloodiron</md-switch>
-	<md-switch>Gelidra</md-switch>
-	<md-switch>Zaviel</md-switch>
-	<md-switch>Brutwacht</md-switch>
-	<md-switch>Brisesol</md-switch>
-	<md-switch>Seastone</md-switch>
-	<md-switch>Greybriar</md-switch>
-	<md-switch>Deepwood</md-switch>
-	<md-switch>Wolfsbane</md-switch>
-	<md-switch>Faeblight</md-switch>
-	<md-switch>Laethys</md-switch>
-	<md-switch>Hailol</md-switch>
+	<md-switch ng-model="settings.data.region.EU.shard.Bloodiron">Bloodiron</md-switch>
+	<md-switch ng-model="settings.data.region.EU.shard.Gelidra">Gelidra</md-switch>
+	<md-switch ng-model="settings.data.region.EU.shard.Zaviel">Zaviel</md-switch>
+	<md-switch ng-model="settings.data.region.EU.shard.Brutwacht">Brutwacht</md-switch>
+	<md-switch ng-model="settings.data.region.EU.shard.Brisesol">Brisesol</md-switch>
+	<md-switch ng-model="settings.data.region.US.shard.Seastone">Seastone</md-switch>
+	<md-switch ng-model="settings.data.region.US.shard.Greybriar">Greybriar</md-switch>
+	<md-switch ng-model="settings.data.region.US.shard.Deepwood">Deepwood</md-switch>
+	<md-switch ng-model="settings.data.region.US.shard.Wolfsbane">Wolfsbane</md-switch>
+	<md-switch ng-model="settings.data.region.US.shard.Faeblight">Faeblight</md-switch>
+	<md-switch ng-model="settings.data.region.US.shard.Laethys">Laethys</md-switch>
+	<md-switch ng-model="settings.data.region.US.shard.Hailol">Hailol</md-switch>
 	</section>
 </form>

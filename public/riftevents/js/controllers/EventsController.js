@@ -1,4 +1,6 @@
 (function() {
+	'use strict';
+
 	angular
 		.module('EventsController',['EventsService'])
 		.controller('EventsController', ['$scope','zones', 'events', 'EventsService','$interval',EventsController]);

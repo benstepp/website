@@ -39,7 +39,9 @@
 			url:'/settings',
 			views: {
 				'main': { 
-					templateUrl:'partials/settings.html'
+					templateUrl:'partials/settings.html',
+					controller: 'SettingsController',
+					controllerAs: 'settings'
 				}
 			}
 		}); 
