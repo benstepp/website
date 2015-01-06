@@ -13,6 +13,7 @@
 		_this.getZone = getZone;
 		_this.getDisplayedTime = getDisplayedTime;
 		_this.showEvent = showEvent;
+		_this.noMore = noMore;
 
 		var now = Date.now();
 		var data = AppDataService.retrieveData();
@@ -26,13 +27,32 @@
 		}
 
 		function showEvent(ev) {
-			var toShow = false;
-			//check if shard is to be shown (this covers region and pvp)
-			if (data.region.US.shard[ev.shard]) {
-				toShow = true;
-			}
+			var checks = [];
+			var toShow = true;
 
+			//check if shard is to be shown (this covers region and pvp)
+			checks.push(data.region[ev.region].shard[ev.shard]);
+			//check if the zone is to be shown
+			checks.push(data.zone[ev.zone]);
+
+			//any false check (hide the event)
+			angular.forEach(checks, function(check) {
+				if (!check) {toShow = check;}
+			});
+
+			//otherwise show and save a reference for the more function
+			ev.toShow = toShow;
 			return toShow;
+		}
+
+		function noMore() {
+			var more = true;
+			angular.forEach(_this.events, function(val,key) {
+				//event is visible, we don't need to look at last
+				if (val.toShow) {more = false;}
+			});
+			//all events are not visible so show the no more
+			return more;
 		}
 
 		$interval(function() {now = Date.now();},15000);

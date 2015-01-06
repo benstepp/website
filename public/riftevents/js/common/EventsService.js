@@ -90,21 +90,25 @@
         }
 
         function parseEvents(data) {
+            var combinedArray = [];
             angular.forEach(data, function(region,regionName){
                 angular.forEach(region, function(eventArray) {
                     angular.forEach(eventArray, function(ev){
                         ev.region = regionName;
                         ev.order = zones.order.indexOf(ev.zone.toString());
+                        combinedArray.push(ev);
                     });
-                    eventArray.sort(eventSort);
                 });
             });
+
+            combinedArray.sort(eventSort);
 
             function eventSort(a,b) {
                 return a.order - b.order;
             }
 
-            return data;
+            return combinedArray;
+
         }
     }
 })();

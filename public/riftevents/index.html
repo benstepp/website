@@ -34,6 +34,17 @@
 				<md-list>
 					<md-item>
 						<md-item-content>
+								<md-button flex layout="row" layout-align="start center" class="side-nav-link" href="#/" ng-click="sideNav.openLeftMenu()">
+									<div>
+									<object type="image/svg+xml" data="img/sprites.svg?event" width="24" height="24"></object>
+									</div>
+									<div>Events</div>
+								</md-button>
+						</md-item-content>
+						<md-divider></md-divider>
+					</md-item>
+					<md-item>
+						<md-item-content>
 								<md-button flex layout="row" layout-align="start center" class="side-nav-link" href="#/settings" ng-click="sideNav.openLeftMenu()">
 									<div>
 									<object type="image/svg+xml" data="img/sprites.svg?settings" width="24" height="24"></object>
@@ -87,6 +98,8 @@
 <script src="./js/common/mdTheme.js"></script>
 <script src="./js/common/EventsService.js"></script>
 <script src="./js/common/AppDataService.js"></script>
+<script src="./js/common/NotificationService.js"></script>
+
 <script src="./js/controllers/EventsController.js"></script>
 <script src="./js/controllers/SettingsController.js"></script>
 

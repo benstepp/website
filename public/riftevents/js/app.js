@@ -11,6 +11,8 @@
 		'routes',
 
 		'EventsService',
+		'AppDataService',
+		'NotificationService',
 		'sideNavController',
 
 		//Individual Views
