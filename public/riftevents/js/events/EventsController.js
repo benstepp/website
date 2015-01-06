@@ -1,9 +1,9 @@
 (function() {
 	angular
 		.module('EventsController',['EventsService'])
-		.controller('EventsController', ['$scope','zones', 'events', 'EventsService','$interval','$http',EventsController]);
+		.controller('EventsController', ['$scope','zones', 'events', 'EventsService','$interval',EventsController]);
 
-	function EventsController($scope, zones, events, EventsService, $interval, $http) {
+	function EventsController($scope, zones, events, EventsService, $interval) {
 		var _this = this;
 
 		_this.zones = zones;
@@ -21,7 +21,7 @@
 			return Math.round((now/1000 - time)/60) + ' min';
 		}
 
-		$interval(function() {now = Date.now();},3000);
+		$interval(function() {now = Date.now();},15000);
 
 	}
 
