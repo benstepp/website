@@ -14,30 +14,38 @@
 	</section>
 
 
-	
 	<section class="md-whiteframe-z1">
-	<h3>Region</h3>
-	<md-switch ng-model="settings.data.region.US.act" ng-change="settings.toggleRegion('US')">US</md-switch>
-	<md-switch ng-model="settings.data.region.EU.act" ng-change="settings.toggleRegion('EU')">EU</md-switch>
-	</section>
+		<div layout="row">
+			<h3 flex="50">Shards</h3>
+			<md-switch ng-model="settings.data.pvp" class="md-warn" ng-change="settings.togglePvp(this)" flex="50">PvP</md-switch>
+		</div>
+		<div layout-gt-sm="row" layout-sm="column">
+			<div flex-gt-sm="50" flex-sm="100" class="shard-container">
+				<md-switch ng-model="settings.data.region.US.act" ng-change="settings.toggleRegion('US')">US</md-switch>
+				<md-switch ng-model="settings.data.region.US.shard.Seastone" class="md-warn">Seastone</md-switch>
+				<md-switch ng-model="settings.data.region.US.shard.Greybriar">Greybriar</md-switch>
+				<md-switch ng-model="settings.data.region.US.shard.Deepwood">Deepwood</md-switch>
+				<md-switch ng-model="settings.data.region.US.shard.Wolfsbane">Wolfsbane</md-switch>
+				<md-switch ng-model="settings.data.region.US.shard.Faeblight">Faeblight</md-switch>
+				<md-switch ng-model="settings.data.region.US.shard.Laethys">Laethys</md-switch>
+				<md-switch ng-model="settings.data.region.US.shard.Hailol">Hailol</md-switch>
+			</div>
 
-	
+			<md-divider class="shard-divider" show-sm></md-divider>
+
+			<div flex-gt-sm="50" flex-sm="100" class="shard-container">
+				<md-switch ng-model="settings.data.region.EU.act" ng-change="settings.toggleRegion('EU')">EU</md-switch>
+				<md-switch ng-model="settings.data.region.EU.shard.Bloodiron" class="md-warn">Bloodiron</md-switch>
+				<md-switch ng-model="settings.data.region.EU.shard.Gelidra">Gelidra</md-switch>
+				<md-switch ng-model="settings.data.region.EU.shard.Zaviel">Zaviel</md-switch>
+				<md-switch ng-model="settings.data.region.EU.shard.Brutwacht">Brutwacht</md-switch>
+				<md-switch ng-model="settings.data.region.EU.shard.Brisesol">Brisesol</md-switch>
+			</div>
+		</div>
+	</section>
 	<section class="md-whiteframe-z1">
-	<h3>Shards</h3>
-	<md-switch ng-model="settings.data.pvp" class="md-warn" ng-change="settings.togglePvp(this)">PvP</md-switch>
-	<md-divider class="shard-divider"></md-divider>
-	<md-switch ng-model="settings.data.region.EU.shard.Bloodiron" class="md-warn">Bloodiron</md-switch>
-	<md-switch ng-model="settings.data.region.EU.shard.Gelidra">Gelidra</md-switch>
-	<md-switch ng-model="settings.data.region.EU.shard.Zaviel">Zaviel</md-switch>
-	<md-switch ng-model="settings.data.region.EU.shard.Brutwacht">Brutwacht</md-switch>
-	<md-switch ng-model="settings.data.region.EU.shard.Brisesol">Brisesol</md-switch>
-	<md-divider class="shard-divider"></md-divider>
-	<md-switch ng-model="settings.data.region.US.shard.Seastone" class="md-warn">Seastone</md-switch>
-	<md-switch ng-model="settings.data.region.US.shard.Greybriar">Greybriar</md-switch>
-	<md-switch ng-model="settings.data.region.US.shard.Deepwood">Deepwood</md-switch>
-	<md-switch ng-model="settings.data.region.US.shard.Wolfsbane">Wolfsbane</md-switch>
-	<md-switch ng-model="settings.data.region.US.shard.Faeblight">Faeblight</md-switch>
-	<md-switch ng-model="settings.data.region.US.shard.Laethys">Laethys</md-switch>
-	<md-switch ng-model="settings.data.region.US.shard.Hailol">Hailol</md-switch>
+		<div layout="row">
+			<h3>Events</h3>
+		</div>
 	</section>
 </form>
