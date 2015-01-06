@@ -21,7 +21,7 @@
 			<md-switch ng-model="settings.data.pvp" class="md-warn strong" ng-change="settings.togglePvp(this)" flex="50">PvP</md-switch>
 		</div>
 		<div layout-gt-sm="row" layout-sm="column">
-			<div flex-gt-sm="50" flex-sm="100" class="shard-container">
+			<div flex-gt-sm="50" flex-sm>
 				<md-switch ng-model="settings.data.region.US.act" ng-change="settings.toggleRegion('US')" class="strong">US</md-switch>
 				<md-switch ng-model="settings.data.region.US.shard.Seastone" class="md-warn">Seastone</md-switch>
 				<md-switch ng-model="settings.data.region.US.shard.Greybriar">Greybriar</md-switch>
@@ -32,9 +32,9 @@
 				<md-switch ng-model="settings.data.region.US.shard.Hailol">Hailol</md-switch>
 			</div>
 
-			<md-divider class="shard-divider" show-sm></md-divider>
+			<md-divider show-sm></md-divider>
 
-			<div flex-gt-sm="50" flex-sm="100" class="shard-container">
+			<div flex-gt-sm="50" flex-sm>
 				<md-switch ng-model="settings.data.region.EU.act" ng-change="settings.toggleRegion('EU')" class="strong">EU</md-switch>
 				<md-switch ng-model="settings.data.region.EU.shard.Bloodiron" class="md-warn">Bloodiron</md-switch>
 				<md-switch ng-model="settings.data.region.EU.shard.Gelidra">Gelidra</md-switch>
@@ -44,26 +44,32 @@
 			</div>
 		</div>
 	</section>
+
 	<section class="md-whiteframe-z1">
 		<div layout="column">
 			<h3 class="settings-header">Zones</h3>
-			<div layout-gt-sm="row" layout-sm="column">
-				<div layout="column" flex-gt-sm="50" flex-sm="100">
-					<div>
-						<md-switch class="strong">Nightmare Tide</md-switch>
-						<md-switch></md-switch>
-						<md-switch></md-switch>
-						<md-switch></md-switch>
-					</div>
-					<md-divider></md-divider>
-					<div>
-						<md-switch class="strong">Storm Legion</md-switch>
-					</div>
-				</div>
-				<div layout="column" flex-gt-sm="50" flex-sm="100">
-					<md-switch class="strong">Chocolate</md-switch>
+			<div layout="row">
+				<div>
+					<md-switch class="strong" ng-model="settings.data.expansion['Nightmare Tide']" ng-change="settings.toggleExpansion('Nightmare Tide')">Nightmare Tide</md-switch>
+					<md-switch ng-repeat="zone in ::settings.zones.expansion['Nightmare Tide']" ng-model="settings.data.zone[zone._id]">{{ zone.name_en }}</md-switch>
 				</div>
 			</div>
+
+			<md-divider></md-divider>
+
+			<div layout-sm="column" layout-gt-sm="row">
+				<div layout="column" flex-gt-sm="50" flex-sm>
+					<md-switch class="strong" ng-model="settings.data.expansion['Storm Legion']" ng-change="settings.toggleExpansion('Storm Legion')">Storm Legion</md-switch>
+					<md-switch ng-repeat="zone in ::settings.zones.expansion['Storm Legion']" ng-model="settings.data.zone[zone._id]">{{ zone.name_en }}</md-switch>
+				</div>
+				<md-divider show-sm></md-divider>
+				<div layout="column" flex-gt-sm="50" flex-sm>
+					<md-switch class="strong" ng-model="settings.data.expansion['Chocolate']" ng-change="settings.toggleExpansion('Chocolate')">Chocolate</md-switch>
+					<md-switch ng-repeat="zone in ::settings.zones.expansion['Chocolate']" ng-model="settings.data.zone[zone._id]">{{ zone.name_en }}</md-switch>
+				</div>
+
+			</div>
+
 		</div>
 		
 	</section>

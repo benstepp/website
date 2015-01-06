@@ -55,6 +55,20 @@
             //reverse the order of the zones so newest (higher level) content appears first
             parsedZones.order.reverse();
 
+            //setting up easy access for the settings controller
+            parsedZones.expansion = {};
+            angular.forEach(parsedZones.count, function(val,key) {
+                var indexes = parsedZones.count[key];
+                var zonesForExpansion = parsedZones.order.slice(indexes[0],indexes[1]+1);
+                
+                angular.forEach(zonesForExpansion, function(val,key) {
+                    zonesForExpansion[key] = parsedZones.ref[val];
+                    zonesForExpansion[key]._id = val;
+                });
+
+                parsedZones.expansion[key] = zonesForExpansion;
+            });
+
             return parsedZones;
 
         }

@@ -40,7 +40,41 @@
                         }
                     }
                 },
-                pvp:true
+                pvp:true,
+                //zone _ids because I'm too lazy to set a promise for when zones come in then initialize service
+                zone:{
+                    12:true,
+                    19:true,
+                    1481781477:true,
+                    27:true,
+                    26580443:true,
+                    20:true,
+                    22:true,
+                    24:true,
+                    336995470:true,
+                    6:true,
+                    26:true,
+                    1992854106:true,
+                    479431687:true,
+                    1770829751:true,
+                    1494372221:true,
+                    1967477725:true,
+                    1213399942:true,
+                    1446819710:true,
+                    1300766935:true,
+                    956914599:true,
+                    798793247:true,
+                    790513416:true,
+                    282584906:true,
+                    301:true,
+                    302:true,
+                    303:true
+                },
+                expansion: {
+                    'Nightmare Tide':true,
+                    'Storm Legion':true,
+                    'Chocolate':true
+                }
             };
         var observerCallbacks = [];
         var supported;

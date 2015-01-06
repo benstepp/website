@@ -12,6 +12,7 @@
         _this.zones = zones;
         _this.toggleRegion = toggleRegion;
         _this.togglePvp = togglePvp;
+        _this.toggleExpansion = toggleExpansion;
 
         init();
 
@@ -41,10 +42,12 @@
         	});
         }
 
-        function getShards() {
-            console.log(zones);
+        function toggleExpansion(exp) {
+            angular.forEach(_this.zones.expansion[exp], function(val,key) {
+                _this.data.zone[val._id] = _this.data.expansion[exp];
+            });
         }
-        getShards();
+
         function init() {
         	//get from data service
         	_this.data = AppDataService.retrieveData();

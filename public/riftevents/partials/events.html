@@ -3,7 +3,7 @@
 	<md-item ng-repeat="event in riftevents.events.US.events" ng-class="{tagged:event.tagged}" ng-show="riftevents.showEvent(event)">
 		<md-item-content>
 			<div class="md-tile-left">
-				<md-checkbox ng-model="event.tagged" aria-label="Tagged" ng-click="riftevents.initEventCollapse(event)" class="no-label md-primary hue-2">
+				<md-checkbox ng-model="event.tagged" aria-label="Tagged" ng-click="riftevents.initEventCollapse(event)" class="no-label md-primary md-hue-3">
 				</md-checkbox>
 			</div>
 			<div class="md-tile-content">
