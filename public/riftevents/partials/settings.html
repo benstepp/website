@@ -1,5 +1,5 @@
 <form flex>
-	<section>
+	<section class="md-whiteframe-z1">
 	<h3>Language</h3>
 
 	<md-radio-group ng-model="settings.data.language">
@@ -9,27 +9,30 @@
 	</md-radio-group>
 	</section>
 
-	<section>
+	<section class="md-whiteframe-z1">
 	<h3>Desktop Notifications</h3>
 	</section>
 
 
 	
-	<section>
+	<section class="md-whiteframe-z1">
 	<h3>Region</h3>
 	<md-switch ng-model="settings.data.region.US.act" ng-change="settings.toggleRegion('US')">US</md-switch>
 	<md-switch ng-model="settings.data.region.EU.act" ng-change="settings.toggleRegion('EU')">EU</md-switch>
 	</section>
 
 	
-	<section>
+	<section class="md-whiteframe-z1">
 	<h3>Shards</h3>
-	<md-switch ng-model="settings.data.region.EU.shard.Bloodiron">Bloodiron</md-switch>
+	<md-switch ng-model="settings.data.pvp" class="md-warn" ng-change="settings.togglePvp(this)">PvP</md-switch>
+	<md-divider class="shard-divider"></md-divider>
+	<md-switch ng-model="settings.data.region.EU.shard.Bloodiron" class="md-warn">Bloodiron</md-switch>
 	<md-switch ng-model="settings.data.region.EU.shard.Gelidra">Gelidra</md-switch>
 	<md-switch ng-model="settings.data.region.EU.shard.Zaviel">Zaviel</md-switch>
 	<md-switch ng-model="settings.data.region.EU.shard.Brutwacht">Brutwacht</md-switch>
 	<md-switch ng-model="settings.data.region.EU.shard.Brisesol">Brisesol</md-switch>
-	<md-switch ng-model="settings.data.region.US.shard.Seastone">Seastone</md-switch>
+	<md-divider class="shard-divider"></md-divider>
+	<md-switch ng-model="settings.data.region.US.shard.Seastone" class="md-warn">Seastone</md-switch>
 	<md-switch ng-model="settings.data.region.US.shard.Greybriar">Greybriar</md-switch>
 	<md-switch ng-model="settings.data.region.US.shard.Deepwood">Deepwood</md-switch>
 	<md-switch ng-model="settings.data.region.US.shard.Wolfsbane">Wolfsbane</md-switch>
