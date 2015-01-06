@@ -2,10 +2,10 @@
     'use strict';
 
     angular
-        .module('SettingsController',[])
-        .controller('SettingsController', ['$scope',SettingsController]);
+        .module('SettingsController',['AppDataService'])
+        .controller('SettingsController', ['$scope','AppDataService',SettingsController]);
 
-    function SettingsController($scope) {
+    function SettingsController($scope, AppDataService) {
         var _this = this;
 
         _this.data = {};
@@ -13,8 +13,6 @@
         _this.togglePvp = togglePvp;
 
         init();
-
-        
 
         function toggleRegion(reg) {
         	var pvpShards = ['Seastone','Bloodiron'];
@@ -32,9 +30,10 @@
         }
 
         function togglePvp() {
-        	//for both regions
         	angular.forEach(_this.data.region, function(v,k) {
+        		//if the region is activated
         		if(_this.data.region[k].act) {
+        			//set the pvp shard based on new value if it exists
         			if (typeof v.shard.Seastone !== 'undefined') { v.shard.Seastone = _this.data.pvp;}
         			if (typeof v.shard.Bloodiron !== 'undefined') {v.shard.Bloodiron = _this.data.pvp;}
         		}
@@ -43,38 +42,16 @@
 
         function init() {
         	//get from data service
+        	_this.data = AppDataService.retrieveData();
 
-
-        	//or init with defaults
-        	var defaults = {
-        		language:'English',
-        		region:{
-        			US:{
-        				act:true,
-        				shard: {
-        					Seastone:true,
-        					Greybriar:true,
-        					Deepwood:true,
-        					Wolfsbane:true,
-        					Faeblight:true,
-        					Laethys:true,
-        					Hailol:true
-        				}
-        			},
-        			EU:{
-        				act:true,
-        				shard: {
-        					Bloodiron:true,
-        					Gelidra:true,
-        					Zaviel:true,
-        					Brutwacht:true,
-        					Brisesol:true
-        				}
-        			}
-        		},
-        		pvp:true
-        	};
-        	_this.data = defaults;
+            //add watcher to data to save on user input
+            $scope.$watch(function() {
+                return _this.data;
+            }, function(newV,oldV) {
+                angular.forEach(_this.data, function(v,k) {
+                    AppDataService.saveData(k,v);
+                });
+            },true);
         }
 
     }

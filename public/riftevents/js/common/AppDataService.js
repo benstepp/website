@@ -15,8 +15,33 @@
 
         //private variables
         var riftEventsData = {
-        	firstVisit:true,
-        };
+                language:'English',
+                region:{
+                    US:{
+                        act:true,
+                        shard: {
+                            Seastone:true,
+                            Greybriar:true,
+                            Deepwood:true,
+                            Wolfsbane:true,
+                            Faeblight:true,
+                            Laethys:true,
+                            Hailol:true
+                        }
+                    },
+                    EU:{
+                        act:true,
+                        shard: {
+                            Bloodiron:true,
+                            Gelidra:true,
+                            Zaviel:true,
+                            Brutwacht:true,
+                            Brisesol:true
+                        }
+                    }
+                },
+                pvp:true
+            };
         var observerCallbacks = [];
         var supported;
 
@@ -33,7 +58,8 @@
         }
 
         function retrieveData(key) {
-        	return riftEventsData[key];
+            if (key){ return riftEventsData[key]; }
+        	else { return riftEventsData;}
         }
 
         function registerObserver(callback) {
@@ -63,7 +89,7 @@
 				}
 			}
 
-			//pull riftloot data or just use the default provided here
+			//pull riftEvents data or just use the default provided here
 			if (supported) {
 				var stored = angular.fromJson(localStorage.getItem("riftEventsData")) || {};
 

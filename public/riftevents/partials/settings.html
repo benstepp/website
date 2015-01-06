@@ -21,7 +21,7 @@
 		</div>
 		<div layout-gt-sm="row" layout-sm="column">
 			<div flex-gt-sm="50" flex-sm="100" class="shard-container">
-				<md-switch ng-model="settings.data.region.US.act" ng-change="settings.toggleRegion('US')">US</md-switch>
+				<md-switch ng-model="settings.data.region.US.act" ng-change="settings.toggleRegion('US')" class="strong">US</md-switch>
 				<md-switch ng-model="settings.data.region.US.shard.Seastone" class="md-warn">Seastone</md-switch>
 				<md-switch ng-model="settings.data.region.US.shard.Greybriar">Greybriar</md-switch>
 				<md-switch ng-model="settings.data.region.US.shard.Deepwood">Deepwood</md-switch>
@@ -34,7 +34,7 @@
 			<md-divider class="shard-divider" show-sm></md-divider>
 
 			<div flex-gt-sm="50" flex-sm="100" class="shard-container">
-				<md-switch ng-model="settings.data.region.EU.act" ng-change="settings.toggleRegion('EU')">EU</md-switch>
+				<md-switch ng-model="settings.data.region.EU.act" ng-change="settings.toggleRegion('EU')" class="strong">EU</md-switch>
 				<md-switch ng-model="settings.data.region.EU.shard.Bloodiron" class="md-warn">Bloodiron</md-switch>
 				<md-switch ng-model="settings.data.region.EU.shard.Gelidra">Gelidra</md-switch>
 				<md-switch ng-model="settings.data.region.EU.shard.Zaviel">Zaviel</md-switch>
@@ -47,5 +47,7 @@
 		<div layout="row">
 			<h3>Events</h3>
 		</div>
+		<div layout="row"></div>
+		
 	</section>
 </form>
