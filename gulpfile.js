@@ -100,125 +100,9 @@ var config = {
 };
 
 
-//path of source files
-var paths = {
-	libs: ['public/libs/**/*']
-};
 
 var date = Date.now();
-/*
-var Tasks = {
 
-	//PARTIALS
-	partials: function() {
-		return lazypipe()
-		.pipe(htmlmin, {
-			collapseWhitespace: true,
-			removeComments: true });
-		//.pipe(html2js)
-		//.pipe(header, '(function() {')
-		//.pipe(footer, '})();');
-	},
-
-	//HTML
-	html: function() {
-		return lazypipe()
-			.pipe(htmlreplace, {
-				'css':'style-' +date+'.min.css',
-				'js':'app-'+date+'.min.js',
-				'vendor':'vendor-'+date+'.min.js'
-			})
-			.pipe(htmlmin, {
-				collapseWhitespace: true,
-				removeComments: true });
-		},
-
-	//CSS
-	css: function(uncssHtml) {
-		return lazypipe()
-			.pipe(sass)
-			.pipe(concat,'style.css')
-			//.pipe(uncss,{html:uncssHtml})
-			.pipe(minifyCss)
-			.pipe(rename, function(path){
-				path.basename += '-' + date + '.min';
-			});
-
-	},
-
-	//IMG
-	img: function() {
-		return lazypipe()
-				.pipe(imagemin);
-	},
-
-	//JS
-	js: function() {
-		return lazypipe()
-		.pipe(jshint)
-		.pipe(concat, 'app.js')
-		.pipe(uglify, {magnle:true})
-		.pipe(rename, function(path){
-			path.basename += '-' + date +'.min';
-		});
-	},
-
-	//LIBS
-	libs: function() {
-		return lazypipe()
-			.pipe(rename, function(path) {
-				path.dirname = './';
-			});
-	}
-
-};
-
-
-// @srcfiles is a string or array of files
-// @base is the base directory
-// @pipe defines the actions to chain for this pipe
-// @outdir defines the output directory
-// @uncssk false or the key of project from config json
-function getBuildPipe(src, base, pipe, outdir, uncssk) {
-
-	return gulp.src(src, {base:base})
-		.pipe(pipe(uncssk)())
-		.pipe(gulp.dest(outdir));
-
-}
-
-//@task is [html,js,partials,css]
-function getBuildStreams(task) {
-	//array of streams to merge and return
-	var streams = [];
-
-	//for each project in config
-	for (var key in config) {
-
-		var outdir = config[key].outdir;
-		//the outdir is different when doing angular templates
-		if (task === 'partials') {
-			outdir = config[key].partialsOutdir;
-		}
-
-		var uncss = false;
-		//if task is css set key to uncss
-		if (task === 'css') {
-			uncss = key;
-		}
-
-		//get the stream and push into array
-		var stream = getBuildPipe(config[key][task], config[key].base, Tasks[task], outdir, uncss);
-		streams.push(stream);
-
-	}
-
-	//return the merged streams for this task
-	return merge(streams);
-
-}
-
-*/
 gulp.task('clean', function () {  
 	return gulp.src('build/*', {read: false})
 		.pipe(rimraf());
@@ -230,4 +114,12 @@ gulp.task('riftevents',function() {
 
 gulp.task('riftloot',function() {
 	require('./public/riftloot/gulpfile.js')(date);
+});
+
+gulp.task('killingfloor', function() {
+	require('./public/killingfloor/gulpfile.js')(date);
+});
+
+gulp.task('index', function() {
+	require('./public/gulpfile.js')(date);
 });

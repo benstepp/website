@@ -10,7 +10,7 @@ var express = require('express'),
 
 //Execute app
 var app = express();
-app.use(express.static(__dirname + '/build'));
+app.use(express.static(__dirname + '/public'));
 app.use(bodyParser.json());
 app.use(morgan());
 var http = require('http').Server(app);
