@@ -50,8 +50,6 @@
         }
 
         function notify(event,locale,zone) {
-            console.log(event.toShow);
-            console.log(_this.supported);
             if (event.toShow && _this.supported) {
                 var name = event['name_'+locale];
                 var text = zone + ' on ' + event.shard;

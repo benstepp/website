@@ -132,7 +132,6 @@
                     showEvent(val);
                     if (data.notify) {
                         var zonetoPass = zones.ref[val.zone]['name_'+data.locale];
-                        console.log(zonetoPass);
                         NotificationService.notify(val,data.locale,zonetoPass);
                     }
                 });
