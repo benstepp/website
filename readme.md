@@ -45,4 +45,4 @@ $ gulp riftloot
 ```bash
 $ node server
 ```
-You can now visit the site on port 3000. I'm using nginx and a proxy-pass with some proxy caching to serve the website.
+You can now visit the site on port 3000. I'm using nginx to server the /build/ folder and a proxy-pass with some proxy caching to serve the api routes on the nodejs server.
