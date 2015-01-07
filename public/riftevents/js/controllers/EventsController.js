@@ -14,6 +14,7 @@
 		_this.getDisplayedTime = getDisplayedTime;
 		_this.showEvent = showEvent;
 		_this.noMore = noMore;
+		_this.tag = tag;
 
 		init();
 
@@ -55,6 +56,11 @@
 			});
 			//all events are not visible so show the no more
 			return more;
+		}
+
+		function tag(ev){
+			var tagged = (typeof ev.tagged === 'undefined') ? true : !ev.tagged;
+			EventsService.tag(ev.unid,tagged);
 		}
 
 		function init() {

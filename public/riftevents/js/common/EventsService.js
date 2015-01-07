@@ -12,12 +12,14 @@
         _this.getZones = getZones;
         _this.getEvents = getEvents;
         _this.registerObserver = registerObserver;
+        _this.tag = tag;
 
         //private variables
         var zoneEventsOld;
         var zoneEvents = {};
         var zones = {};
         var observerCallbacks = [];
+        var sessionTags = {};
 
         init();
 
@@ -107,6 +109,10 @@
                         ev.order = zones.order.indexOf(ev.zone.toString());
                         //unique identifier for each event 
                         ev.unid = ev.shard + ev.zone + ev.started;
+                        //if previously tagged by controller
+                        if (sessionTags[ev.unid]) {
+                            ev.tagged = sessionTags[ev.unid];
+                        }
 
                         combinedArray.push(ev);
 
@@ -157,6 +163,10 @@
             });
 
             return data;
+        }
+
+        function tag(id,val) {
+            sessionTags[id] = val;
         }
 
         function registerObserver(callback) {
