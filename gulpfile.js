@@ -122,7 +122,7 @@ var paths = {
 };
 
 var date = Date.now();
-
+/*
 var Tasks = {
 
 	//PARTIALS
@@ -234,14 +234,18 @@ function getBuildStreams(task) {
 
 }
 
-
+*/
 gulp.task('clean', function () {  
 	return gulp.src('build/*', {read: false})
 		.pipe(rimraf());
 });
 
-//something something don't repeat yourself going on up in here
+gulp.task('riftevents',['clean'],function() {
+	require('./public/riftevents/gulpfile.js')(date);
+});
 
+//something something don't repeat yourself going on up in here
+/*
 gulp.task('img', ['clean'], function() {
 	return getBuildStreams('img');
 });
@@ -279,7 +283,7 @@ gulp.task('default', function() {
 
 //dev shit ill clean up later
 gulp.task('dev2', function() {
-	gulp.watch('./public/riftevents/**/*.scss', function() {
+	gulp.watch('./public/riftevents/**\/*.scss', function() {
 		gulp.start('scss');
 	});
 });
@@ -289,4 +293,9 @@ gulp.task('scss', function() {
 		.pipe(sass())
 		.pipe(minifyCss())
 		.pipe(gulp.dest('public/riftevents'));
+});*/
+
+gulp.task('default', function() {
+	gulp.start('clean');
+	gulp.start('riftevents');
 });
