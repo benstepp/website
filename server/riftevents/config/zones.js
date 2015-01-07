@@ -1,5 +1,8 @@
-{
-	"zones": [
+//a reference to get the zone name in each language ordered by level in game
+//wrapped in json object for jsonp vulnurability with Arrays
+
+var zones = {
+	zones:[
 		{
 			"_id": "12",
 			"name_en":"Silverwood",
@@ -137,6 +140,25 @@
 			"name_en":"The Dendrome",
 			"name_fr":"Le Rhizome",
 			"name_de":"Das Dendrom"
+		},
+		{
+			"_id":"301",
+			"name_en":"Goboro Reef",
+			"name_fr":"Récif de Goboro",
+			"name_de":"Goboro-Riff"
+		},
+		{
+			"_id":"302",
+			"name_en":"Draumheim",
+			"name_fr":"Draumheim",
+			"name_de":"Draumheim"
+		},
+		{
+			"_id":"303",
+			"name_en":"Tarken Glacier",
+			"name_fr":"Glacier de Tarken",
+			"name_de":"Tarken-Gletscher"
 		}
-	]
-}
+	]};
+
+module.exports = zones;

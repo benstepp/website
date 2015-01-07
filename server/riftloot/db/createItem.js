@@ -14,10 +14,10 @@ var createItem = function(data) {
 	this.onEquip = data.OnEquip;
 	this.drop = {};
 
-	if(defined(data.SoulBoundTrigger)) {
-		this.bind = data.SoulBoundTrigger;
-	}
-
+	//some items in xml do not have a BoA flag, so we will default to it if the BoE/BoP flag isn't there
+	//the flag that _should_ be there is data.AccountBound which is an xml node with no text.
+	this.bind = data.SoulboundTrigger || 'Bound to Account';
+	
 	if(defined(data.SpellDamage)) {
 		var currentSpellDamage = parseInt(this.onEquip.SpellPower) || 0;
 		this.onEquip.SpellPower = parseInt(data.SpellDamage) + currentSpellDamage;
@@ -193,6 +193,10 @@ function renameKeys(itemm) {
 		if(typeof itemKeys[itemm.slot] !== 'undefined') {
 			itemm.slot = itemKeys[itemm.slot];
 		}
+	}
+
+	if(defined(itemm.bind)) {
+		itemm.bind = itemKeys[itemm.bind] || itemm.bind;
 	}
 
 	//adds the number of items in an itemset to the itemset key

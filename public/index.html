@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en" data-ng-app="app" data-ng-controller="HeaderController as header">
+<html lang="en">
 <head>
 	<meta charset="UTF-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -9,58 +9,37 @@
 
 	
 	<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
-	<!-- build:css -->
-	<link rel="stylesheet" href="/scss/style.css">
-	<!-- endbuild -->
-	<link href='//fonts.googleapis.com/css?family=Roboto:400,300' rel='stylesheet' type='text/css'>
 	
-
-
-
 </head>
 <body>
 
-	<nav class="navbar navbar-default navbar-fixed-top" data-ng-class="header.url" role="navigation">
-		<div class="container">
-			<div class="navbar-header">
-				<button type="button" 
-					class="navbar-toggle" 
-					data-ng-init="navCollapsed = true" 
-					data-ng-click="navCollapsed = !navCollapsed" >
-				<span class="sr-only">Toggle navigation</span>
-				<span class="icon-bar"></span>
-				<span class="icon-bar"></span>
-				<span class="icon-bar"></span>
-				</button>
-				<a class="navbar-brand hidden-xs" href="#">website</a>
-				<a class = "navbar-brand nav-small-brand" 
-					data-ng-class="header.url"
-					data-ng-href="#/{{ header.url }}" 
-					data-ng-hide="header.title === 'website'"></a>
-			</div>
-			<div class="navbar-collapse collapse" 
-				data-ng-class="!navCollapsed && 'in'" 
-				data-ng-click="navCollapsed=true"
-				data-ui-view="navbar-right" >
 
-			</div><!--/.nav-collapse -->
-		</div>
-	</nav>
+<nav class="navbar navbar-default navbar-fixed-top">
+  <div class="container">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="#">FIGHTINGDRAGONSWITHTAYLORSWIFT</a>
+    </div>
+  </div>
+</nav>
 
-	<div class="hero-unit" data-ng-class="header.url">
-	<div class="container" id="mainContent" data-ui-view="main" style="margin-top:60px;">
+<div class="container" style="margin-top:60px">
 
-	<a href="/killingfloor">KF-Progress</a><br>
-	<a href="/riftloot">Rift: Nightmare Tide Loot Table</a>
+  <div>
+    <a href="/killingfloor">KF-Progress</a><br/>
+    <a href="/riftloot">Rift: Nightmare Tide Loot Table</a><br/>
+    <a href="/riftevents">Rift: Zone Event Tracker</a><br/>
+  </div>
 
-	</div>
-	</div>
+</div>
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
 
+  ga('create', 'UA-56469501-1', 'auto');
+  ga('send', 'pageview');
 
-	<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.3.2/angular.min.js"></script>
-	<!-- build:js -->
-	<script src="../libs/angular-bootstrap/ui-bootstrap.min.js"></script>
-	<!-- endbuild -->
-
+</script>
 </body>
 </html>

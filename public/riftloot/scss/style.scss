@@ -4,7 +4,7 @@
 // Licensed under MIT Open Source
 
 // Make sure the charset is set appropriately
-  @import "settings";
+  @import "_settings.scss";
 
   @import "../../libs/foundation/scss/normalize.scss";
   @import "../../libs/foundation/scss/foundation/components/global";

@@ -23,8 +23,8 @@ db.once('open', function callback () {
 
 function seedZones() {
 	var _this = this;
-	var zones = require('../dev/_zones.json').zones;
-	var Zone = require('../server/riftevents/models/zone.js');
+	var zones = require('../config/zones.js').zones;
+	var Zone = require('../models/zone.js');
 	var zoneLength = zones.length;
 	var zoneCounter = 1;
 	for (var i =0; i < zoneLength; i++) {
@@ -41,8 +41,8 @@ util.inherits(seedZones, EventEmitter);
 
 function seedEvents() {
 	var _this = this;
-	var events = require('../dev/_events.json').events;
-	var Event = require('../server/riftevents/models/event.js');
+	var events = require('../config/events.json').events;
+	var Event = require('../models/event.js');
 	var eventLength = events.length;
 	var eventCounter = 1;
 	for (var j=0; j < eventLength;j++) {

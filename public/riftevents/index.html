@@ -1,142 +1,128 @@
-<!doctype html>
-<html lang="en" data-ng-app="app">
+<html ng-app="app">
 <head>
-	<meta charset="UTF-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="A zone event tracker for RIFT by Trion Worlds. ">
-	<title>Rift Zone Event Tracker</title>
+<title>Rift Zone Event Tracker</title>
+<meta name="description" content="A zone event tracker for RIFT by Trion Worlds. ">
+<meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no" />
 
-	<!-- build:css -->
-	<link rel="stylesheet" href="../libs/foundation-icon-fonts/foundation-icons.css">
-	<link rel="stylesheet" href="./scss/style.css">
-	<!-- endbuild -->
+<link href='//fonts.googleapis.com/css?family=Roboto:400,300' rel='stylesheet' type='text/css'>
 
-	<!-- external resources-->
-	<link href='//fonts.googleapis.com/css?family=Roboto:400,300' rel='stylesheet' type='text/css'>
-	<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.20/angular.js"></script>
-
+<!--build:css-->
+<link rel="stylesheet" href="../libs/angular-material/angular-material.css">
+<link rel="stylesheet" href="./scss/style.css">
+<!-- endbuild -->
 </head>
-<body data-ng-controller="headerController as header">
-		<div class="off-canvas-wrap">
-			<div class="inner-wrap">
-				<!--Desktop Nav-->
-				<div class="kf-hr show-for-large-up"></div>
-				<nav class="top-bar show-for-large-up">
-					<div class="row">
-					<div class="small-12 columns">
-					<ul class="title-area">
-						<li class="name">
-							<h1><a class="navbar-brand hidden-xs" href="/">website</a></h1>
-						</li>
-					</ul>
-					<section class="top-bar-section">
-						<ul class="left">
-							<li>
-								<a href="/riftevents/#">Rift Zone Event Tracker</a>
-							</li>
-						</ul>
-						<ul class="right" data-ng-show="header.state.name !== '/'">
-							<li class="has-dropdown">
-								<a data-dropdown-toggle="#top-bar-region">
-									Region: {{header.data.region}}
-								</a>
-								<ul class="f-dropdown" id="top-bar-region">
-									<li>
-									<a data-ng-href="#/active/US/{{header.data.locale}}">US</a>
-									</li>
-									<li>
-									<a data-ng-href="#/active/EU/{{header.data.locale}}">EU</a>
-									</li>
-								</ul>
-							</li>
-							<li class="has-dropdown">
-								<a data-dropdown-toggle="#top-bar-language">
-									Language: {{header.data.language}}
-								</a>
-								<ul class="f-dropdown" id="top-bar-language">
-									<li>
-									<a data-ng-href="#/active/{{header.data.region}}/en">English</a>
-									</li>
-									<li>
-									<a data-ng-href="#/active/{{header.data.region}}/fr">French</a>
-									</li>
-									<li>
-									<a data-ng-href="#/active/{{header.data.region}}/de">German</a>
-									</li>
-								</ul>
-							</li>
-						</ul>
-					</section>
-					</div></div>
-				</nav>
-				<!--Mobile Nav-->
-				<nav class="tab-bar hide-for-large-up">
-					<section class="middle tab-bar-section">
-						<h1><a class="title" href="/riftevents/#">Rift Zone Event Tracker</a></h1>
-					</section>
-					<section class="right-small">
-						<a class="right-off-canvas-toggle menu-icon" href=""><span></span></a>
-					</section>
-				</nav>
-				<aside class="right-off-canvas-menu">
-					<ul class="off-canvas-list">
-						<li><label>website</label></li>
-						<li><label>Rift Zone Event Tracker</label></li>
-						<li class="has-dropdown">
-							<a data-dropdown-toggle="#tab-bar-region">Region: {{header.data.region}}</a>
-							<ul class="f-dropdown" id="tab-bar-region">
-								<li><a data-ng-click="">US</a></li>
-								<li><a data-ng-click="">EU</a></li>
-							</ul>
-						</li>
-						<li><a data-ng-href="#/comparemaps/{{header.params.players}}">Compare Maps</a></li>
-					</ul>
-				</aside>
-				<!--Content-->
-				<section class="main-section">
-					<div class="main-bg">
-					</div>
 
-					<div class="main-view" data-ui-view="main">
+<body layout="row" flex ng-controller="sideNavController as sideNav">
 
-					</div>
-					
-					<footer>
-						<div class="row">
-							<div class="small-6 columns">
-								<span class="text-muted"><a class="text-muted" href="http://www.riftgame.com/">Rift</a> © <a class="text-muted" href="http://www.trionworlds.com/">Trion Worlds, Inc.</a></span>
-							</div>
-							<div class="small-6 columns footer-right">
-								<a href="//twitter.com/benstepp">
-									<i class="fi-social-twitter"></i>
-								</a>
-								<a href="//github.com/benstepp">
-									<i class="fi-social-github"></i>
-								</a>	
-							</div>
-						</div>
-					</footer>
-				</section>
+	<md-content flex layout="column">
 
-				<a class="exit-off-canvas"></a>
-
+		<!-- Top Bar -->
+		<md-toolbar layout="row" class="md-default-theme">
+			<div layout="row" flex>
+				<md-button class="menu-icon" hide-gt-lg ng-click="sideNav.openLeftMenu()" aria-label="Toggle Navigation">
+					<object type="image/svg+xml" data="img/sprites.svg?menu" width="24" height="24"></object>
+				</md-button>
+				<h2 class="md-toolbar-tools">
+				<a href="#/">Rift Zone Event Tracker</a> [Experimental]
+				</h2>
 			</div>
-		</div>
-		
-		<!-- build:js -->
-		<script src="../libs/angular-ui-router/release/angular-ui-router.js"></script>
-		<script src="../libs/angular-foundation/mm-foundation.js"></script>
-		<script src="../libs/socket.io-client/socket.io.js"></script>
-		<script src="../libs/angular-socket-io/socket.min.js"></script>
-		<script src="./js/controllers/EventsCtrl.js"></script>
-		<script src="./js/services/EventsService.js"></script>
-		<script src="./js/services/SocketFactory.js"></script>
-		<script src="./js/controllers/HeaderCtrl.js"></script>
-		<script src="./js/directives/bsContentResize.js"></script>
-		<script src="./js/routes.js"></script>
-		<script src="./js/app.js"></script>
-		<!-- endbuild -->
+		</md-toolbar>
+
+		<md-content layout="row" flex>
+
+		<!-- Sidenav -->
+		<md-sidenav md-component-id="left" layout="column" md-is-locked-open="$media('gt-lg')" class="md-sidenav-left md-whiteframe-z2">
+			<md-content flex>
+				<md-list>
+					<md-item>
+						<md-item-content>
+								<md-button flex layout="row" layout-align="start center" class="side-nav-link" href="#/" ng-click="sideNav.openLeftMenu()">
+									<div>
+									<object type="image/svg+xml" data="img/sprites.svg?event" width="24" height="24"></object>
+									</div>
+									<div>Events</div>
+								</md-button>
+						</md-item-content>
+						<md-divider></md-divider>
+					</md-item>
+					<md-item>
+						<md-item-content>
+								<md-button flex layout="row" layout-align="start center" class="side-nav-link" href="#/settings" ng-click="sideNav.openLeftMenu()">
+									<div>
+									<object type="image/svg+xml" data="img/sprites.svg?settings" width="24" height="24"></object>
+									</div>
+									<div>Settings</div>
+								</md-button>
+						</md-item-content>
+						<md-divider></md-divider>
+					</md-item>
+				</md-list>
+				<footer layout="column">
+					<md-divider></md-divider>
+					<md-button class="footer-link" href="/">
+						FIGHTINGDRAGONSWITHTAYLORSWIFT
+					</md-button>
+					<div layout="row" layout-align="center center" flex class="social-container">
+						<div class="social-link">
+							<object type="image/svg+xml" data="img/sprites.svg?github" width="32" height="32"></object>
+						</div>
+						<div class="social-link">
+							<object type="image/svg+xml" data="img/sprites.svg?twitter" width="32" height="32"></object>
+						</div>
+						<div class="social-link">
+							<object type="image/svg+xml" data="img/sprites.svg?steam" width="32" height="32"></object>
+						</div>
+					</div>
+					<div>
+						<md-button href="//www.riftgame.com/" class="footer-link">Rift</md-button> © <md-button href="//www.trionworlds.com/" class="footer-link">Trion Worlds, Inc.</md-button>
+					</div>
+				</footer>
+			</md-content>
+		</md-sidenav>
+
+		<!-- Main Content Area -->
+		<md-content layout="column" flex ui-view="main">
+
+		</md-content>
+
+		</md-content>
+	</md-content>
+
+
+
+<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.3.8/angular.min.js"></script>
+
+
+<!-- build:js-->
+<script src="../libs/angular-aria/angular-aria.js"></script>
+<script src="../libs/angular-animate/angular-animate.js"></script>
+<script src="../libs/angular-material/angular-material.js"></script>
+<script src="../libs/hammerjs/hammer.js"></script>
+<script src="../libs/angular-ui-router/release/angular-ui-router.js"></script>
+
+<script src="./js/common/sideNavController.js"></script>
+<script src="./js/common/mdTheme.js"></script>
+<script src="./js/common/EventsService.js"></script>
+<script src="./js/common/AppDataService.js"></script>
+<script src="./js/common/NotificationService.js"></script>
+
+<script src="./js/controllers/EventsController.js"></script>
+<script src="./js/controllers/SettingsController.js"></script>
+
+<script src="./js/routes.js"></script>
+<script src="./js/app.js"></script>
+<!-- endbuild -->
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-56469501-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
 
 </body>
 </html>

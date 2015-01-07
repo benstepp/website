@@ -1,0 +1,91 @@
+<form flex>
+	<section class="md-whiteframe-z1">
+
+		<h3 class="settings-header">Language</h3>
+		<md-radio-group ng-model="settings.data.language" ng-change="settings.toggleLanguage()">
+			<md-radio-button value="English" aria-label="English">English</md-radio-button>
+			<md-radio-button value="French" aria-label="French">French</md-radio-button>
+			<md-radio-button value="German" aria-label="German">German</md-radio-button>
+		</md-radio-group>
+
+	</section>
+
+	<section class="md-whiteframe-z1">
+
+		<h3 class="settings-header">Desktop Notifications</h3>
+
+		<!--Notification support-->
+		<div ng-if="!settings.notifications" class="settings-disabled">
+		<h4>Your web browser does not support Web Notifications</h4>
+			<p>Web Notification technology is currently experimental and only available in a few browsers. For more information about Web Notifications and its availability see: <a href="//developer.mozilla.org/en-US/docs/Web/API/notification">Mozilla Developer Network</a>.</p>
+		</div>
+
+		<div layout="column">
+			<md-switch ng-model="settings.data.notify" ng-change="settings.requestPermission()">Desktop Notifications</md-switch>
+			<div ng-if="settings.data.notify">
+			<md-button ng-click="settings.exampleNotification()" class=" md-primary md-raised md-hue-3">Example Notification</md-button>
+			</div>
+		</div>
+
+	</section>
+
+
+	<section class="md-whiteframe-z1">
+		<div layout="row">
+			<h3 flex="50" class="settings-header">Shards</h3>
+			<md-switch ng-model="settings.data.pvp" class="md-warn strong" ng-change="settings.togglePvp(this)" flex="50">PvP</md-switch>
+		</div>
+		<div layout-gt-sm="row" layout-sm="column">
+			<div flex-gt-sm="50" flex-sm>
+				<md-switch ng-model="settings.data.region.US.act" ng-change="settings.toggleRegion('US')" class="strong">US</md-switch>
+				<md-switch ng-model="settings.data.region.US.shard.Seastone" class="md-warn">Seastone</md-switch>
+				<md-switch ng-model="settings.data.region.US.shard.Greybriar">Greybriar</md-switch>
+				<md-switch ng-model="settings.data.region.US.shard.Deepwood">Deepwood</md-switch>
+				<md-switch ng-model="settings.data.region.US.shard.Wolfsbane">Wolfsbane</md-switch>
+				<md-switch ng-model="settings.data.region.US.shard.Faeblight">Faeblight</md-switch>
+				<md-switch ng-model="settings.data.region.US.shard.Laethys">Laethys</md-switch>
+				<md-switch ng-model="settings.data.region.US.shard.Hailol">Hailol</md-switch>
+			</div>
+
+			<md-divider show-sm></md-divider>
+
+			<div flex-gt-sm="50" flex-sm>
+				<md-switch ng-model="settings.data.region.EU.act" ng-change="settings.toggleRegion('EU')" class="strong">EU</md-switch>
+				<md-switch ng-model="settings.data.region.EU.shard.Bloodiron" class="md-warn">Bloodiron</md-switch>
+				<md-switch ng-model="settings.data.region.EU.shard.Gelidra">Gelidra</md-switch>
+				<md-switch ng-model="settings.data.region.EU.shard.Zaviel">Zaviel</md-switch>
+				<md-switch ng-model="settings.data.region.EU.shard.Brutwacht">Brutwacht</md-switch>
+				<md-switch ng-model="settings.data.region.EU.shard.Brisesol">Brisesol</md-switch>
+			</div>
+		</div>
+	</section>
+
+	<section class="md-whiteframe-z1">
+		<div layout="column">
+			<h3 class="settings-header">Zones</h3>
+			<div layout="row">
+				<div>
+					<md-switch class="strong" ng-model="settings.data.expansion['Nightmare Tide']" ng-change="settings.toggleExpansion('Nightmare Tide')">Nightmare Tide</md-switch>
+					<md-switch ng-repeat="zone in ::settings.zones.expansion['Nightmare Tide']" ng-model="settings.data.zone[zone._id]" aria-label="{{zone.name_en}}">{{ zone.name_en }}</md-switch>
+				</div>
+			</div>
+
+			<md-divider></md-divider>
+
+			<div layout-sm="column" layout-gt-sm="row">
+				<div layout="column" flex-gt-sm="50" flex-sm>
+					<md-switch class="strong" ng-model="settings.data.expansion['Storm Legion']" ng-change="settings.toggleExpansion('Storm Legion')">Storm Legion</md-switch>
+					<md-switch ng-repeat="zone in ::settings.zones.expansion['Storm Legion']" ng-model="settings.data.zone[zone._id]" aria-label="{{zone.name_en}}">{{ zone.name_en }}</md-switch>
+				</div>
+				<md-divider show-sm></md-divider>
+				<div layout="column" flex-gt-sm="50" flex-sm>
+					<md-switch class="strong" ng-model="settings.data.expansion['Chocolate']" ng-change="settings.toggleExpansion('Chocolate')" aria-label="{{zone.name_en}}">Chocolate</md-switch>
+					<md-switch ng-repeat="zone in ::settings.zones.expansion['Chocolate']" ng-model="settings.data.zone[zone._id]" aria-label="{{zone.name_en}}">{{ zone.name_en }}</md-switch>
+				</div>
+
+			</div>
+
+		</div>
+		
+	</section>
+</form>
