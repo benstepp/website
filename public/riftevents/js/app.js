@@ -18,7 +18,5 @@
 		//Individual Views
 		'EventsController',
 		'SettingsController'
-
-
 		]);
 })();

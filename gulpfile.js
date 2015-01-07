@@ -48,7 +48,24 @@ var config = {
 	},
 
 	riftevents: {
-		css:['public/riftevents/scss/style.scss']
+		base:'public/riftevents',
+		outdir:'build/riftevents',
+
+		js:['public/riftevents/js/**/*.js',
+		'public/libs/angular-ui-router/release/angular-ui-router.min.js',
+		'public/libs/hammerjs/hammer.min.js'],
+
+		css:['public/riftevents/scss/style.scss'],
+		uncss:['public/riftevents/index.html','public/riftevents/partials/events.html','public/riftevents/partials/settings.html'],
+		
+		partials:['public/riftevents/partials/*.html'],
+		partialsOutdir:'build/riftevents',
+
+		html:['public/riftevents/index.html'],
+		img:['public/riftevents/img/**/*.jpg'],
+
+		libs:['public/riftevents/img/sprites.svg']
+
 	},
 
 	riftloot: {
