@@ -10,6 +10,7 @@
 
 		_this.zones = zones;
 		_this.events = events;
+		_this.getName = getName;
 		_this.getZone = getZone;
 		_this.getDisplayedTime = getDisplayedTime;
 		_this.showEvent = showEvent;
@@ -21,8 +22,12 @@
 		var now = Date.now();
 		var data = AppDataService.retrieveData();
 
+		function getName(ev) {
+			return ev['name_'+data.locale];
+		}
+
 		function getZone(id) {
-			return _this.zones.ref[id].name_en;
+			return _this.zones.ref[id]['name_'+data.locale];
 		}
 
 		function getDisplayedTime(time) {

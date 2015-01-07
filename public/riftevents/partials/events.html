@@ -7,7 +7,7 @@
 				</md-checkbox>
 			</div>
 			<div class="md-tile-content">
-				<h3>{{ ::event.name_en }}</h3>
+				<h3>{{ ::riftevents.getName(event) }}</h3>
 				<h4>{{ ::riftevents.getZone(event.zone) }} - {{ ::event.shard }}</h4>
 				<p>{{ riftevents.getDisplayedTime(event.started) }}</p>
 			</div>
