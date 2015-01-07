@@ -2,11 +2,11 @@
 	"name": "website-project",
 	"version": "1.0.0",
 	"dependencies": {
+		"angular-foundation":"~0.5.1",
+		"angular-material":"~0.7.0",
 		"angular-ui-router":"~0.2.13",
 		"foundation":"~5.5.0",
 		"foundation-icon-fonts":"latest",
-		"angular-foundation":"~0.5.1",
-		"angular-material":"~0.7.0",
 		"material-design-icons":"latest"
 	}	
 }
