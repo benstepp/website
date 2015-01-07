@@ -1,8 +1,6 @@
 //modules
 var express = require('express'),
 	mongoose = require('mongoose'),
-	_ = require('lodash'),
-	bodyParser = require('body-parser'),
 	morgan = require('morgan'),
 
 //config
@@ -11,7 +9,6 @@ var express = require('express'),
 //Execute app
 var app = express();
 app.use(express.static(__dirname + '/build'));
-app.use(bodyParser.json());
 app.use(morgan());
 var http = require('http').Server(app);
 var io = require('socket.io')(http);
@@ -26,8 +23,8 @@ db.once('open', function callback () {
 
 //app modules
 require('./server/riftevents')(app, io);
-require('./server/steam')(app, io,_);
-require('./server/riftloot')(app, io, _);
+require('./server/steam')(app, io);
+require('./server/riftloot')(app, io);
 
 //start app
 http.listen(port);

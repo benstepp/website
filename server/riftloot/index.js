@@ -1,10 +1,10 @@
 var express = require('express');
 
-module.exports = function(app, io, _) {
+module.exports = function(app, io) {
 
 	//router
 	var router = express.Router();
-	app.use('/api/riftloot', router, _);
+	app.use('/api/riftloot', router);
 
 	//main routes
 	require('./routes.js')(router);

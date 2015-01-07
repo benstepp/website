@@ -1,6 +1,6 @@
 var express = require('express');
 
-module.exports = function(app, io, _) {
+module.exports = function(app, io) {
 
 	//router
 	var router = express.Router();
