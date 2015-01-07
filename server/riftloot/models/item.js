@@ -33,5 +33,4 @@ var ItemSchema = new Schema({
 
 });
 
-
 module.exports = mongoose.model('riftloot', ItemSchema);
