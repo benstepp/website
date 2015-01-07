@@ -140,7 +140,9 @@
                 angular.forEach(actions.added, function(val) {
                     showEvent(val);
                     if (data.notify) {
-                        NotificationService.notify(val);
+                        var zonetoPass = zones.ref[val.zone]['name_'+data.locale];
+                        console.log(zonetoPass);
+                        NotificationService.notify(val,data.locale,zonetoPass);
                     }
                 });
 

@@ -77,7 +77,8 @@
                     'Chocolate':true
                 },
                 perms: false,
-                notify: false
+                notify: false,
+                tagged:{}
             };
         var observerCallbacks = [];
         var supported;
