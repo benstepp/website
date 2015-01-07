@@ -1,23 +1,7 @@
 //modules
 var gulp = require('gulp'),
-	gulpif = require('gulp-if'),
-	rimraf = require('gulp-rimraf'),
-	lazypipe = require('lazypipe'),
-	minifyCss = require('gulp-minify-css'),
-	concat = require('gulp-concat'),
-	jshint = require('gulp-jshint'),
-	htmlmin = require('gulp-htmlmin'),
-	uglify = require('gulp-uglify'),
-	imagemin = require('gulp-imagemin'),
-	rename = require('gulp-rename'),
-	htmlreplace = require('gulp-html-replace'),
-	sass = require('gulp-sass'),
-	uncss = require('gulp-uncss'),
-	html2js = require('gulp-html2js'),
-	merge = require('merge-stream'),
-	ngannotate = require('gulp-ng-annotate'),
-	header = require('gulp-header'),
-	footer = require('gulp-footer');
+	gulpsync = require('gulp-sync')(gulp),
+	rimraf = require('gulp-rimraf');
 
 //config
 var config = {
@@ -240,62 +224,10 @@ gulp.task('clean', function () {
 		.pipe(rimraf());
 });
 
-gulp.task('riftevents',['clean'],function() {
+gulp.task('riftevents',function() {
 	require('./public/riftevents/gulpfile.js')(date);
 });
 
-//something something don't repeat yourself going on up in here
-/*
-gulp.task('img', ['clean'], function() {
-	return getBuildStreams('img');
-});
-
-gulp.task('partials', ['clean'], function() {
-	return getBuildStreams('partials');
-});
-
-gulp.task('html', ['clean'], function() {
-	return getBuildStreams('html');
-});
-
-gulp.task ('css', ['clean'], function() {
-	return getBuildStreams('css');
-});
-
-gulp.task('js', ['clean', 'partials'], function() {
-	return getBuildStreams('js');
-});
-
-gulp.task('libs', ['clean'], function() {
-	return getBuildStreams('libs');
-});
-
-gulp.task('default', function() {
-	gulp.start('clean');
-	gulp.start('img');
-	gulp.start('partials');
-	gulp.start('html');
-	gulp.start('css');
-	gulp.start('js');
-	gulp.start('libs');
-});
-
-
-//dev shit ill clean up later
-gulp.task('dev2', function() {
-	gulp.watch('./public/riftevents/**\/*.scss', function() {
-		gulp.start('scss');
-	});
-});
-
-gulp.task('scss', function() {
-	return gulp.src(config.riftevents.css, {base:'public/riftevents'})
-		.pipe(sass())
-		.pipe(minifyCss())
-		.pipe(gulp.dest('public/riftevents'));
-});*/
-
-gulp.task('default', function() {
-	gulp.start('clean');
-	gulp.start('riftevents');
+gulp.task('riftloot',function() {
+	require('./public/riftloot/gulpfile.js')(date);
 });

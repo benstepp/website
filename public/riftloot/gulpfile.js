@@ -25,7 +25,7 @@ var gulp = require('gulp'),
 module.exports = function(date) {
 
 gulp.task('html',function() {
-	return gulp.src(['public/riftevents/index.html'])
+	return gulp.src(['public/riftloot/index.html'])
 		.pipe(htmlreplace({
 			'css':'style-' +date+'.min.css',
 			'js':'app-'+date+'.min.js'
@@ -33,25 +33,19 @@ gulp.task('html',function() {
 		.pipe(htmlmin({
 			collapseWhitespace: true,
 			removeComments: true }))
-		.pipe(gulp.dest('build/riftevents'));
+		.pipe(gulp.dest('build/riftloot'));
 });
 
 gulp.task('css',function() {
-	return gulp.src(['public/libs/angular-material/angular-material.min.css','public/riftevents/scss/style.scss'])
+	return gulp.src(['public/riftloot/scss/style.scss','public/libs/foundation-icon-fonts/foundation-icons.css'])
 		.pipe(sass())
 		.pipe(concat('style-'+date+'.min.css'))
-		/*
-		.pipe(uncss({
-			html:['public/riftevents/index.html','public/riftevents/partials/events.html','public/riftevents/partials/settings.html'],
-			ignore:['.md-color-palette-definition']
-		}))
-		*/
 		.pipe(minifyCss())
-		.pipe(gulp.dest('build/riftevents'));
+		.pipe(gulp.dest('build/riftloot'));
 });
 
 gulp.task('partials', function() {
-	return gulp.src('public/riftevents/partials/*.html')
+	return gulp.src('public/riftloot/partials/*.html')
 		.pipe(htmlmin({
 			collapseWhitespace: true,
 			removeComments: true }))
@@ -61,30 +55,30 @@ gulp.task('partials', function() {
 		}))
 		.pipe(concat('templates.js'))
 		.pipe(uglify())
-		.pipe(gulp.dest('build/riftevents'));
+		.pipe(gulp.dest('build/riftloot'));
 });
 
 gulp.task('js',['partials'],function() {
-	return gulp.src(['public/riftevents/js/**/*.js','build/riftevents/templates.js','public/libs/angular-ui-router/release/angular-ui-router.min.js','public/libs/hammerjs/hammer.min.js','public/libs/angular-material/angular-material.min.js','public/libs/angular-aria/angular-aria.min.js','public/libs/angular-animate/angular-animate.min.js'])
+	return gulp.src(['public/riftloot/js/**/*.js','build/riftloot/templates.js','public/libs/angular-ui-router/release/angular-ui-router.min.js','public/libs/angular-foundation/mm-foundation.min.js'])
 		.pipe(concat('app-'+date+'.min.js'))
 		.pipe(ngExtend({app:['templates']}))
 		.pipe(uglify())
-		.pipe(gulp.dest('build/riftevents'));
+		.pipe(gulp.dest('build/riftloot'));
 });
 
 gulp.task('img',function() {
-	return gulp.src(['public/riftevents/img/**/*.jpg','public/riftevents/img/**/*.png'])
+	return gulp.src(['public/riftloot/img/**/*.jpg','public/riftloot/img/**/*.png'])
 	.pipe(imagemin())
-	.pipe(gulp.dest('build/riftevents/img'));
+	.pipe(gulp.dest('build/riftloot/img'));
 });
 
-gulp.task('svg',function() {
-	return gulp.src(['public/riftevents/img/*.svg'])
-		.pipe(gulp.dest('build/riftevents/img'));
+gulp.task('libs',function() {
+	return gulp.src('public/libs/foundation-icon-fonts/foundation-icons.woff')
+		.pipe(gulp.dest('build/riftloot/'));
 });
 
 gulp.task('cleanup',['js'], function() {
-	return gulp.src(['build/riftevents/templates.js'])
+	return gulp.src(['build/riftloot/templates.js'])
 		.pipe(rimraf());
 });
 
@@ -93,7 +87,7 @@ gulp.start('css');
 gulp.start('partials');
 gulp.start('js');
 gulp.start('img');
-gulp.start('svg');
+gulp.start('libs');
 gulp.start('cleanup');
 
 };
