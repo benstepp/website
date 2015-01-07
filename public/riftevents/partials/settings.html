@@ -2,7 +2,7 @@
 	<section class="md-whiteframe-z1">
 
 		<h3 class="settings-header">Language</h3>
-		<md-radio-group ng-model="settings.data.language">
+		<md-radio-group ng-model="settings.data.language" ng-change="settings.toggleLanguage()">
 			<md-radio-button value="English" aria-label="English">English</md-radio-button>
 			<md-radio-button value="French" aria-label="French">French</md-radio-button>
 			<md-radio-button value="German" aria-label="German">German</md-radio-button>

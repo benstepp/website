@@ -49,9 +49,10 @@
             return deferred.promise;
         }
 
-        function notify() {
-        	var notification = new Notification('test');
-
+        function notify(event) {
+            if (event.toShow && _this.supported || _this.hasPermission) {
+                var notification = new Notification('test',{body:event.shard});
+            }
         }
 
     }

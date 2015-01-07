@@ -16,6 +16,7 @@
         //private variables
         var riftEventsData = {
                 language:'English',
+                locale:'en',
                 region:{
                     US:{
                         act:true,

@@ -2,10 +2,10 @@
     'use strict';
 
     angular
-        .module('EventsService',[])
-        .service('EventsService', ['$http','$q','$interval',EventsService]);
+        .module('EventsService',['NotificationService','AppDataService'])
+        .service('EventsService', ['$http','$q','$interval','NotificationService','AppDataService',EventsService]);
 
-    function EventsService($http,$q,$interval) {
+    function EventsService($http,$q,$interval,NotificationService,AppDataService) {
         var _this = this;
 
         //public methods
@@ -20,6 +20,7 @@
         var zones = {};
         var observerCallbacks = [];
         var sessionTags = {};
+        var data = AppDataService.retrieveData();
 
         init();
 
@@ -134,10 +135,34 @@
             eventsApiCall().then(function(res) {
                 var actions = eventDiff(res);
                 if(actions.added.length || actions.removed.length) {
-                    console.log(actions);
                     notifyObservers();
                 }
+                angular.forEach(actions.added, function(val) {
+                    showEvent(val);
+                    if (data.notify) {
+                        NotificationService.notify(val);
+                    }
+                });
+
             });
+        }
+
+        function showEvent(ev) {
+            var checks = [];
+            var toShow = true;
+
+            //check if shard is to be shown (this covers region and pvp)
+            checks.push(data.region[ev.region].shard[ev.shard]);
+            //check if the zone is to be shown
+            checks.push(data.zone[ev.zone]);
+
+            //any false check (hide the event)
+            angular.forEach(checks, function(check) {
+                if (!check) {toShow = check;}
+            });
+
+            //otherwise show and save a reference for the more function
+            ev.toShow = toShow;
         }
 
         function eventDiff(evArray) {

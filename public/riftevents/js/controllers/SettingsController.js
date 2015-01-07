@@ -10,15 +10,27 @@
 
         _this.data = {};
         _this.zones = zones;
+
+        _this.toggleLanguage = toggleLanguage;
         _this.toggleRegion = toggleRegion;
         _this.togglePvp = togglePvp;
         _this.toggleExpansion = toggleExpansion;
+
         _this.notifications = NotificationService.supported;
-        
         _this.exampleNotification = exampleNotification;
         _this.requestPermission = NotificationService.requestPermission;
 
         init();
+
+        var localeMap = {
+            'English':'en',
+            'German':'de',
+            'French':'fr'
+        };
+
+        function toggleLanguage() {
+            _this.data.locale = localeMap[_this.data.language];
+        }
 
         function toggleRegion(reg) {
         	var pvpShards = ['Seastone','Bloodiron'];
