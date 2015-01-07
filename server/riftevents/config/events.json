@@ -2269,5 +2269,76 @@
                 "magelo": 645641308
             }
         }
-    }
+    },
+
+    {
+        "name_en": "Howling Fury",
+        "name_fr": "Fureur mugissante",
+        "name_de": "Heulender Zorn"
+    },
+    {
+        "name_en": "Encampment of the Legion",
+        "name_fr": "Campement de la L\u00E9gion",
+        "name_de": "Lager der Legion"
+    },
+    {
+        "name_en": "Bulwark of Bones",
+        "name_fr": "Rempart d'os",
+        "name_de": "Bollwerk der Knochen"
+    },
+    {
+        "name_en": "Corsair's Castle",
+        "name_fr": "Ch\u00E2teau du corsaire",
+        "name_de": "Schloss des Korsaren"
+    },
+    {
+        "name_en": "Horns of Doom",
+        "name_fr": "Cornes de Fatalit\u00E9",
+        "name_de": "Hörner der Verdammnis"
+    },
+    {
+        "name_en": "Crystalline Redoubt",
+        "name_fr": "Redoute cristalline",
+        "name_de": "Kristalline Schanze"
+    },
+    {
+        "name_en": "Crushing Force",
+        "name_fr": "Force \u00E9crasante",
+        "name_de": "Erdrückende Kraft"
+    },
+    {
+        "name_en": "Molten Keep",
+        "name_fr": "Fort en fusion",
+        "name_de": "Geschmolzene Festung"
+    },
+    {
+        "name_en": "Battalion of Flame",
+        "name_fr": "Bataillon de la Flamme",
+        "name_de": "Bataillon der Flamme"
+    },
+    {
+        "name_en": "Tendrils of Renewal",
+        "name_fr": "Vrilles du renouveau",
+        "name_de": "Ranken der Erneuerung"
+    },
+    {
+        "name_en": "Parapet of Plenty",
+        "name_fr": "Parapet de l'Abondance",
+        "name_de": "Brustwehr der F\u00FClle"
+    },
+    {
+        "name_en": "Aquium Citadel",
+        "name_fr": "Citadelle d'Aquium",
+        "name_de": "Aquium-Zitadelle"
+    },
+    {
+        "name_en": "Azure Fastness",
+        "name_fr": "Vivacit\u00E9 azur",
+        "name_de": "Azurfestigkeit"
+    },
+    {
+        "name_en": "Terror From the Deep",
+        "name_fr": "Terreur des profondeurs",
+        "name_de": "Schrecken aus der Tiefe"
+    }  
     ]}

@@ -9,5 +9,7 @@ Requires npm, node-gyp, bower, and gulp.
 $ npm install
 $ bower install
 $ gulp
+$ node server/riftloot/db/db.js
+$ node server/riftevents/db/db.js
 $ node server
 ```
