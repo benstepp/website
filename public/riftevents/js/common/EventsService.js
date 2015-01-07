@@ -3,18 +3,23 @@
 
     angular
         .module('EventsService',[])
-        .service('EventsService', ['$http','$q',EventsService]);
+        .service('EventsService', ['$http','$q','$interval',EventsService]);
 
-    function EventsService($http,$q) {
+    function EventsService($http,$q,$interval) {
         var _this = this;
 
         //public methods
         _this.getZones = getZones;
         _this.getEvents = getEvents;
+        _this.registerObserver = registerObserver;
 
         //private variables
+        var zoneEventsOld;
         var zoneEvents = {};
         var zones = {};
+        var observerCallbacks = [];
+
+        init();
 
         //Calls for the zone object from the server
         //Expect an array wrapped in JSON object of the following objects for each zone:
@@ -84,6 +89,7 @@
         function eventsApiCall() {
         	return $http.get("/api/riftevents/events")
         		.then(function(res) {
+                    zoneEventsOld = zoneEvents;
         			zoneEvents = parseEvents(res.data);
         			return zoneEvents;
         		});
@@ -94,9 +100,16 @@
             angular.forEach(data, function(region,regionName){
                 angular.forEach(region, function(eventArray) {
                     angular.forEach(eventArray, function(ev){
+
+                        //to easily access the region when bulked into one array for ng-repeat
                         ev.region = regionName;
+                        //order events appear from high level to low
                         ev.order = zones.order.indexOf(ev.zone.toString());
+                        //unique identifier for each event 
+                        ev.unid = ev.shard + ev.zone + ev.started;
+
                         combinedArray.push(ev);
+
                     });
                 });
             });
@@ -110,5 +123,55 @@
             return combinedArray;
 
         }
+
+        function eventInterval() {
+            eventsApiCall().then(function(res) {
+                var actions = eventDiff(res);
+                if(actions.added.length || actions.removed.length) {
+                    console.log(actions);
+                    notifyObservers();
+                }
+            });
+        }
+
+        function eventDiff(evArray) {
+            var oldArray = zoneEventsOld;
+            var newArray = evArray;
+            var data = {
+                added:[],
+                removed:[]
+            };
+
+            //checking for removed items
+            angular.forEach(oldArray, function(val) {
+                if(newArray.map(function(e){return e.unid;}).indexOf(val.unid) === -1) {
+                    data.removed.push(val);
+                }
+            });
+
+            //checking for new items
+            angular.forEach(newArray, function(val) {
+                if (oldArray.map(function(e){return e.unid;}).indexOf(val.unid) === -1) {
+                    data.added.push(val);
+                }
+            });
+
+            return data;
+        }
+
+        function registerObserver(callback) {
+            observerCallbacks.push(callback);
+        }
+
+        function notifyObservers() {
+            angular.forEach(observerCallbacks, function(callback) {
+                callback();
+            });
+        }
+
+        function init() {
+            $interval(eventInterval, 15000);
+        }
+
     }
 })();

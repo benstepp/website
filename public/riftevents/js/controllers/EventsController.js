@@ -15,6 +15,8 @@
 		_this.showEvent = showEvent;
 		_this.noMore = noMore;
 
+		init();
+
 		var now = Date.now();
 		var data = AppDataService.retrieveData();
 
@@ -55,7 +57,15 @@
 			return more;
 		}
 
-		$interval(function() {now = Date.now();},15000);
+		function init() {
+			$interval(function() {now = Date.now();},15000);
+			EventsService.registerObserver(function() {
+				EventsService.getEvents().then(function(data) {
+					_this.events = data;
+				});
+			});
+		}
+		
 
 	}
 
