@@ -11,7 +11,6 @@
 		"mongoose": "~3.8.21",
 		"mongoose-unique-validator": "~0.4.1",
 		"validator":"~3.27.0",
-		"body-parser": "~1.4.3",
 		"morgan": "~1.1.1",
 		"request": "~2.51.0",
 		"lodash":"~2.4.1",
