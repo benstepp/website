@@ -26,5 +26,4 @@ trionAuth.on('ready', function(tAuth) {
 
 });
 
-
 };

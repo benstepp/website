@@ -37,5 +37,4 @@ function isWorldVendor(item) {
 	return (item.name_en.indexOf("Void Seeker's") !== -1) ? "World Vendor" : false;
 }
 
-
 module.exports = guessSource;

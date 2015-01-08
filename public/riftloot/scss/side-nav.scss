@@ -22,8 +22,6 @@ $side-nav-background:#222;
 	}
 }
 
-
-
 @media #{$large-up} {
 	.main-content,footer.side-nav-push {
 		padding-left: $side-nav-width + $column-gutter/2;

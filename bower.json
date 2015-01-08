@@ -2,16 +2,11 @@
 	"name": "website-project",
 	"version": "1.0.0",
 	"dependencies": {
-		"bootstrap": "~3.2.0",
-		"angular": "~1.3.8",
-		"angular-ui-router":"~0.2.13",
-		"angular-socket-io":"~0.6.0",
-		"angular-bootstrap":"~0.11.0",
-		"socket.io-client": "~1.0.6",
-		"foundation":"~5.3.3",
-		"foundation-icon-fonts":"latest",
-		"angular-foundation":"~0.3.0",
+		"angular-foundation":"~0.5.1",
 		"angular-material":"~0.7.0",
+		"angular-ui-router":"~0.2.13",
+		"foundation":"~5.5.0",
+		"foundation-icon-fonts":"latest",
 		"material-design-icons":"latest"
 	}	
 }

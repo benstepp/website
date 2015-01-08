@@ -56,5 +56,3 @@ function seedEvents() {
 	}
 }
 util.inherits(seedEvents, EventEmitter);
-
-

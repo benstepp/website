@@ -68,5 +68,4 @@ var itemKeys = {
     "Mighty Endurance Boost": " (0/2)",
 };
 
-
 module.exports = itemKeys;
