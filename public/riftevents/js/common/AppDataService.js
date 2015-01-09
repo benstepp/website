@@ -2,10 +2,10 @@
     'use strict';
 
     angular
-        .module('AppDataService',[])
-        .service('AppDataService', ['$window',AppDataService]);
+        .module('AppDataService',['pascalprecht.translate'])
+        .service('AppDataService', ['$window','$translate',AppDataService]);
 
-    function AppDataService($window) {
+    function AppDataService($window,$translate) {
     	var _this = this;
         
         //public methods
@@ -139,6 +139,9 @@
 				//save the data object in case of version changes
 				localStorage.riftEventsData = angular.toJson(riftEventsData);
 			}
+
+            //now push the locale to translations
+            $translate.use(riftEventsData.locale);
 
         }
 

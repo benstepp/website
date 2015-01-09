@@ -1,29 +1,29 @@
 <form flex>
 	<section class="md-whiteframe-z1">
 
-		<h3 class="settings-header">Language</h3>
+		<h3 class="settings-header" translate="LANGUAGE"></h3>
 		<md-radio-group ng-model="settings.data.language" ng-change="settings.toggleLanguage()">
 			<md-radio-button value="English" aria-label="English">English</md-radio-button>
-			<md-radio-button value="French" aria-label="French">French</md-radio-button>
-			<md-radio-button value="German" aria-label="German">German</md-radio-button>
+			<md-radio-button value="Français" aria-label="Français">Français</md-radio-button>
+			<md-radio-button value="Deutsch" aria-label="Deutsch">Deutsch</md-radio-button>
 		</md-radio-group>
 
 	</section>
 
 	<section class="md-whiteframe-z1">
 
-		<h3 class="settings-header">Desktop Notifications</h3>
+		<h3 class="settings-header" translate="DESKTOP_NOTIFICATIONS"></h3>
 
 		<!--Notification support-->
 		<div ng-if="!settings.notifications" class="settings-disabled">
-		<h4>Your web browser does not support Web Notifications</h4>
-			<p>Web Notification technology is currently experimental and only available in a few browsers. For more information about Web Notifications and its availability see: <a href="//developer.mozilla.org/en-US/docs/Web/API/notification">Mozilla Developer Network</a>.</p>
+		<h4 translate="NOT_SUPPORTED"></h4>
+			<p><span translate="MORE_INFO"></span><a href="//developer.mozilla.org/en-US/docs/Web/API/notification">Mozilla Developer Network</a>.</p>
 		</div>
 
-		<div layout="column">
-			<md-switch ng-model="settings.data.notify" ng-change="settings.requestPermission()">Desktop Notifications</md-switch>
+		<div layout="column" ng-if="settings.notifications">
+			<md-switch ng-model="settings.data.notify" ng-change="settings.requestPermission()"><span translate="DESKTOP_NOTIFICATIONS"></span></md-switch>
 			<div ng-if="settings.data.notify">
-			<md-button ng-click="settings.exampleNotification()" class=" md-primary md-raised md-hue-3">Example Notification</md-button>
+			<md-button ng-click="settings.exampleNotification()" class=" md-primary md-raised md-hue-3"><span translate="EXAMPLE_NOTIFICATION"></span></md-button>
 			</div>
 		</div>
 
@@ -32,7 +32,7 @@
 
 	<section class="md-whiteframe-z1">
 		<div layout="row">
-			<h3 flex="50" class="settings-header">Shards</h3>
+			<h3 flex="50" class="settings-header" translate="SHARDS"></h3>
 			<md-switch ng-model="settings.data.pvp" class="md-warn strong" ng-change="settings.togglePvp(this)" flex="50">PvP</md-switch>
 		</div>
 		<div layout-gt-sm="row" layout-sm="column">
@@ -62,7 +62,7 @@
 
 	<section class="md-whiteframe-z1">
 		<div layout="column">
-			<h3 class="settings-header">Zones</h3>
+			<h3 class="settings-header" translate="ZONES"></h3>
 			<div layout="row">
 				<div>
 					<md-switch class="strong" ng-model="settings.data.expansion['Nightmare Tide']" ng-change="settings.toggleExpansion('Nightmare Tide')">Nightmare Tide</md-switch>

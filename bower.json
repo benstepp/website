@@ -4,6 +4,7 @@
 	"dependencies": {
 		"angular-foundation":"~0.5.1",
 		"angular-material":"~0.7.0",
+		"angular-translate":"~2.5.2",
 		"angular-ui-router":"~0.2.13",
 		"foundation":"~5.5.0",
 		"foundation-icon-fonts":"latest",

@@ -40,7 +40,7 @@
 									<div>
 									<object type="image/svg+xml" data="img/sprites.svg?event" width="24" height="24"></object>
 									</div>
-									<div>Events</div>
+									<div>{{ 'EVENTS' | translate }}</div>
 								</md-button>
 						</md-item-content>
 						<md-divider></md-divider>
@@ -51,7 +51,7 @@
 									<div>
 									<object type="image/svg+xml" data="img/sprites.svg?settings" width="24" height="24"></object>
 									</div>
-									<div>Settings</div>
+									<div>{{ 'SETTINGS' | translate }}</div>
 								</md-button>
 						</md-item-content>
 						<md-divider></md-divider>
@@ -99,12 +99,14 @@
 <script src="../libs/angular-material/angular-material.js"></script>
 <script src="../libs/hammerjs/hammer.js"></script>
 <script src="../libs/angular-ui-router/release/angular-ui-router.js"></script>
-
+<script src="../libs/angular-translate/angular-translate.js"></script>
+<script src="./js/common/AppDataService.js"></script>
 <script src="./js/common/sideNavController.js"></script>
 <script src="./js/common/mdTheme.js"></script>
 <script src="./js/common/EventsService.js"></script>
-<script src="./js/common/AppDataService.js"></script>
+
 <script src="./js/common/NotificationService.js"></script>
+<script src="./js/common/translations.js"></script>
 
 <script src="./js/controllers/EventsController.js"></script>
 <script src="./js/controllers/SettingsController.js"></script>

@@ -3,9 +3,9 @@
 
     angular
         .module('SettingsController',['AppDataService','NotificationService'])
-        .controller('SettingsController', ['$scope','AppDataService','NotificationService','zones',SettingsController]);
+        .controller('SettingsController', ['$scope','$translate','AppDataService','NotificationService','zones',SettingsController]);
 
-    function SettingsController($scope, AppDataService,NotificationService,zones) {
+    function SettingsController($scope, $translate, AppDataService,NotificationService,zones) {
         var _this = this;
 
         _this.data = {};
@@ -24,12 +24,13 @@
 
         var localeMap = {
             'English':'en',
-            'German':'de',
-            'French':'fr'
+            'Deutsch':'de',
+            'Français':'fr'
         };
 
         function toggleLanguage() {
             _this.data.locale = localeMap[_this.data.language];
+            $translate.use(localeMap[_this.data.language]);
         }
 
         function toggleRegion(reg) {
