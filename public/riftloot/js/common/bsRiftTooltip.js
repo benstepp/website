@@ -15,7 +15,7 @@
             },
 
             template: ['<div class="rift-tooltip">',
-                    '<div ng-class="{expanded:expanded,\'not-expanded\':!expanded}" class="tooltip-name" ng-click="toggleTooltip();">{{ ::(item.name_de || item.name_en || item.name_fr) }}</div>',
+                    '<div class="tooltip-name" ng-click="toggleTooltip();">{{ ::(item.name_de || item.name_en || item.name_fr) }}</div>',
                     '<div>',
                     '<div class="tooltip-bind tooltip-text">{{ ::item.bind | translate }}</div>',
                     '<span class="left tooltip-text">{{ ::item.slot | translate }}</span>',
@@ -34,24 +34,27 @@
 
             link: function(scope, elem, attrs) {
                 //Toggle the visibility of the tooltip without watchers
+                var title = angular.element(elem.children()[0]);
+                var statBlock = angular.element(elem.children()[1]);
+
                 scope.toggleTooltip = function() {
-                    var statBlock = angular.element(elem.children()[1]);
-                    scope.expanded = !scope.expanded;
                     statBlock.toggleClass('ng-hide');
+                    title.toggleClass('expanded');
+                    title.toggleClass('not-expanded');
                 };
 
                 //foundation small down breakpoint
                 var isMobile = ($window.innerWidth <= 640);
 
                 //initialize the tooltip expanded status
-                if (typeof scope.expanded === 'undefined') {
-                    scope.expanded = !(scope.forceCollapse || isMobile);
-
-                    //if mobile
-                    if(!scope.expanded) {
-                        scope.toggleTooltip();
-                    }
+                if(isMobile) {
+                    title.toggleClass('expanded');
+                    scope.toggleTooltip();
                 }
+                else {
+                    title.toggleClass('not-expanded');
+                }
+                
 
             }
 

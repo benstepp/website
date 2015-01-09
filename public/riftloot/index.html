@@ -39,23 +39,23 @@
 						<ul class="right" ng-show="header.state.name !== '/'">
 							<li class="has-dropdown">
 								<a data-dropdown-toggle="#top-bar-class">
-									Class: <span data-ng-bind="header.cap(header.data.calling)"></span>
+									Class: <span data-ng-bind="header.cap(header.data.calling) | translate"></span>
 								</a>
 								<ul class="f-dropdown" id="top-bar-class">
 									<li ng-show="header.state.name !=='role'">
 									<a data-ng-href="{{header.getCallingUrl('all')}}">All</a>
 									</li>
 									<li>
-									<a data-ng-href="{{header.getCallingUrl('cleric')}}">Cleric</a>
+									<a data-ng-href="{{header.getCallingUrl('cleric')}}">{{ 'Cleric' | translate }}</a>
 									</li>
 									<li>
-									<a data-ng-href="{{header.getCallingUrl('mage')}}">Mage</a>
+									<a data-ng-href="{{header.getCallingUrl('mage')}}">{{ 'Mage' | translate }}</a>
 									</li>
 									<li>
-									<a data-ng-href="{{header.getCallingUrl('rogue')}}">Rogue</a>
+									<a data-ng-href="{{header.getCallingUrl('rogue')}}">{{ 'Rogue' | translate }}</a>
 									</li>
 									<li>
-									<a data-ng-href="{{header.getCallingUrl('warrior')}}">Warrior</a>
+									<a data-ng-href="{{header.getCallingUrl('warrior')}}">{{ 'Warrior' | translate }}</a>
 									</li>
 								</ul>
 							</li>

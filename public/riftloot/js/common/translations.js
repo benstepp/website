@@ -78,6 +78,10 @@
             "Two Handed Sword":'Zweihandschwert',
             "Wand":'Stab',
             "Water Wand":'Wasserstab',
+            
+            "All":'',
+            "Language":'',
+            "Calling":''
         });
 
         $translateProvider.translations('fr', {
@@ -151,10 +155,14 @@
             "Two Handed Sword":'Épée à deux mains',
             "Wand":'Baguette',
             "Water Wand":'Baguette de l\'Eau',
+
+            "All":'',
+            "Language":'',
+            "Calling":''
         });
 
         $translateProvider.translations('en', {
-
+            //leave it blank, all the keys are ones we want to use already
         });
 
         $translateProvider.fallbackLanguage('en');
