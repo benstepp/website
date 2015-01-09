@@ -16,7 +16,7 @@
 
                 template:['<div>',
                 '<div class="side-nav-link exit-off-canvas" ng-click="activateSlot()">',
-                '{{ ::slot }}',
+                '{{ ::slot | translate }}',
                 '</div>',
                 '<div class="side-nav-divider"></div>',
                 '</div>'].join(''),
