@@ -47,12 +47,12 @@
                 var isMobile = ($window.innerWidth <= 640);
 
                 //initialize the tooltip expanded status
-                if(isMobile) {
-                    title.toggleClass('expanded');
-                    scope.toggleTooltip();
+                if(!isMobile) {
+                    title.toggleClass('not-expanded');
                 }
                 else {
                     title.toggleClass('not-expanded');
+                    scope.toggleTooltip();
                 }
                 
 
