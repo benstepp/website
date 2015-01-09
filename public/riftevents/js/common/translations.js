@@ -27,7 +27,7 @@
         $translateProvider.translations('en', {
         	EVENTS:'Events',
         	SETTINGS:'Settings',
-        	LANGUAGE:'Sprache',
+        	LANGUAGE:'Language',
         	DESKTOP_NOTIFICATIONS:'Desktop Notifications',
         	EXAMPLE_NOTIFICATION:'Example Notification',
         	SHARDS:'Shards',
