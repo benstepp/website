@@ -10,8 +10,8 @@
 		//Global App Modules
 		'mdTheme',
 		'routes',
-
 		'translations',
+		
 		'EventsService',
 		'AppDataService',
 		'NotificationService',

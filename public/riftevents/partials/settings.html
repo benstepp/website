@@ -16,11 +16,11 @@
 
 		<!--Notification support-->
 		<div ng-if="!settings.notifications" class="settings-disabled">
-		<h4>Your web browser does not support Web Notifications</h4>
-			<p>Web Notification technology is currently experimental and only available in a few browsers. For more information about Web Notifications and its availability see: <a href="//developer.mozilla.org/en-US/docs/Web/API/notification">Mozilla Developer Network</a>.</p>
+		<h4 translate="NOT_SUPPORTED"></h4>
+			<p><span translate="MORE_INFO"></span><a href="//developer.mozilla.org/en-US/docs/Web/API/notification">Mozilla Developer Network</a>.</p>
 		</div>
 
-		<div layout="column">
+		<div layout="column" ng-if="settings.notifications">
 			<md-switch ng-model="settings.data.notify" ng-change="settings.requestPermission()"><span translate="DESKTOP_NOTIFICATIONS"></span></md-switch>
 			<div ng-if="settings.data.notify">
 			<md-button ng-click="settings.exampleNotification()" class=" md-primary md-raised md-hue-3"><span translate="EXAMPLE_NOTIFICATION"></span></md-button>
@@ -62,7 +62,7 @@
 
 	<section class="md-whiteframe-z1">
 		<div layout="column">
-			<h3 class="settings-header">Zones</h3>
+			<h3 class="settings-header" translate="ZONES"></h3>
 			<div layout="row">
 				<div>
 					<md-switch class="strong" ng-model="settings.data.expansion['Nightmare Tide']" ng-change="settings.toggleExpansion('Nightmare Tide')">Nightmare Tide</md-switch>
