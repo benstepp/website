@@ -15,7 +15,7 @@
             },
 
             template: ['<div class="rift-tooltip">',
-                    '<div class="tooltip-name" ng-click="toggleTooltip();">{{ ::(item.name_de || item.name_en || item.name_fr) }}</div>',
+                    '<div class="tooltip-name" ng-click="toggleTooltip();" ng-class="::item.rarity.toLowerCase()">{{ ::(item.name_de || item.name_en || item.name_fr) }}</div>',
                     '<div>',
                     '<div class="tooltip-bind tooltip-text">{{ ::item.bind | translate }}</div>',
                     '<span class="left tooltip-text">{{ ::item.slot | translate }}</span>',
