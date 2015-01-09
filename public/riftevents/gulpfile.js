@@ -70,7 +70,7 @@ gulp.task('partials',['clean'], function() {
 });
 
 gulp.task('js',['partials'],function() {
-	return gulp.src(['public/riftevents/js/**/*.js','build/riftevents/templates.js','public/libs/angular-ui-router/release/angular-ui-router.min.js','public/libs/hammerjs/hammer.min.js','public/libs/angular-material/angular-material.min.js','public/libs/angular-aria/angular-aria.min.js','public/libs/angular-animate/angular-animate.min.js'])
+	return gulp.src(['public/riftevents/js/**/*.js','build/riftevents/templates.js','public/libs/angular-ui-router/release/angular-ui-router.min.js','public/libs/hammerjs/hammer.min.js','public/libs/angular-material/angular-material.min.js','public/libs/angular-aria/angular-aria.min.js','public/libs/angular-animate/angular-animate.min.js','public/libs/angular-translate/angular-translate.min.js'])
 		.pipe(concat('app-'+date+'.min.js'))
 		.pipe(ngExtend({app:['templates']}))
 		.pipe(uglify())
