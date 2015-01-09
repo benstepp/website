@@ -31,13 +31,13 @@ $bg-warrior:darken(rgba(211,47,47,0.4),20%);
 .calling-title {
   color:#ddd;
   font-weight:500;
-  font-size:rem-calc(48px);
+  font-size:rem-calc(48);
   font-variant:small-caps;
-  line-height:rem-calc(48px);
+  line-height:rem-calc(48);
 
   @media #{$small-only} { 
-    font-size:rem-calc(32px);
-    line-height:rem-calc(32px);
+    font-size:rem-calc(32);
+    line-height:rem-calc(32);
   }
 
 }
@@ -49,13 +49,13 @@ $bg-warrior:darken(rgba(211,47,47,0.4),20%);
   text-align:center;
   color:#ddd;
   border:3px solid #ddd;
-  font-size:rem-calc(16px);
+  font-size:rem-calc(16);
   font-weight:700;
 
   margin-top:8px;
   padding:4px;
   @media #{$medium-up} {
-    font-size:rem-calc(24px);
+    font-size:rem-calc(24);
     margin-top:12px;
     padding:12px;
   }
@@ -122,8 +122,8 @@ h1.splash-header {
 
 .location-btn {
   @extend .calling-link;
-  font-size:rem-calc(48px);
-  line-height:rem-calc(48px);
+  font-size:rem-calc(48);
+  line-height:rem-calc(48);
   font-variant:small-caps;
   font-weight:300;
   padding:0px 0px 12px 0px;
