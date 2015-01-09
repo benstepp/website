@@ -33,6 +33,7 @@ $bg-warrior:darken(rgba(211,47,47,0.4),20%);
   font-weight:500;
   font-size:rem-calc(48);
   font-variant:small-caps;
+  text-transform:lowercase;
   line-height:rem-calc(48);
 
   @media #{$small-only} { 
@@ -57,7 +58,7 @@ $bg-warrior:darken(rgba(211,47,47,0.4),20%);
   @media #{$medium-up} {
     font-size:rem-calc(24);
     margin-top:12px;
-    padding:12px;
+    padding:8px;
   }
 
   transition: all 0.3s ease 0s;

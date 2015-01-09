@@ -30,5 +30,5 @@ gulp.task('scss', function() {
 	return gulp.src('./public/riftloot/scss/style.scss')
 		.pipe(sass())
 		.pipe(minifyCss())
-		.pipe(gulp.dest('public/riftloot'));
+		.pipe(gulp.dest('public/riftloot/scss'));
 });
