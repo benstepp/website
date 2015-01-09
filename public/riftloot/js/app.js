@@ -10,6 +10,7 @@
 		'bsContentResize',
 		'HeaderCtrl',
 		//RiftLoot
+		'translations',
 		'routes', 
 		'LootService',
 		'LootCtrl',
