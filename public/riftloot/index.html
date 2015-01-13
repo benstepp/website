@@ -14,7 +14,7 @@
 
 	<!-- external resources-->
 	<link href='//fonts.googleapis.com/css?family=Roboto:400,300,700' rel='stylesheet' type='text/css'>
-	<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.3.4/angular.min.js"></script>
+	<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.3.8/angular.min.js"></script>
 
 </head>
 <body data-ng-controller="headerController as header">
@@ -33,7 +33,7 @@
 					<section class="top-bar-section">
 						<ul class="left">
 							<li>
-								<a href="/riftloot/#">Rift: Nightmare Tide Loot Table</a>
+								<a href="/riftloot/#/">Rift: Nightmare Tide Loot Table</a>
 							</li>
 						</ul>
 						<ul class="right" ng-show="header.state.name !== '/'">
@@ -110,7 +110,7 @@
 				</nav>
 				<!--Mobile Nav-->
 				<nav class="tab-bar hide-for-large-up">
-					<section class="left-small">
+					<section class="left-small" ng-show="header.state.name==='role'">
 						<a class="left-off-canvas-toggle menu-icon" href=""><span></span></a>
 					</section>
 					<section class="middle tab-bar-section">
