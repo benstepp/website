@@ -78,7 +78,7 @@ gulp.task('img',['clean'],function() {
 });
 
 gulp.task('libs',['clean'],function() {
-	return gulp.src('public/libs/foundation-icon-fonts/foundation-icons.woff')
+	return gulp.src('public/libs/foundation-icon-fonts/foundation-icons.woff','public/libs/foundation-icon-fonts/foundation-icons.eot')
 		.pipe(gulp.dest('build/riftloot/'));
 });
 

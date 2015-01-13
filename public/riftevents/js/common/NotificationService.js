@@ -13,6 +13,8 @@
         _this.hasPermission = hasPermission;
         _this.notify = notify;
 
+        init();
+
         function requestPermission() {
             var deferred = $q.defer();
         	//if supported and we haven't been denied yet
@@ -54,6 +56,12 @@
                 var name = event['name_'+locale];
                 var text = zone + ' on ' + event.shard;
                 var notification = new Notification(name,{body:text});
+            }
+        }
+
+        function init() {
+            if (AppDataService.retrieveData('notify')) {
+                _this.requestPermission();
             }
         }
 
