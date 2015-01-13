@@ -5,10 +5,12 @@
 		//Vendor Dependencies
 		'ui.router', 
 		'mm.foundation',
+		'pascalprecht.translate',
 		//Custom
 		'bsContentResize',
 		'HeaderCtrl',
 		//RiftLoot
+		'translations',
 		'routes', 
 		'LootService',
 		'LootCtrl',

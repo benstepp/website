@@ -63,3 +63,15 @@
 	@extend .tooltip-name.not-expanded:hover::before;
 	content:"\f199";
 }
+
+.rare {
+  color:#226DD4;
+}
+
+.epic {
+  color:#CC33FF;
+}
+
+.relic {
+  color:#FF9900;
+}

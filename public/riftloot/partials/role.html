@@ -18,7 +18,7 @@
 		<div class="row">
 			<div class="small-30 columns">
 			<ul class="small-block-grid-1 medium-block-grid-2 large-block-grid-5 dungeon">
-				<li ng-repeat="item in lootByRole.loot[lootByRole.slot] | orderBy:'itemValue':true" ng-class="::(item.rarity.toLowerCase())">
+				<li ng-repeat="item in lootByRole.loot[lootByRole.slot] | orderBy:'itemValue':true">
 					<div bs-rift-tooltip="::item">
 						<div>
 						<div class="tooltip-hr"></div>

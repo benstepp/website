@@ -5,8 +5,7 @@ var fs = require('fs'),
 	xmlstream = require('xml-stream'),
 	item = require('../models/item.js'),
 	createItem = require('./createItem.js'),
-	dropLocations = require('./dropLocations.js'),
-	upgradePaths = require('./upgradePaths.js');
+	dropLocations = require('./dropLocations.js');
 
 //connect to database
 mongoose.connect('mongodb://localhost/');

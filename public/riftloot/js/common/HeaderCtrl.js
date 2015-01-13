@@ -2,10 +2,10 @@
 	'use-strict';
 
 	angular
-		.module('HeaderCtrl',['ui.router','AppDataService'])
-		.controller('headerController', ['$scope', '$rootScope', '$location','AppDataService',headerController]);
+		.module('HeaderCtrl',['ui.router','AppDataService','pascalprecht.translate'])
+		.controller('headerController', ['$scope', '$rootScope', '$location','$translate','AppDataService',headerController]);
 
-	function headerController($scope, $rootScope, $location,AppDataService) {
+	function headerController($scope, $rootScope, $location,$translate,AppDataService) {
 
 		var _this = this;
 
@@ -60,7 +60,9 @@
 		};
 
 		_this.setLocale = function(locale) {
+			console.log(locale);
 			AppDataService.saveData('locale',locale);
+			$translate.use(locale);
 		};
 
 		//Binds the header links URLs to hide navbar if on splash page

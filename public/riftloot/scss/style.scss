@@ -48,7 +48,7 @@
 }
 
 .top-bar-section ul.left li>a {
-  font-size:rem-calc(16px);
+  font-size:rem-calc(16);
   font-weight:700;
 }
 
@@ -115,6 +115,8 @@
 }
 
 footer {
+  line-height:150%;
+  padding:3px 0px;
   clear:both;
   font-size:12px;
   border-top:1px $primary-color solid;
@@ -193,18 +195,6 @@ h5 {
   font-weight:700;
   border-bottom:2px solid $primary-color;
   cursor:pointer;
-}
-
-.rare {
-  color:#226DD4 !important;
-}
-
-.epic {
-  color:#CC33FF !important;
-}
-
-.relic {
-  color:#FF9900 !important;
 }
 
 .no-pointer {

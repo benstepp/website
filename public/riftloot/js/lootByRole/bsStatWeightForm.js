@@ -22,7 +22,7 @@
                         '<div class="small-30 columns">',
                             '<ul class="small-block-grid-1 medium-block-grid-2" ng-class="::getGrid();">',
                             '<li ng-repeat="stat in ::stats">',
-                            '<label>{{ ::stat }}</label>',
+                            '<label>{{ ::stat | translate }}</label>',
                             '<input placeholder="{{ ::default(stat) }}" ng-model="statWeights[stat]" />',
                             '</li>',
                             '</ul>',
