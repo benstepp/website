@@ -1,6 +1,6 @@
 (function() {
 	var navbar = document.getElementsByTagName('nav')[0];
-	var minHeight = window.innerHeight -200;
+	var minHeight = window.innerHeight*0.75;
 	var maxHeight = window.innerHeight - 50; //50 is navbar height
 	var hidden;
 	var shown;
