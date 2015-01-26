@@ -1,0 +1,62 @@
+section.splash {
+    width:100%;
+    height:100vh;
+
+    padding:0;
+    position:relative;
+    overflow:hidden;
+}
+
+.splash > div {
+    width:110%;
+    height:110%;
+
+    padding:0;
+    margin-left:-5%;
+    margin-top:-5%;
+}
+
+.splash-image {
+    width:100%;
+    height:100%;
+
+    margin-left:auto;
+    margin-right:auto;
+    margin-top:2.5%;
+
+    background:url('/img/bg.jpg');
+    background-size:cover;
+    background-position: center center;
+}
+
+.splash-content {
+    width:100%;
+    height:100%;
+    padding:10% 0;
+
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:space-between;
+    text-align:center;
+
+    background-color:hsla(270,50,5,0.2);
+}
+
+h1 {
+    color: #fff;
+    font-family:Titillium Web;
+    font-size: 8vw;
+
+    text-shadow:0 0 6px hsla(270,50,0,0.2);
+}
+
+h2 {
+    color:#fff;
+    font-size:1.5em;
+    text-shadow:0 0 6px hsla(270,50,0,0.5);
+}
+
+.fake-height {
+    height:20000px;
+}

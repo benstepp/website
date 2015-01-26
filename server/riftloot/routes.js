@@ -41,7 +41,6 @@ module.exports = function(router) {
 			}
 		});
 
-
 	//
 	//Drops By Role
 	//
@@ -68,7 +67,6 @@ module.exports = function(router) {
 			}
 			
 		});
-
 
 	//
 	//Catch all for bad API options

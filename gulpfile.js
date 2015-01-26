@@ -4,6 +4,9 @@ var gulp = require('gulp'),
 
 var date = Date.now();
 
+//
+//	Projects split into separate gulpfiles
+//
 gulp.task('riftevents',function() {
 	require('./public/riftevents/gulpfile.js')(date);
 });
@@ -20,15 +23,18 @@ gulp.task('index', function() {
 	require('./public/gulpfile.js')(date);
 });
 
+//
+//	Build scss while developing
+//
 gulp.task('dev', function() {
-	gulp.watch('./public/riftloot/**/*.scss', function() {
+	gulp.watch('./public/scss/*.scss', function() {
 		gulp.start('scss');
 	});
 });
 
 gulp.task('scss', function() {
-	return gulp.src('./public/riftloot/scss/style.scss')
+	return gulp.src('./public/scss/style.scss')
 		.pipe(sass())
 		.pipe(minifyCss())
-		.pipe(gulp.dest('public/riftloot/scss'));
+		.pipe(gulp.dest('public/scss'));
 });
