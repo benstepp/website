@@ -27,6 +27,8 @@ section.splash {
     background:url('/img/bg.jpg');
     background-size:cover;
     background-position: center center;
+
+    transition: all 0.8s ease 0s;
 }
 
 .splash-content {
@@ -37,7 +39,7 @@ section.splash {
     display:flex;
     flex-direction:column;
     align-items:center;
-    justify-content:space-between;
+    justify-content:space-around;
     text-align:center;
 
     background-color:hsla(270,50,5,0.2);
@@ -58,5 +60,5 @@ h2 {
 }
 
 .fake-height {
-    height:20000px;
+    height:2000px;
 }
