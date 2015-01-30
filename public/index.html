@@ -17,11 +17,8 @@
 </head>
 <body>
 
-
-
-
 <!--Full Screen splash container, overflow hidden-->
-<section class="container splash">
+<section class="splash">
 
     <!--This div is a large container to scale image on scroll-->
     <div>
@@ -29,16 +26,24 @@
         <!--This div contains the actual image-->
         <div class="splash-image"></div>
 
-        <!--This div is the content of splash-->
-        <div class="splash-content">
-            <h1>FIGHTINGDRAGONS<br/>
-                WITHTAYLORSWIFT
-            </h1>
-
-            <h2>A collection of side projects.</h2>
-        </div>
     </div>
+
 </section>
+
+<header>
+    <!--This div is the content of splash-->
+    <div class="splash-content">
+        <h1>FIGHTINGDRAGONS<br/>
+            WITHTAYLORSWIFT
+        </h1>
+
+        <h2>A collection of side projects.</h2>
+    </div>
+
+</header>
+
+<!--wrapper-->
+<main class="content-wrapper">
 
 <nav class="navbar navbar-static-top">
     <div class="container-fluid">
@@ -49,7 +54,7 @@
             <ul class="nav navbar-nav navbar-right">
                 <li>
                     <a href="//benstepp.com" class="web">
-                        <!--Web from Foundation Icon FOnts. MIT Licence.-->
+                        <!--Web from Foundation Icon Fonts. MIT Licence.-->
                         <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
                              width="36px" height="36px" viewBox="0 0 100 100" enable-background="new 0 0 100 100" xml:space="preserve">
                         <g>
@@ -124,11 +129,7 @@
     </div>
 </nav>
 
-<!--wrapper-->
-<section class="content-wrapper">
-
-    <!--flexbox-->
-    <div class="content-container">
+    <section class="container-fluid">
         <div class="row">
             <div class="flex-item col-md-4">
                 <h4>KF-Progress</h4>
@@ -141,14 +142,13 @@
                 <h4>Rift: Zone Events Tracker</h4>
             </div>
         </div>
-    </div>
+    </section>
 
-</section>
+</main>
 
 
 <!-- build:js -->
 <script src="./js/splash-resize.js"></script>
-<script src="./js/navbar-reveal.js"></script>
 <!-- endbuild -->
 
 

@@ -1,11 +1,8 @@
 .navbar {
 	height:50px;
-	display:none;
-	position:relative;
+	display:block;
 	z-index:5;
-	margin-top:-50px;
 	background-color:hsla(270,50,15,1);
-	opacity:0.0;
 }
 
 a.navbar-brand {

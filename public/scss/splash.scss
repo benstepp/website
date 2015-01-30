@@ -3,13 +3,15 @@ section.splash {
     height:100vh;
 
     padding:0;
-    position:relative;
+    position:absolute;
     overflow:hidden;
 }
 
 .splash > div {
     width:110%;
     height:110%;
+
+    position:fixed;
 
     padding:0;
     margin-left:-5%;
@@ -34,9 +36,8 @@ section.splash {
 .splash-content {
     width:100%;
     height:100%;
-    padding:10% 0;
+    padding:0;
 
-    position:absolute;
     top:0;
     left:0;
     z-index:2;
@@ -50,6 +51,13 @@ section.splash {
     background-color:hsla(270,50,5,0.2);
 }
 
+header {
+    height:100vh;
+    width:100%;
+
+    position:relative;
+}
+
 h1 {
     color: #fff;
     font-family:Titillium Web;
@@ -60,7 +68,7 @@ h1 {
 
 h2 {
     color:#fff;
-    font-size:1.5em;
+    font-size:2em;
     text-shadow:0 0 6px hsla(270,50,0,0.5);
 }
 
