@@ -1,0 +1,38 @@
+footer {
+	position:relative;
+	background-color:hsla(270,5,5,1);
+}
+
+footer input,footer textarea {
+	clear:both;
+	display:block;
+	width:100%;
+	margin:12px;
+}
+
+.flex {
+	display:flex;
+	flex-direction:column;
+	align-items:center;
+	justify-content:space-around;
+	text-align:center;
+}
+
+.social-flex {
+	width:100%;
+
+	display:flex;
+	flex-direction:row;
+	align-items:center;
+	justify-content:center;
+
+	background-color:hsla(270,50,15,1);
+}
+
+.social-flex li {
+	display:block;
+}
+
+.social-link {
+	padding:12px;
+}

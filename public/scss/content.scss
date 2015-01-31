@@ -1,15 +1,13 @@
-.content-wrapper {
+main {
 	min-height:100vh;
-	padding:0;
+	padding:20px;
 	margin:0;
 	width:100%;
 	background-color:hsla(270,5,92,1);
 	position:relative;
 }
 
-
 .flex-item {
-
 	height:50vh;
 	background-color:blue;
 	border:2px solid green;
