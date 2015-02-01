@@ -31,12 +31,15 @@ input, textarea {
 	width:100%;
 
 	padding:4px 8px;
+	margin:0;
 
 	font-size:1.5em;
 	color:hsla(270,30,80,1);
 
 	background-color:hsla(270,30,10,1);
 	border:none;
+
+	transition:all 0.3s ease 0s;
 }
 
 input {
@@ -62,7 +65,10 @@ label {
 	top:1.25em;
 
 	font-size:1.5em;
+	font-weight:300;
 	color:hsla(270,2,80,1);
+
+	transition:all 0.3s ease 0s;
 }
 
 input:focus + label,input:valid + label,textarea:focus + label,textarea:valid + label {
@@ -139,12 +145,67 @@ textarea:focus ~div.vertical:before, textarea:focus ~ div.vertical:after {
 	transition:all 0.3s ease 0s;
 }
 
+.button-container {
+	position:relative;
+}
 
-button {
+.submit {
 	color:hsla(270,2,80,1);
 	border:none;
 	width:100%;
 	font-size:1.5em;
 	background-color:hsla(270,30,8,1);
 	padding:12px;
+}
+
+.btn-h:before, .btn-h:after, .btn-v:before, .btn-v:after {
+	content: "";
+	position:absolute;
+	background-color:hsla(270,2,90,1);
+	transition:all 0.3s ease 0s;
+}
+
+.btn-h:before, .btn-h:after {
+	width:0px;
+	height:4px;
+}
+
+.btn-v:before, .btn-v:after {
+	width:4px;
+	height:0px;
+}
+
+.btn-h:before {
+	top:0;
+	left:0;
+}
+
+.btn-h:after {
+	bottom:0;
+	right:0;
+}
+
+.btn-v:before {
+	bottom:0;
+	left:0;
+}
+
+.btn-v:after {
+	top:0;
+	right:0;
+}
+
+.submit:hover {
+	color:hsla(270,2,90,1);
+	transition:all 0.3s ease 0s;
+}
+
+.submit:hover ~ .btn-v:before, .submit:hover ~ .btn-v:after {
+	height:100%;
+	transition:all 0.3s ease 0s;
+}
+
+.submit:hover ~ .btn-h:before, .submit:hover ~ .btn-h:after {
+	width:100%;
+	transition:all 0.3s ease 0s;
 }
