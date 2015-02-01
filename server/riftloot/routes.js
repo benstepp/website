@@ -78,4 +78,4 @@ module.exports = function(router) {
 			 res.json({error:validApiOptions.error});
 		});
 
-};				
+};

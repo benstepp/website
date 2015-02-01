@@ -1,0 +1,211 @@
+footer {
+	position:relative;
+	background-color:hsla(270,30,10,1);
+	padding-bottom:40px;
+}
+
+footer > div {
+	padding-top:40px;
+}
+
+.flex {
+	display:flex;
+	flex-direction:column;
+	align-items:center;
+	justify-content:space-around;
+	text-align:center;
+}
+
+.input-container {
+	position:relative;
+	padding:20px 15px 15px 15px;
+}
+
+form h3 {
+	color:hsla(270,2,80,1);
+}
+
+input, textarea {
+	clear:both;
+	display:block;
+	width:100%;
+
+	padding:4px 8px;
+	margin:0;
+
+	font-size:1.5em;
+	color:hsla(270,30,80,1);
+
+	background-color:hsla(270,30,10,1);
+	border:none;
+
+	transition:all 0.3s ease 0s;
+}
+
+input {
+	border-bottom:2px solid hsla(270,30,90,1);
+}
+
+textarea {
+	resize:none;
+	background-color:hsla(270,30,8,1);
+}
+
+input:focus, textarea:focus {
+	outline:none;
+}
+
+label {
+	pointer-events:none;
+	position:absolute;
+
+	width:100%;
+
+	left:1.2em;
+	top:1.25em;
+
+	font-size:1.5em;
+	font-weight:300;
+	color:hsla(270,2,80,1);
+
+	transition:all 0.3s ease 0s;
+}
+
+input:focus + label,input:valid + label,textarea:focus + label,textarea:valid + label {
+	font-size:1em;
+	top:0;
+	left:1.6em;
+	transition: all 0.3s ease 0s;
+}
+
+/*for the underline on the inputs*/
+input + label + div {
+	content:"";
+	width: 0px;
+	height:4px;
+
+	position:absolute;
+	left:15px;
+	top:calc(4em + 2px);
+
+	background-color:hsla(270,2,90,1);
+	transition:all 0.3s ease 0s;
+}
+
+input:focus + label + div,input:valid + label + div {
+	width:calc(100% - 29px);
+	transition:all 0.3s ease 0s;
+}
+
+/*for the border on the text area*/
+.horizontal:before, .horizontal:after, .vertical:before, .vertical:after {
+	content:"";
+
+	position:absolute;
+
+	background-color:hsla(270,10,50,1);
+	transition:all 0.3s ease 0s;
+}
+
+.horizontal:before {
+	width:0px;
+	height:1px;
+	top:20px;
+	left:15px;
+}
+
+.horizontal:after {
+	width:0px;
+	height:1px;
+	bottom:15px;
+	right:15px;
+}
+
+.vertical:before {
+	width:1px;
+	height:0px;
+	bottom:15px;
+	left:15px;
+}
+
+.vertical:after {
+	width:1px;
+	height:0px;
+	top:20px;
+	right:15px;
+}
+
+textarea:focus + label + div.horizontal:before, textarea:focus + label + div.horizontal:after {
+	width:calc(100% - 30px);
+	transition:all 0.3s ease 0s;
+}
+
+textarea:focus ~div.vertical:before, textarea:focus ~ div.vertical:after {
+	height:calc(100% - 35px);
+	transition:all 0.3s ease 0s;
+}
+
+.button-container {
+	position:relative;
+}
+
+.submit {
+	color:hsla(270,2,80,1);
+	border:none;
+	width:100%;
+	font-size:1.5em;
+	background-color:hsla(270,30,8,1);
+	padding:12px;
+}
+
+.btn-h:before, .btn-h:after, .btn-v:before, .btn-v:after {
+	content: "";
+	position:absolute;
+	background-color:hsla(270,2,90,1);
+	transition:all 0.3s ease 0s;
+}
+
+.btn-h:before, .btn-h:after {
+	width:0px;
+	height:4px;
+}
+
+.btn-v:before, .btn-v:after {
+	width:4px;
+	height:0px;
+}
+
+.btn-h:before {
+	top:0;
+	left:0;
+}
+
+.btn-h:after {
+	bottom:0;
+	right:0;
+}
+
+.btn-v:before {
+	bottom:0;
+	left:0;
+}
+
+.btn-v:after {
+	top:0;
+	right:0;
+}
+
+.submit:hover {
+	color:hsla(270,2,90,1);
+	transition:all 0.3s ease 0s;
+}
+
+.submit:hover ~ .btn-v:before, .submit:hover ~ .btn-v:after {
+	height:100%;
+	transition:all 0.3s ease 0s;
+}
+
+.submit:hover ~ .btn-h:before, .submit:hover ~ .btn-h:after {
+	width:100%;
+	transition:all 0.3s ease 0s;
+}
