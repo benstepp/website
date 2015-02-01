@@ -59,7 +59,7 @@
 
 <footer>
     <ul class="social-flex">
-           <li><a href="" class="social-link">
+           <li><a href="//github.com/benstepp" class="social-link github" target="_blank">
                <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
                  width="40px" height="40px" viewBox="0 0 100 100" enable-background="new 0 0 100 100" xml:space="preserve">
                <g>
@@ -75,7 +75,7 @@
                </g>
                </svg>
            </a></li>
-           <li><a href="" class="social-link">
+           <li><a href="//twitter.com/benstepp" class="social-link twitter" target="_blank">
                <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
                  width="40px" height="40px" viewBox="0 0 100 100" enable-background="new 0 0 100 100" xml:space="preserve">
                <path d="M88.5,26.12c-2.833,1.256-5.877,2.105-9.073,2.486c3.261-1.955,5.767-5.051,6.945-8.738
@@ -88,7 +88,7 @@
                 C83.704,32.071,86.383,29.288,88.5,26.12z"/>
                </svg>
            </a></li>
-           <li><a href="" class="social-link">
+           <li><a href="//benstepp.com" class="social-link web" target="_blank">
                <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
                  width="40px" height="40px" viewBox="0 0 100 100" enable-background="new 0 0 100 100" xml:space="preserve">
                <g>
@@ -103,7 +103,7 @@
                </g>
                </svg>
            </a></li>
-           <li><a href="" class="social-link">
+           <li><a href="//steamcommunity.com/id/fooman" class="social-link steam" target="_blank">
                <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
                  width="40px" height="40px" viewBox="0 0 100 100" enable-background="new 0 0 100 100" xml:space="preserve">
                <path id="Gears" d="M92.43,40.935c0,3.889-3.155,7.039-7.041,7.039c-3.886,0-7.039-3.15-7.039-7.039
@@ -135,19 +135,33 @@
                         <div class="col-md-6 input-container">
                             <input required />
                             <label>Name</label>
+                            <!--Blank div easier to target than :after elements-->
+                            <div></div>
                         </div>
                         <div class="col-md-6 input-container">
                             <input required />
                             <label>Email</label>
+                            <div></div>
                         </div>
                     </div>
                     <div>
                         <div class="col-md-12 input-container">
                             <textarea rows="6" required></textarea>
                             <label>Message</label>
+                            <div class="horizontal"></div>
+                            <div class="vertical"></div>
                         </div>
                     </div>
-                    <button>Submit</button>
+                    <div>
+                        <div class="col-md-4 col-md-offset-8">
+                            <div class="button-container">
+                                <button>Submit</button>
+                                <div class="btn-h"></div>
+                                <div class="btn-v"></div>
+                            </div>
+                        </div>
+                    </div>
+
                 </form>
            </div>
         </div>
