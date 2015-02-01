@@ -2,7 +2,7 @@
 	var splashImage = document.querySelector('.splash-image');
 	var winHeight = window.innerHeight;
 
-	window.onscroll = scaleImage;
+	window.addEventListener('scroll',scaleImage);
 
 	function scaleImage() {
 		//pageYOffset for Internet Explorer
