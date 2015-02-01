@@ -1,13 +1,6 @@
 footer {
 	position:relative;
-	background-color:hsla(270,5,5,1);
-}
-
-footer input,footer textarea {
-	clear:both;
-	display:block;
-	width:100%;
-	margin:12px;
+	background-color:hsla(270,30,10,1);
 }
 
 .flex {
@@ -26,7 +19,8 @@ footer input,footer textarea {
 	align-items:center;
 	justify-content:center;
 
-	background-color:hsla(270,50,15,1);
+	background-color:hsla(270,50,100,1);
+	box-shadow: 0 4px 2px 0px hsla(270,10,8,1);
 }
 
 .social-flex li {
@@ -35,4 +29,68 @@ footer input,footer textarea {
 
 .social-link {
 	padding:12px;
+}
+
+.input-container {
+	position:relative;
+	padding:20px 15px 15px 15px;
+}
+
+input, textarea {
+	clear:both;
+	display:block;
+	width:100%;
+
+	padding:4px 8px;
+
+	font-size:1.5em;
+	color:hsla(270,30,80,1);
+
+	background-color:hsla(270,30,10,1);
+	border:none;
+}
+
+input {
+	border-bottom:2px solid hsla(270,30,90,1);
+}
+
+textarea {
+	background-color:hsla(270,30,8,1);
+}
+
+input:focus, textarea:focus {
+	outline:none;
+}
+
+label {
+	pointer-events:none;
+	position:absolute;
+
+	width:100%;
+
+	left:1.2em;
+	top:1.25em;
+
+	font-size:1.5em;
+	color:hsla(270,2,80,1);
+}
+
+input:focus + label,input:valid + label,textarea:focus + label,textarea:valid + label {
+	font-size:1em;
+	top:0;
+	left:1.6em;
+	transition: all 0.3s ease 0s;
+}
+
+.input-container:after {
+	content:"";
+	box-sizing:border-box;
+	position:absolute;
+
+	width:calc(100% - 30px);
+	height:4px;
+
+	bottom:0;
+	left:0;
+	background-color:red;
 }
