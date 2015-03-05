@@ -1,0 +1,39 @@
+@import "d3-tooltip.scss";
+
+body {
+	background:red;
+}
+
+.ui-tooltip {
+	display:block;
+	box-sizing:content-box;
+
+	background:#1d180e;
+	padding:1px;
+	border:1px solid #322a20;
+	width:355px;
+	border-radius:2px;
+	box-shadow: 0 0 10px #000;
+}
+
+.ui-tooltip div {
+	box-sizing:content-box;
+}
+
+.tooltip-content {
+	background:#000;
+	padding:0px;
+	color:#CFB991;
+	font-size:12px;
+}
+
+.ui-tooltip .tooltip-content {
+	width:auto;
+	height:auto;
+}
+
+.d3-tooltip {
+	margin:0;
+	border:0;
+	outline:0;
+}

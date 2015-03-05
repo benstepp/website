@@ -1,0 +1,24 @@
+var D3ItemTooltipHead = React.createClass({
+	render: function() {
+
+		//initial class set for the tooltip head
+		var divClass='tooltip-head';
+		var h3Class='';
+
+		//modify the classes if a color was passed
+		//fallback color is handled by d3-tooltip css
+		if (this.props.item.color) {
+			divClass += ' tooltip-head-' + this.props.item.color;
+			h3Class += 'd3-color-' + this.props.item.color;
+		}
+
+		return (
+			<div className={divClass}>
+				<h3 className={h3Class}>
+					{this.props.item.name}
+				</h3>
+			</div>
+		);
+
+	}
+});
