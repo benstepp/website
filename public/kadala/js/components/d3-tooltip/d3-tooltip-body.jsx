@@ -8,8 +8,14 @@ var D3ItemTooltipBody = React.createClass({
 
 	render: function() {
 
+		//declare arrays for primary and secondary item effects. 
+		//An item must have at least one of each.
+		//Create the list item for each stat and push in the arrays
+		var primaries = forEach(this.props.item.primaries);
+		var secondaries = forEach(this.props.item.secondaries);
+
 		//image used as inline-style for item tooltips
-		var image = {backgroundImage:'url(http://media.blizzard.com/d3/icons/items/large/unique_shoulder_set_07_x1_demonhunter_male.png)'};
+		var image = {backgroundImage:'url('+this.props.item.image+')'};
 
 		//if specified, set color for tooltip components
 		if (this.props.item.color) {
@@ -17,9 +23,20 @@ var D3ItemTooltipBody = React.createClass({
 			this.props.itemTypeClass +=this.props.item.color;
 		}
 
+		//if it is an armor or weapon add additional info to icon section
+		var subHead = [];
+		console.log(this.props.item);
+		if (this.props.item.armor) {
+			subHead.push(<D3ItemTooltipArmor armor={this.props.item.armor}/>);
+		}
+		if (this.props.item.weapon) {
+			subHead.push(<D3ItemTooltipWeapon weapon={this.props.item.weapon}/>);
+		}
+
 		return (
 			<div className="tooltip-body effect-bg effect-bg-armor effect-bg-armor-default">
 
+				{/*The item icon and container, color needed for background*/}
 				<span className={this.props.iconClasses}>
 					<span className="icon-item-gradient">
 						<span className="icon-item-inner icon-item-default" style={image}>
@@ -28,26 +45,51 @@ var D3ItemTooltipBody = React.createClass({
 				</span>
 
 				<div className="d3-item-properties">
+
+					{/*Slot and if class specific*/}
 					<ul className="item-type-right">
 							<li className="item-slot">{this.props.item.slot}</li>
 							<li className="item-class-specific d3-color-white">{this.props.item.classSpecific}</li>
 					</ul>
 
+					{/*Rarity of the item and/if it is ancient*/}
 					<ul className="item-type">
 						<li>
 							<span className={this.props.itemTypeClass}>{this.props.item.type}</span>
 						</li>
 					</ul>
 
-					<ul className="item-armor-weapon item-armor-armor">
-						<li className="big"><p><span className="value">{this.props.item.armor}</span></p></li>
-						<li>Armor</li>
+					{/*If the item is armor or weapon, the key is defined and we need more information on the tooltip*/}
+					{subHead}
+
+					<div className="item-before-effects"></div>
+
+					{/*Actual item stats*/}
+					<ul className="item-effects">
+						<p className="item-property-category">Primary</p>
+						{primaries}
+						<p className="item-property-category">Secondary</p>
+						{secondaries}
 					</ul>
+
 				</div>
 
-				<div className="item-before-effects"></div>
 			</div>
 		);
+
+	function forEach(statObject) {
+		var results = [];
+
+		var keys = Object.keys(statObject);
+		var length = keys.length;
+
+		for (var i = 0; i < length; i ++) {
+			var stat = keys[i];
+			var val = statObject[stat];
+			results.push(<D3ItemTooltipStat value={val} name={stat} />);
+		}
+		return results;
+	}
 
 	}
 });
