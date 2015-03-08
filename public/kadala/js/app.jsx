@@ -1,3 +1,6 @@
+var React = require('react'),
+	D3ItemTooltip = require('./components/d3-tooltip/d3-tooltip.jsx');
+
 var item = {
 	name:'Marauder\'s Spine',
 	color:'green',

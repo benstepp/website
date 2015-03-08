@@ -1,3 +1,5 @@
+var React = require('react');
+
 var D3ItemTooltipWeapon= React.createClass({
 
 	render: function() {
@@ -29,3 +31,5 @@ var D3ItemTooltipWeapon= React.createClass({
 	}
 
 });
+
+module.exports = D3ItemTooltipWeapon;

@@ -1,3 +1,5 @@
+var React = require('react');
+
 var D3ItemTooltipStat= React.createClass({
 
 	render: function() {
@@ -17,3 +19,5 @@ var D3ItemTooltipStat= React.createClass({
 	}
 
 });
+
+module.exports = D3ItemTooltipStat;

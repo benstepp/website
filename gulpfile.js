@@ -22,6 +22,10 @@ gulp.task('index', function() {
 	require('./public/gulpfile.js')(date);
 });
 
+gulp.task('kadala', function() {
+	require('./public/kadala/gulpfile.js')(date);
+});
+
 //
 //	Build scss while developing
 //

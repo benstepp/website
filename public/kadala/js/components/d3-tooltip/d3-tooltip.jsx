@@ -1,3 +1,9 @@
+var React = require('react'),
+
+	D3ItemTooltipHead = require('./d3-tooltip-head.jsx'),
+	D3ItemTooltipBody = require('./d3-tooltip-body.jsx');
+
+
 var D3ItemTooltip = React.createClass({
 	render: function() {
 
@@ -12,3 +18,5 @@ var D3ItemTooltip = React.createClass({
 
 	}
 });
+
+module.exports = D3ItemTooltip;

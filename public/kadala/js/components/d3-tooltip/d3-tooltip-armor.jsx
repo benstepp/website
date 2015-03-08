@@ -1,4 +1,5 @@
-var D3ItemTooltipArmor= React.createClass({
+var React = require('react'),
+	D3ItemTooltipArmor = React.createClass({
 
 	render: function() {
 
@@ -14,3 +15,5 @@ var D3ItemTooltipArmor= React.createClass({
 	}
 
 });
+
+module.exports = D3ItemTooltipArmor;

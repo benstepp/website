@@ -1,3 +1,8 @@
+var React = require('react'),
+	D3ItemTooltipArmor = require('./d3-tooltip-armor.jsx'),
+	D3ItemTooltipWeapon = require('./d3-tooltip-weapon.jsx'),
+	D3ItemTooltipStat = require('./d3-tooltip-stat.jsx');
+
 var D3ItemTooltipBody = React.createClass({
 	getDefaultProps: function() {
 		return {
@@ -93,3 +98,5 @@ var D3ItemTooltipBody = React.createClass({
 
 	}
 });
+
+module.exports = D3ItemTooltipBody;

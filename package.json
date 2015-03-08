@@ -5,7 +5,17 @@
   		"type": "git",
   		"url": "git://github.com:benstepp/website.git"
 	},
+
+	"browserify": {
+		"transform": ["browserify-shim"]
+	},
+	"browserify-shim": {
+		"react": "global:React"
+	},
+
 	"dependencies": {
+		"browserify":"~9.0.3",
+		"browserify-shim":"~3.8.3",
 		"express": "~4.10.7",
 		"gulp":"~3.8.10",
 		"gulp-angular-extender":"~0.1.0",
@@ -24,9 +34,13 @@
 		"mongoose-unique-validator": "~0.4.1",
 		"morgan": "~1.1.1",
 		"q":"~1.1.2",
+		"react":"~0.12.2",
+		"reactify":"~1.0.0",
 		"request": "~2.51.0",
 		"socket.io":"~1.0.6",
 		"validator":"~3.27.0",
+		"vinyl-source-stream":"~1.1.0",
+		"watchify":"~2.4.0",
 		"xml-stream":"~0.4.5"
 	}
 }

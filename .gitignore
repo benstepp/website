@@ -25,3 +25,4 @@ $RECYCLE.BIN/
 .gitattributes
 build
 templates.js
+bundle.js
