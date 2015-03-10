@@ -23,6 +23,7 @@ module.exports = function(date) {
 
 		return watcher
 			.on('update', function() {
+				console.log('updating js');
 				watcher.bundle()
 					.pipe(source('./public/kadala/js/bundle.js'))
 					.pipe(gulp.dest('./'));

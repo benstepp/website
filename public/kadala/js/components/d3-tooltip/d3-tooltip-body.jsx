@@ -29,13 +29,12 @@ var D3ItemTooltipBody = React.createClass({
 		}
 
 		//if it is an armor or weapon add additional info to icon section
-		var subHead = [];
-		console.log(this.props.item);
-		if (this.props.item.armor) {
-			subHead.push(<D3ItemTooltipArmor armor={this.props.item.armor}/>);
+		var subHead;
+		if (this.props.item.hasOwnProperty('armor')) {
+			subHead = <D3ItemTooltipArmor armor={this.props.item.armor}/>;
 		}
-		if (this.props.item.weapon) {
-			subHead.push(<D3ItemTooltipWeapon weapon={this.props.item.weapon}/>);
+		if (this.props.item.hasOwnProperty('weapon')) {
+			subHead = <D3ItemTooltipWeapon weapon={this.props.item.weapon}/>;
 		}
 
 		return (
@@ -91,7 +90,7 @@ var D3ItemTooltipBody = React.createClass({
 		for (var i = 0; i < length; i ++) {
 			var stat = keys[i];
 			var val = statObject[stat];
-			results.push(<D3ItemTooltipStat value={val} name={stat} />);
+			results.push(<D3ItemTooltipStat value={val} name={stat} key={i} />);
 		}
 		return results;
 	}

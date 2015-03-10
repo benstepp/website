@@ -69,7 +69,7 @@ var Kadala = function(cl,seasonal,hardcore) {
 		newItem.rarity = rollRarity();
 
 		//if the item is legendary we need to roll for one
-		if (newItem.rarity === 'legendary') {
+		if (newItem.rarity === 'legendary' || newItem.rarity === 'ancient') {
 			newItem.name = rollLegendary(slot);
 		}
 
@@ -78,6 +78,7 @@ var Kadala = function(cl,seasonal,hardcore) {
 
 	function rollRarity() {
 		var val = Math.random()*100;
+		if (val >= 99) {return 'ancient';}
 		if (val >= 90) {return 'legendary';}
 		if (val < 60) {return 'rare';}
 		else {return 'magic';}
@@ -98,7 +99,4 @@ var Kadala = function(cl,seasonal,hardcore) {
 
 };
 
-var test = new Kadala('Barbarian',true, false);
-for (var i =0; i < 1000; i++) {
-	test.rollItem('2H');
-}
+module.exports = Kadala;
