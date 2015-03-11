@@ -1,4 +1,5 @@
 var affixes = require('./data/affixes/index.js');
+var affixMap = require('./data/affixes/affixMap.js');
 
 var D3Item = function(dClass,slot,rarity,name,pCount,sCount) {
 	this.rarity = rarity;
