@@ -60,6 +60,7 @@ var affixMap = {
 	},
 	'HolyDamage': {
 		text_en: 'Holy Skills deal {$%} more damage',
+		prefix_en:'Hallowed',
 		exclude:['Demon Hunter','Barbarian','Wizard','Witch Doctor']
 	},
 	'LightningDamage': {
@@ -105,6 +106,13 @@ var affixMap = {
 	'Socket': {
 		prefix_en:'Socketed'
 	},
+	'EliteReduc':{
+		text_en:'Reduces damage from elites by {$%}'
+	},
+	'MoveSpeed':{
+		text_en:'{+$%} Movement Speed',
+		prefix_en:'Fleet'
+	},
 
 	//Secondary Resists
 	'PhysRes': {
@@ -137,8 +145,11 @@ var affixMap = {
 		exclude:['AllRes','PhysRes','ColdRes','FireRes','LightRes','ArcRes'],
 		prefix_en:'Untarnished'
 	},
+
+	//Utility
 	'RangeReduc':{
 		text_en:'Reduces damage from ranged attacks by {$%}',
+		prefix_en:'Deflecting'
 	},
 	'MeleeReduc': {
 		text_en:'Reduces damage from melee attacks by {$%}',
@@ -166,6 +177,85 @@ var affixMap = {
 	'Thorns': {
 		text_en:'Ranged and melee attackers take {$} per hit',
 		suffix_en:'of Razors'
+	},
+	'PickupRadius': {
+		text_en:'Increases Gold and Health Pickup by {} Yards.',
+		prefix_en:'Avaricious'
+	},	
+	'IgnoreDura':{
+		text_en:'Ignores Durability Loss'
+	},
+
+
+	//Class based
+	'SpiritRegen':{
+		text_en:'Increases Spirit Regeneration by {} per Second (Monk Only)',
+		prefix_en:'Avaricious'
+	},
+	'MaxFury':{
+		text_en:'{+$} Maximum Fury'
+	},
+
+	//Special Effects
+	'FatalDmg': {
+		type:'legendary',
+		text_en:'When receiving fatal damage, you are instead restored to {100%} of maximum Life and resources. This item is destroyed in the process.'
+	},
+	'PreventArcane': {
+		type:'legendary',
+		text_en:'Prevent all Arcane damage taken and heal yourself for {$%} of the amount prevented.'
+	},
+	'PreventCold':{
+		type:'legendary',
+		text_en:'Prevent all Cold damage taken and heal yourself for {$%} of the amount prevented.'
+	},
+	'PreventPoison':{
+		type:'legendary',
+		text_en:'Prevent all Poison damage taken and heal yourself for {$%} of the amount prevented.'
+	},
+	'PreventFire':{
+		type:'legendary',
+		text_en:'Prevent all Fire damage taken and heal yourself for {$%} of the amount prevented.'
+	},
+	'PreventLightning':{
+		type:'legendary',
+		text_en:'Prevent all Lightning damage taken and heal yourself for {$%} of the amount prevented.'
+	},
+	'StunDur': {
+		type:'legendary',
+		text_en:'Increases duration of Stun effects by {$%}.'
+	},
+	'Halycon': {
+		type:'legendary',
+		text_en:'When you use abilityname, you mesmerize nearby enemies with your skill, causing them to jump uncontrollably for {$} seconds.'
+	},
+	'HauntOfVaxo':{
+		type:'legendary',
+		text_en:'Summons shadow clones to your aid when you Stun an enemy. This effect may occur once every {30} seconds.'
+	},
+	'KymboGold':{
+		type:'legendary',
+		text_en:'Picking up gold heals you for an amount equal to the gold that was picked up.'
+	},
+	'MoonlightWard':{
+		type:'legendary',
+		text_en:'Hitting an enemy within 15 yards has a chance to ward you with shards of Arcane energy that explode when enemies get close, dealing {$%} weapon damage as Arcane to enemies within 15 yards.'
+	},
+	'Rakoff':{
+		type:'legendary',
+		text_en:'Enemies you kill have a {$%} additional chance to drop a health globe.'
+	},
+	'Johan':{
+		type:'legendary',
+		text_en:'Chance on hit to pull in enemies toward your target and Slow them by {$%}.'
+	},
+	'Chilanik':{
+		type:'legendary',
+		text_en:'Using War Cry increases the movement speed for you and all allies affected by {$%} for 10 seconds.'
+	},
+	'Lamentation':{
+		type:'legendary',
+		text_en:'Rend can now stack up to 2 times on an enemy.'
 	}
 
 

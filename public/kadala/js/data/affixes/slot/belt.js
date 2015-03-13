@@ -19,7 +19,20 @@ var belt = {
 			}
 		}
 	},
-	primary:{},
+	primary:{
+		Dexterity:{
+
+		},
+		Strength:{
+
+		},
+		Intelligence:{
+
+		},
+		Vitality:{
+			
+		},
+	},
 	secondary:{}
 };
 

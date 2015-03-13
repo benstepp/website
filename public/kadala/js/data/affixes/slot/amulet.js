@@ -175,7 +175,8 @@ var amulet = {
 			maxa:23950
 		},
 		'Socket': {
-
+			min:1,
+			max:1
 		}
 
 	},

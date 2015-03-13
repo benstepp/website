@@ -13,8 +13,133 @@ var Boots = {
 			}
 		}
 	},
-	primary:{},
-	secondary:{}
+	primary:{
+		Dexterity:{
+			minl:416,
+			maxl:500,
+		},
+		Strength:{
+			minl:416,
+			maxl:500,
+		},
+		Intelligence:{
+			minl:416,
+			maxl:500,
+		},
+		Vitality:{
+			minl:416,
+			maxl:500,
+		},
+		Armor:{
+			minl:373,
+			maxl:397,
+		},
+		LifeRegen:{
+			minl:4643,
+			maxl:5528
+		},
+		AllResist:{
+			minl:91,
+			maxl:100
+		},
+		MoveSpeed:{
+			min:10,
+			max:12
+		},
+		RapidFireDmg:{
+			min:10,
+			max:15,
+			exclude:["Monk","Barbarian","Crusader","Wizard","Witch Doctor"]
+		},
+		MultishotDmg:{
+			min:10,
+			max:15,
+			exclude:["Monk","Barbarian","Crusader","Wizard","Witch Doctor"]
+		},
+		ImplateDmg:{
+			min:10,
+			max:15,
+			exclude:["Monk","Barbarian","Crusader","Wizard","Witch Doctor"]
+		},
+		ChakramDmg:{
+			min:10,
+			max:15,
+			exclude:["Monk","Barbarian","Crusader","Wizard","Witch Doctor"]
+		},
+		ElementalArrowDmg:{
+			min:10,
+			max:15,
+			exclude:["Monk","Barbarian","Crusader","Wizard","Witch Doctor"]
+		},
+		ClusterArrowDmg:{
+			min:10,
+			max:15,
+			exclude:["Monk","Barbarian","Crusader","Wizard","Witch Doctor"]
+		},
+		StrafeDmg:{
+			min:10,
+			max:15,
+			exclude:["Monk","Barbarian","Crusader","Wizard","Witch Doctor"]
+		}
+	},
+	secondary:{
+		GoldFind:{
+			min:32,
+			max:35
+		},
+		Thorns:{
+			min:1525,
+			max:2000
+		},
+		BonusXp:{
+			min:140,
+			max:200
+		},
+		ImmobOnHit:{
+			min:1,
+			max:5.1
+		},
+		PickupRadius:{
+			min:1,
+			max:2
+		},
+		IgnoreDura:{
+			min:1,
+			max:1
+		},
+		Globes:{
+			minl:20001,
+			maxl:29713
+		},
+		ReducedReq:{
+			min:2,
+			max:30
+		},
+		PhysRes:{
+			minl:141,
+			maxl:160
+		},
+		ColdRes:{
+			minl:141,
+			maxl:160
+		},
+		FireRes:{
+			minl:141,
+			maxl:160
+		},
+		LightRes:{
+			minl:141,
+			maxl:160
+		},
+		ArcaneRes:{
+			minl:141,
+			maxl:160
+		},
+		PoisonRes:{
+			minl:141,
+			maxl:160
+		}
+	}
 };
 
 module.exports = Boots;
