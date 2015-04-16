@@ -1,9 +1,7 @@
-var React = require('react'),
+var React = require('react');
 
-	Kadala = require('./kadala.jsx'),
-	D3Item = require('./D3Item.jsx'),
-
-	D3ItemTooltip = require('./components/d3-tooltip/d3-tooltip.jsx');
+var D3ItemTooltip = require('./components/d3-tooltip/d3-tooltip.jsx');
+var OptionsPanel = require('./components/kadala-options/options-panel.jsx');
 
 var item = {
 	name:'Marauder\'s Spine',
@@ -47,13 +45,6 @@ var item = {
 };
 
 React.render(
-	<D3ItemTooltip item={item} />,
+	<OptionsPanel />,
 	document.getElementById('example')
 );
-
-var test = new Kadala('Barbarian',true, false);
-for (var i =0; i < 1000; i++) {
-	test.rollItem('2H');
-}
-
-console.log(new D3Item('Demon Hunter','amulet','rare'));
