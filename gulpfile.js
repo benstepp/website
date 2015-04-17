@@ -30,7 +30,7 @@ gulp.task('kadala', function() {
 //	Build scss while developing
 //
 gulp.task('dev', function() {
-	gulp.watch('./public/kadala/scss/*.scss', function() {
+	gulp.watch('./public/kadala/scss/**/*.scss', function() {
 		gulp.start('scss');
 	});
 });

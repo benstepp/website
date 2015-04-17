@@ -1,0 +1,107 @@
+ul.classSelector {
+	padding:0px;
+	width:100%;
+	list-style-type:none;
+}
+
+ul.classSelector > li:after,ul.classSelector >li:first-child:before {
+	content:'';
+	display:block;
+	width:90%;
+	margin:auto;
+	height:1px;
+	background-color:#202020;
+}
+
+button.classSelector {
+	width:100%;
+	padding:4px 12px;
+	background:none;
+	color:#ddd;
+	border:none;
+	outline:none;
+}
+.classSelector:hover {
+	color:#fff;
+	transition:all 0.6s ease 0s;
+}
+
+.classSelector.selected > img {
+	box-shadow: 0px 0px 2px #ddd;
+	transition: all 0.6s ease 0s;
+}
+
+button.classSelector.selected {
+	color:#fff;
+	text-shadow:0 0 16px #eee;
+	transition: all 0.6s ease 0s;
+}
+
+.classSelector > img {
+	content:'';
+	border-radius:50%;
+	border:1px solid #222;
+	width:40px;
+	height:40px;
+	float:left;
+	background:url('/kadala/img/hero-nav-portraits.jpg');
+	background-repeat:repeat;
+	background-size: 270%;
+	transition: all 0.6s ease 0s;
+}
+
+.classSelector > span {
+	margin-top:-2px;
+	padding:0px 4px;
+	font-size:24px;
+	float:left;
+	font-variant:small-caps;
+}
+
+img.barbarianmale {
+	background-position:-7px 0px;
+}
+
+img.barbarianfemale {
+	background-position:-60px 0px;
+}
+
+img.crusadermale {
+	background-position:-7px -205px;
+}
+
+img.crusaderfemale {
+	background-position:-60px -205px;
+}
+
+img.demonhuntermale {
+	background-position:-7px -40px;
+}
+
+img.demonhunterfemale {
+	background-position:-60px -40px;
+}
+
+img.monkmale {
+	background-position:-7px -82px;
+}
+
+img.monkfemale {
+	background-position:-60px -82px;
+}
+
+img.witchdoctormale {
+	background-position:-7px -122px;
+}
+
+img.witchdoctorfemale {
+	background-position:-60px -122px;
+}
+
+img.wizardmale {
+	background-position:-7px -164px;
+}
+
+img.wizardfemale {
+	background-position:-60px -164px;
+}

@@ -1,9 +1,10 @@
-@import "d3-tooltip.scss";
-@import "options-panel.scss";
 @import "../../libs/foundation/scss/normalize.scss";
+@import "d3-tooltip.scss";
+@import "./options-panel/options-panel.scss";
 
 body {
 	background:red;
+	font-family: 'Lato', sans-serif;
 }
 
 .ui-tooltip {

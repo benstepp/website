@@ -1,0 +1,30 @@
+.button-wrapper {
+	float:left;
+	display:inline-block;
+	width:50%;
+	text-align:center;
+}
+
+button.gender-selector {
+	border:none;
+	outline:none;
+	background:none;
+
+	color:#ddd;
+	font-weight:400;
+	font-size:24px;
+	font-variant:small-caps;
+
+	transition: all 0.6s ease 0s;
+}
+
+button.gender-selector:hover {
+	color:#fff;
+	transition: all 0.6s ease 0s;
+}
+
+button.gender-selector.selected {
+	color:#FFF;
+	text-shadow:0 0 16px #eee;
+	transition: all 0.6s ease 0s;
+}
