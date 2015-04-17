@@ -28,3 +28,48 @@ button.gender-selector.selected {
 	text-shadow:0 0 16px #eee;
 	transition: all 0.6s ease 0s;
 }
+
+.gender-selector > img {
+	content:'';
+	display:inline-block;
+	width:30px;
+	height:30px;
+
+	border:1px solid #222;
+	border-radius:50%;
+	box-shadow: 0px 0px 2px #060606;
+	transition: box-shadow 0.6s ease 0s;
+
+	background-repeat:no-repeat;
+	background-image:url('/kadala/img/gender-toggle.png');
+	background-size:300%;
+}
+
+.female > img {
+	background-position:-45px -7px;
+}
+
+.male > img {
+	background-position:-10px -7px;
+}
+
+.gender-selector.female:hover > img {
+	background-position:-45px -50px;
+}
+
+.gender-selector.male:hover > img {
+	background-position:-10px -50px;
+}
+
+.selected.female > img, .selected.female:hover > img {
+	background-position:-45px -93px;
+}
+
+.selected.male > img, .selected.male:hover > img {
+	background-position:-10px -93px;
+}
+
+.selected > img {
+	box-shadow: 0px 0px 4px #454545;
+	transition: box-shadow 0.6s ease 0s;
+}

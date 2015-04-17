@@ -8,7 +8,7 @@ var GenderSelectorButton = React.createClass({
 
 	render:function() {
 
-		var buttonClass='gender-selector';
+		var buttonClass='gender-selector '+this.props.gender.toLowerCase();
 		if (this.props.selected) {
 			buttonClass+= ' selected';
 		}
