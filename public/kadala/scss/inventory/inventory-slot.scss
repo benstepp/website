@@ -1,8 +1,15 @@
+@import "../media-queries.scss";
+
 .inventory-slot {
 	width:50px;
 	height:50px;
 	background-color:#663399;
 	border:1px solid red;
+
+	@media #{$tablet} {
+		width:45px;
+		height:45px;
+	}
 }
 
 .inventory-slot.large {

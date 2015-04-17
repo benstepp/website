@@ -6,7 +6,7 @@ var HardcoreCheckbox = React.createClass({
 			<div className='checkbox-wrapper'>
 				<label>
 					<input type='checkbox' className='options-checkbox' />
-					<span className='checkbox-label'>Hardcore Hero</span>
+					<span className='checkbox-label'>Hardcore <span className='hidden-sm'>Hero</span></span>
 				</label>
 			</div>
 		);

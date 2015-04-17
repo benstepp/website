@@ -1,3 +1,4 @@
+@import "../media-queries.scss";
 @import "./inventory-slot.scss";
 
 .inventory-container {
@@ -7,5 +8,22 @@
 	align-items:center;
 	align-content:center;
 	justify-content:center;
-	height:300px;
+	height:316px;
+	margin-top:20px;
+	padding:8px;
+	background-color:#12110f;
+	@media #{$tablet} {
+		height:286px;
+	}
+}
+
+.inventory-section {
+	width:100%;
+	@media #{$mobile} {
+		display:none;
+	}
+}
+
+.inventory-button {
+	height:100%;
 }

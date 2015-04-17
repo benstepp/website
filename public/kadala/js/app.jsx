@@ -12,7 +12,7 @@ var Application = React.createClass({
 					<div className="col-sm-3">
 						<OptionsPanel />
 					</div>
-					<div className="col-sm-9 content-column">
+					<div className="col-sm-9">
 						<KadalaStore />
 						<Inventory />
 					</div>

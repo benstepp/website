@@ -20,12 +20,8 @@ var Inventory = React.createClass({
 
 	render:function() {
 		return (
-			<div>
-				<div className='col-sm-1'></div>
-				<div className='col-sm-10'>
+			<div className='inventory-section'>
 				<InventoryContainer inventory={this.state.currentInventory}/>
-				</div>
-				<div className='col-sm-1'></div>
 			</div>
 		);
 	}

@@ -6,7 +6,7 @@ var SeasonalCheckbox = React.createClass({
 			<div className='checkbox-wrapper'>
 				<label>
 					<input type='checkbox' className='options-checkbox' />
-					<span className='checkbox-label'>Seasonal Hero</span>
+					<span className='checkbox-label'>Seasonal <span className='hidden-sm'>Hero</span></span>
 				</label>
 			</div>
 		);

@@ -1,6 +1,9 @@
 var React = require('react');
 
 var InventorySlot = require('./inventory-slot.jsx');
+var PreviousInventory = require('./previous-inventory.jsx');
+var NextInventory = require('./next-inventory.jsx');
+
 
 var InventoryContainer = React.createClass({
 	render:function() {
@@ -31,12 +34,13 @@ var InventoryContainer = React.createClass({
 				key++;
 			}
 
-
 		}
 
 		return (
 			<div className='inventory-container'>
+				<PreviousInventory />
 				{inventorySlots}
+				<NextInventory />
 			</div>
 		);
 	}
