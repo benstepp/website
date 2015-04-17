@@ -27,8 +27,8 @@ button.classSelector {
 }
 
 .classSelector.selected > img {
-	box-shadow: 0px 0px 2px #ddd;
-	transition: all 0.6s ease 0s;
+	box-shadow: 0px 0px 8px #454545;
+	transition: box-shadow 0.6s ease 0s;
 }
 
 button.classSelector.selected {
@@ -47,7 +47,8 @@ button.classSelector.selected {
 	background:url('/kadala/img/hero-nav-portraits.jpg');
 	background-repeat:repeat;
 	background-size: 270%;
-	transition: all 0.6s ease 0s;
+	box-shadow: 0px 0px 2px #060606;
+	transition: box-shadow 0.6s ease 0s;
 }
 
 .classSelector > span {
