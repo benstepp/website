@@ -10,7 +10,16 @@ var ClassSelectorButton = React.createClass({
 
 	render:function() {
 
-		var buttonClass = 'classSelector';
+		var shortenedNames = {
+			Barbarian:'barb',
+			Crusader:'crus',
+			'Demon Hunter':'dh',
+			Monk:'monk',
+			'Witch Doctor':'wd',
+			Wizard:'wiz'
+		}
+
+		var buttonClass = 'class-selector';
 		if (this.props.selected) {
 			buttonClass+= ' selected'
 		}
@@ -23,6 +32,7 @@ var ClassSelectorButton = React.createClass({
 				<button className={buttonClass} onClick={this.handleClick}>
 					<img src={this.props.image} className={imageClass}></img>
 					<span>{this.props.name.toLowerCase()}</span>
+					<span className="shortened">{shortenedNames[this.props.name]}</span>
 				</button>
 			</li>
 		);

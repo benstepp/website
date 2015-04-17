@@ -1,0 +1,11 @@
+@import "./inventory-slot.scss";
+
+.inventory-container {
+	display:flex;
+	flex-direction:column;
+	flex-wrap:wrap;
+	align-items:center;
+	align-content:center;
+	justify-content:center;
+	height:300px;
+}

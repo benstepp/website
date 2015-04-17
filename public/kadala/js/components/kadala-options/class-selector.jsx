@@ -31,7 +31,7 @@ var ClassSelector = React.createClass({
 
 		return (
 			<div>
-				<ul className='classSelector'>
+				<ul className='class-selector'>
 					{classSelectors}
 				</ul>
 			</div>

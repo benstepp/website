@@ -1,10 +1,12 @@
-ul.classSelector {
+@import "../media-queries.scss";
+
+ul.class-selector {
 	padding:0px;
 	width:100%;
 	list-style-type:none;
 }
 
-ul.classSelector > li:after,ul.classSelector >li:first-child:before {
+ul.class-selector > li:after,ul.class-selector >li:first-child:before {
 	content:'';
 	display:block;
 	width:90%;
@@ -13,7 +15,7 @@ ul.classSelector > li:after,ul.classSelector >li:first-child:before {
 	background-color:#202020;
 }
 
-button.classSelector {
+button.class-selector {
 	width:100%;
 	padding:4px 12px;
 	background:none;
@@ -21,23 +23,23 @@ button.classSelector {
 	border:none;
 	outline:none;
 }
-.classSelector:hover {
+.class-selector:hover {
 	color:#fff;
 	transition:all 0.6s ease 0s;
 }
 
-.classSelector.selected > img {
+.class-selector.selected > img {
 	box-shadow: 0px 0px 8px #454545;
 	transition: box-shadow 0.6s ease 0s;
 }
 
-button.classSelector.selected {
+button.class-selector.selected {
 	color:#fff;
 	text-shadow:0 0 16px #eee;
 	transition: all 0.6s ease 0s;
 }
 
-.classSelector > img {
+.class-selector > img {
 	content:'';
 	border-radius:50%;
 	border:1px solid #222;
@@ -51,12 +53,36 @@ button.classSelector.selected {
 	transition: box-shadow 0.6s ease 0s;
 }
 
-.classSelector > span {
+.class-selector > span {
 	margin-top:-2px;
 	padding:0px 4px;
 	font-size:24px;
 	float:left;
 	font-variant:small-caps;
+}
+
+
+span.shortened {
+	@media #{$mobile} {
+		display:none;
+	}
+	@media #{$tablet} {
+		display:inline-block;
+	}
+	@media #{$desktop} {
+		display:none;
+	}
+}
+.class-selector > span:not(.shortened){
+	@media #{$mobile} {
+		display:inline-block;
+	}
+	@media #{$tablet} {
+		display:none;
+	}
+	@media #{$desktop} {
+		display:inline-block;
+	}
 }
 
 img.barbarianmale {
