@@ -21,7 +21,11 @@ var Inventory = React.createClass({
 	render:function() {
 		return (
 			<div className='inventory-section'>
-				<InventoryContainer inventory={this.state.currentInventory}/>
+				<InventoryContainer 
+					inventory={this.state.currentInventory} 
+					hasPrevious={typeof this.state.previousInventory !== 'undefined'} 
+					hasNext={typeof this.state.nextInventory !== 'undefined'}
+				/>
 			</div>
 		);
 	}

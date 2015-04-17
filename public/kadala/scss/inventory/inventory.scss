@@ -24,6 +24,32 @@
 	}
 }
 
-.inventory-button {
+.inventory-button-container {
 	height:100%;
+	display:flex;
+	flex-direction:column;
+	justify-content:center;
+	align-content:center;
+	align-items:center;
+}
+
+.inventory-button {
+	padding:0;
+	background:none;
+	border:none;
+	outline:none;
+	color:#aaa;
+}
+
+.inventory-button.disabled,.inventory-button.disabled:hover {
+	cursor:default;
+	color:#171717;
+}
+
+.inventory-button:hover {
+	color:#eee;
+}
+
+svg {
+	fill:currentColor;
 }

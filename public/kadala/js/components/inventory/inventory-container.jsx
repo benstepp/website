@@ -38,9 +38,9 @@ var InventoryContainer = React.createClass({
 
 		return (
 			<div className='inventory-container'>
-				<PreviousInventory />
+				<PreviousInventory hasPrevious={this.props.hasPrevious}/>
 				{inventorySlots}
-				<NextInventory />
+				<NextInventory hasNext={this.props.hasNext}/>
 			</div>
 		);
 	}
