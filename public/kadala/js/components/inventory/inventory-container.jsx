@@ -6,6 +6,7 @@ var InventoryContainer = React.createClass({
 	render:function() {
 
 		var inventorySlots = [];
+		var key=0;
 
 		//loop through the 10 columns of inventory
 		for (var i = 0; i < 10; i++) {
@@ -18,14 +19,16 @@ var InventoryContainer = React.createClass({
 			for (var j=0; j < columnLength;j++) {
 				if (typeof this.props.inventory[i][j] !== 'undefined') {
 					heightCount += this.props.inventory[i][j].height;
-					inventorySlots.push(<InventorySlot data={this.props.inventory[i][j]}/>)
+					inventorySlots.push(<InventorySlot data={this.props.inventory[i][j]} key={key}/>)
+					key++;
 				}
 			}
 
 			//now fill in the rest of the column with blank spaces
 			while(heightCount < 6) {
 				heightCount++;
-				inventorySlots.push(<InventorySlot data={undefined} />);
+				inventorySlots.push(<InventorySlot data={undefined} key={key}/>);
+				key++;
 			}
 
 

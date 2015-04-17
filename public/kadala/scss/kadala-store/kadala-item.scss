@@ -1,0 +1,50 @@
+.kadala-item {
+	min-width:120px;
+	height:64px;
+	width:25%;
+	padding:2px;
+}
+
+.kadala-icon {
+	content:'';
+	width:40px;
+	height:60px;
+	display:block;
+	background-color:red;
+	float:left;
+	border:1px solid #000;
+}
+
+.kadala-content {
+	float:left;
+	border:1px solid #000;
+	height:100%;
+	width:calc(100% - 40px);
+	padding:4px;
+
+	display:flex;
+	flex-direction:column;
+	justify-content:space-between;
+}
+
+.kadala-content > span {
+	display:block;
+}
+
+button.kadala {
+	float:left;
+	display:block;
+	padding:0;
+	margin:0;
+	border:none;
+	outline:none;
+}
+
+.shard-count {
+	display:block;
+	clear:both;
+	text-align:right;
+}
+.hidden-shards {
+	display:none !important;
+}
