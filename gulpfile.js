@@ -33,6 +33,7 @@ gulp.task('dev', function() {
 	gulp.watch('./public/kadala/scss/**/*.scss', function() {
 		gulp.start('scss');
 	});
+	gulp.start('kadala');
 });
 
 gulp.task('scss', function() {

@@ -10,13 +10,15 @@
 		"transform": ["browserify-shim"]
 	},
 	"browserify-shim": {
-		"react": "global:React"
+		"react": "global:React",
+		"d3sim": "global:d3sim"
 	},
 
 	"dependencies": {
 		"browserify":"~9.0.3",
 		"browserify-shim":"~3.8.3",
 		"express": "~4.10.7",
+		"flux":"~2.0.1",
 		"gulp":"~3.8.10",
 		"gulp-angular-extender":"~0.1.0",
 		"gulp-concat":"~2.4.3",
@@ -29,10 +31,12 @@
 		"gulp-rimraf":"~0.1.0",
 		"gulp-sass":"~1.0.0",
 		"gulp-uncss":"~0.5.2",
+		"keymirror":"~0.1.1",
 		"lodash":"~2.4.1",
 		"mongoose": "~3.8.21",
 		"mongoose-unique-validator": "~0.4.1",
 		"morgan": "~1.1.1",
+		"object-assign":"~2.0.0",
 		"q":"~1.1.2",
 		"react":"~0.12.2",
 		"reactify":"~1.0.0",

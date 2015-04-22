@@ -1,21 +1,18 @@
 var React = require('react');
 
 var InventoryContainer = require('./inventory-container.jsx');
+var InventoryStore = require('../../stores/InventoryStore');
 
 var Inventory = React.createClass({
 	getInitialState: function() {
+		return InventoryStore.getInventory();
+	},
+	componentDidMount: function() {
+		InventoryStore.addChangeListener(this._onChange)
+	},
 
-		//inventory is treated as a 10 columns represented as a nested array
-		var currentInventory = [];
-		for (var i =0; i < 10; i++) {
-			currentInventory.push([]);
-		}
-
-		return {
-			previousInventory:undefined,
-			currentInventory:currentInventory,
-			nextInventory:undefined
-		};
+	_onChange:function() {
+		this.setState(InventoryStore.getInventory());
 	},
 
 	render:function() {

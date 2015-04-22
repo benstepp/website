@@ -31,6 +31,22 @@
 	display:block;
 }
 
+.kadala-content svg {
+	position:relative;
+	top:3px;
+}
+
+.shard-delete {
+	cursor:pointer;
+	color:#444;
+	margin:0;
+	padding:0;
+}
+
+.shard-delete:hover {
+	color:white;
+}
+
 button.kadala {
 	float:left;
 	display:block;
@@ -47,4 +63,15 @@ button.kadala {
 }
 .hidden-shards {
 	display:none !important;
+}
+
+.kadala {
+	position:relative;
+}
+
+.kadala >span {
+	color:#ccc;
+	position:absolute;
+	bottom:0;
+	left:2px;
 }
