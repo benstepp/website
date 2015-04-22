@@ -41,3 +41,23 @@
 	z-index:1;
 	position:absolute;
 }
+
+.tooltip-link {
+	width:100%;
+	height:100%;
+	display:block;
+	position:absolute;
+	cursor:pointer;
+	z-index:4;
+}
+
+.tooltip-container {
+	visibility:hidden;
+	z-index:5;
+	position:absolute;
+}
+
+.tooltip-link:hover + div.tooltip-container {
+	visibility:visible;
+	display:block;
+}

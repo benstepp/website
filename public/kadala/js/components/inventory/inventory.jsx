@@ -8,7 +8,10 @@ var Inventory = React.createClass({
 		return InventoryStore.getInventory();
 	},
 	componentDidMount: function() {
-		InventoryStore.addChangeListener(this._onChange)
+		InventoryStore.addChangeListener(this._onChange);
+	},
+	componentWillUnmount: function() {
+		InventoryStore.removeChangeListener(this._onChange);
 	},
 
 	_onChange:function() {

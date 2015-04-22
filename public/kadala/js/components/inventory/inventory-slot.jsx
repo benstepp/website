@@ -1,6 +1,41 @@
 var React = require('react');
 
+var D3ItemTooltip = require('../d3-tooltip/d3-tooltip.jsx');
+
 var InventorySlot = React.createClass({
+	componentDidMount:function() {
+		this.setTooltipOffset();
+	},
+	componentDidUpdate:function() {
+		this.setTooltipOffset();
+	},
+
+	setTooltipOffset:function() {
+		var elem = React.findDOMNode(this);
+
+		//if the inventory slot has children (content)
+		if (elem.children && elem.children.length > 0) {
+			var elemLocation = elem.getBoundingClientRect().top;
+			var tooltipHeight = elem.children[3].getBoundingClientRect().height;
+			var windowHeight = window.innerHeight;
+
+			//check if the tooltip fits where it currently is
+			if (!(tooltipHeight + elemLocation < windowHeight)) {
+				var offset = (tooltipHeight + elemLocation - windowHeight);
+
+				//if the tooltip is bigger than window, just show at top of window
+				if (offset > windowHeight) {
+					elem.children[3].style.top = '-'+(elemLocation-20)+'px';
+				}
+				else {
+					//just move it up a little with a bit at bottom
+					elem.children[3].style.top = '-'+(offset+10)+'px';
+				}
+
+			}
+		}
+	},
+
 	render:function() {
 
 		var slotContent= [];
@@ -56,6 +91,25 @@ var InventorySlot = React.createClass({
 				var inline = {backgroundImage:'url('+this.props.data.image+')'};
 				slotContent.push(<div style={inline} className='inventory-image'></div>);
 			}
+
+			//add a link to activate tooltip
+			slotContent.push(<a className='tooltip-link'></a>);
+
+			//add a hidden tooltip
+			var inline;
+			if (this.props.column < 5) {
+				inline = {left:'50px'};
+			}
+			else {
+				inline = {right:'50px'};
+			}
+
+			slotContent.push(
+				<div className='tooltip-container' style={inline}>
+				<D3ItemTooltip item={this.props.data}/>
+				</div>
+			)
+
 		}
 
 		return (
