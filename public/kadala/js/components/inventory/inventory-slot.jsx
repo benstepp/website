@@ -109,6 +109,19 @@ var InventorySlot = React.createClass({
 				<D3ItemTooltip item={this.props.data}/>
 				</div>
 			)
+			
+			//add sockets on hover
+			if (this.props.data.hasOwnProperty('primaries') && this.props.data.primaries.hasOwnProperty('Socket')) {
+				var sockets;
+				var socketCount = this.props.data.primaries.Socket.value;
+				var socketContents = [];
+				var socketKey = 0;
+				for (var i =0; i < socketCount; i++) {
+					socketContents.push(<div className='socket'></div>);
+				}
+				sockets = <div className='sockets-wrapper'><div className='sockets-align'>{socketContents}</div></div>;
+				slotContent.push(sockets);
+			}
 
 		}
 

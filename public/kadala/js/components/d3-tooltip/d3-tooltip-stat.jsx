@@ -58,7 +58,10 @@ var D3ItemTooltipStat= React.createClass({
 						text.push(sliced);
 					}
 				}
-
+			}
+			//no template and we just throw affix up
+			else {
+				text.push(this.props.stat.text);
 			}
 	}
 

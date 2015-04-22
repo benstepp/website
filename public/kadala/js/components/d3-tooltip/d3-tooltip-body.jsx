@@ -34,6 +34,16 @@ var D3ItemTooltipBody = React.createClass({
 			subHead = <D3ItemTooltipWeapon weapon={this.props.item.weapon}/>;
 		}
 
+		//if sockets are needed
+		var sockets = [];
+		var socketKey = 0;
+		if (this.props.item.primaries.hasOwnProperty('Socket')) {
+			for (var i =0; i < this.props.item.primaries.Socket.value; i++) {
+				sockets.push(<li className='empty-socket d3-color-blue' socketKey={socketKey} >Empty Socket</li>);
+				socketKey++;
+			}
+		}
+
 		return (
 			<div className="tooltip-body effect-bg effect-bg-armor effect-bg-armor-default">
 
@@ -71,6 +81,7 @@ var D3ItemTooltipBody = React.createClass({
 						{primaries}
 						<p className="item-property-category">Secondary</p>
 						{secondaries}
+						{sockets}
 					</ul>
 
 				</div>
