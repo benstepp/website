@@ -63,7 +63,7 @@ function addItem(item) {
 //cycles through to the previous inventory
 function gotoPrevious() {
 	if(typeof previousInventory !== 'undefined') {
-		nextInventory = currentInvetory;
+		nextInventory = currentInventory;
 		currentInventory = previousInventory;
 		previousInventory = undefined;
 	}
@@ -103,6 +103,16 @@ AppDispatcher.register(function(action) {
 
 		case AppConstants.ADD_ITEM:
 			addItem(action.item);
+			InventoryStore.emitChange();
+			break;
+
+		case AppConstants.PREV_INV:
+			gotoPrevious();
+			InventoryStore.emitChange();
+			break;
+
+		case AppConstants.NEXT_INV:
+			gotoNext();
 			InventoryStore.emitChange();
 			break;
 
