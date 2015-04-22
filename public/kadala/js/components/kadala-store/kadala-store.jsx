@@ -8,7 +8,7 @@ var KadalaStore = React.createClass({
 		var items = [
 			{type:'helm',text:'Mystery Helmet',cost:25,size:2},
 			{type:'boots',text:'Mystery Boots',cost:25,size:2},
-			{type:'belt',text:'Mystery Belt',cost:25,size:2},
+			{type:'belt',text:'Mystery Belt',cost:25,size:1},
 			{type:'pants',text:'Mystery Pants',cost:25,size:2},
 			{type:'gloves',text:'Mystery Gloves',cost:25,size:2},
 			{type:'chest',text:'Mystery Chest',cost:25,size:2},
