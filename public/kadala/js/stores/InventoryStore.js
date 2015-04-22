@@ -55,9 +55,17 @@ function addItem(item) {
 	}
 
 	//if we made it this far the new item does not fit in the current inventory
-	//so create a new inventory and try again dangerous callstack incoming
-	createInventory();
-	addItem(item);
+	//check to see if there is a next inventory
+	//so that we can cycle to next inventory and try and fit it in
+	if (typeof nextInventory !== 'undefined') {
+		gotoNext();
+		addItem(item);
+	}
+	//there is no next inventory and we need to make a new one
+	else {
+		createInventory();
+		addItem(item);
+	}
 }
 
 //cycles through to the previous inventory
