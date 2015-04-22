@@ -21,7 +21,7 @@ var InventoryContainer = React.createClass({
 			//add all existing items to the columns
 			for (var j=0; j < columnLength;j++) {
 				if (typeof this.props.inventory[i][j] !== 'undefined') {
-					heightCount += this.props.inventory[i][j].height;
+					heightCount += this.props.inventory[i][j].size;
 					inventorySlots.push(<InventorySlot data={this.props.inventory[i][j]} key={key}/>)
 					key++;
 				}

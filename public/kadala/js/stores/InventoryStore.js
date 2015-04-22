@@ -43,7 +43,7 @@ function addItem(item) {
 		for (var j = 0; j < columnLength; j++) {
 			//add current item size to column height
 			if(currentInventory[i][j].hasOwnProperty('size')) {
-				columnHeight+=size;
+				columnHeight+=currentInventory[i][j].size;
 			}
 		}
 		//check if the height is still less than 6 with new item
@@ -55,9 +55,9 @@ function addItem(item) {
 	}
 
 	//if we made it this far the new item does not fit in the current inventory
-	//so create a new inventory and try again
-	//createInventory();
-	//addItem(item);
+	//so create a new inventory and try again dangerous callstack incoming
+	createInventory();
+	addItem(item);
 }
 
 //cycles through to the previous inventory
