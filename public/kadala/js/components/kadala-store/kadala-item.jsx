@@ -30,7 +30,7 @@ var KadalaItem = React.createClass({
 					<span>{this.props.item.cost}</span>
 				</button>
 				<div className='kadala-content'>
-					<span>{this.props.item.text}</span>
+					<span className='kadala-item-title'>{this.props.item.text}</span>
 					<span className='shard-count'>
 						{this.state.shardCount}
 						<a className='shard-delete'>

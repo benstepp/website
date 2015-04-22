@@ -12,7 +12,46 @@ var InventorySlot = React.createClass({
 				slotClass += ' large';
 			}
 
-			//set the background
+			if(this.props.data.hasOwnProperty('rarity')) {
+				var bgurl;
+				var borderColor='#302a21';
+
+				switch(this.props.data.rarity) {
+					case 'magic':
+						bgurl='img/blue.png';
+						borderColor='#7979d4';
+						break;
+					case 'rare':
+						bgurl='img/yellow.png';
+						borderColor='#f8cc35';
+						break;
+					case 'legendary':
+						bgurl='img/orange.png';
+						borderColor='#bf642f';
+						break;
+					case 'ancient':
+						bgurl='img/orange.png';
+						borderColor='#bf642f';
+						break;
+					default:
+						//noop
+				}
+
+				//switch bg to green if item is part of a set
+				if (this.props.data.hasOwnProperty('set')) {
+					bgurl='img/green.png';
+					borderColor='#8bd442';
+				}
+
+				if (typeof bgurl !== 'undefined') {
+					var inline = {
+						backgroundImage:'url('+bgurl+')'
+					};
+					slotContent.push(<div style={inline} className='inventory-bg'></div>)
+				}
+			}
+
+			//set the item image
 			if (this.props.data.hasOwnProperty('image')) {
 				var inline = {backgroundImage:'url('+this.props.data.image+')'};
 				slotContent.push(<div style={inline} className='inventory-image'></div>);
@@ -20,7 +59,7 @@ var InventorySlot = React.createClass({
 		}
 
 		return (
-			<div className={slotClass}>
+			<div className={slotClass} style={{borderColor:borderColor}}>
 				{slotContent}
 			</div>
 		);
