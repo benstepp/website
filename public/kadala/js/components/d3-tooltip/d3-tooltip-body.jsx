@@ -4,14 +4,11 @@ var React = require('react'),
 	D3ItemTooltipStat = require('./d3-tooltip-stat.jsx');
 
 var D3ItemTooltipBody = React.createClass({
-	getDefaultProps: function() {
-		return {
-			iconClasses:'d3-icon d3-icon-item d3-icon-item-large',
-			itemTypeClass:'d3-color-'
-		};
-	},
 
 	render: function() {
+
+		var iconClasses = 'd3-icon d3-icon-item d3-icon-item-large';
+		var itemTypeClass ='d3-color-'; 
 
 		//declare arrays for primary and secondary item effects. 
 		//An item must have at least one of each.
@@ -24,8 +21,8 @@ var D3ItemTooltipBody = React.createClass({
 
 		//if specified, set color for tooltip components
 		if (this.props.item.color) {
-			this.props.iconClasses += ' d3-icon-item-'+this.props.item.color;
-			this.props.itemTypeClass +=this.props.item.color;
+			iconClasses += ' d3-icon-item-'+this.props.item.color;
+			itemTypeClass +=this.props.item.color;
 		}
 
 		//if it is an armor or weapon add additional info to icon section
@@ -41,7 +38,7 @@ var D3ItemTooltipBody = React.createClass({
 			<div className="tooltip-body effect-bg effect-bg-armor effect-bg-armor-default">
 
 				{/*The item icon and container, color needed for background*/}
-				<span className={this.props.iconClasses}>
+				<span className={iconClasses}>
 					<span className="icon-item-gradient">
 						<span className="icon-item-inner icon-item-default" style={image}>
 						</span>
@@ -59,7 +56,7 @@ var D3ItemTooltipBody = React.createClass({
 					{/*Rarity of the item and/if it is ancient*/}
 					<ul className="item-type">
 						<li>
-							<span className={this.props.itemTypeClass}>{this.props.item.type}</span>
+							<span className={itemTypeClass}>{this.props.item.type}</span>
 						</li>
 					</ul>
 
@@ -90,7 +87,7 @@ var D3ItemTooltipBody = React.createClass({
 		for (var i = 0; i < length; i ++) {
 			var stat = keys[i];
 			var val = statObject[stat];
-			results.push(<D3ItemTooltipStat value={val} name={stat} key={i} />);
+			results.push(<D3ItemTooltipStat stat={val} key={i} />);
 		}
 		return results;
 	}
