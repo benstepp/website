@@ -13,6 +13,10 @@ var D3ItemTooltipHead = React.createClass({
 			divClass += ' tooltip-head-' + this.props.item.color;
 			h3Class += 'd3-color-' + this.props.item.color;
 		}
+		//make the font smaller if the name is long
+		if (this.props.item.name.length > 22) {
+			h3Class+= ' smaller';
+		}
 
 		return (
 			<div className={divClass}>

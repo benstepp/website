@@ -16,7 +16,7 @@ var InventorySlot = React.createClass({
 		//if the inventory slot has children (content)
 		if (elem.children && elem.children.length > 0) {
 			var elemLocation = elem.getBoundingClientRect().top;
-			var tooltipHeight = elem.children[3].getBoundingClientRect().height;
+			var tooltipHeight = elem.children[4].getBoundingClientRect().height;
 			var windowHeight = window.innerHeight;
 
 			//check if the tooltip fits where it currently is
@@ -25,11 +25,11 @@ var InventorySlot = React.createClass({
 
 				//if the tooltip is bigger than window, just show at top of window
 				if (offset > windowHeight) {
-					elem.children[3].style.top = '-'+(elemLocation-20)+'px';
+					elem.children[4].style.top = '-'+(elemLocation-20)+'px';
 				}
 				else {
 					//just move it up a little with a bit at bottom
-					elem.children[3].style.top = '-'+(offset+10)+'px';
+					elem.children[4].style.top = '-'+(offset+10)+'px';
 				}
 
 			}
@@ -109,7 +109,7 @@ var InventorySlot = React.createClass({
 
 			slotContent.push(
 				<div className='tooltip-container' style={inline}>
-				<D3ItemTooltip item={this.props.data}/>
+					<D3ItemTooltip item={this.props.data}/>
 				</div>
 			)
 			
