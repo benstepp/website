@@ -6,7 +6,7 @@ ul.class-selector {
 	list-style-type:none;
 }
 
-ul.class-selector > li:after,ul.class-selector >li:first-child:before {
+ul.class-selector > li:after {
 	content:'';
 	display:block;
 	width:90%;
