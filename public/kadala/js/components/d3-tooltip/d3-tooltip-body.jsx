@@ -44,6 +44,19 @@ var D3ItemTooltipBody = React.createClass({
 			}
 		}
 
+		//determine the word to put next to item type
+		var itemTypePrefix;
+		//check if ancient set item and manually put
+		if (this.props.item.rarity === 'ancient' && this.props.item.hasOwnProperty('set')) {
+			itemTypePrefix = 'Ancient Set';
+		}
+		//otherwise it is set/a rarity only
+		else {
+			itemTypePrefix = (this.props.item.hasOwnProperty('set')) ? 'set' : this.props.item.rarity;
+			//capitalize first letter
+			itemTypePrefix = itemTypePrefix.charAt(0).toUpperCase() + itemTypePrefix.slice(1);
+		}
+
 		return (
 			<div className="tooltip-body effect-bg effect-bg-armor effect-bg-armor-default">
 
@@ -66,7 +79,7 @@ var D3ItemTooltipBody = React.createClass({
 					{/*Rarity of the item and/if it is ancient*/}
 					<ul className="item-type">
 						<li>
-							<span className={itemTypeClass}>{this.props.item.type}</span>
+							<span className={itemTypeClass}>{itemTypePrefix} {this.props.item.type}</span>
 						</li>
 					</ul>
 
