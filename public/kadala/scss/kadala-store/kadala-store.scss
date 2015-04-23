@@ -3,7 +3,6 @@
 
 .kadala-store {
 	display:flex;
-	flex-direction:column;
 	flex-wrap:wrap;
 	align-items:center;
 	align-content:center;
@@ -22,3 +21,6 @@
 
 }
 
+.kadala-store.noie {
+	flex-direction:column;
+}

@@ -5,6 +5,13 @@ var KadalaItem = require('./kadala-item.jsx');
 var KadalaStore = React.createClass({
 	render:function() {
 
+		var kadalaClass = 'kadala-store';
+		//this is a check for internet explorer
+		//flex-direction:column breaks everything so we detect for it here
+		if ((window.navigator.userAgent.indexOf('MSIE ') !== -1)||!navigator.userAgent.match(/Trident.*rv\:11\./)) {
+			kadalaClass+=' noie'
+		}
+
 		var items = [
 			{type:'helm',text:'Mystery Helmet',cost:25,size:2},
 			{type:'boots',text:'Mystery Boots',cost:25,size:2},
@@ -31,7 +38,7 @@ var KadalaStore = React.createClass({
 		}
 
 		return (
-			<div className='kadala-store'>
+			<div className={kadalaClass}>
 				{kadalaSlots}
 			</div>
 		);
