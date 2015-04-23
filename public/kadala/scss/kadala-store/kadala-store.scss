@@ -18,7 +18,9 @@
 	@media #{$tablet} {
 		max-height:280px;
 	}
-
+	@media #{$mobile} {
+		display:none;
+	}
 }
 
 .kadala-store.noie {

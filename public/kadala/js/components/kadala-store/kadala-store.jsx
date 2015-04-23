@@ -38,7 +38,7 @@ var KadalaStore = React.createClass({
 		}
 
 		return (
-			<div className={kadalaClass}>
+			<div className={kadalaClass} id='kadala-store'>
 				{kadalaSlots}
 			</div>
 		);

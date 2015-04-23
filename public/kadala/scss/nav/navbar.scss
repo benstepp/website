@@ -5,9 +5,13 @@ nav {
 	height:40px;
 	line-height:1.5em;
 	padding:0px 15px;
-	margin-bottom:4px;
+	margin-bottom:8px;
 	
 	background:#12110f;
+
+	@media #{$mobile} {
+		padding:4px;
+	}
 }
 nav > h1 {
 	display:inline-block;
@@ -28,10 +32,34 @@ nav > button {
 	@media #{$tablet} {
 		display:none;
 	}
-
+	display:inline-block;
 	background:none;
 	border:none;
 	outline:none;
 	margin:0;
-	padding:8px;
+}
+
+button.ham {
+	float:left;
+	width:32px;
+	height:32px;
+	padding:4px;
+}
+
+button.shop {
+	float:right;
+	width:32px;
+	height:32px;
+	padding:4px;
+}
+
+button.buy {
+	width:calc(100% - 64px - 24px);
+	margin:0px 12px;
+	padding:6px 0px;
+	background:#63078B;
+}
+
+button.ham:hover, button.shop:hover {
+	color:#eee;
 }

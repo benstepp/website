@@ -48,7 +48,7 @@ var OptionsPanel = React.createClass({
 
 	render:function() {
 		return (
-			<section className='options-panel'>
+			<section className='options-panel' id='options-panel'>
 				<ClassSelector changeClass={this.changeClass} selected={this.state.dClass} gender={this.state.gender}/>
 				<GenderSelector changeGender={this.changeGender} selected={this.state.gender}/>
 				<SeasonalCheckbox seasonal={this.state.seasonal} changeSeasonal={this.changeSeasonal}/>
