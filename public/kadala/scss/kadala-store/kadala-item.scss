@@ -6,11 +6,12 @@
 }
 
 .kadala-icon {
-	content:'';
 	width:40px;
 	height:60px;
 	display:block;
-	background-color:red;
+	background-size:410%;
+	background-repeat:no-repeat;
+	background-image:url('/kadala/img/mystery-sprites.png');
 	float:left;
 	border:1px solid #000;
 }
@@ -78,4 +79,56 @@ button.kadala {
 
 .kadala-item-title {
 	line-height:16px;
+}
+
+.kadala-icon.onehand {
+	background-position:0px -8px;
+}
+.kadala-icon.quiver {
+	background-position:0px -87px;
+}
+.kadala-icon.mojo {
+	background-position:0px -169px;
+}
+.kadala-icon.twohand {
+	background-position:0px -243px;
+}
+
+.kadala-icon.source {
+	background-position:-40px -8px;
+}
+.kadala-icon.helm {
+	background-position:-40px -87px;
+}
+.kadala-icon.boots {
+	background-position:-40px -169px;
+}
+.kadala-icon.belt {
+	background-position:-40px -243px;
+}
+
+.kadala-icon.pants {
+	background-position:-78px -8px;
+}
+.kadala-icon.shield {
+	background-position:-78px -94px;
+}
+.kadala-icon.gloves {
+	background-position:-78px -169px;
+}
+.kadala-icon.chest {
+	background-position:-78px -243px;
+}
+
+.kadala-icon.shoulders {
+	background-position:-117px -8px;
+}
+.kadala-icon.bracers {
+	background-position:-117px -94px;
+}
+.kadala-icon.ring {
+	background-position:-117px -169px;
+}
+.kadala-icon.amulet {
+	background-position:-117px -243px;
 }

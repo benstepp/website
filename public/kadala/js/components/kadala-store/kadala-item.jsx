@@ -23,10 +23,14 @@ var KadalaItem = React.createClass({
 	},
 
 	render:function() {
+
+		var iconClass = 'kadala-icon';
+		iconClass+=' '+this.props.item.type;
+
 		return (
 			<div className='kadala-item'>
 				<button className='kadala' onClick={this.buyItem}>
-					<img className='kadala-icon'/>
+					<div className={iconClass}></div>
 					<span>{this.props.item.cost}</span>
 				</button>
 				<div className='kadala-content'>
