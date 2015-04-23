@@ -8,6 +8,7 @@
 		"angular-ui-router":"~0.2.13",
 		"foundation":"~5.5.0",
 		"foundation-icon-fonts":"latest",
-		"material-design-icons":"latest"
+		"material-design-icons":"latest",
+		"react":"~0.13.2"
 	}	
 }
