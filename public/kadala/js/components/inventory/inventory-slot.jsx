@@ -95,6 +95,9 @@ var InventorySlot = React.createClass({
 			//add a link to activate tooltip
 			slotContent.push(<a className='tooltip-link'></a>);
 
+			//add a gradient mask
+			slotContent.push(<div className='inventory-item-gradient'></div>);
+			
 			//add a hidden tooltip
 			var inline;
 			if (this.props.column < 5) {
