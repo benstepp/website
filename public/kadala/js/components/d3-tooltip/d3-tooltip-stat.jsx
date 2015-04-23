@@ -5,6 +5,7 @@ var D3ItemTooltipStat= React.createClass({
 	render: function() {
 
 		var text = [];
+		var textKey = 0;
 		//check to make sure template needs to be worked with 
 		if (typeof this.props.stat.text !== 'undefined') {
 			var template = this.props.stat.text;
@@ -44,7 +45,8 @@ var D3ItemTooltipStat= React.createClass({
 					}
 
 					//create and push the value highlighted element
-					var element = <span className='value'>{sliced}</span>;
+					var element = <span className='value' key={textKey}>{sliced}</span>;
+					textKey++;
 					text.push(element);
 
 					//if not the last loop, push anything until next bracket

@@ -39,7 +39,7 @@ var D3ItemTooltipBody = React.createClass({
 		var socketKey = 0;
 		if (this.props.item.primaries.hasOwnProperty('Socket')) {
 			for (var i =0; i < this.props.item.primaries.Socket.value; i++) {
-				sockets.push(<li className='empty-socket d3-color-blue' socketKey={socketKey} >Empty Socket</li>);
+				sockets.push(<li className='empty-socket d3-color-blue' key={socketKey} >Empty Socket</li>);
 				socketKey++;
 			}
 		}

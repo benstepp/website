@@ -39,6 +39,8 @@ var InventorySlot = React.createClass({
 	render:function() {
 
 		var slotContent= [];
+		var slotContentKey = 0;
+
 		var slotClass='inventory-slot';
 		//check to make sure an actual item is in the inventory slot
 		if (typeof this.props.data !== 'undefined') {
@@ -82,22 +84,26 @@ var InventorySlot = React.createClass({
 					var inline = {
 						backgroundImage:'url('+bgurl+')'
 					};
-					slotContent.push(<div style={inline} className='inventory-bg'></div>)
+					slotContent.push(<div style={inline} className='inventory-bg' key={slotContentKey}></div>)
+					slotContentKey++;
 				}
 			}
 
 			//set the item image
 			if (this.props.data.hasOwnProperty('image')) {
 				var inline = {backgroundImage:'url('+this.props.data.image+')'};
-				slotContent.push(<div style={inline} className='inventory-image'></div>);
+				slotContent.push(<div style={inline} className='inventory-image' key={slotContentKey}></div>);
+				slotContentKey++;
 			}
 
 			//add a link to activate tooltip
-			slotContent.push(<a className='tooltip-link'></a>);
+			slotContent.push(<a className='tooltip-link' key={slotContentKey}></a>);
+			slotContentKey++;
 
 			//add a gradient mask
-			slotContent.push(<div className='inventory-item-gradient'></div>);
-			
+			slotContent.push(<div className='inventory-item-gradient' key={slotContentKey}></div>);
+			slotContentKey++;
+
 			//add a hidden tooltip
 			var inline;
 			if (this.props.column < 5) {
@@ -108,22 +114,23 @@ var InventorySlot = React.createClass({
 			}
 
 			slotContent.push(
-				<div className='tooltip-container' style={inline}>
+				<div className='tooltip-container' style={inline} key={slotContentKey}>
 					<D3ItemTooltip item={this.props.data}/>
 				</div>
-			)
-			
+			);
+			slotContentKey++;
+
 			//add sockets on hover
 			if (this.props.data.hasOwnProperty('primaries') && this.props.data.primaries.hasOwnProperty('Socket')) {
 				var sockets;
 				var socketCount = this.props.data.primaries.Socket.value;
 				var socketContents = [];
-				var socketKey = 0;
 				for (var i =0; i < socketCount; i++) {
-					socketContents.push(<div className='socket'></div>);
+					socketContents.push(<div className='socket' key={i}></div>);
 				}
-				sockets = <div className='sockets-wrapper'><div className='sockets-align'>{socketContents}</div></div>;
+				sockets = <div className='sockets-wrapper' key={slotContentKey}><div className='sockets-align'>{socketContents}</div></div>;
 				slotContent.push(sockets);
+				slotContentKey++;
 			}
 
 		}
