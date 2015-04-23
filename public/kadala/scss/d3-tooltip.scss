@@ -345,3 +345,7 @@
 
 .d3-debug { display: none; }
 .tooltip-icon-bullet { display: inline-block; width: 8px; height: 8px; margin-right: 2px; vertical-align: middle; background: url("http://us.battle.net/d3/static/images/icons/bullet.gif") no-repeat; }
+
+.d3-tooltip.ancient {
+	border:1px solid orange;
+}

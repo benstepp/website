@@ -6,10 +6,13 @@ var React = require('react'),
 
 var D3ItemTooltip = React.createClass({
 	render: function() {
-
+		var tooltipClass ='d3-tooltip d3-tooltip-item';
+		if (this.props.item.rarity === 'ancient') {
+			tooltipClass+=' ancient'
+		}
 		return (
-			<div className="tooltip-content">
-				<div className="d3-tooltip d3-tooltip-item">
+			<div className='tooltip-content'>
+				<div className={tooltipClass}>
 					<D3ItemTooltipHead item={this.props.item} />
 					<D3ItemTooltipBody item={this.props.item} />
 				</div>
