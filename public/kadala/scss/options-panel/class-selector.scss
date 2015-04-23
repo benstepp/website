@@ -28,7 +28,7 @@ button.class-selector {
 	transition:all 0.6s ease 0s;
 }
 
-.class-selector.selected > img {
+.class-selector.selected > div {
 	box-shadow: 0px 0px 8px #454545;
 	transition: box-shadow 0.6s ease 0s;
 }
@@ -39,7 +39,7 @@ button.class-selector.selected {
 	transition: all 0.6s ease 0s;
 }
 
-.class-selector > img {
+.class-selector > div {
 	content:'';
 	border-radius:50%;
 	border:1px solid #222;
@@ -85,50 +85,50 @@ span.shortened {
 	}
 }
 
-img.barbarianmale {
+div.barbarianmale {
 	background-position:-7px 0px;
 }
 
-img.barbarianfemale {
+div.barbarianfemale {
 	background-position:-60px 0px;
 }
 
-img.crusadermale {
+div.crusadermale {
 	background-position:-7px -205px;
 }
 
-img.crusaderfemale {
+div.crusaderfemale {
 	background-position:-60px -205px;
 }
 
-img.demonhuntermale {
+div.demonhuntermale {
 	background-position:-7px -40px;
 }
 
-img.demonhunterfemale {
+div.demonhunterfemale {
 	background-position:-60px -40px;
 }
 
-img.monkmale {
+div.monkmale {
 	background-position:-7px -82px;
 }
 
-img.monkfemale {
+div.monkfemale {
 	background-position:-60px -82px;
 }
 
-img.witchdoctormale {
+div.witchdoctormale {
 	background-position:-7px -122px;
 }
 
-img.witchdoctorfemale {
+div.witchdoctorfemale {
 	background-position:-60px -122px;
 }
 
-img.wizardmale {
+div.wizardmale {
 	background-position:-7px -164px;
 }
 
-img.wizardfemale {
+div.wizardfemale {
 	background-position:-60px -164px;
 }

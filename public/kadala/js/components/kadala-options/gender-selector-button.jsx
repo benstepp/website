@@ -16,7 +16,7 @@ var GenderSelectorButton = React.createClass({
 		return (
 			<div className='button-wrapper'>
 				<button className={buttonClass} onClick={this.updateGender} >
-					<img />
+					<div></div>
 					<span>{this.props.gender.toLowerCase()}</span>
 				</button>
 			</div>

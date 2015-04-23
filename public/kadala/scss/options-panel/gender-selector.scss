@@ -43,8 +43,7 @@ button.gender-selector.selected {
 	transition: all 0.6s ease 0s;
 }
 
-.gender-selector > img {
-	content:'';
+button.gender-selector > div {
 	display:inline-block;
 	width:30px;
 	height:30px;
@@ -69,31 +68,31 @@ button.gender-selector.selected {
 	}
 }
 
-.female > img {
+.female > div {
 	background-position:-45px -7px;
 }
 
-.male > img {
+.male > div {
 	background-position:-10px -7px;
 }
 
-.gender-selector.female:hover > img {
+.gender-selector.female:hover > div {
 	background-position:-45px -50px;
 }
 
-.gender-selector.male:hover > img {
+.gender-selector.male:hover > div {
 	background-position:-10px -50px;
 }
 
-.selected.female > img, .selected.female:hover > img {
+.selected.female > div, .selected.female:hover > div {
 	background-position:-45px -93px;
 }
 
-.selected.male > img, .selected.male:hover > img {
+.selected.male > div, .selected.male:hover > div {
 	background-position:-10px -93px;
 }
 
-.selected > img {
+.selected > div {
 	box-shadow: 0px 0px 4px #454545;
 	transition: box-shadow 0.6s ease 0s;
 }

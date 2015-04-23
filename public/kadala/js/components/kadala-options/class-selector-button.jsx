@@ -30,7 +30,7 @@ var ClassSelectorButton = React.createClass({
 		return (
 			<li>
 				<button className={buttonClass} onClick={this.handleClick}>
-					<img src={this.props.image} className={imageClass}></img>
+					<div className={imageClass}></div>
 					<span>{this.props.name.toLowerCase()}</span>
 					<span className="shortened">{shortenedNames[this.props.name]}</span>
 				</button>
