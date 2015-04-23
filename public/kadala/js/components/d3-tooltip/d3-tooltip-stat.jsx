@@ -57,6 +57,11 @@ var D3ItemTooltipStat= React.createClass({
 						var sliced = template.slice(endIndex+1, template.length);
 						text.push(sliced);
 					}
+					//last loop push to the end
+					else if(i === count-1 && count > 1) {
+						var sliced = template.slice(endIndex+1, template.length);
+						text.push(sliced);
+					}
 				}
 			}
 			//no template and we just throw affix up

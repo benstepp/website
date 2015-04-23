@@ -72,7 +72,7 @@ var D3ItemTooltipBody = React.createClass({
 
 					{/*Slot and if class specific*/}
 					<ul className="item-type-right">
-							<li className="item-slot">{this.props.item.slot}</li>
+							<li className="item-slot">{this.props.item.slot.charAt(0).toUpperCase() + this.props.item.slot.slice(1)}</li>
 							<li className="item-class-specific d3-color-white">{this.props.item.classSpecific}</li>
 					</ul>
 
