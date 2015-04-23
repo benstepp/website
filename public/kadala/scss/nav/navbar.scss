@@ -1,0 +1,37 @@
+@import "../media-queries.scss";
+
+nav {
+	width:100%;
+	height:40px;
+	line-height:1.5em;
+	padding:0px 15px;
+	margin-bottom:4px;
+	
+	background:#12110f;
+}
+nav > h1 {
+	display:inline-block;
+	font-size:1.5em;
+	line-height:1.5em;
+	margin:0px;
+	background:none;
+
+	@media #{$mobile} {
+		display:none;
+	}
+}
+
+nav > button {
+	@media #{$desktop} {
+		display:none;
+	}
+	@media #{$tablet} {
+		display:none;
+	}
+
+	background:none;
+	border:none;
+	outline:none;
+	margin:0;
+	padding:8px;
+}
