@@ -1,4 +1,5 @@
 @import "../../libs/foundation/scss/normalize.scss";
+@import "./media-queries";
 
 @import "d3-tooltip.scss";
 @import "./options-panel/options-panel.scss";
@@ -39,4 +40,10 @@ body {
 	margin:0;
 	border:0;
 	outline:0;
+}
+
+@media #{$mobile} {
+	.unhide {
+		display:block !important;
+	}
 }

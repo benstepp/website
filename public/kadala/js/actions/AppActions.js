@@ -42,9 +42,15 @@ var AppActions = {
 		});
 	},
 
-	hideStore:function() {
+	toggleStore:function() {
 		AppDispatcher.dispatch({
-			actionType:AppConstants.HIDE_STORE
+			actionType:AppConstants.TOGGLE_STORE
+		});
+	},
+
+	toggleOptions:function() {
+		AppDispatcher.dispatch({
+			actionType:AppConstants.TOGGLE_OPTIONS
 		});
 	},
 

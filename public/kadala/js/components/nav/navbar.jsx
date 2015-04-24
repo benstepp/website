@@ -6,21 +6,7 @@ var AppStore = require('../../stores/AppStore.js');
 
 var Navbar = React.createClass({
 	getInitialState:function() {
-		var item = AppStore.getSettings().item;
-		return {
-			options:false,
-			store:false,
-			item:item
-		};
-	},
-	toggleOptions:function() {
-		//toggle the option panel and the state
-		document.getElementById('options-panel').style.display = (this.state.options)? 'none':'block';
-		this.setState({options:!this.state.options});
-	},
-	toggleStore:function() {
-		document.getElementById('kadala-store').style.display = (this.state.store)? 'none':'block';
-		this.setState({store:!this.state.store});
+		return AppStore.getSettings();
 	},
 	buyItem:function() {
 		var item = d3sim.kadalaRoll(this.state.item.type);
@@ -28,16 +14,14 @@ var Navbar = React.createClass({
 		AppActions.addItem(item);
 		AppActions.incrementShards(this.state.item.type,this.state.item.cost);
 	},
-	componentDidUpdate:function() {
-		//if we are on a large screen and options/store are not visible
-		//make them visible
-		if (!this.props.mobile && !(this.state.options || this.state.store)) {
-			this.setState({
-				options:true,
-				store:true
-			});
-		}
+
+	toggleOptions:function() {
+		AppActions.toggleOptions();
 	},
+	toggleStore:function() {
+		AppActions.toggleStore();
+	},
+
 	componentDidMount: function() {
 		AppStore.addChangeListener(this._onChange);
 	},
@@ -46,8 +30,6 @@ var Navbar = React.createClass({
 	},
 	_onChange:function() {
 		this.setState(AppStore.getSettings());
-		//check if store is hidden
-		this.setState({store:(document.getElementById('kadala-store').style.display === 'none')});
 	},
 
 	render:function() {

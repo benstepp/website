@@ -10,28 +10,16 @@ var AppStore = require('./stores/AppStore.js');
 
 var Application = React.createClass({
 	getInitialState:function() {
-
-		var mobile = this.mobileCheck();
-		//add a listner to the resize event
-		window.onresize = this.mobileCheck;
-
-		return {
-			mobile:mobile
-		}
+		return AppStore.getSettings();
 	},
-
-	mobileCheck:function() {
-		var mobile = (window.innerWidth <= 768);
-
-		//if the app is mounted (has a state) and they are different set it
-		if (this.isMounted() && mobile !== this.state.mobile) {
-			this.setState({
-				mobile:mobile
-			});
-		}
-
-		//boolean based on bootstrap breakpoint of 768px
-		return mobile;
+	componentDidMount: function() {
+		AppStore.addChangeListener(this._onChange);
+	},
+	componentWillUnmount: function() {
+		AppStore.removeChangeListener(this._onChange);
+	},
+	_onChange:function() {
+		this.setState(AppStore.getSettings());
 	},
 
 	render:function() {
@@ -39,6 +27,7 @@ var Application = React.createClass({
 		//conditionally render either the inventory or individual item based on screen size
 		var inventory;
 		var individualItem;
+
 		if (this.state.mobile) {
 			individualItem = <IndividualItem />
 		}
@@ -55,7 +44,7 @@ var Application = React.createClass({
 						<OptionsPanel />
 					</div>
 					<div className='col-sm-9'>
-						<KadalaStore mobile={this.state.mobile}/>
+						<KadalaStore/>
 						{inventory}
 					</div>
 				</div>

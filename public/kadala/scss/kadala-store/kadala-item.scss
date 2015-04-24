@@ -1,8 +1,15 @@
+@import "../media-queries.scss";
+
 .kadala-item {
 	min-width:120px;
 	height:64px;
 	width:25%;
 	padding:2px;
+
+	@media #{$mobile} {
+		display:inline-block;
+		width:50%;
+	}
 }
 
 .kadala-icon {

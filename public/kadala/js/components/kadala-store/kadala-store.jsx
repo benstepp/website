@@ -1,15 +1,33 @@
 var React = require('react');
 
 var KadalaItem = require('./kadala-item.jsx');
+var AppStore = require('../../stores/AppStore');
 
 var KadalaStore = React.createClass({
+	getInitialState:function() {
+		return AppStore.getSettings();
+	},
+	componentDidMount: function() {
+		AppStore.addChangeListener(this._onChange);
+	},
+	componentWillUnmount: function() {
+		AppStore.removeChangeListener(this._onChange);
+	},
+	_onChange:function() {
+		this.setState(AppStore.getSettings());
+	},
+
 	render:function() {
 
 		var kadalaClass = 'kadala-store';
 		//this is a check for internet explorer
 		//flex-direction:column breaks everything so we detect for it here
 		if ((window.navigator.userAgent.indexOf('MSIE ') !== -1)||!navigator.userAgent.match(/Trident.*rv\:11\./)) {
-			kadalaClass+=' noie'
+			kadalaClass+=' noie';
+		}
+
+		if (this.state.store) {
+			kadalaClass+=' unhide';
 		}
 
 		var items = [
@@ -34,7 +52,7 @@ var KadalaStore = React.createClass({
 		var kadalaSlots = [];
 		var itemsLength = items.length;
 		for (var i =0; i < itemsLength; i++) {
-			kadalaSlots.push(<KadalaItem key={i} item={items[i]} mobile={this.props.mobile}/>);
+			kadalaSlots.push(<KadalaItem key={i} item={items[i]}/>);
 		}
 
 		return (

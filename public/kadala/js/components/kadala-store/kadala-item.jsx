@@ -20,12 +20,6 @@ var KadalaItem = React.createClass({
 		AppActions.addItem(item);
 		AppActions.changeSetting('item',this.props.item);
 		AppActions.incrementShards(this.props.item.type,this.props.item.cost);
-
-		//if it is mobile we also need to hide the store
-		if (this.props.mobile) {
-			document.getElementById('kadala-store').style.display = 'none';
-			AppActions.hideStore();
-		}
 	},
 	resetCount:function() {
 		this.setState({shardCount:0});

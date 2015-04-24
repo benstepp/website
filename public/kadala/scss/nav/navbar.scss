@@ -11,6 +11,7 @@ nav {
 
 	@media #{$mobile} {
 		padding:4px;
+		height:60px;
 	}
 }
 nav > h1 {
@@ -41,24 +42,39 @@ nav > button {
 
 button.ham {
 	float:left;
-	width:32px;
-	height:32px;
+	width:48px;
+	height:48px;
 	padding:4px;
 }
 
 button.shop {
 	float:right;
-	width:32px;
-	height:32px;
+	width:48px;
+	height:48px;
 	padding:4px;
 }
 
 button.buy {
-	width:calc(100% - 64px - 24px);
+	/*full width - button - button - padding*/
+	width:calc(100% - 48px - 48px - 24px);
+	height:52px;
 	margin:0px 12px;
 	padding:6px 0px;
 	background:#63078B;
+	font-size:1.5em;
+	border:2px solid #111;
+	font-weight:700;
+	color:#ddd;
+	white-space:nowrap;
+	text-overflow:ellipsis;
 }
+
+button.buy:hover {
+	color:#fff;
+	background:#8509BA;
+}
+
+
 
 button.ham:hover, button.shop:hover {
 	color:#eee;

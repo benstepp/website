@@ -16,41 +16,37 @@ var OptionsPanel = React.createClass({
 		d3sim.setKadala(initial.dClass,initial.seasonal,initial.hardcore);
 		return initial;
 	},
+	componentDidMount: function() {
+		AppStore.addChangeListener(this._onChange);
+	},
+	componentWillUnmount: function() {
+		AppStore.removeChangeListener(this._onChange);
+	},
+	_onChange:function() {
+		this.setState(AppStore.getSettings());
+	},
 
 	changeGender:function(gender) {
-		this.setState({
-			gender:gender
-		});
 		AppActions.changeSetting('gender',gender);
 	},
 	changeClass:function(dClass) {
-		this.setState({
-			dClass:dClass
-		},function() {
-			d3sim.setKadala(this.state.dClass,this.state.seasonal,this.state.hardcore);
-			AppActions.changeSetting('dClass',dClass);
-		});
+		AppActions.changeSetting('dClass',dClass);
 	},
 	changeHardcore:function(bool) {
-		this.setState({
-			hardcore:bool
-		},function() {
-			d3sim.setKadala(this.state.dClass,this.state.seasonal,this.state.hardcore);
-			AppActions.changeSetting('hardcore',bool);
-		});
+		AppActions.changeSetting('hardcore',bool);
 	},
 	changeSeasonal:function(bool) {
-		this.setState({
-			seasonal:bool
-		},function() {
-			d3sim.setKadala(this.state.dClass,this.state.seasonal,this.state.hardcore);
-			AppActions.changeSetting('seasonal',bool);
-		});
+		AppActions.changeSetting('seasonal',bool);
 	},
 
 	render:function() {
+
+		var optsClass = 'options-panel';
+		if (this.state.options) {
+			optsClass += ' unhide';
+		}
 		return (
-			<section className='options-panel' id='options-panel'>
+			<section className={optsClass}>
 				<ClassSelector changeClass={this.changeClass} selected={this.state.dClass} gender={this.state.gender}/>
 				<GenderSelector changeGender={this.changeGender} selected={this.state.gender}/>
 				<SeasonalCheckbox seasonal={this.state.seasonal} changeSeasonal={this.changeSeasonal}/>
