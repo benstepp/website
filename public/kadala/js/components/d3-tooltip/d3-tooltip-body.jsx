@@ -30,8 +30,8 @@ var D3ItemTooltipBody = React.createClass({
 		if (this.props.item.hasOwnProperty('armor')) {
 			subHead = <D3ItemTooltipArmor armor={this.props.item.armor}/>;
 		}
-		if (this.props.item.hasOwnProperty('weapon')) {
-			subHead = <D3ItemTooltipWeapon weapon={this.props.item.weapon}/>;
+		if (this.props.item.hasOwnProperty('weaponDps')) {
+			subHead = <D3ItemTooltipWeapon weapon={this.props.item}/>;
 		}
 
 		//if sockets are needed
