@@ -7,7 +7,10 @@ var AppStore = require('../../stores/AppStore');
 var KadalaItem = React.createClass({
 
 	getInitialState:function() {
-		return {shardCount:AppStore.getShards(this.props.item.type)};
+		return {
+			mobile:AppStore.getSettings().mobile,
+			shardCount:AppStore.getShards(this.props.item.type)
+		};
 	},
 	buyItem:function() {
 		//increment the blood shard count
@@ -20,6 +23,10 @@ var KadalaItem = React.createClass({
 		AppActions.addItem(item);
 		AppActions.changeSetting('item',this.props.item);
 		AppActions.incrementShards(this.props.item.type,this.props.item.cost);
+
+		if (this.state.mobile) {
+			AppActions.toggleStore();
+		}
 	},
 	resetCount:function() {
 		this.setState({shardCount:0});
