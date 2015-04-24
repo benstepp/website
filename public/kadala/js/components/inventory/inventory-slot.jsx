@@ -55,19 +55,19 @@ var InventorySlot = React.createClass({
 
 				switch(this.props.data.rarity) {
 					case 'magic':
-						bgurl='img/blue.png';
+						bgurl='//us.battle.net/d3/static/images/item/icon-bgs/blue.png';
 						borderColor='#7979d4';
 						break;
 					case 'rare':
-						bgurl='img/yellow.png';
+						bgurl='//us.battle.net/d3/static/images/item/icon-bgs/yellow.png';
 						borderColor='#f8cc35';
 						break;
 					case 'legendary':
-						bgurl='img/orange.png';
+						bgurl='//us.battle.net/d3/static/images/item/icon-bgs/orange.png';
 						borderColor='#bf642f';
 						break;
 					case 'ancient':
-						bgurl='img/orange.png';
+						bgurl='//us.battle.net/d3/static/images/item/icon-bgs/green.png';
 						borderColor='#bf642f';
 						break;
 					default:

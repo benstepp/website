@@ -12,6 +12,17 @@ var KadalaItem = React.createClass({
 			shardCount:AppStore.getShards(this.props.item.type)
 		};
 	},
+	componentDidMount: function() {
+		AppStore.addChangeListener(this._onChange);
+	},
+	componentWillUnmount: function() {
+		AppStore.removeChangeListener(this._onChange);
+	},
+	_onChange:function() {
+		this.setState({
+			shardCount:AppStore.getShards(this.props.item.type)
+		});
+	},
 	buyItem:function() {
 		//increment the blood shard count
 		var currentCount = this.state.shardCount;
