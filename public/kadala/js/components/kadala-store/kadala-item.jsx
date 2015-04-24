@@ -17,6 +17,8 @@ var KadalaItem = React.createClass({
 		var item = d3sim.kadalaRoll(this.props.item.type);
 		item.size = this.props.item.size;
 		AppActions.addItem(item);
+		AppActions.changeSetting('item',this.props.item);
+		AppActions.incrementShards(this.props.item.type,this.props.item.cost);
 	},
 	resetCount:function() {
 		this.setState({shardCount:0});

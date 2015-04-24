@@ -9,5 +9,6 @@ module.exports = keyMirror({
 	PREV_ITEM:null,
 	NEXT_ITEM:null,
 
-	CHANGE_SETTING:null
+	CHANGE_SETTING:null,
+	INCREMENT_SHARDS:null
 });

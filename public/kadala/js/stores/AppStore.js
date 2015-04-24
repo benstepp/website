@@ -5,15 +5,15 @@ var assign = require('object-assign');
 
 var CHANGE_EVENT = 'change';
 
-
 var appSettings = {};
 var defaults = {
 	dClass:'Barbarian',
 	gender:'Female',
 	hardcore:false,
 	seasonal:true,
-	item:'helm'
+	item:{"type":"helm","text":"Mystery Helmet","cost":25,"size":2}
 };
+var shardsSpent = {};
 
 var storageSupported;
 
@@ -21,7 +21,7 @@ var storageSupported;
 //from github.com/agrublev/angularLocalStorage
 //MIT Licence
 function localStorageCheck() {
-	var storage = (typeof $window.localStorage === 'undefined') ? undefined : $window.localStorage;
+	var storage = (typeof window.localStorage === 'undefined') ? undefined : window.localStorage;
 	supported = (typeof storage !== 'undefined');
 	if (supported) {
 		var testKey = '__' + Math.round(Math.random() * 1e7);
@@ -48,22 +48,40 @@ function changeSetting(key,val) {
 function saveSettings() {
 	if (storageSupported) {
 		localStorage.kadalaSettings = JSON.stringify(appSettings);
+		localStorage.kadalaSpent = JSON.stringify(shardsSpent);
 	}
+}
+
+function incrementShards(key,val) {
+	if (typeof shardsSpent[key] !== 'undefined') {
+		shardsSpent[key]+=val;
+	}
+	else {
+		shardsSpent[key] = val;
+	}
+	saveSettings();
 }
 
 function init() {
-	var stored = JSON.parse(localStorage.getItem('kadalaSettings')) || {};
+	localStorageCheck();
+	if (storageSupported) {
+		var stored = JSON.parse(localStorage.getItem('kadalaSettings')) || {};
 
-	//loop through existing defaults incase user has older version of app
-	var settingsKeys = Object.keys(defaults);
-	var keyLength = settingsKeys.length;
-	for (var i =0; i < keyLength; i++) {
-		appSettings[settingsKeys[i]] = stored[settingsKeys[i]] || defaults[settingsKeys[i]];
+		//loop through existing defaults incase user has older version of app
+		var settingsKeys = Object.keys(defaults);
+		var keyLength = settingsKeys.length;
+		for (var i =0; i < keyLength; i++) {
+			appSettings[settingsKeys[i]] = stored[settingsKeys[i]] || defaults[settingsKeys[i]];
+		}
+
+		//pull the spent items
+		shardsSpent = JSON.parse(localStorage.getItem('kadalaSpent')) || {};
+
+		//save to storage
+		saveSettings();
 	}
-
-	//save to storage
-	saveSettings();
 }
+
 
 init();
 
@@ -87,8 +105,11 @@ AppDispatcher.register(function(action) {
 			changeSetting(action.key,action.val);
 			AppStore.emitChange();
 			break;
+		case AppConstants.INCREMENT_SHARDS:
+			incrementShards(action.key,action.val);
+			break;
 		default:
-		//noop
+			//noop
 	}
 });
 

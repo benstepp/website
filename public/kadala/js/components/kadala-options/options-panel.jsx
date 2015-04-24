@@ -1,6 +1,9 @@
 var React = require('react');
 var d3sim = require('d3sim');
 
+var AppActions = require('../../actions/AppActions.js');
+var AppStore = require('../../stores/AppStore.js');
+
 var ClassSelector = require('./class-selector.jsx');
 var GenderSelector = require('./gender-selector.jsx');
 var SeasonalCheckbox = require('./seasonal-checkbox.jsx');
@@ -9,12 +12,7 @@ var HardcoreCheckbox = require('./hardcore-checkbox.jsx');
 var OptionsPanel = React.createClass({
 
 	getInitialState:function() {
-		var initial = {
-			dClass:'Barbarian',
-			gender:'Female',
-			hardcore:false,
-			seasonal:true
-		};
+		var initial = AppStore.getSettings();
 		d3sim.setKadala(initial.dClass,initial.seasonal,initial.hardcore);
 		return initial;
 	},
@@ -23,12 +21,14 @@ var OptionsPanel = React.createClass({
 		this.setState({
 			gender:gender
 		});
+		AppActions.changeSetting('gender',gender);
 	},
 	changeClass:function(dClass) {
 		this.setState({
 			dClass:dClass
 		},function() {
 			d3sim.setKadala(this.state.dClass,this.state.seasonal,this.state.hardcore);
+			AppActions.changeSetting('dClass',dClass);
 		});
 	},
 	changeHardcore:function(bool) {
@@ -36,6 +36,7 @@ var OptionsPanel = React.createClass({
 			hardcore:bool
 		},function() {
 			d3sim.setKadala(this.state.dClass,this.state.seasonal,this.state.hardcore);
+			AppActions.changeSetting('hardcore',bool);
 		});
 	},
 	changeSeasonal:function(bool) {
@@ -43,6 +44,7 @@ var OptionsPanel = React.createClass({
 			seasonal:bool
 		},function() {
 			d3sim.setKadala(this.state.dClass,this.state.seasonal,this.state.hardcore);
+			AppActions.changeSetting('seasonal',bool);
 		});
 	},
 

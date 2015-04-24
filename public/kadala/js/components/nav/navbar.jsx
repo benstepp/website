@@ -1,10 +1,16 @@
 var React = require('react');
+var d3sim = require('d3sim');
+
+var AppActions = require('../../actions/AppActions.js');
+var AppStore = require('../../stores/AppStore.js');
 
 var Navbar = React.createClass({
 	getInitialState:function() {
+		var item = AppStore.getSettings().item;
 		return {
 			options:false,
-			store:false
+			store:false,
+			item:item
 		};
 	},
 	toggleOptions:function() {
@@ -15,6 +21,12 @@ var Navbar = React.createClass({
 	toggleStore:function() {
 		document.getElementById('kadala-store').style.display = (this.state.store)? 'none':'block';
 		this.setState({store:!this.state.store});
+	},
+	buyItem:function() {
+		var item = d3sim.kadalaRoll(this.state.item.type);
+		item.size = this.state.item.size;
+		AppActions.addItem(item);
+		AppActions.incrementShards(this.state.item.type,this.state.item.cost);
 	},
 	componentDidUpdate:function() {
 		//if we are on a large screen and options/store are not visible
@@ -37,7 +49,7 @@ var Navbar = React.createClass({
 					</svg>
 				</button>
 				<h1>Kadala Simulator</h1>
-				<button className='buy'>Buy more Shit</button>
+				<button className='buy' onClick={this.buyItem}>{this.state.item.text}</button>
 				<button className='shop' onClick={this.toggleStore}>
 					{/*From Material Design icons by Google (CC by 4.0)*/}
 					<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">

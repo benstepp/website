@@ -28,6 +28,14 @@ var AppActions = {
 			key:key,
 			val:val
 		});
+	},
+
+	incrementShards:function(key,val) {
+		AppDispatcher.dispatch({
+			actionType:AppConstants.INCREMENT_SHARDS,
+			key:key,
+			val:val
+		});
 	}
 
 };
