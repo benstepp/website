@@ -2,11 +2,12 @@ var React = require('react');
 var d3sim = require('d3sim');
 
 var AppActions = require('../../actions/AppActions');
+var AppStore = require('../../stores/AppStore');
 
 var KadalaItem = React.createClass({
 
 	getInitialState:function() {
-		return {shardCount:0};
+		return {shardCount:AppStore.getShards(this.props.item.type)};
 	},
 	buyItem:function() {
 		//increment the blood shard count
@@ -19,6 +20,12 @@ var KadalaItem = React.createClass({
 		AppActions.addItem(item);
 		AppActions.changeSetting('item',this.props.item);
 		AppActions.incrementShards(this.props.item.type,this.props.item.cost);
+
+		//if it is mobile we also need to hide the store
+		if (this.props.mobile) {
+			document.getElementById('kadala-store').style.display = 'none';
+			AppActions.hideStore();
+		}
 	},
 	resetCount:function() {
 		this.setState({shardCount:0});

@@ -42,6 +42,12 @@ var AppActions = {
 		});
 	},
 
+	hideStore:function() {
+		AppDispatcher.dispatch({
+			actionType:AppConstants.HIDE_STORE
+		});
+	},
+
 	incrementShards:function(key,val) {
 		AppDispatcher.dispatch({
 			actionType:AppConstants.INCREMENT_SHARDS,

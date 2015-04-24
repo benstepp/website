@@ -38,6 +38,17 @@ var Navbar = React.createClass({
 			});
 		}
 	},
+	componentDidMount: function() {
+		AppStore.addChangeListener(this._onChange);
+	},
+	componentWillUnmount: function() {
+		AppStore.removeChangeListener(this._onChange);
+	},
+	_onChange:function() {
+		this.setState(AppStore.getSettings());
+		//check if store is hidden
+		this.setState({store:(document.getElementById('kadala-store').style.display === 'none')});
+	},
 
 	render:function() {
 		return(

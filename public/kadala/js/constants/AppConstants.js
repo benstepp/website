@@ -10,5 +10,7 @@ module.exports = keyMirror({
 	NEXT_ITEM:null,
 
 	CHANGE_SETTING:null,
-	INCREMENT_SHARDS:null
+	INCREMENT_SHARDS:null,
+
+	HIDE_STORE:null
 });

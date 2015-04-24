@@ -34,7 +34,7 @@ var KadalaStore = React.createClass({
 		var kadalaSlots = [];
 		var itemsLength = items.length;
 		for (var i =0; i < itemsLength; i++) {
-			kadalaSlots.push(<KadalaItem key={i} item={items[i]} />);
+			kadalaSlots.push(<KadalaItem key={i} item={items[i]} mobile={this.props.mobile}/>);
 		}
 
 		return (

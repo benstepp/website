@@ -55,7 +55,7 @@ var Application = React.createClass({
 						<OptionsPanel />
 					</div>
 					<div className='col-sm-9'>
-						<KadalaStore />
+						<KadalaStore mobile={this.state.mobile}/>
 						{inventory}
 					</div>
 				</div>

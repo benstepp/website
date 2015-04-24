@@ -40,6 +40,10 @@ function getSettings() {
 	return appSettings;
 }
 
+function getShards(key) {
+	return shardsSpent[key];
+}
+
 function changeSetting(key,val) {
 	appSettings[key] = val;
 	saveSettings();
@@ -87,6 +91,7 @@ init();
 
 var AppStore = assign({},EventEmitter.prototype,{
 	getSettings:getSettings,
+	getShards:getShards,
 
 	emitChange:function(){
 		this.emit(CHANGE_EVENT);
@@ -107,6 +112,11 @@ AppDispatcher.register(function(action) {
 			break;
 		case AppConstants.INCREMENT_SHARDS:
 			incrementShards(action.key,action.val);
+			AppStore.emitChange();
+			break;
+		case AppConstants.HIDE_STORE:
+			hideStore();
+			AppStore.emitChange();
 			break;
 		default:
 			//noop
