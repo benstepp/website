@@ -1,4 +1,5 @@
 var gulp = require('gulp'),
+	rimraf = require('gulp-rimraf'),
 	source = require('vinyl-source-stream'),
 	concat = require('gulp-concat'),
 	sass = require('gulp-sass'),
@@ -33,6 +34,24 @@ module.exports = function(date) {
 		.pipe(gulp.dest('./'));
 
 	});
+
+	gulp.task('clean',function() {
+		return gulp.src('build/kadala/*', {read: false})
+			.pipe(rimraf());
+	});
+
+	gulp.task('js', function() {
+
+	});
+
+	gulp.task('css', function() {
+
+	});
+
+	gulp.task('img',function() {
+
+	});
+
 
 	gulp.start('browserify');
 };

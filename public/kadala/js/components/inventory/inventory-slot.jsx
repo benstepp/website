@@ -67,7 +67,7 @@ var InventorySlot = React.createClass({
 						borderColor='#bf642f';
 						break;
 					case 'ancient':
-						bgurl='//us.battle.net/d3/static/images/item/icon-bgs/green.png';
+						bgurl='//us.battle.net/d3/static/images/item/icon-bgs/orange.png';
 						borderColor='#bf642f';
 						break;
 					default:
@@ -76,7 +76,7 @@ var InventorySlot = React.createClass({
 
 				//switch bg to green if item is part of a set
 				if (this.props.data.hasOwnProperty('set')) {
-					bgurl='img/green.png';
+					bgurl='//us.battle.net/d3/static/images/item/icon-bgs/green.png';
 					borderColor='#8bd442';
 				}
 

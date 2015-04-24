@@ -48,3 +48,10 @@ body {
 		display:block !important;
 	}
 }
+
+.container-fluid {
+	min-height:calc(100vh - 90px);
+}
+.body {
+	min-height:100vh;
+}
