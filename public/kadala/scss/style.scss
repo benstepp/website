@@ -1,0 +1,30 @@
+@import "../../libs/foundation/scss/normalize.scss";
+@import "./media-queries";
+
+@import "d3-tooltip.scss";
+@import "./options-panel/options-panel.scss";
+@import "./inventory/inventory.scss";
+@import "./kadala-store/kadala-store.scss";
+@import "./common/navbar.scss";
+@import "./common/footer.scss";
+@import "./common/loader.scss";
+@import "./individual-item/individual-item.scss";
+
+body {
+	background:#222;
+	font-family: 'Lato', sans-serif;
+
+}
+
+@media #{$mobile} {
+	.unhide {
+		display:block !important;
+	}
+}
+
+.container-fluid {
+	min-height:calc(100vh - 92px);
+	@media #{$mobile} {
+		min-height:calc(100vh - 140px);
+	}
+}

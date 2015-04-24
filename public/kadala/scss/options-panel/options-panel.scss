@@ -1,0 +1,15 @@
+@import "../media-queries.scss";
+@import "./gender-selector.scss";
+@import "./class-selector.scss";
+@import "./checkbox-selector.scss";
+
+.options-panel {
+	width:100%;
+	padding:0px;
+	padding-bottom:12px;
+	background:#12110f;
+
+	@media #{$mobile} {
+		display:none;
+	}
+}

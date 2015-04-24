@@ -1,0 +1,98 @@
+@import "../media-queries.scss";
+
+.gender-selector {
+	width:100%;
+	display:flex;
+	flex-direction:row;
+	flex-wrap:nowrap;
+	flex-flow:center;
+	justify-content:space-around;
+	align-items:center;
+	align-content:space-around;
+	margin-bottom:2px;
+}
+
+.button-wrapper {
+	float:left;
+	display:inline-block;
+	text-align:center;
+	padding:0px 2px;
+}
+
+button.gender-selector {
+	border:none;
+	outline:none;
+	background:none;
+
+	color:#ddd;
+	font-weight:400;
+	font-size:24px;
+	font-variant:small-caps;
+
+	transition: all 0.6s ease 0s;
+}
+
+button.gender-selector:hover {
+	color:#fff;
+	transition: all 0.6s ease 0s;
+}
+
+button.gender-selector.selected {
+	color:#FFF;
+	text-shadow:0 0 16px #eee;
+	transition: all 0.6s ease 0s;
+}
+
+button.gender-selector > div {
+	display:inline-block;
+	width:30px;
+	height:30px;
+	float:left;
+
+	border:1px solid #222;
+	border-radius:50%;
+	box-shadow: 0px 0px 2px #060606;
+	transition: box-shadow 0.6s ease 0s;
+
+	background-repeat:no-repeat;
+	background-image:url('/kadala/img/gender-toggle.png');
+	background-size:300%;
+}
+
+.gender-selector > span {
+	margin-top:-6px;
+	float:left;
+
+	@media #{$tablet} {
+		display:none;
+	}
+}
+
+.female > div {
+	background-position:-45px -7px;
+}
+
+.male > div {
+	background-position:-10px -7px;
+}
+
+.gender-selector.female:hover > div {
+	background-position:-45px -50px;
+}
+
+.gender-selector.male:hover > div {
+	background-position:-10px -50px;
+}
+
+.selected.female > div, .selected.female:hover > div {
+	background-position:-45px -93px;
+}
+
+.selected.male > div, .selected.male:hover > div {
+	background-position:-10px -93px;
+}
+
+.selected > div {
+	box-shadow: 0px 0px 4px #454545;
+	transition: box-shadow 0.6s ease 0s;
+}

@@ -1,0 +1,149 @@
+@import "../media-queries.scss";
+
+.kadala-item {
+	min-width:120px;
+	height:64px;
+	width:25%;
+	padding:2px;
+	color:#999;
+
+	@media #{$mobile} {
+		display:inline-block;
+		width:50%;
+	}
+}
+
+.kadala-icon {
+	width:40px;
+	height:60px;
+	display:block;
+	background-size:410%;
+	background-repeat:no-repeat;
+	background-image:url('/kadala/img/mystery-sprites.png');
+	float:left;
+	border:1px solid #000;
+}
+
+.kadala-content {
+	float:left;
+	border:1px solid #000;
+	height:100%;
+	width:calc(100% - 40px);
+	padding:4px;
+
+	display:flex;
+	flex-direction:column;
+	justify-content:space-between;
+}
+
+.kadala-content > span {
+	display:block;
+}
+
+.kadala-content svg {
+	position:relative;
+	top:3px;
+}
+
+.shard-delete {
+	cursor:pointer;
+	color:#444;
+	margin:0;
+	padding:0;
+}
+
+.shard-delete:hover {
+	color:#ddd;
+}
+
+button.kadala {
+	float:left;
+	display:block;
+	padding:0;
+	margin:0;
+	border:none;
+	outline:none;
+}
+button.kadala:hover + div.kadala-content > .kadala-item-title {
+	color:#ddd;
+}
+
+.shard-count {
+	display:block;
+	clear:both;
+	text-align:right;
+}
+.hidden-shards {
+	display:none !important;
+}
+
+.kadala {
+	position:relative;
+}
+
+.kadala >span {
+	position:absolute;
+	bottom:0;
+	left:2px;
+}
+
+.kadala-item-title {
+	line-height:16px;
+	cursor:pointer;
+}
+
+.kadala-item-title:hover {
+	color:#ddd;
+}
+
+.kadala-icon.onehand {
+	background-position:0px -13px;
+}
+.kadala-icon.quiver {
+	background-position:0px -92px;
+}
+.kadala-icon.mojo {
+	background-position:0px -169px;
+}
+.kadala-icon.twohand {
+	background-position:0px -246px;
+}
+
+.kadala-icon.source {
+	background-position:-40px -12px;
+}
+.kadala-icon.helm {
+	background-position:-40px -91px;
+}
+.kadala-icon.boots {
+	background-position:-40px -169px;
+}
+.kadala-icon.belt {
+	background-position:-40px -244px;
+}
+
+.kadala-icon.pants {
+	background-position:-78px -12px;
+}
+.kadala-icon.shield {
+	background-position:-78px -89px;
+}
+.kadala-icon.gloves {
+	background-position:-78px -169px;
+}
+.kadala-icon.chest {
+	background-position:-78px -247px;
+}
+
+.kadala-icon.shoulders {
+	background-position:-117px -11px;
+}
+.kadala-icon.bracers {
+	background-position:-117px -90px;
+}
+.kadala-icon.ring {
+	background-position:-117px -167px;
+}
+.kadala-icon.amulet {
+	background-position:-117px -245px;
+}

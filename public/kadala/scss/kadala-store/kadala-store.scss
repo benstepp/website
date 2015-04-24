@@ -1,0 +1,28 @@
+@import "../media-queries.scss";
+@import "./kadala-item.scss";
+
+.kadala-store {
+	display:flex;
+	flex-wrap:wrap;
+	align-items:center;
+	align-content:center;
+	justify-content:center;
+
+	padding:4px;
+	width:100%;
+	background-color:#12110f;
+
+	@media #{$desktop} {
+		max-height:280px;
+	}
+	@media #{$tablet} {
+		max-height:280px;
+	}
+	@media #{$mobile} {
+		display:none;
+	}
+}
+
+.kadala-store.noie {
+	flex-direction:column;
+}

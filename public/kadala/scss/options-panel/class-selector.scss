@@ -1,0 +1,135 @@
+@import "../media-queries.scss";
+
+ul.class-selector {
+	padding:0px;
+	width:100%;
+	list-style-type:none;
+}
+
+ul.class-selector > li:after {
+	content:'';
+	display:block;
+	width:90%;
+	margin:auto;
+	height:1px;
+	background-color:#202020;
+}
+
+button.class-selector {
+	width:100%;
+	padding:4px 12px;
+	background:none;
+	color:#ddd;
+	border:none;
+	outline:none;
+	background-color:#11100f;
+}
+.class-selector:hover {
+	color:#fff;
+	transition:all 0.6s ease 0s;
+}
+
+.class-selector.selected > div {
+	box-shadow: 0px 0px 8px #454545;
+	transition: box-shadow 0.6s ease 0s;
+}
+
+button.class-selector.selected {
+	color:#fff;
+	text-shadow:0 0 16px #eee;
+	transition: all 0.6s ease 0s;
+}
+
+.class-selector > div {
+	content:'';
+	border-radius:50%;
+	border:1px solid #222;
+	width:40px;
+	height:40px;
+	float:left;
+	background:url('/kadala/img/hero-nav-portraits.jpg');
+	background-repeat:repeat;
+	background-size: 270%;
+	box-shadow: 0px 0px 2px #060606;
+	transition: box-shadow 0.6s ease 0s;
+}
+
+.class-selector > span {
+	margin-top:-2px;
+	padding:0px 4px;
+	font-size:24px;
+	float:left;
+	font-variant:small-caps;
+}
+
+
+span.shortened {
+	@media #{$mobile} {
+		display:none;
+	}
+	@media #{$tablet} {
+		display:inline-block;
+	}
+	@media #{$desktop} {
+		display:none;
+	}
+}
+.class-selector > span:not(.shortened){
+	@media #{$mobile} {
+		display:inline-block;
+	}
+	@media #{$tablet} {
+		display:none;
+	}
+	@media #{$desktop} {
+		display:inline-block;
+	}
+}
+
+div.barbarianmale {
+	background-position:-7px 0px;
+}
+
+div.barbarianfemale {
+	background-position:-60px 0px;
+}
+
+div.crusadermale {
+	background-position:-7px -205px;
+}
+
+div.crusaderfemale {
+	background-position:-60px -205px;
+}
+
+div.demonhuntermale {
+	background-position:-7px -40px;
+}
+
+div.demonhunterfemale {
+	background-position:-60px -40px;
+}
+
+div.monkmale {
+	background-position:-7px -82px;
+}
+
+div.monkfemale {
+	background-position:-60px -82px;
+}
+
+div.witchdoctormale {
+	background-position:-7px -122px;
+}
+
+div.witchdoctorfemale {
+	background-position:-60px -122px;
+}
+
+div.wizardmale {
+	background-position:-7px -164px;
+}
+
+div.wizardfemale {
+	background-position:-60px -164px;
+}

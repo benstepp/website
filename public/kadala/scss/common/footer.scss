@@ -1,0 +1,48 @@
+@import "../media-queries.scss";
+
+footer {
+	margin-top:10px;
+	padding:0px 15px;
+	color:#666;
+	height:30px;
+	width:100%;
+	display:block;
+	clear:both;
+	background:#121212;
+	border-top:1px solid #63078B;
+
+	@media #{$mobile} {
+		height:60px;
+	}
+}
+
+footer > span {
+	height:30px;
+	padding:2px;
+}
+
+footer a {
+	color:#999;
+}
+
+footer a:hover, footer a:active {
+	text-decoration:none;
+	color:#ddd;
+}
+
+.footer-right {
+	float:right;
+	@media #{$mobile} {
+		clear:both;
+	}
+}
+.footer-left {
+	float:left;
+}
+
+.footer-right > a {
+	padding:4px;
+	@media #{$mobile} {
+		padding: 4px 12px;
+	}
+}

@@ -1,0 +1,93 @@
+@import "../media-queries.scss";
+
+nav {
+	width:100%;
+	height:40px;
+	line-height:1.5em;
+	padding:0px 15px;
+	margin-bottom:8px;
+	
+	background:#12110f;
+	border-bottom:1px solid #1e1c17;
+
+	@media #{$mobile} {
+		padding:4px;
+		height:60px;
+	}
+}
+nav > h1 {
+	display:inline-block;
+	font-size:1.5em;
+	line-height:1.5em;
+	margin:2px 0px 0px 0px;
+	background:none;
+	color:#999;
+
+	@media #{$mobile} {
+		display:none;
+	}
+}
+
+h1 > a {
+	color:#ccc;
+	text-decoration:none;
+}
+
+h1 >a:hover {
+	color:#eee;
+	text-decoration:none;
+}
+
+nav > button {
+	@media #{$desktop} {
+		display:none;
+	}
+	@media #{$tablet} {
+		display:none;
+	}
+	display:inline-block;
+	background:none;
+	border:none;
+	outline:none;
+	margin:0;
+}
+
+button.ham {
+	float:left;
+	width:48px;
+	height:48px;
+	padding:4px;
+}
+
+button.shop {
+	float:right;
+	width:48px;
+	height:48px;
+	padding:4px;
+}
+
+button.buy {
+	/*full width - button - button*/
+	width:calc(100% - 48px - 48px);
+	height:52px;
+	margin:0;
+	padding:6px 0px;
+	background:#63078B;
+	font-size:1.5em;
+	border:2px solid #111;
+	font-weight:700;
+	color:#ddd;
+	white-space:nowrap;
+	text-overflow:ellipsis;
+}
+
+button.buy:hover {
+	color:#fff;
+	background:#8509BA;
+}
+
+
+
+button.ham:hover, button.shop:hover {
+	color:#eee;
+}

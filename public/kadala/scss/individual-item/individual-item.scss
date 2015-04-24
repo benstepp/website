@@ -1,0 +1,31 @@
+@import "../media-queries.scss";
+
+button.shift {
+	margin-left:-15px;
+}
+
+@media #{$mobile} {
+	.tooltip-container {
+		display:block;
+		visibility:visible;
+		position:static;
+		margin:0 auto;
+	}
+
+	.inventory-button {
+		position:fixed;
+		top:70px;
+	}
+
+	.inventory-button.left {
+		left:24px;
+	}
+
+	.inventory-button.right {
+		right:10px;
+	}
+
+	.tooltip-overflow {
+		overflow:hidden;
+	}
+}

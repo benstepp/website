@@ -23,18 +23,23 @@ gulp.task('index', function() {
 	require('./public/gulpfile.js')(date);
 });
 
+gulp.task('kadala', function() {
+	require('./public/kadala/gulpfile.js')(date);
+});
+
 //
 //	Build scss while developing
 //
 gulp.task('dev', function() {
-	gulp.watch('./public/scss/*.scss', function() {
+	gulp.watch('./public/kadala/scss/**/*.scss', function() {
 		gulp.start('scss');
 	});
+	gulp.start('kadala');
 });
 
 gulp.task('scss', function() {
-	return gulp.src('./public/scss/style.scss')
+	return gulp.src('./public/kadala/scss/style.scss')
 		.pipe(sass())
 		.pipe(minifyCss())
-		.pipe(gulp.dest('public/scss'));
+		.pipe(gulp.dest('public/kadala/scss'));
 });
