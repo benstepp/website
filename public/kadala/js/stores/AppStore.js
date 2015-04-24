@@ -47,6 +47,10 @@ function toggleOptions() {
 	appSettings.options = !appSettings.options;
 	appSettings.store = false;
 }
+function hideBoth() {
+	appSettings.store = false;
+	appSettings.options = false;
+}
 
 function getSettings() {
 	return appSettings;
@@ -160,6 +164,10 @@ AppDispatcher.register(function(action) {
 			break;
 		case AppConstants.TOGGLE_OPTIONS:
 			toggleOptions();
+			AppStore.emitChange();
+			break;
+		case AppConstants.ADD_ITEM:
+			hideBoth();
 			AppStore.emitChange();
 			break;
 		default:

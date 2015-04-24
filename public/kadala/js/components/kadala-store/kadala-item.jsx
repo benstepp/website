@@ -34,10 +34,6 @@ var KadalaItem = React.createClass({
 		AppActions.addItem(item);
 		AppActions.changeSetting('item',this.props.item);
 		AppActions.incrementShards(this.props.item.type,this.props.item.cost);
-
-		if (this.state.mobile) {
-			AppActions.toggleStore();
-		}
 	},
 	resetCount:function() {
 		this.setState({shardCount:0});
