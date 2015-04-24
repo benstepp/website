@@ -15,6 +15,15 @@ var Application = React.createClass({
 	},
 	componentDidMount: function() {
 		AppStore.addChangeListener(this._onChange);
+
+		//opacity on loader for the nice fade effect via css transition
+		var loader = document.getElementById('loading');
+		loader.style.opacity = '0';
+
+		//display none so we can click through it as pointer-events is buggy
+		window.setTimeout(function() {
+			loader.style.display = 'none';
+		},1000);
 	},
 	componentWillUnmount: function() {
 		AppStore.removeChangeListener(this._onChange);

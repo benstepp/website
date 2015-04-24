@@ -10,6 +10,10 @@ footer {
 	clear:both;
 	background:#121212;
 	border-top:1px solid #63078B;
+
+	@media #{$mobile} {
+		height:60px;
+	}
 }
 
 footer > span {
@@ -28,6 +32,9 @@ footer a:hover, footer a:active {
 
 .footer-right {
 	float:right;
+	@media #{$mobile} {
+		clear:both;
+	}
 }
 .footer-left {
 	float:left;
@@ -35,4 +42,7 @@ footer a:hover, footer a:active {
 
 .footer-right > a {
 	padding:4px;
+	@media #{$mobile} {
+		padding: 4px 12px;
+	}
 }

@@ -8,6 +8,7 @@ nav {
 	margin-bottom:8px;
 	
 	background:#12110f;
+	border-bottom:1px solid #1e1c17;
 
 	@media #{$mobile} {
 		padding:4px;
@@ -66,10 +67,10 @@ button.shop {
 }
 
 button.buy {
-	/*full width - button - button - padding*/
-	width:calc(100% - 48px - 48px - 24px);
+	/*full width - button - button*/
+	width:calc(100% - 48px - 48px);
 	height:52px;
-	margin:0px 12px;
+	margin:0;
 	padding:6px 0px;
 	background:#63078B;
 	font-size:1.5em;

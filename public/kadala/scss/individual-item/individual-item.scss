@@ -13,16 +13,16 @@ button.shift {
 	}
 
 	.inventory-button {
-		position:absolute;
-		top:2px;
+		position:fixed;
+		top:70px;
 	}
 
 	.inventory-button.left {
-		left:15px;
+		left:24px;
 	}
 
 	.inventory-button.right {
-		right:-5px;
+		right:10px;
 	}
 
 	.tooltip-overflow {

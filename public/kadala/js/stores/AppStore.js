@@ -41,9 +41,11 @@ function localStorageCheck() {
 
 function toggleStore() {
 	appSettings.store = !appSettings.store;
+	appSettings.options = false;
 }
 function toggleOptions() {
 	appSettings.options = !appSettings.options;
+	appSettings.store = false;
 }
 
 function getSettings() {

@@ -7,40 +7,13 @@
 @import "./kadala-store/kadala-store.scss";
 @import "./common/navbar.scss";
 @import "./common/footer.scss";
+@import "./common/loader.scss";
 @import "./individual-item/individual-item.scss";
 
 body {
 	background:#222;
 	font-family: 'Lato', sans-serif;
-	overflow:hidden;
-}
 
-.tooltip-container {
-	display:block;
-	box-sizing:content-box;
-	background:#000;
-	color:#CFB991;
-	font-size:12px;
-	padding:1px;
-	border:1px solid #322a20;
-	width:355px;
-	border-radius:2px;
-	box-shadow: 0 0 10px #000;
-}
-
-.tooltip-container div {
-	box-sizing:content-box;
-}
-
-.tooltip-container .tooltip-content {
-	width:auto;
-	height:auto;
-}
-
-.d3-tooltip {
-	margin:0;
-	border:0;
-	outline:0;
 }
 
 @media #{$mobile} {
@@ -50,8 +23,8 @@ body {
 }
 
 .container-fluid {
-	min-height:calc(100vh - 90px);
-}
-.body {
-	min-height:100vh;
+	min-height:calc(100vh - 92px);
+	@media #{$mobile} {
+		min-height:calc(100vh - 140px);
+	}
 }
