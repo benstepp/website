@@ -20,10 +20,21 @@ nav > h1 {
 	line-height:1.5em;
 	margin:2px 0px 0px 0px;
 	background:none;
+	color:#999;
 
 	@media #{$mobile} {
 		display:none;
 	}
+}
+
+h1 > a {
+	color:#ccc;
+	text-decoration:none;
+}
+
+h1 >a:hover {
+	color:#eee;
+	text-decoration:none;
 }
 
 nav > button {

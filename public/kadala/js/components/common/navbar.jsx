@@ -41,7 +41,7 @@ var Navbar = React.createClass({
 						<path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/>
 					</svg>
 				</button>
-				<h1>Kadala Simulator</h1>
+				<h1><a href='/kadala/'>Kadala Simulator</a></h1>
 				<button className='buy' onClick={this.buyItem}>{this.state.item.text}</button>
 				<button className='shop' onClick={this.toggleStore}>
 					{/*From Material Design icons by Google (CC by 4.0)*/}

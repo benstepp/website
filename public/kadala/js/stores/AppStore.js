@@ -119,6 +119,8 @@ function init() {
 	mobileCheck();
 	window.onresize = mobileCheck;
 
+	AppStore.setMaxListeners(20);
+
 	if (storageSupported) {
 		var stored = JSON.parse(localStorage.getItem('kadalaSettings')) || {};
 

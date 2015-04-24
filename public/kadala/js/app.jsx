@@ -1,10 +1,11 @@
 var React = require('react');
 
-var Navbar = require('./components/nav/navbar.jsx');
+var Navbar = require('./components/common/navbar.jsx');
 var OptionsPanel = require('./components/kadala-options/options-panel.jsx');
 var KadalaStore = require('./components/kadala-store/kadala-store.jsx');
 var Inventory = require('./components/inventory/inventory.jsx');
 var IndividualItem = require('./components/individual-item/individual-item.jsx');
+var Footer = require('./components/common/footer.jsx');
 
 var AppStore = require('./stores/AppStore.js');
 
@@ -37,23 +38,24 @@ var Application = React.createClass({
 
 		return (
 			<div>
-			<Navbar mobile={this.state.mobile} />
-			<div className='container-fluid'>
-				<div className='row'>
-					<div className='col-sm-3'>
-						<OptionsPanel />
+				<Navbar mobile={this.state.mobile} />
+				<div className='container-fluid'>
+					<div className='row'>
+						<div className='col-sm-3'>
+							<OptionsPanel />
+						</div>
+						<div className='col-sm-9'>
+							<KadalaStore/>
+							{inventory}
+						</div>
 					</div>
-					<div className='col-sm-9'>
-						<KadalaStore/>
-						{inventory}
+					<div className='row'>
+						<div className='col-sm-12'>
+							{individualItem}
+						</div>
 					</div>
 				</div>
-				<div className='row'>
-					<div className='col-sm-12'>
-						{individualItem}
-					</div>
-				</div>
-			</div>
+				<Footer />
 			</div>
 		);
 	}
