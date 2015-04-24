@@ -46,7 +46,7 @@ var Application = React.createClass({
 
 		return (
 			<div>
-			<Navbar />
+			<Navbar mobile={this.state.mobile} />
 			<div className='container-fluid'>
 				<div className='row'>
 					<div className='col-sm-3'>

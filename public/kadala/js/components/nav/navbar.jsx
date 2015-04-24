@@ -16,6 +16,17 @@ var Navbar = React.createClass({
 		document.getElementById('kadala-store').style.display = (this.state.store)? 'none':'block';
 		this.setState({store:!this.state.store});
 	},
+	componentDidUpdate:function() {
+		//if we are on a large screen and options/store are not visible
+		//make them visible
+		if (!this.props.mobile && !(this.state.options || this.state.store)) {
+			this.setState({
+				options:true,
+				store:true
+			});
+		}
+	},
+
 	render:function() {
 		return(
 			<nav>

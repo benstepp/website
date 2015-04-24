@@ -10,6 +10,9 @@ var previousInventory;
 var currentInventory;
 var nextInventory;
 
+var items = [];
+var currentIndex = 0;
+
 //creates nested array blank inventory and sets as the current inventory
 function createInventory() {
 	var newInventory = [];
@@ -33,6 +36,10 @@ function getInventory() {
 	};
 }
 
+function getItem() {
+	return items[currentIndex];
+}
+
 function addItem(item) {
 	var inventoryLength = currentInventory.length;
 	//looping through each column of the inventory
@@ -50,6 +57,8 @@ function addItem(item) {
 		//and add to that column and return to stop the madness
 		if (columnHeight+item.size <=6) {
 			currentInventory[i].push(item);
+			//if we can successfully add to inventory call for items inventory
+			addToItems(item);
 			return;
 		}
 	}
@@ -65,6 +74,15 @@ function addItem(item) {
 	else {
 		createInventory();
 		addItem(item);
+	}
+}
+
+function addToItems(item) {
+	items.push(item);
+
+	//if there are more than 10 items remove the first
+	if (items.length > 10) {
+		items.shift();
 	}
 }
 
@@ -94,6 +112,7 @@ var InventoryStore = assign({}, EventEmitter.prototype,{
 	gotoPrevious:gotoPrevious,
 	gotoNext:gotoNext,
 	addItem:addItem,
+	getItem:getItem,
 
 	emitChange:function(){
 		this.emit(CHANGE_EVENT);

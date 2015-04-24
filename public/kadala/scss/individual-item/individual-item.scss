@@ -1,0 +1,14 @@
+@import "../media-queries.scss";
+
+button.shift {
+	margin-left:-15px;
+}
+
+@media #{$mobile} {
+	.tooltip-container {
+		display:block;
+		visibility:visible;
+		position:static;
+		margin:0 auto;
+	}
+}
