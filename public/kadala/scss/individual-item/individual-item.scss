@@ -11,4 +11,21 @@ button.shift {
 		position:static;
 		margin:0 auto;
 	}
+
+	.inventory-button {
+		position:absolute;
+		top:2px;
+	}
+
+	.inventory-button.left {
+		left:15px;
+	}
+
+	.inventory-button.right {
+		right:-5px;
+	}
+
+	.tooltip-overflow {
+		overflow:hidden;
+	}
 }

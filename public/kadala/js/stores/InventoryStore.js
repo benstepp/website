@@ -37,7 +37,9 @@ function getInventory() {
 }
 
 function getItem() {
-	return items[currentIndex];
+	return {
+		item:items[currentIndex]
+	};
 }
 
 function addItem(item) {
@@ -84,6 +86,9 @@ function addToItems(item) {
 	if (items.length > 10) {
 		items.shift();
 	}
+
+	//set the currentindex to the new item
+	currentIndex = items.length - 1;
 }
 
 //cycles through to the previous inventory

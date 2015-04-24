@@ -9,7 +9,17 @@ var D3ItemTooltip = require('../d3-tooltip/d3-tooltip.jsx');
 var IndividualItem = React.createClass({
 
 	getInitialState:function() {
-		return {item:InventoryStore.getItem()};
+		return InventoryStore.getItem();
+	},
+
+	componentDidMount: function() {
+		InventoryStore.addChangeListener(this._onChange);
+	},
+	componentWillUnmount: function() {
+		InventoryStore.removeChangeListener(this._onChange);
+	},
+	_onChange:function() {
+		this.setState(InventoryStore.getItem());
 	},
 
 	render:function() {
@@ -25,13 +35,9 @@ var IndividualItem = React.createClass({
 		return (
 			<div>
 				<div className='row'>
-					<div className='col-xs-1'>
+					<div className='col-xs-12 tooltip-overflow'>
 						<ItemLeft hideClass={hiddenButtons} />
-					</div>
-					<div className='col-xs-10'>
 						{tooltip}
-					</div>
-					<div className='col-xs-1'>
 						<ItemRight hideClass={hiddenButtons} />
 					</div>
 				</div>

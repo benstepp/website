@@ -9,7 +9,7 @@ var ItemLeft = React.createClass({
 
 	render:function() {
 
-		var buttonClass = 'inventory-button shift';
+		var buttonClass = 'inventory-button shift left';
 
 		return (
 			<div className={this.props.hideClass}>

@@ -8,7 +8,7 @@ var ItemRight = React.createClass({
 
 	render:function() {
 
-		var buttonClass = 'inventory-button shift';
+		var buttonClass = 'inventory-button shift right';
 
 		return (
 			<div className={this.props.hideClass}>
