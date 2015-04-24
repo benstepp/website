@@ -57,7 +57,12 @@ function getSettings() {
 }
 
 function getShards(key) {
-	return shardsSpent[key] || 0;
+	if(arguments.length > 0) {
+		return shardsSpent[key] || 0;
+	}
+	else {
+		return shardsSpent;
+	}
 }
 
 function changeSetting(key,val) {
@@ -124,8 +129,6 @@ function init() {
 	localStorageCheck();
 	mobileCheck();
 	window.onresize = mobileCheck;
-
-	AppStore.setMaxListeners(20);
 
 	if (storageSupported) {
 		var stored = JSON.parse(localStorage.getItem('kadalaSettings')) || {};

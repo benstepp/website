@@ -6,29 +6,7 @@ var AppStore = require('../../stores/AppStore');
 
 var KadalaItem = React.createClass({
 
-	getInitialState:function() {
-		return {
-			mobile:AppStore.getSettings().mobile,
-			shardCount:AppStore.getShards(this.props.item.type)
-		};
-	},
-	componentDidMount: function() {
-		AppStore.addChangeListener(this._onChange);
-	},
-	componentWillUnmount: function() {
-		AppStore.removeChangeListener(this._onChange);
-	},
-	_onChange:function() {
-		this.setState({
-			shardCount:AppStore.getShards(this.props.item.type)
-		});
-	},
 	buyItem:function() {
-		//increment the blood shard count
-		var currentCount = this.state.shardCount;
-		currentCount += this.props.item.cost;
-		this.setState({shardCount:currentCount});
-
 		var item = d3sim.kadalaRoll(this.props.item.type);
 		item.size = this.props.item.size;
 		AppActions.addItem(item);
@@ -53,7 +31,7 @@ var KadalaItem = React.createClass({
 				<div className='kadala-content'>
 					<span className='kadala-item-title' onClick={this.buyItem}>{this.props.item.text}</span>
 					<span className='shard-count'>
-						{this.state.shardCount}
+						{this.props.shardCount}
 						<a className='shard-delete' onClick={this.resetCount}>
 							{/*From Material Design icons by Google (CC by 4.0)*/}
 							<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24">

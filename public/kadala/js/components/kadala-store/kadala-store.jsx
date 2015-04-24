@@ -1,11 +1,12 @@
 var React = require('react');
+var assign = require('object-assign');
 
 var KadalaItem = require('./kadala-item.jsx');
 var AppStore = require('../../stores/AppStore');
 
 var KadalaStore = React.createClass({
 	getInitialState:function() {
-		return AppStore.getSettings();
+		return assign({},AppStore.getSettings(),{shards:AppStore.getShards()});
 	},
 	componentDidMount: function() {
 		AppStore.addChangeListener(this._onChange);
@@ -15,6 +16,7 @@ var KadalaStore = React.createClass({
 	},
 	_onChange:function() {
 		this.setState(AppStore.getSettings());
+		this.setState({shards:AppStore.getShards()});
 	},
 
 	render:function() {
@@ -52,7 +54,7 @@ var KadalaStore = React.createClass({
 		var kadalaSlots = [];
 		var itemsLength = items.length;
 		for (var i =0; i < itemsLength; i++) {
-			kadalaSlots.push(<KadalaItem key={i} item={items[i]}/>);
+			kadalaSlots.push(<KadalaItem key={i} item={items[i]} shardCount={this.state.shards[items[i].type]}/>);
 		}
 
 		return (
