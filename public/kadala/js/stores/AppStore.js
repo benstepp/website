@@ -25,7 +25,7 @@ var storageSupported;
 //MIT Licence
 function localStorageCheck() {
 	var storage = (typeof window.localStorage === 'undefined') ? undefined : window.localStorage;
-	supported = (typeof storage !== 'undefined');
+	var supported = (typeof storage !== 'undefined');
 	if (supported) {
 		var testKey = '__' + Math.round(Math.random() * 1e7);
 		try {

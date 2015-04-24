@@ -12,6 +12,7 @@ gulp.task('riftevents',function() {
 });
 
 gulp.task('riftloot',function() {
+	require('./public/riftloot/gulpfile.js')(date);
 });
 
 gulp.task('killingfloor', function() {

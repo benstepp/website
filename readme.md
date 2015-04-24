@@ -13,6 +13,7 @@ Simple with the package managers.
 $ npm install
 $ bower install
 ```
+The Kadala Simulator project requires my [d3sim](//github.com/benstepp/d3sim) repo to be cloned into the public/libs directory.
 
 #####Setting up the server
 Riftevents is simple just run the following from the base directory. 
@@ -39,6 +40,7 @@ $ gulp index
 $ gulp killingfloor
 $ gulp riftevents
 $ gulp riftloot
+$ gulp kadala
 ```
 
 #####Start the Server
