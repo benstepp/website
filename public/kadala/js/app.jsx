@@ -6,6 +6,8 @@ var KadalaStore = require('./components/kadala-store/kadala-store.jsx');
 var Inventory = require('./components/inventory/inventory.jsx');
 var IndividualItem = require('./components/individual-item/individual-item.jsx');
 
+var AppStore = require('./stores/AppStore.js');
+
 var Application = React.createClass({
 	getInitialState:function() {
 

@@ -20,6 +20,14 @@ var AppActions = {
 		AppDispatcher.dispatch({
 			actionType:AppConstants.NEXT_INV
 		});
+	},
+
+	changeSetting:function(key,val) {
+		AppDispatcher.dispatch({
+			actionType:AppConstants.CHANGE_SETTING,
+			key:key,
+			val:val
+		});
 	}
 
 };

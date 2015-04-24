@@ -7,5 +7,7 @@ module.exports = keyMirror({
 	NEXT_INV:null,
 
 	PREV_ITEM:null,
-	NEXT_ITEM:null
+	NEXT_ITEM:null,
+
+	CHANGE_SETTING:null
 });
