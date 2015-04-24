@@ -70,11 +70,20 @@ var D3ItemTooltipStat= React.createClass({
 			else {
 				text.push(this.props.stat.text);
 			}
-	}
+		}
+
+		//determine color of affix text
+		var textColor = 'd3-item-property-default';
+		if (this.props.stat.hasOwnProperty('type') && this.props.stat.type === 'legendary') {
+			textColor += ' d3-color-orange';
+		}
+		else {
+			textColor += ' d3-color-blue';
+		}
 
 		return (
 
-			<li className="d3-color-blue d3-item-property-default">
+			<li className={textColor}>
 				<p>{text}</p>
 			</li>
 
