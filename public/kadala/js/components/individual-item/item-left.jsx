@@ -4,12 +4,15 @@ var AppActions = require('../../actions/AppActions');
 var ItemLeft = React.createClass({
 
 	_handleClick:function() {
-
+		AppActions.previousItem();
 	},
 
 	render:function() {
 
 		var buttonClass = 'inventory-button shift left';
+		if (!this.props.hasPrevious) {
+			buttonClass+= ' disabled';
+		}
 
 		return (
 			<div className={this.props.hideClass}>

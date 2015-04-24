@@ -38,7 +38,9 @@ function getInventory() {
 
 function getItem() {
 	return {
-		item:items[currentIndex]
+		hasPrevious:(currentIndex !== 0),
+		item:items[currentIndex],
+		hasNext:(currentIndex < items.length - 1)
 	};
 }
 
@@ -91,6 +93,17 @@ function addToItems(item) {
 	currentIndex = items.length - 1;
 }
 
+function previousItem() {
+	if (currentIndex !== 0) {
+		currentIndex -=1;
+	}
+}
+function nextItem() {
+	if (currentIndex < items.length -1) {
+		currentIndex +=1;
+	}
+}
+
 //cycles through to the previous inventory
 function gotoPrevious() {
 	if(typeof previousInventory !== 'undefined') {
@@ -118,6 +131,8 @@ var InventoryStore = assign({}, EventEmitter.prototype,{
 	gotoNext:gotoNext,
 	addItem:addItem,
 	getItem:getItem,
+	previousItem:previousItem,
+	nextItem:nextItem,
 
 	emitChange:function(){
 		this.emit(CHANGE_EVENT);
@@ -145,6 +160,16 @@ AppDispatcher.register(function(action) {
 
 		case AppConstants.NEXT_INV:
 			gotoNext();
+			InventoryStore.emitChange();
+			break;
+
+		case AppConstants.PREV_ITEM:
+			previousItem();
+			InventoryStore.emitChange();
+			break;
+
+		case AppConstants.NEXT_ITEM:
+			nextItem();
 			InventoryStore.emitChange();
 			break;
 

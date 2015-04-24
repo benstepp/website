@@ -36,9 +36,9 @@ var IndividualItem = React.createClass({
 			<div>
 				<div className='row'>
 					<div className='col-xs-12 tooltip-overflow'>
-						<ItemLeft hideClass={hiddenButtons} />
+						<ItemLeft hideClass={hiddenButtons} hasPrevious={this.state.hasPrevious} />
 						{tooltip}
-						<ItemRight hideClass={hiddenButtons} />
+						<ItemRight hideClass={hiddenButtons} hasNext={this.state.hasNext} />
 					</div>
 				</div>
 			</div>

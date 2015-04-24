@@ -1,14 +1,18 @@
 var React = require('react');
+var AppActions = require('../../actions/AppActions');
 
 var ItemRight = React.createClass({
 
 	_handleClick:function() {
-
+		AppActions.nextItem();
 	},
 
 	render:function() {
 
 		var buttonClass = 'inventory-button shift right';
+		if (!this.props.hasNext) {
+			buttonClass+= ' disabled';
+		}
 
 		return (
 			<div className={this.props.hideClass}>

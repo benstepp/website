@@ -22,6 +22,18 @@ var AppActions = {
 		});
 	},
 
+	previousItem:function() {
+		AppDispatcher.dispatch({
+			actionType:AppConstants.PREV_ITEM
+		});
+	},
+
+	nextItem:function() {
+		AppDispatcher.dispatch({
+			actionType:AppConstants.NEXT_ITEM
+		});
+	},
+
 	changeSetting:function(key,val) {
 		AppDispatcher.dispatch({
 			actionType:AppConstants.CHANGE_SETTING,
