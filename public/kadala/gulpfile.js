@@ -99,6 +99,11 @@ module.exports = function(date) {
 			.pipe(gulp.dest('build/kadala'));
 	});
 
+	gulp.task('libs',['clean'],function() {
+		return gulp.src(['public/libs/react/react.min.js'])
+			.pipe(gulp.dest('build/kadala/js'));
+	});
+
 
 	//gulp.start('browserify');
 	gulp.start('clean');
@@ -106,5 +111,6 @@ module.exports = function(date) {
 	gulp.start('css');
 	gulp.start('js');
 	gulp.start('img');
+	gulp.start('libs');
 
 };
