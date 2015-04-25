@@ -45,28 +45,28 @@
 
 		var friendApiCall = function(player) {
 			var deferred = $q.defer();
-	        var url = '/api/steam/friends/'+ player.query;
-	        $http.get(url)
-	            .success(function(response) {
-	            	var friends = response.friends;
-	            	var friendsLength = response.friends.length;
-	            	for (var i = 0; i < friendsLength; i ++) {
-	            		friends[i] = _this.fullUrls(friends[i]);
-	            		var friend = friends[i];
-	            		friends[i] = {
-	            			data:{
-	            				summary:friend
-	            			}
-	            		};
-	            	}
-	            	saveFriends(friends);
-	            	deferred.resolve(_this.friends);
-	            })
-	            .error(function(response) {
-	                console.log(response);
-	                deferred.reject(response);
-	            });
-	        return deferred.promise;		
+			var url = '/api/steam/friends/'+ player.query;
+			$http.get(url)
+				.success(function(response) {
+					var friends = response.friends;
+					var friendsLength = response.friends.length;
+					for (var i = 0; i < friendsLength; i ++) {
+						friends[i] = _this.fullUrls(friends[i]);
+						var friend = friends[i];
+						friends[i] = {
+							data:{
+								summary:friend
+							}
+						};
+					}
+					saveFriends(friends);
+					deferred.resolve(_this.friends);
+				})
+				.error(function(response) {
+					console.log(response);
+					deferred.reject(response);
+				});
+			return deferred.promise;		
 		};
 
 		var saveFriends = function(friends) {

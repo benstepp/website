@@ -60,6 +60,12 @@ var AppActions = {
 			key:key,
 			val:val
 		});
+	},
+	clearShards:function(key) {
+		AppDispatcher.dispatch({
+			actionType:AppConstants.CLEAR_SHARDS,
+			key:key
+		});
 	}
 
 };

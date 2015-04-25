@@ -16,7 +16,14 @@ var defaults = {
 	item:{"type":"helm","text":"Mystery Helmet","cost":25,"size":2}
 };
 var shardsSpent = {};
-var lifetime = {};
+var lifetime = {
+	Barbarian:{},
+	Crusader:{},
+	'Demon Hunter':{},
+	Monk:{},
+	'Witch Doctor':{},
+	Wizard:{}
+};
 
 var storageSupported;
 
@@ -86,15 +93,18 @@ function incrementShards(key,val) {
 	else {
 		shardsSpent[key] = val;
 	}
-	if (typeof lifetime[key] !== 'undefined') {
-		lifetime[key]+=val;
+	if (typeof lifetime[appSettings.dClass][key] !== 'undefined') {
+		lifetime[appSettings.dClass][key]+=val;
 	}
 	else {
-		lifetime[key]=val;
+		lifetime[appSettings.dClass][key]=val;
 	}
 	saveSettings();
 }
 
+function clearShards(key) {
+	shardsSpent[key] = 0;
+}
 
 var AppStore = assign({},EventEmitter.prototype,{
 	getSettings:getSettings,
@@ -142,7 +152,12 @@ function init() {
 
 		//pull the spent items
 		shardsSpent = JSON.parse(localStorage.getItem('kadalaSpent')) || {};
-		lifetime = JSON.parse(localStorage.getItem('kadalaLifetime')) || {};
+
+		//old version of app didnt save lifetime shards by class. track now
+		var lifetimeLs = JSON.parse(localStorage.getItem('kadalaLifetime'));
+		if (lifetimeLs.hasOwnProperty('Barbarian')) {
+			lifetime = JSON.parse(localStorage.getItem('kadalaLifetime')) || lifetime;
+		}
 
 		//save to storage
 		saveSettings();
@@ -171,6 +186,10 @@ AppDispatcher.register(function(action) {
 			break;
 		case AppConstants.ADD_ITEM:
 			hideBoth();
+			AppStore.emitChange();
+			break;
+		case AppConstants.CLEAR_SHARDS:
+			clearShards(action.key);
 			AppStore.emitChange();
 			break;
 		default:

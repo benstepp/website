@@ -14,7 +14,7 @@ var KadalaItem = React.createClass({
 		AppActions.incrementShards(this.props.item.type,this.props.item.cost);
 	},
 	resetCount:function() {
-		this.setState({shardCount:0});
+		AppActions.clearShards(this.props.item.type);
 	},
 
 	render:function() {

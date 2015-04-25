@@ -98,6 +98,7 @@
 	}
 
 	function init() {
+		//adds functionality to form submit
 		form.addEventListener('submit',function(event) {
 			event.preventDefault();
 			submitForm();

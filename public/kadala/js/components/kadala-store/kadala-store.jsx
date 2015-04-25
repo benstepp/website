@@ -54,7 +54,7 @@ var KadalaStore = React.createClass({
 		var kadalaSlots = [];
 		var itemsLength = items.length;
 		for (var i =0; i < itemsLength; i++) {
-			kadalaSlots.push(<KadalaItem key={i} item={items[i]} shardCount={this.state.shards[items[i].type]}/>);
+			kadalaSlots.push(<KadalaItem key={i} item={items[i]} shardCount={this.state.shards[items[i].type] || 0}/>);
 		}
 
 		return (

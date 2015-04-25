@@ -26,22 +26,22 @@
 		//get kf map json file
 		this.getMaps = function() {
 			var deferred = $q.defer();
-	        //if player data exists or is not forced, otherwise make a new request
-	        if(typeof _this.kfMaps !== 'undefined') {
-	            deferred.resolve(_this.kfMaps);
-	        } 
-	        else {
-	            var url = '/api/steam/1250/kfmaps';
-	            $http.get(url)
-	            .success(function(response) {
-	            	_this.kfMaps = response;
-	            	deferred.resolve(_this.kfMaps);
-	            })
-	            .error(function(response) {
-	                deferred.reject(response);
-	            });
-	        }
-	        return deferred.promise;			
+			//if player data exists or is not forced, otherwise make a new request
+			if(typeof _this.kfMaps !== 'undefined') {
+				deferred.resolve(_this.kfMaps);
+			} 
+			else {
+				var url = '/api/steam/1250/kfmaps';
+				$http.get(url)
+				.success(function(response) {
+					_this.kfMaps = response;
+					deferred.resolve(_this.kfMaps);
+				})
+				.error(function(response) {
+					deferred.reject(response);
+				});
+			}
+			return deferred.promise;			
 		};
 
 		//Called from Routes
@@ -85,7 +85,7 @@
 			var deferred = $q.defer();
 
 			var player = createPlayer(query);
-			
+
 			//this means either the api has been called or it exists
 			var exists = checkExist(player);
 			if (exists) {
@@ -97,7 +97,7 @@
 						deferred.resolve(player);
 					});
 			}
-			
+
 			return deferred.promise;
 		};
 
@@ -143,109 +143,109 @@
 				});
 			}
 			return exists;
-			
+
 		};
 
 		var kfApiCall = function(player) {
-	        var deferred = $q.defer();
-	        //if we have steamid create that object
-	      	if (player.data && player.data.summary.steamid) {
-            	_this.players[player.data.summary.steamid].ajax = true;
-       			}
-       		//otherwise just use the generic ajax
-       		else {
-       			_this.ajax = true;
-       		}
+			var deferred = $q.defer();
+			//if we have steamid create that object
+			if (player.data && player.data.summary.steamid) {
+				_this.players[player.data.summary.steamid].ajax = true;
+				}
+			//otherwise just use the generic ajax
+			else {
+				_this.ajax = true;
+			}
 			var url = '/api/steam/1250/userstats/' + player.query;
-            $http.get(url)
-	            .success(function(response) {
-	            	//api returns error key if something bad happened
-	            	if (!response.error) {
-		            	_this.players[response.summary.steamid] = player;
-		                _this.players[response.summary.steamid].ajax = false;
-		                if (player.data && !player.data.summary.steamid) {
-		                	_this.ajax = false;
-		                }
-		                response.summary = SteamService.fullUrls(response.summary);
-		                parseResult(response);
-		                deferred.resolve(_this.players[response.summary.steamid]);
-	            	}
-	            })
-	            .error(function(response) {
-	                console.log(response);
-	                deferred.reject(response);
-	            });
+			$http.get(url)
+				.success(function(response) {
+					//api returns error key if something bad happened
+					if (!response.error) {
+						_this.players[response.summary.steamid] = player;
+						_this.players[response.summary.steamid].ajax = false;
+						if (player.data && !player.data.summary.steamid) {
+							_this.ajax = false;
+						}
+						response.summary = SteamService.fullUrls(response.summary);
+						parseResult(response);
+						deferred.resolve(_this.players[response.summary.steamid]);
+					}
+				})
+				.error(function(response) {
+					console.log(response);
+					deferred.reject(response);
+				});
 
-	        return deferred.promise;
-	    };
+			return deferred.promise;
+		};
 
-	    var parseResult = function(data) {
-	    	var steamid = data.summary.steamid;
-	    	_this.players[steamid].data = {};
-	    	_this.players[steamid].data.summary = data.summary;
-	    	_this.players[steamid].data.maps = data.maps;
-	    	_this.players[steamid].data.kfstats = data.kfstats;
-	    	if (typeof data.kfstats !== 'undefined') {
-	    		_this.players[steamid].data.perks = perkRank(data.kfstats);
-	   		}
-	    };
+		var parseResult = function(data) {
+			var steamid = data.summary.steamid;
+			_this.players[steamid].data = {};
+			_this.players[steamid].data.summary = data.summary;
+			_this.players[steamid].data.maps = data.maps;
+			_this.players[steamid].data.kfstats = data.kfstats;
+			if (typeof data.kfstats !== 'undefined') {
+				_this.players[steamid].data.perks = perkRank(data.kfstats);
+			}
+		};
 
-	    var perkRank = function(kfstats) {
-	    	var perks = {
-		    	fieldmedic: {
-		    		'DamageHealed':[200,750,4000,12000,25000,100000]
-		    	},
-		    	support:{
-		    		'ShotgunDamage': [25000,100000,500000,1500000,3500000,5500000],
-		    		'WeldingPoints': [2000,7000,35000,120000,250000,370000]
-		    	},
-		    	sharpshooter: {
+		var perkRank = function(kfstats) {
+			var perks = {
+				fieldmedic: {
+					'DamageHealed':[200,750,4000,12000,25000,100000]
+				},
+				support:{
+					'ShotgunDamage': [25000,100000,500000,1500000,3500000,5500000],
+					'WeldingPoints': [2000,7000,35000,120000,250000,370000]
+				},
+				sharpshooter: {
 					'HeadshotKills':[30,100,700,2500,5500,8500]
-		    	},
-		    	commando:{
-		    		'BullpupDamage': [25000,100000,500000,1500000,3500000,5500000],
-		    		'StalkerKills': [30,100,350,1200,2400,3600]
-		    	},
-		    	berserker:{
-		    		'MeleeDamage':[25000,100000,500000,1500000,3500000,5500000]
-		    	},
-		    	firebug:{
-		    		'FlameThrowerDamage':[25000,100000,500000,1500000,3500000,5500000]
-		    	},
-		    	demolitions: {
-		    		'ExplosivesDamage':[25000,100000,500000,1500000,3500000,5500000]
-		    	}
-		    };
-	    	var playerPerks = {};
-	    	//for each of the 7 perks
-	    	for (var perk in perks) {
-	    		//initialize the playerPerks object with excessive numbers
-	    		playerPerks[perk] = 6;
+				},
+				commando:{
+					'BullpupDamage': [25000,100000,500000,1500000,3500000,5500000],
+					'StalkerKills': [30,100,350,1200,2400,3600]
+				},
+				berserker:{
+					'MeleeDamage':[25000,100000,500000,1500000,3500000,5500000]
+				},
+				firebug:{
+					'FlameThrowerDamage':[25000,100000,500000,1500000,3500000,5500000]
+				},
+				demolitions: {
+					'ExplosivesDamage':[25000,100000,500000,1500000,3500000,5500000]
+				}
+			};
+			var playerPerks = {};
+			//for each of the 7 perks
+			for (var perk in perks) {
+				//initialize the playerPerks object with excessive numbers
+				playerPerks[perk] = 6;
 
-	    		//for each key to seach for in the stats array
-	    		for (var key in perks[perk]) {
-	    			//check if the player has this key, otherwise break
-	    			if (!kfstats.hasOwnProperty(key)) {
-	    				playerPerks[perk] = 0;
-	    				break;
-	    			}
-	    			//for each of the 6 ranks in each key
-	    			for (var i = 0; i < 6; i++) {
-	    				//because we are itterating from first key, we can assume if
-	    				//it is less than the key that is the rank of perk
-	    				//also checks if this key is lower than the current one saved.
-	    				if (kfstats[key] < perks[perk][key][i] && i < playerPerks[perk]) {
-	    						playerPerks[perk] = i;
-	    						break;
-	    				}
-	    				//else the key we have is good
-	    			}
+				//for each key to seach for in the stats array
+				for (var key in perks[perk]) {
+					//check if the player has this key, otherwise break
+					if (!kfstats.hasOwnProperty(key)) {
+						playerPerks[perk] = 0;
+						break;
+					}
+					//for each of the 6 ranks in each key
+					for (var i = 0; i < 6; i++) {
+						//because we are itterating from first key, we can assume if
+						//it is less than the key that is the rank of perk
+						//also checks if this key is lower than the current one saved.
+						if (kfstats[key] < perks[perk][key][i] && i < playerPerks[perk]) {
+								playerPerks[perk] = i;
+								break;
+						}
+						//else the key we have is good
+					}
 
-	    		}
-	    	}
-	    	return playerPerks;
+				}
+			}
+			return playerPerks;
 
-	    };
+		};
 	}
 
 })();

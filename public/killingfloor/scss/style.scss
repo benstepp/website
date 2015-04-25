@@ -4,174 +4,174 @@
 // Licensed under MIT Open Source
 
 // Make sure the charset is set appropriately
-  @import "settings";
-  @import "../../libs/foundation/scss/normalize.scss";
+	@import "settings";
+	@import "../../libs/foundation/scss/normalize.scss";
 
-  @import "bsPlayerCard.scss";
-  @import "kfMapsTable.scss";
+	@import "bsPlayerCard.scss";
+	@import "kfMapsTable.scss";
 
 // Behold, here are all the Foundation components.
-  @import "../../libs/foundation/scss/foundation/components/grid";
-  @import "../../libs/foundation/scss/foundation/components/alert-boxes";
-  @import "../../libs/foundation/scss/foundation/components/block-grid";
-  @import "../../libs/foundation/scss/foundation/components/buttons";
-  @import "../../libs/foundation/scss/foundation/components/clearing";
-  @import "../../libs/foundation/scss/foundation/components/dropdown";
-  @import "../../libs/foundation/scss/foundation/components/dropdown-buttons";
-  @import "../../libs/foundation/scss/foundation/components/forms";
-  @import "../../libs/foundation/scss/foundation/components/icon-bar";
-  @import "../../libs/foundation/scss/foundation/components/inline-lists";
-  @import "../../libs/foundation/scss/foundation/components/labels";
-  @import "../../libs/foundation/scss/foundation/components/panels";
-  @import "../../libs/foundation/scss/foundation/components/tabs";
-  @import "../../libs/foundation/scss/foundation/components/thumbs";
-  @import "../../libs/foundation/scss/foundation/components/tooltips";
-  @import "../../libs/foundation/scss/foundation/components/top-bar";
-  @import "../../libs/foundation/scss/foundation/components/type";
-  @import "../../libs/foundation/scss/foundation/components/offcanvas";
-  @import "../../libs/foundation/scss/foundation/components/visibility";
-  
+	@import "../../libs/foundation/scss/foundation/components/grid";
+	@import "../../libs/foundation/scss/foundation/components/alert-boxes";
+	@import "../../libs/foundation/scss/foundation/components/block-grid";
+	@import "../../libs/foundation/scss/foundation/components/buttons";
+	@import "../../libs/foundation/scss/foundation/components/clearing";
+	@import "../../libs/foundation/scss/foundation/components/dropdown";
+	@import "../../libs/foundation/scss/foundation/components/dropdown-buttons";
+	@import "../../libs/foundation/scss/foundation/components/forms";
+	@import "../../libs/foundation/scss/foundation/components/icon-bar";
+	@import "../../libs/foundation/scss/foundation/components/inline-lists";
+	@import "../../libs/foundation/scss/foundation/components/labels";
+	@import "../../libs/foundation/scss/foundation/components/panels";
+	@import "../../libs/foundation/scss/foundation/components/tabs";
+	@import "../../libs/foundation/scss/foundation/components/thumbs";
+	@import "../../libs/foundation/scss/foundation/components/tooltips";
+	@import "../../libs/foundation/scss/foundation/components/top-bar";
+	@import "../../libs/foundation/scss/foundation/components/type";
+	@import "../../libs/foundation/scss/foundation/components/offcanvas";
+	@import "../../libs/foundation/scss/foundation/components/visibility";
+	
 .top-bar-section ul li>a:active {
-  background-color:green;
+	background-color:green;
 }
 .top-bar, .tab-bar {
-  -moz-box-shadow: 0 2px $primary-color;
-  -webkit-box-shadow: 0 2px $primary-color;
-  box-shadow: 0 2px $primary-color;
-  z-index:6;
+	-moz-box-shadow: 0 2px $primary-color;
+	-webkit-box-shadow: 0 2px $primary-color;
+	box-shadow: 0 2px $primary-color;
+	z-index:6;
 }
 
 .top-bar-section ul.left li>a {
-  font-size:rem-calc(16px);
-  font-weight:700;
+	font-size:rem-calc(16px);
+	font-weight:700;
 }
 
 
 
 label {
-    margin-top: rem-calc(16px);
-    padding-left:rem-calc(12px);
-    color:#FFF;
-    margin-bottom:rem-calc(8px);
+	margin-top: rem-calc(16px);
+	padding-left:rem-calc(12px);
+	color:#FFF;
+	margin-bottom:rem-calc(8px);
 }
 
 form input {
-  background: rgba(40, 40, 40, 0.8);
-  color:#FFFFFF;
-  border:none;
-  padding:8px;
+	background: rgba(40, 40, 40, 0.8);
+	color:#FFFFFF;
+	border:none;
+	padding:8px;
 }
 
 form input:hover, form input:focus {
-  outline-offset:0px;
-  outline:1px solid #AAA;
+	outline-offset:0px;
+	outline:1px solid #AAA;
 }
 
 form {
-  padding:rem-calc(12px);
-  background-color: rgba(20,20,20,0.8);
+	padding:rem-calc(12px);
+	background-color: rgba(20,20,20,0.8);
 }
 
 @media only screen and (min-width: 64.063em) {
-  label {
-    margin-top:rem-calc(160px);
-  }
+	label {
+		margin-top:rem-calc(160px);
+	}
 }
 
 .main-bg {
-    z-index:-1;
-    position:fixed;
-    width:200%;
-    height:200%;
-    left:-50%;
-    top:-1%;
-    background-color:#FFF;
+	z-index:-1;
+	position:fixed;
+	width:200%;
+	height:200%;
+	left:-50%;
+	top:-1%;
+	background-color:#FFF;
 }
 
 .main-bg img {
-    display:block;
-    margin:auto;
-    min-width:50%;
-    min-height:50%;
-    top:0;
-    left:0;
-    right:0;
-    bottom:0;
+	display:block;
+	margin:auto;
+	min-width:50%;
+	min-height:50%;
+	top:0;
+	left:0;
+	right:0;
+	bottom:0;
 }
 
 .off-canvas-wrap, .inner-wrap, .main-section {
-  min-height:100%
+	min-height:100%
 }
 
 .button {
-  margin-top:rem-calc(12px);
+	margin-top:rem-calc(12px);
 }
 
 .kf-hr {
-    height:2px;
-    background-color:$primary-color;
+	height:2px;
+	background-color:$primary-color;
 }
 
 .friend-chooser {
-  background:#FFF;
-  padding-top:10px;
-  margin-top:2px;
+	background:#FFF;
+	padding-top:10px;
+	margin-top:2px;
 }
 
 .main-section ul {
-  position:relative;
-  overflow:auto;
+	position:relative;
+	overflow:auto;
 }
 
 footer {
-  line-height:150%;
-  padding:3px 0px;
-  font-size:12px;
-  border-top:1px $primary-color solid;
-  background-color:#FFF;
+	line-height:150%;
+	padding:3px 0px;
+	font-size:12px;
+	border-top:1px $primary-color solid;
+	background-color:#FFF;
 }
 
 footer i {
-  font-size:18px;
+	font-size:18px;
 }
 
 .footer-right a {
-  padding:0px 4px 0px 4px;
+	padding:0px 4px 0px 4px;
 }
 
 footer div:nth-child(2) {
-  text-align:right;
+	text-align:right;
 }
 
 .main-view {
-  min-height:100%;
+	min-height:100%;
 }
 
 input.inline {
-  background:none;
-  box-shadow:none;
-  border:none;
-  border-bottom:2px $primary-color solid;
-  display:inline-block;
-  width:auto;
-  padding:.5rem 2rem 0rem 2rem;
+	background:none;
+	box-shadow:none;
+	border:none;
+	border-bottom:2px $primary-color solid;
+	display:inline-block;
+	width:auto;
+	padding:.5rem 2rem 0rem 2rem;
 }
 
 /*bugs in chrome ff and ie*/
 input.inline:first-child {
-  padding-right:0rem;
+	padding-right:0rem;
 }
 
 input.inline:focus {
-  background:none;
-  box-shadow:none;
-  border-bottom-color: scale-color($primary-color, $lightness: -2%);
+	background:none;
+	box-shadow:none;
+	border-bottom-color: scale-color($primary-color, $lightness: -2%);
 }
 
 .back-link {
-  margin-left:rem-calc(2px);
+	margin-left:rem-calc(2px);
 }
 
 .top-bar-section ul li>a:hover {
-  box-shadow: inset 0 -3px 0 0 $primary-color;
+	box-shadow: inset 0 -3px 0 0 $primary-color;
 }
