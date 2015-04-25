@@ -46,6 +46,8 @@ input, textarea {
 
 input {
 	border-bottom:2px solid hsla(270,30,90,1);
+	/*explicitly state for mobile chrome*/
+	border-radius:0px;
 }
 
 textarea {

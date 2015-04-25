@@ -1,88 +1,100 @@
 @import "media-queries";
 
 section.splash {
-    width:100%;
-    height:100vh;
+	width:100%;
+	height:100vh;
 
-    padding:0;
-    position:absolute;
-    overflow:hidden !important;
+	padding:0;
+	position:absolute;
+	overflow:hidden !important;
 }
 
 .splash > div {
-    width:110%;
-    height:110%;
+	width:110%;
+	height:110%;
 
-    position:fixed;
+	position:fixed;
 
-    padding:0;
-    margin-left:-5%;
-    margin-top:-5%;
-    margin-right:0;
-    margin-bottom:0;
+	padding:0;
+	margin-left:-5%;
+	margin-top:-5%;
+	margin-right:0;
+	margin-bottom:0;
+
+	@media #{$mobile} {
+		width:100%;
+		height:100%;
+		margin:0;
+		position:absolute;
+		top:0;
+		left:0;
+	}
 }
 
 .splash-image {
-    width:100%;
-    height:100%;
+	width:100%;
+	height:100%;
 
-    margin-left:auto;
-    margin-right:auto;
-    margin-top:2.5%;
+	margin-left:auto;
+	margin-right:auto;
+	margin-top:2.5%;
 
-    background:url('/img/bg.jpg');
-    background-size:cover;
-    background-position: center center;
+	background:url('/img/bg.jpg');
+	background-size:cover;
+	background-position: center center;
 
-    transition: all 0.8s ease 0s;
+	transition: all 0.8s ease 0s;
+
+	@media #{$mobile} {
+		margin:0 auto;
+	}
 }
 
 .splash-content {
-    width:100%;
-    height:100%;
-    padding:0;
+	width:100%;
+	height:100%;
+	padding:0;
 
-    top:0;
-    left:0;
-    z-index:2;
+	top:0;
+	left:0;
+	z-index:2;
 
-    display:flex;
-    flex-direction:column;
-    align-items:center;
-    justify-content:space-around;
-    text-align:center;
+	display:flex;
+	flex-direction:column;
+	align-items:center;
+	justify-content:space-around;
+	text-align:center;
 
-    background-color:hsla(270,50,5,0.2);
+	background-color:hsla(270,50,5,0.2);
+	@media #{$mobile} {
+		padding-top:5%;
+	}
 }
 
 header {
-    height:100vh;
-    width:100%;
+	height:100vh;
+	width:100%;
 
-    position:relative;
+	position:relative;
 }
 
 h1 {
-    color: #fff;
-    font-family:Titillium Web;
-    font-size: 8vw;
+	color: #fff;
+	font-family:Titillium Web;
+	font-size: 8vw;
 
-    text-shadow:0 0 6px hsla(270,50,0,0.2);
+	text-shadow:0 0 6px hsla(270,50,0,0.2);
 }
 
 /*silly fix to lack of nice monospaced font*/
 @media #{$desktop} {
-    h1 > span {
-        margin:0 -1vh;
-    }
+	h1 > span {
+		margin:0 -1vh;
+	}
 }
 
 h2 {
-    color:#fff;
-    font-size:2em;
-    text-shadow:0 0 6px hsla(270,50,0,0.5);
-}
-
-.fake-height {
-    height:2000px;
+	color:#fff;
+	font-size:2em;
+	text-shadow:0 0 6px hsla(270,50,0,0.5);
 }

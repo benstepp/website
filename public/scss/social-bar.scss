@@ -1,3 +1,5 @@
+@import "media-queries";
+
 .social-flex {
 	width:100%;
 
@@ -8,14 +10,14 @@
 	flex-direction:row;
 	align-items:center;
 	justify-content:center;
-	z-index:12;
+	z-index:30;
 
 	background-color:hsla(270,50,100,1);
-	box-shadow: 0 4px 2px 0px hsla(270,10,8,1);
+	box-shadow: 0px 4px 2px 0px hsla(270,10,8,1);
 }
 
 .social-flex li {
-	display:block;
+	display:inline-block;
 }
 
 .social-link {
@@ -33,73 +35,18 @@
 	transition:all 0.3s ease 0s;
 }
 
-.social-link:hover {
-	padding:0px 22px;
-	transition: all 0.3s ease 0s;
-}
-
-.social-link:hover > svg {
-	padding:4px;
-	transform:scale(2.5);
-	transition: all 0.3s ease 0s;
-}
-
 svg {
 	fill:currentColor;
 }
-
-.twitter:hover {
+.twitter:hover,.twitter:active,.twitter:focus {
 	color:#55ACEE;
 }
-
-.twitter:hover:after {
-	content:"twitter";
-}
-
-.github:hover {
+.github:hover,.github:active,.github:focus {
 	color:#333;
 }
-
-.github:hover:after {
-	content:"github";
-}
-
-.steam:hover {
+.steam:hover,.steam:active,.steam:focus {
 	color:#171a21;
 }
-
-.steam:hover:after {
-	content:"steam";
-}
-
-.web:hover {
+.web:hover,.web:active,.web:focus {
 	color:#3b5998;
-}
-
-.web:hover:after {
-	content:"email";
-}
-
-.social-link:after {
-	content:"";
-	background-color:hsla(270,50,100,1);
-	border-radius:4px;
-
-	display:inline-block;
-	position:absolute;
-	top:22px;
-	left:0px;
-
-	font-size:1.2em;
-	font-variant:small-caps;
-	font-weight:bold;
-	text-decoration:none;
-	color:hsla(270,30,20,1);
-}
-
-.social-link:hover:after {
-	padding:0px 4px 2px 4px;
-	left:84px;
-
-	transition:all 0.3s ease 0s;
 }
