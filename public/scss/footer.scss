@@ -160,6 +160,10 @@ textarea:focus ~div.vertical:before, textarea:focus ~ div.vertical:after {
 	padding:12px;
 }
 
+input:focus,button:focus {
+	outline:none;
+}
+
 .btn-h:before, .btn-h:after, .btn-v:before, .btn-v:after {
 	content: "";
 	position:absolute;
@@ -226,24 +230,47 @@ textarea:focus ~div.vertical:before, textarea:focus ~ div.vertical:after {
 
 	opacity:0;
 	pointer-events:none;
-	background-color:hsla(270,30,8,0.95);
-	transition:opacity 0.8s ease 0s;
+	background-color:hsla(270,30,8,0.98);
+	transition:all 0.8s ease 0s;
+}
+
+#form-mask.active {
+	opacity:1;
+	pointer-events:auto;
+}
+
+#form-mask.error {
+	background-color:rgba(99,28,17,0.9);
+}
+
+#form-mask.success {
+	background-color:rgba(17,74,36,0.9);
 }
 
 .form-mask-content {
 	width:100%;
 	height:100%;
-	display:block;
+	display:flex;
 	position:relative;
 	padding:0px 30px;
+	flex-direction:column;
+	justify-content:flex-start;
+	@media #{$mobile} {
+		justify-content:flex-end;
+	}
 }
 
 .form-mask-content h3 {
 	color:#ccc;
+	white-space:nowrap;
+
 	@media #{$mobile} {
-		position:absolute;
-		bottom:0;
-		width:100%;
+		//to get sending message text over button on mobile
 		text-align:center;
 	}
+}
+
+#error {
+	display:none;
+	color:#ccc;
 }
