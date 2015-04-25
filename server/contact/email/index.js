@@ -4,7 +4,7 @@ var assign = require('object-assign');
 var authConfig = require('../config/auth');
 var mailConfig = require('../config/mail');
 
-var transport = nodemailer.createTransport({
+var transporter = nodemailer.createTransport({
 	service:'Gmail',
 	auth:{
 		user:authConfig.user,
@@ -15,14 +15,14 @@ var transport = nodemailer.createTransport({
 function email(body,callback) {
 	var options = assign({},mailConfig);
 	options.from = body.name + ' <'+body.email+'>';
-	options.test = body.message;
+	options.text = body.message;
 
 	transporter.sendMail(options, function(err,info) {
 		if (err) {
-			callback({error:err});
+			callback({error:1});
 		}
 		else {
-			callback({info:info});
+			callback({error:0});
 		}
 	});
 
