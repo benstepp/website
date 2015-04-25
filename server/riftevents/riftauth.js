@@ -59,10 +59,10 @@ var TrionAuth = function() {
 	};
 
 	//if arguments passed to process log in, otherwise emit ready
-	if (process.argv[2] && process.argv[3]) {	
+	if (process.argv[3] && process.argv[4]) {	
 		var postData = querystring.stringify({
-			'username': process.argv[2],
-			'password': process.argv[3],
+			'username': process.argv[3],
+			'password': process.argv[4],
 			'channel': 1
 		});
 		authRequest('auth', postData, authCallback);

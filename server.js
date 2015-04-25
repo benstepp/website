@@ -2,6 +2,7 @@
 var express = require('express'),
 	mongoose = require('mongoose'),
 	morgan = require('morgan'),
+	bodyParser = require('body-parser');
 
 //config
 	port = process.env.PORT || 3000;
@@ -10,6 +11,7 @@ var express = require('express'),
 var app = express();
 app.use(express.static(__dirname + '/public'));
 app.use(morgan());
+app.use(bodyParser.json());
 var http = require('http').Server(app);
 var io = require('socket.io')(http);
 
@@ -25,6 +27,7 @@ db.once('open', function callback () {
 //require('./server/riftevents')(app, io);
 //require('./server/steam')(app, io);
 //require('./server/riftloot')(app, io);
+require('./server/contact')(app,io);
 
 //start app
 http.listen(port);
