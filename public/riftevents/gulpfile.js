@@ -83,6 +83,11 @@ gulp.task('img',['clean'],function() {
 	.pipe(gulp.dest('build/riftevents/img'));
 });
 
+gulp.task('libs',['clean'], function() {
+	return gulp.src(['public/libs/angular/angular.min.js'])
+		.pipe(gulp.dest('build/riftevents/js'));
+});
+
 gulp.task('svg',['clean'],function() {
 	return gulp.src(['public/riftevents/img/*.svg'])
 		.pipe(gulp.dest('build/riftevents/img'));
@@ -99,6 +104,7 @@ gulp.start('css');
 gulp.start('partials');
 gulp.start('js');
 gulp.start('img');
+gulp.start('libs');
 gulp.start('svg');
 gulp.start('cleanup');
 

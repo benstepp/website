@@ -82,6 +82,11 @@ gulp.task('libs',['clean'],function() {
 		.pipe(gulp.dest('build/riftloot/'));
 });
 
+gulp.task('lib2',['clean'], function() {
+	return gulp.src(['public/libs/angular/angular.min.js'])
+		.pipe(gulp.dest('build/riftloot/js'));
+});
+
 gulp.task('cleanup',['js'], function() {
 	return gulp.src(['build/riftloot/templates.js'])
 		.pipe(rimraf());
@@ -94,6 +99,7 @@ gulp.start('partials');
 gulp.start('js');
 gulp.start('img');
 gulp.start('libs');
+gulp.start('lib2');
 gulp.start('cleanup');
 
 };
