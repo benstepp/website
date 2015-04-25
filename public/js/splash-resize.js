@@ -1,8 +1,14 @@
 (function() {
+	'use-strict';
+
 	var splashImage = document.querySelector('.splash-image');
 	var winHeight = window.innerHeight;
 
-	window.addEventListener('scroll',scaleImage);
+	//only on non-mobile devices. lots of scroll lag there
+	console.log(window.innerWidth);
+	if (window.innerWidth >= 768 ) {
+		window.addEventListener('scroll',scaleImage);
+	}
 
 	function scaleImage() {
 		//pageYOffset for Internet Explorer
@@ -19,6 +25,4 @@
 			splashImage.style.transform = 'scale('+percentage+')';
 		}
 	}
-
-
 })();

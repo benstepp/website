@@ -2,8 +2,13 @@
 @import 'social-bar.scss';
 @import 'content.scss';
 @import 'footer.scss';
+@import 'portfolio/portfolio';
 
 body {
 	font-family: Roboto,Sans-Serif;
 	background-color:hsla(270,5,92,1);
+}
+
+a:hover,a:active {
+	text-decoration:none;
 }
