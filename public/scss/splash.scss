@@ -6,7 +6,7 @@ section.splash {
 
     padding:0;
     position:absolute;
-    overflow:hidden;
+    overflow:hidden !important;
 }
 
 .splash > div {
@@ -18,6 +18,8 @@ section.splash {
     padding:0;
     margin-left:-5%;
     margin-top:-5%;
+    margin-right:0;
+    margin-bottom:0;
 }
 
 .splash-image {

@@ -67,7 +67,7 @@
 			<div class="row">
 				<div class="col-md-12">
 
-					<h3>Recent Work</h3>
+					<h3>Projects</h3>
 
 					<div class="portfolio" id="portfolio">
 						<div class="kadala">
@@ -103,7 +103,7 @@
 			</div>
 			<div class="row">
 				<div class="col-md-12">
-					<h3>Skills</h3>
+					<h3>Tools</h3>
 				</div>
 			</div>
 		</section>
@@ -184,27 +184,34 @@
 
 			<div class="row">
 				<div class="col-md-8 col-md-offset-2">
-					<form>
+					<div id="form-mask">
+						<div class="form-mask-content">
+							<h3>
+								Sending Message
+							</h3>
+						</div>
+					</div>
+					<form id="contact">
 
 						<div>
 						<div class="col-md-12">
-							<h3>Say Hello (Not Yet Implemented)</h3>
+							<h3>Say Hello</h3>
 						</div>
 							<div class="col-md-6 input-container">
-								<input required />
+								<input required name="name" />
 								<label>Name</label>
 								<!--Blank div easier to target than :after elements-->
 								<div></div>
 							</div>
 							<div class="col-md-6 input-container">
-								<input required />
+								<input required name="email" />
 								<label>Email</label>
 								<div></div>
 							</div>
 						</div>
 						<div>
 							<div class="col-md-12 input-container">
-								<textarea rows="6" required></textarea>
+								<textarea rows="6" required name="message"></textarea>
 								<label>Message</label>
 								<div class="horizontal"></div>
 								<div class="vertical"></div>
@@ -231,6 +238,7 @@
 	<!-- build:js -->
 	<script src="./js/portfolio.js"></script>
 	<script src="./js/splash-resize.js"></script>
+	<script src="./js/contact.js"></script>
 	<!-- endbuild -->
 
 	<script>

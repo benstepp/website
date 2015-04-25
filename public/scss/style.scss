@@ -7,6 +7,8 @@
 body {
 	font-family: Roboto,Sans-Serif;
 	background-color:hsla(270,5,92,1);
+	max-width:100%;
+	overflow-x:hidden;
 }
 
 a:hover,a:active {

@@ -16,7 +16,6 @@ if (authConfig.pass) {
 	});
 }
 
-
 function email(body,callback) {
 
 	//if the password is not set return immediately with error
@@ -26,8 +25,8 @@ function email(body,callback) {
 
 	else {
 		var options = assign({},mailConfig);
-		options.from = body.name + ' <'+body.email+'>';
-		options.text = body.message;
+		options.from = body.name;
+		options.text = body.message + ' ' +body.email;
 
 		transporter.sendMail(options, function(err,info) {
 			if (err) {
