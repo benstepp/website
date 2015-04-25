@@ -77,9 +77,14 @@ gulp.task('img',['clean'],function() {
 	.pipe(gulp.dest('build/killingfloor/img'));
 });
 
-gulp.task('libs',['clean'],function() {
-	return gulp.src('public/libs/foundation-icon-fonts/foundation-icons.woff')
+gulp.task('lib1',['clean'],function() {
+	return gulp.src(['public/libs/foundation-icon-fonts/foundation-icons.woff'])
 		.pipe(gulp.dest('build/killingfloor/'));
+});
+
+gulp.task('lib2',['clean'], function() {
+	return gulp.src(['public/libs/angular/angular.min.js'])
+		.pipe(gulp.dest('build/killingfloor/js'));
 });
 
 gulp.task('cleanup',['js'], function() {
@@ -93,7 +98,8 @@ gulp.start('css');
 gulp.start('partials');
 gulp.start('js');
 gulp.start('img');
-gulp.start('libs');
+gulp.start('lib1');
+gulp.start('lib2');
 gulp.start('cleanup');
 
 };
