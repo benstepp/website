@@ -31,15 +31,14 @@ gulp.task('kadala', function() {
 //	Build scss while developing
 //
 gulp.task('dev', function() {
-	gulp.watch('./public/kadala/scss/**/*.scss', function() {
+	gulp.watch('./public/scss/**/*.scss', function() {
 		gulp.start('scss');
 	});
-	gulp.start('kadala');
 });
 
 gulp.task('scss', function() {
-	return gulp.src('./public/kadala/scss/style.scss')
+	return gulp.src('./public/scss/style.scss')
 		.pipe(sass())
 		.pipe(minifyCss())
-		.pipe(gulp.dest('public/kadala/scss'));
+		.pipe(gulp.dest('public/scss'));
 });

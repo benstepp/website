@@ -11,6 +11,7 @@ module.exports = keyMirror({
 
 	CHANGE_SETTING:null,
 	INCREMENT_SHARDS:null,
+	CLEAR_SHARDS:null,
 
 	TOGGLE_OPTIONS:null,
 	TOGGLE_STORE:null

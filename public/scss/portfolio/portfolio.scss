@@ -1,0 +1,47 @@
+@import "../media-queries";
+@import "portfolio-item";
+
+.portfolio {
+	display:block;
+	width:100%;
+	padding:0;
+	margin:0;
+	list-style:none;
+}
+
+.portfolio:before {
+	content:'';
+	display:table;
+	box-sizing:border-box;
+}
+
+.portfolio > div {
+	display:block;
+	float:left;
+	position:relative;
+	overflow:hidden;
+
+	border-collapse: collapse;
+	border:1px solid hsla(270,5,92,1); /*same as body bg*/
+
+	height:200px;
+}
+
+@media #{$desktop} {
+	.portfolio > div {
+		width:50%;
+	}
+	.portfolio > div:nth-child(2n-1) {
+		clear:both;
+	}
+}
+@media #{$tablet} {
+	.portfolio > div {
+		width:50%;
+	}
+}
+@media #{$mobile} {
+	.portfolio > div {
+		width:100%;
+	}
+}
