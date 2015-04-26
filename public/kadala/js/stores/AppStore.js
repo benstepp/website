@@ -101,6 +101,7 @@ function incrementShards(key,val) {
 
 function clearShards(key) {
 	shardsSpent[key] = 0;
+	saveSettings();
 }
 
 //saves the item name/rarity into localstorage for future visuals
