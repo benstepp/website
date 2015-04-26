@@ -20,7 +20,7 @@ var D3ItemTooltipWeapon= React.createClass({
 				</li>
 				<li>
 					<p>
-						<span className="value">{this.props.weapon.speed}</span>
+						<span className="value">{this.props.weapon.speed.toFixed(2)}</span>
 						<span className="d3-color-FF888888"> Attacks per Second</span>
 					</p>
 				</li>
