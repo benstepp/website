@@ -94,7 +94,8 @@ module.exports = function(date) {
 			}))
 			.pipe(htmlmin({
 				collapseWhitespace:true,
-				removeComments:true
+				removeComments:true,
+				keepClosingSlash: true
 			}))
 			.pipe(gulp.dest('build/kadala'));
 	});
