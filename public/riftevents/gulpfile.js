@@ -37,7 +37,8 @@ gulp.task('html',['clean'],function() {
 		}))
 		.pipe(htmlmin({
 			collapseWhitespace: true,
-			removeComments: true }))
+			removeComments: true,
+			keepClosingSlash: true}))
 		.pipe(gulp.dest('build/riftevents'));
 });
 
