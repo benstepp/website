@@ -16,14 +16,9 @@ var defaults = {
 	item:{"type":"helm","text":"Mystery Helmet","cost":25,"size":2}
 };
 var shardsSpent = {};
-var lifetime = {
-	Barbarian:{},
-	Crusader:{},
-	'Demon Hunter':{},
-	Monk:{},
-	'Witch Doctor':{},
-	Wizard:{}
-};
+var lifetime = {Barbarian:{},Crusader:{},'Demon Hunter':{},Monk:{},'Witch Doctor':{},Wizard:{}};
+var legCount = {Barbarian:{},Crusader:{},'Demon Hunter':{},Monk:{},'Witch Doctor':{},Wizard:{}};
+var rarityCount = {Barbarian:{},Crusader:{},'Demon Hunter':{},Monk:{},'Witch Doctor':{},Wizard:{}};
 
 var storageSupported;
 
@@ -83,6 +78,8 @@ function saveSettings() {
 		localStorage.kadalaSettings = JSON.stringify(appSettings);
 		localStorage.kadalaSpent = JSON.stringify(shardsSpent);
 		localStorage.kadalaLifetime = JSON.stringify(lifetime);
+		localStorage.kadalaLegCount = JSON.stringify(legCount);
+		localStorage.kadalaRarity = JSON.stringify(rarityCount);
 	}
 }
 
@@ -105,6 +102,73 @@ function incrementShards(key,val) {
 function clearShards(key) {
 	shardsSpent[key] = 0;
 }
+
+//saves the item name/rarity into localstorage for future visuals
+function saveItemData(item) {
+	var name = item.name;
+	var slot = item.slot;
+	var rarity;
+	var cost = appSettings.item.cost;
+
+	if (typeof item.set !== 'undefined' && item.rarity === 'ancient') {
+		rarity = 'ancientset';
+	}
+	else if(typeof item.set !=='undefined') {
+		rarity = 'set';
+	}
+	else {
+		rarity = item.rarity;
+	}
+
+	//storing rarity - if the slot has been purchased before
+	if (rarityCount[appSettings.dClass].hasOwnProperty(slot)) {
+		//that slot has received this rarity before
+		if (rarityCount[appSettings.dClass][slot].hasOwnProperty(rarity)) {
+			rarityCount[appSettings.dClass][slot][rarity] += 1;
+		}
+		else {
+			rarityCount[appSettings.dClass][slot][rarity] = 1;
+		}
+	}
+	//slot has never been purchased and needs to be created as a blank object first
+	else {
+		rarityCount[appSettings.dClass][slot] = {};
+		rarityCount[appSettings.dClass][slot][rarity] = 1;
+	}
+
+	//this nesting is absolutely disgusting
+	//storing legendary count. check that the item is a legendary
+	if (['legendary','ancient','ancientset','set'].indexOf(rarity) > -1){
+		//check if the slot has been purchased before
+		if (legCount[appSettings.dClass].hasOwnProperty(slot)) {
+			//that the slot has received this item before
+			if (legCount[appSettings.dClass][slot].hasOwnProperty(name)) {
+				//that the item name has been found in this rarity
+				if (legCount[appSettings.dClass][slot][name].hasOwnProperty(rarity)) {
+					legCount[appSettings.dClass][slot][name][rarity] += 1;
+				}
+				else {
+					legCount[appSettings.dClass][slot][name][rarity] = 1;
+				}
+			}
+			//item has never been found
+			else {
+				legCount[appSettings.dClass][slot][name] = {};
+				legCount[appSettings.dClass][slot][name][rarity] = 1;
+			}
+		}
+		//slot has never been purchased
+		else {
+			legCount[appSettings.dClass][slot] = {};
+			legCount[appSettings.dClass][slot][name] = {};
+			legCount[appSettings.dClass][slot][name][rarity] = 1;
+		}
+	}
+
+	saveSettings();
+
+}
+
 
 var AppStore = assign({},EventEmitter.prototype,{
 	getSettings:getSettings,
@@ -159,6 +223,17 @@ function init() {
 			lifetime = JSON.parse(localStorage.getItem('kadalaLifetime')) || lifetime;
 		}
 
+		//pull the lifetime legendary count
+		var lifetimeLc = JSON.parse(localStorage.getItem('kadalaLegCount')) || {};
+		if (lifetimeLc.hasOwnProperty('Barbarian')) {
+			legCount = JSON.parse(localStorage.getItem('kadalaLegCount')) || legCount;
+		}
+		//pull the lifetime legendary count
+		var lifetimeRc = JSON.parse(localStorage.getItem('kadalaRarity')) || {};
+		if (lifetimeRc.hasOwnProperty('Barbarian')) {
+			rarityCount = JSON.parse(localStorage.getItem('kadalaRarity')) || lifetimeRc;
+		}
+
 		//save to storage
 		saveSettings();
 	}
@@ -186,6 +261,7 @@ AppDispatcher.register(function(action) {
 			break;
 		case AppConstants.ADD_ITEM:
 			hideBoth();
+			saveItemData(action.item);
 			AppStore.emitChange();
 			break;
 		case AppConstants.CLEAR_SHARDS:
