@@ -154,7 +154,7 @@ function init() {
 		shardsSpent = JSON.parse(localStorage.getItem('kadalaSpent')) || {};
 
 		//old version of app didnt save lifetime shards by class. track now
-		var lifetimeLs = JSON.parse(localStorage.getItem('kadalaLifetime'));
+		var lifetimeLs = JSON.parse(localStorage.getItem('kadalaLifetime')) || {};
 		if (lifetimeLs.hasOwnProperty('Barbarian')) {
 			lifetime = JSON.parse(localStorage.getItem('kadalaLifetime')) || lifetime;
 		}
