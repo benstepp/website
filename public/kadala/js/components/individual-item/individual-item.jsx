@@ -1,10 +1,9 @@
 var React = require('react');
 
+var D3ItemTooltip = require('../d3-tooltip/d3-tooltip.jsx');
 var InventoryStore = require('../../stores/InventoryStore');
-
 var ItemLeft = require('./item-left.jsx');
 var ItemRight = require('./item-right.jsx');
-var D3ItemTooltip = require('../d3-tooltip/d3-tooltip.jsx');
 
 var IndividualItem = React.createClass({
 
@@ -24,7 +23,7 @@ var IndividualItem = React.createClass({
 
 	render:function() {
 
-		//only show tooltips/buttons if they are needed
+		//only show tooltips/buttons if an item has already been created
 		var tooltip;
 		var hiddenButtons = 'hidden';
 		if (typeof this.state.item !== 'undefined') {

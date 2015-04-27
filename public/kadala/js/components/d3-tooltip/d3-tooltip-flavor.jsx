@@ -1,6 +1,11 @@
 var React = require('react');
 
 var D3ItemTooltipFlavor = React.createClass({
+
+	propTypes:{
+		flavor:React.PropTypes.string
+	},
+
 	render:function() {
 		return (
 			<div className='tooltip-extension'>

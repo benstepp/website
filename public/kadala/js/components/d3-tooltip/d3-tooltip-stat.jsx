@@ -2,6 +2,10 @@ var React = require('react');
 
 var D3ItemTooltipStat= React.createClass({
 
+	propTypes:{
+		stat:React.PropTypes.object
+	},
+
 	render: function() {
 
 		var text = [];
@@ -82,15 +86,11 @@ var D3ItemTooltipStat= React.createClass({
 		}
 
 		return (
-
 			<li className={textColor}>
 				<p>{text}</p>
 			</li>
-
 		);
-
 	}
-
 });
 
 module.exports = D3ItemTooltipStat;

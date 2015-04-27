@@ -2,7 +2,13 @@ var React = require('react');
 
 var GenderSelectorButton = React.createClass({
 
-	updateGender:function() {
+	propTypes:{
+		changeGender:React.PropTypes.func,
+		gender:React.PropTypes.string,
+		selected:React.PropTypes.bool
+	},
+
+	_updateGender:function() {
 		this.props.changeGender(this.props.gender);
 	},
 
@@ -15,7 +21,7 @@ var GenderSelectorButton = React.createClass({
 
 		return (
 			<div className='button-wrapper'>
-				<button className={buttonClass} onClick={this.updateGender} >
+				<button className={buttonClass} onClick={this._updateGender} >
 					<div></div>
 					<span>{this.props.gender.toLowerCase()}</span>
 				</button>

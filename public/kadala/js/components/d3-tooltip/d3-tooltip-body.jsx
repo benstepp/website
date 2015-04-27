@@ -1,9 +1,14 @@
-var React = require('react'),
-	D3ItemTooltipArmor = require('./d3-tooltip-armor.jsx'),
-	D3ItemTooltipWeapon = require('./d3-tooltip-weapon.jsx'),
-	D3ItemTooltipStat = require('./d3-tooltip-stat.jsx');
+var React = require('react');
+
+var D3ItemTooltipArmor = require('./d3-tooltip-armor.jsx');
+var D3ItemTooltipStat = require('./d3-tooltip-stat.jsx');
+var D3ItemTooltipWeapon = require('./d3-tooltip-weapon.jsx');
 
 var D3ItemTooltipBody = React.createClass({
+
+	propTypes:{
+		item:React.PropTypes.object
+	},
 
 	render: function() {
 
@@ -15,6 +20,18 @@ var D3ItemTooltipBody = React.createClass({
 		//Create the list item for each stat and push in the arrays
 		var primaries = forEach(this.props.item.primaries);
 		var secondaries = forEach(this.props.item.secondaries);
+
+		function forEach(statObject) {
+			var results = [];
+			var keys = Object.keys(statObject);
+			var length = keys.length;
+			for (var i = 0; i < length; i ++) {
+				var stat = keys[i];
+				var val = statObject[stat];
+				results.push(<D3ItemTooltipStat stat={val} key={i} />);
+			}
+			return results;
+		}
 
 		//image used as inline-style for item tooltips
 		var image = {backgroundImage:'url('+this.props.item.image+')'};
@@ -31,7 +48,11 @@ var D3ItemTooltipBody = React.createClass({
 			subHead = <D3ItemTooltipArmor armor={this.props.item.armor}/>;
 		}
 		if (this.props.item.hasOwnProperty('weaponDps')) {
-			subHead = <D3ItemTooltipWeapon weapon={this.props.item}/>;
+			subHead = <D3ItemTooltipWeapon 
+				damageRange={this.props.item.damageRange}
+				speed={this.props.item.speed} 
+				weaponDps={this.props.item.weaponDps}
+				/>;
 		}
 
 		//if sockets are needed
@@ -96,26 +117,9 @@ var D3ItemTooltipBody = React.createClass({
 						{secondaries}
 						{sockets}
 					</ul>
-
 				</div>
-
 			</div>
 		);
-
-	function forEach(statObject) {
-		var results = [];
-
-		var keys = Object.keys(statObject);
-		var length = keys.length;
-
-		for (var i = 0; i < length; i ++) {
-			var stat = keys[i];
-			var val = statObject[stat];
-			results.push(<D3ItemTooltipStat stat={val} key={i} />);
-		}
-		return results;
-	}
-
 	}
 });
 

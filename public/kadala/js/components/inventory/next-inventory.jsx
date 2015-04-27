@@ -1,7 +1,13 @@
 var React = require('react');
+
 var AppActions = require('../../actions/AppActions');
 
 var NextInventory = React.createClass({
+
+	propTypes:{
+		hasNext:React.PropTypes.bool
+	},
+
 	_handleClick:function() {
 		AppActions.nextInventory();
 	},
