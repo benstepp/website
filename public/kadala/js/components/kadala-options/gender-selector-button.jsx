@@ -5,7 +5,7 @@ var GenderSelectorButton = React.createClass({
 	propTypes:{
 		changeGender:React.PropTypes.func,
 		gender:React.PropTypes.string,
-		selected:React.PropTypes.selected
+		selected:React.PropTypes.bool
 	},
 
 	_updateGender:function() {
