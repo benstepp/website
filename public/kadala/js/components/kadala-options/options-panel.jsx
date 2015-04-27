@@ -16,6 +16,7 @@ var OptionsPanel = React.createClass({
 		d3sim.setKadala(initial.dClass,initial.seasonal,initial.hardcore);
 		return initial;
 	},
+
 	componentDidMount: function() {
 		AppStore.addChangeListener(this._onChange);
 	},

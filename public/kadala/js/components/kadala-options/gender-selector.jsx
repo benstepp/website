@@ -4,7 +4,13 @@ var GenderSelectorButton = require('./gender-selector-button.jsx');
 
 var GenderSelector = React.createClass({
 
+	propTypes:{
+		changeGender:React.PropTypes.func,
+		selected:React.PropTypes.string
+	},
+
 	render:function() {
+
 		var maleSelected = (this.props.selected === 'Male');
 		var femaleSelected = (this.props.selected === 'Female');
 

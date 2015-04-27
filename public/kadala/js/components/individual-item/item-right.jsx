@@ -1,7 +1,13 @@
 var React = require('react');
+
 var AppActions = require('../../actions/AppActions');
 
 var ItemRight = React.createClass({
+
+	propTypes:{
+		hasNext:React.PropTypes.bool,
+		hideClass:React.PropTypes.string
+	},
 
 	_handleClick:function() {
 		AppActions.nextItem();

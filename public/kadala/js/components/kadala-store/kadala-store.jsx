@@ -1,13 +1,14 @@
 var React = require('react');
 var assign = require('object-assign');
 
-var KadalaItem = require('./kadala-item.jsx');
 var AppStore = require('../../stores/AppStore');
+var KadalaItem = require('./kadala-item.jsx');
 
 var KadalaStore = React.createClass({
 	getInitialState:function() {
 		return assign({},AppStore.getSettings(),{shards:AppStore.getShards()});
 	},
+
 	componentDidMount: function() {
 		AppStore.addChangeListener(this._onChange);
 	},
@@ -50,9 +51,9 @@ var KadalaStore = React.createClass({
 			{type:'ring',text:'Mystery Ring',cost:50,size:1},
 			{type:'amulet',text:'Mystery Amulet',cost:100,size:1}
 		]
+		var itemsLength = items.length;
 
 		var kadalaSlots = [];
-		var itemsLength = items.length;
 		for (var i =0; i < itemsLength; i++) {
 			kadalaSlots.push(<KadalaItem key={i} item={items[i]} shardCount={this.state.shards[items[i].type] || 0}/>);
 		}

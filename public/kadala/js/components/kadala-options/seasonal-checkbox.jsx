@@ -1,7 +1,13 @@
 var React = require('react');
 
 var SeasonalCheckbox = React.createClass({
-	updateSeasonal:function() {
+
+	propTypes:{
+		changeSeasonal:React.PropTypes.func,
+		seasonal:React.PropTypes.bool
+	},
+
+	_updateSeasonal:function() {
 		this.props.changeSeasonal(!this.props.seasonal);
 	},
 
@@ -9,7 +15,7 @@ var SeasonalCheckbox = React.createClass({
 		return (
 			<div className='checkbox-wrapper'>
 				<label>
-					<input type='checkbox' className='options-checkbox' checked={this.props.seasonal} onChange={this.updateSeasonal}/>
+					<input type='checkbox' className='options-checkbox' checked={this.props.seasonal} onChange={this._updateSeasonal}/>
 					<span className='checkbox-label'>Seasonal <span className='hidden-sm'>Hero</span></span>
 				</label>
 			</div>

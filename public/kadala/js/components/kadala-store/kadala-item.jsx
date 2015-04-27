@@ -6,14 +6,20 @@ var AppStore = require('../../stores/AppStore');
 
 var KadalaItem = React.createClass({
 
-	buyItem:function() {
+	propTypes:{
+		item:React.PropTypes.object,
+		shardCount:React.PropTypes.number
+	},
+
+	_buyItem:function() {
 		var item = d3sim.kadalaRoll(this.props.item.type);
 		item.size = this.props.item.size;
+
 		AppActions.addItem(item);
 		AppActions.changeSetting('item',this.props.item);
 		AppActions.incrementShards(this.props.item.type,this.props.item.cost);
 	},
-	resetCount:function() {
+	_resetCount:function() {
 		AppActions.clearShards(this.props.item.type);
 	},
 

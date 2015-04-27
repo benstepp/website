@@ -1,11 +1,17 @@
 var React = require('react');
 
 var InventorySlot = require('./inventory-slot.jsx');
-var PreviousInventory = require('./previous-inventory.jsx');
 var NextInventory = require('./next-inventory.jsx');
-
+var PreviousInventory = require('./previous-inventory.jsx');
 
 var InventoryContainer = React.createClass({
+
+	propTypes:{
+		hasNext:React.PropTypes.bool,
+		hasPrevious:React.PropTypes.bool,
+		inventory:React.PropTypes.array
+	},
+
 	render:function() {
 
 		var inventorySlots = [];

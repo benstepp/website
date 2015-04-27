@@ -4,6 +4,7 @@ var InventoryContainer = require('./inventory-container.jsx');
 var InventoryStore = require('../../stores/InventoryStore');
 
 var Inventory = React.createClass({
+
 	getInitialState: function() {
 		return InventoryStore.getInventory();
 	},

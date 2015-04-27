@@ -1,7 +1,13 @@
 var React = require('react');
+
 var AppActions = require('../../actions/AppActions');
 
 var ItemLeft = React.createClass({
+
+	propTypes:{
+		hasPrevious:React.PropTypes.bool,
+		hideClass:React.PropTypes.string
+	},
 
 	_handleClick:function() {
 		AppActions.previousItem();

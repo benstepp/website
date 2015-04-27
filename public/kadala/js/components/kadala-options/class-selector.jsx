@@ -1,9 +1,17 @@
 var React = require('react');
+
 var ClassSelectorButton = require('./class-selector-button.jsx');
 
 var ClassSelector = React.createClass({
 
+	propTypes:{
+		changeClass:React.PropTypes.func,
+		gender:React.PropTypes.string,
+		selected:React.PropTypes.string
+	},
+
 	render:function() {
+
 		var dClasses = ['Barbarian','Crusader','Demon Hunter','Monk','Witch Doctor','Wizard'];
 		var dClassesLength = dClasses.length;
 
@@ -11,10 +19,7 @@ var ClassSelector = React.createClass({
 		for (var i =0; i < dClassesLength;i++) {
 
 			//check for selected class stored in state of this component
-			var selected = false;
-			if (this.props.selected === dClasses[i]) {
-				selected = true;
-			}
+			var selected = (this.props.selected === dClasses[i]);
 
 			//put selectors in array to be rendered
 			classSelectors.push(
@@ -28,7 +33,6 @@ var ClassSelector = React.createClass({
 			);
 		}
 
-
 		return (
 			<div>
 				<ul className='class-selector'>
@@ -36,7 +40,6 @@ var ClassSelector = React.createClass({
 				</ul>
 			</div>
 		);
-
 	}
 });
 

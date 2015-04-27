@@ -1,7 +1,13 @@
 var React = require('react');
+
 var AppActions = require('../../actions/AppActions');
 
 var PreviousInventory = React.createClass({
+
+	propTypes:{
+		hasPrevious:React.PropTypes.bool
+	},
+
 	_handleClick:function() {
 		AppActions.previousInventory();
 	},
