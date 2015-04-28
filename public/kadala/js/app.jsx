@@ -1,17 +1,19 @@
 var React = require('react');
+var assign = require('object-assign');
 
 var Navbar = require('./components/common/navbar.jsx');
 var OptionsPanel = require('./components/kadala-options/options-panel.jsx');
 var KadalaStore = require('./components/kadala-store/kadala-store.jsx');
 var Inventory = require('./components/inventory/inventory.jsx');
 var IndividualItem = require('./components/individual-item/individual-item.jsx');
+var Visualization = require('./components/visualization/visualization.jsx');
 var Footer = require('./components/common/footer.jsx');
 
 var AppStore = require('./stores/AppStore.js');
 
 var Application = React.createClass({
 	getInitialState:function() {
-		return AppStore.getSettings();
+		return assign({},AppStore.getSettings(),AppStore.getLifetime());
 	},
 	componentDidMount: function() {
 		AppStore.addChangeListener(this._onChange);
@@ -37,12 +39,20 @@ var Application = React.createClass({
 		//conditionally render either the inventory or individual item based on screen size
 		var inventory;
 		var individualItem;
+		var vis;
 
 		if (this.state.mobile) {
 			individualItem = <IndividualItem />
 		}
 		else {
 			inventory = <Inventory />
+			vis = <Visualization
+					lifetime={this.state.lifetime}
+					legCount={this.state.legCount}
+					rarityCount={this.state.rarityCount}
+					currentClass={this.state.dClass}
+					slot={this.state.item.type}
+					/>
 		}
 
 		return (
@@ -63,6 +73,9 @@ var Application = React.createClass({
 							{individualItem}
 						</div>
 					</div>
+
+					{vis}
+
 				</div>
 				<Footer />
 			</div>

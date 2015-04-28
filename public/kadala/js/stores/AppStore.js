@@ -67,6 +67,14 @@ function getShards(key) {
 	}
 }
 
+function getLifetime() {
+	return {
+		lifetime:lifetime,
+		legCount:legCount,
+		rarityCount:rarityCount
+	};
+}
+
 function changeSetting(key,val) {
 	appSettings[key] = val;
 	d3sim.setKadala(appSettings.dClass,appSettings.seasonal,appSettings.hardcore);
@@ -174,6 +182,7 @@ function saveItemData(item) {
 var AppStore = assign({},EventEmitter.prototype,{
 	getSettings:getSettings,
 	getShards:getShards,
+	getLifetime:getLifetime,
 
 	emitChange:function(){
 		this.emit(CHANGE_EVENT);
