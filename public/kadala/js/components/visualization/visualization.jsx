@@ -94,30 +94,24 @@ var Visualization = React.createClass({
 		var highestSet;
 		var highestAncSet;
 		for (var legendary in legDataNoClassSpec) {
-			if (typeof highestLeg === 'undefined') {
-				highestLeg = legendary;
-				highestAnc = legendary;
-				highestSet = legendary;
-				highestAncSet = legendary;
+			var legData = legDataNoClassSpec[legendary];
+			//first check if one has not been found yet
+			if (legData.hasOwnProperty('legendary')) {
+				highestLeg = (typeof highestLeg === 'undefined' || (legDataNoClassSpec[highestLeg].legendary < legDataNoClassSpec[legendary].legendary)) ? legendary : highestLeg;
 			}
-			else {
-				if (legDataNoClassSpec[legendary].legendary > (legDataNoClassSpec[highestLeg].legendary || 0)) {
-					highestLeg = legendary;
-				}
-				if (legDataNoClassSpec[legendary].ancient > (legDataNoClassSpec[highestAnc].ancient || 0)) {
-					highestAnc = legendary;
-				}
-				if (legDataNoClassSpec[legendary].set > (legDataNoClassSpec[highestSet].set || 0)) {
-					highestSet = legendary;
-				}
-				if (legDataNoClassSpec[legendary].ancientset > (legDataNoClassSpec[highestAncSet].ancientset || 0)) {
-					highestAncSet = legendary;
-				}
+			if (legData.hasOwnProperty('ancient')) {
+				highestAnc = (typeof highestAnc === 'undefined' || (legDataNoClassSpec[highestAnc].ancient < legDataNoClassSpec[legendary].ancient)) ? legendary : highestAnc;
+			}
+			if (legData.hasOwnProperty('set')) {
+				highestSet = (typeof highestSet === 'undefined' || (legDataNoClassSpec[highestSet].set < legDataNoClassSpec[legendary].set)) ? legendary : highestSet;
+			}
+			if (legData.hasOwnProperty('ancientset')) {
+				highestAncSet = (typeof highestAncSet === 'undefined' || (legDataNoClassSpec[highestAncSet].ancientset < legDataNoClassSpec[legendary].ancientset)) ? legendary : highestAncSet;
 			}
 		}
 
-		var highestLegendary = (highestLeg > highestSet) ? highestLeg :highestSet;
-		var highestAncient = (highestAnc > highestAncSet) ? highestAnc:highestAncSet;
+		var highestLegendary = ((legDataNoClassSpec[highestLeg].legendary > legDataNoClassSpec[highestSet].set) || typeof highestSet ==='undefined') ? highestLeg :highestSet;
+		var highestAncient = ((legDataNoClassSpec[highestAnc].ancient > legDataNoClassSpec[highestAncSet].ancientset || typeof highestAncient === 'undefined')) ? highestAnc:highestAncSet;
 		var highestLegendaryCount = legDataNoClassSpec[highestLegendary].legendary || legDataNoClassSpec[highestLegendary].set;
 		var highestAncientCount = legDataNoClassSpec[highestAncient].ancient || legDataNoClassSpec[highestAncient].ancientset;
 
