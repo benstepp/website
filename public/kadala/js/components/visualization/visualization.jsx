@@ -117,7 +117,7 @@ var Visualization = React.createClass({
 		}
 
 		var highestLegendary = (highestLeg > highestSet) ? highestLeg :highestSet;
-		var highestAncient = (highestAnc > highestAncSet) ? highestAnc:highestSet;
+		var highestAncient = (highestAnc > highestAncSet) ? highestAnc:highestAncSet;
 		var highestLegendaryCount = legDataNoClassSpec[highestLegendary].legendary || legDataNoClassSpec[highestLegendary].set;
 		var highestAncientCount = legDataNoClassSpec[highestAncient].ancient || legDataNoClassSpec[highestAncient].ancientset;
 
