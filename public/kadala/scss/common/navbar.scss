@@ -91,3 +91,16 @@ button.buy:hover {
 button.ham:hover, button.shop:hover {
 	color:#eee;
 }
+
+button.vis {
+	@media #{$mobile} {
+		display:none;
+	}
+	display:inline-block;
+	float:right;
+	color:#ccc;
+	padding:6px;
+}
+button.vis:hover {
+	color:#eee;
+}

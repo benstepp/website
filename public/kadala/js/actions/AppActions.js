@@ -66,6 +66,12 @@ var AppActions = {
 			actionType:AppConstants.CLEAR_SHARDS,
 			key:key
 		});
+	},
+
+	toggleVis:function() {
+		AppDispatcher.dispatch({
+			actionType:AppConstants.TOGGLE_VIS
+		});
 	}
 
 };

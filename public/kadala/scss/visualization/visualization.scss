@@ -1,0 +1,72 @@
+@import "../media-queries.scss";
+
+.vis {
+	color:#ccc;
+}
+
+.vis-center {
+	width:100%;
+	clear:both;
+	text-align:center;
+}
+
+.vis-rule {
+	width:80%;
+	height:1px;
+	margin:10px auto;
+	background-color:#161616;
+}
+
+.vis h1 {
+	font-weight:700;
+	@media #{$desktop} {
+		font-size:2.5em;
+	}
+	@media #{$tablet} {
+		font-size:2em;
+	}
+}
+
+.vis li {
+	list-style-type:none;
+}
+
+//Rarity Colors
+.magic {
+	color:#6969ff;
+}
+.rare {
+	color:#ffff00;
+}
+.legendary,.ancient {
+	color:#bf642f;
+}
+.set,.ancientset {
+	color:#00ff00;
+}
+
+//D3 Class Colors
+.barbarian {
+	color:#b52615;
+}
+.crusader {
+	color:#ccc;
+}
+.demonhunter {
+	color:#735289;
+}
+.monk {
+	color:#e5d34d;
+}
+.witchdoctor {
+	color:#46c230;
+}
+.wizard {
+	color:#5fc6e5;
+}
+
+
+.vis li {
+	font-weight:700;
+	font-size:1.8em;
+}

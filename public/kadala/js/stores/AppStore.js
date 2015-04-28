@@ -13,7 +13,8 @@ var defaults = {
 	gender:'Female',
 	hardcore:false,
 	seasonal:true,
-	item:{"type":"helm","text":"Mystery Helmet","cost":25,"size":2}
+	item:{"type":"helm","text":"Mystery Helmet","cost":25,"size":2},
+	vis:false
 };
 var shardsSpent = {};
 var lifetime = {Barbarian:{},Crusader:{},'Demon Hunter':{},Monk:{},'Witch Doctor':{},Wizard:{}};
@@ -53,6 +54,17 @@ function hideBoth() {
 	appSettings.store = false;
 	appSettings.options = false;
 }
+function toggleVis() {
+	if (appSettings.vis) {
+		appSettings.store = true;
+		appSettings.options = true;
+	}
+	else {
+		appSettings.store = false;
+		appSettings.options = false;
+	}
+	appSettings.vis= !appSettings.vis;
+}
 
 function getSettings() {
 	return appSettings;
@@ -65,6 +77,14 @@ function getShards(key) {
 	else {
 		return shardsSpent;
 	}
+}
+
+function getLifetime() {
+	return {
+		lifetime:lifetime,
+		legCount:legCount,
+		rarityCount:rarityCount
+	};
 }
 
 function changeSetting(key,val) {
@@ -174,6 +194,7 @@ function saveItemData(item) {
 var AppStore = assign({},EventEmitter.prototype,{
 	getSettings:getSettings,
 	getShards:getShards,
+	getLifetime:getLifetime,
 
 	emitChange:function(){
 		this.emit(CHANGE_EVENT);
@@ -267,6 +288,10 @@ AppDispatcher.register(function(action) {
 			break;
 		case AppConstants.CLEAR_SHARDS:
 			clearShards(action.key);
+			AppStore.emitChange();
+			break;
+		case AppConstants.TOGGLE_VIS:
+			toggleVis();
 			AppStore.emitChange();
 			break;
 		default:
