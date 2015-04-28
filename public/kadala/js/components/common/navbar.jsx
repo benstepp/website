@@ -36,6 +36,9 @@ var Navbar = React.createClass({
 	_toggleStore:function() {
 		AppActions.toggleStore();
 	},
+	_toggleVis:function() {
+		AppActions.toggleVis();
+	},
 
 	render:function() {
 		return(
@@ -52,6 +55,12 @@ var Navbar = React.createClass({
 					{/*From Material Design icons by Google (CC by 4.0)*/}
 					<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
 						<path d="M16 6V4c0-1.11-.89-2-2-2h-4c-1.11 0-2 .89-2 2v2H2v13c0 1.11.89 2 2 2h16c1.11 0 2-.89 2-2V6h-6zm-6-2h4v2h-4V4zM9 18V9l7.5 4L9 18z"/>
+					</svg>
+				</button>
+				<button className='vis' onClick={this._toggleVis}>
+					{/*From Material Design icons by Google (CC by 4.0)*/}
+					<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+						<path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zM9 17H7v-7h2v7zm4 0h-2V7h2v10zm4 0h-2v-4h2v4z"/>
 					</svg>
 				</button>
 			</nav>

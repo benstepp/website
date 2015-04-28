@@ -40,12 +40,8 @@ var Application = React.createClass({
 		var inventory;
 		var individualItem;
 		var vis;
-
-		if (this.state.mobile) {
-			individualItem = <IndividualItem />
-		}
-		else {
-			inventory = <Inventory />
+		var mainApp='row';
+		if (this.state.vis) {
 			vis = <Visualization
 					lifetime={this.state.lifetime}
 					legCount={this.state.legCount}
@@ -53,13 +49,23 @@ var Application = React.createClass({
 					currentClass={this.state.dClass}
 					slot={this.state.item.type}
 					/>
+			mainApp+= ' hidden';
+		}
+
+		else {
+			if (this.state.mobile) {
+				individualItem = <IndividualItem />
+			}
+			else {
+				inventory = <Inventory />
+			}
 		}
 
 		return (
 			<div>
 				<Navbar mobile={this.state.mobile} />
 				<div className='container-fluid'>
-					<div className='row'>
+					<div className={mainApp}>
 						<div className='col-sm-3'>
 							<OptionsPanel />
 						</div>
