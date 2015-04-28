@@ -78,8 +78,48 @@ var D3ItemTooltipBody = React.createClass({
 			itemTypePrefix = itemTypePrefix.charAt(0).toUpperCase() + itemTypePrefix.slice(1);
 		}
 
+		//determine the effect-bg for tooltips
+		var bodyTooltipClass ='tooltip-body';
+		(function getBodyTooltip() {
+			var elements=['Fire','Cold','Lightning','Poison','Holy','Arcane'];
+			var elementsLength = elements.length;
+
+			if (this.props.item.hasOwnProperty('primaries')) {
+				var primaries = [];
+				for (var prim in this.props.item.primaries) {
+					primaries.push(prim);
+				}
+				var primariesLength = primaries.length;
+				//for weapons check for damage range elemental type on weapons
+				if (this.props.item.hasOwnProperty('weaponDps')) {
+					for (var i=0; i < elementsLength;i++) {
+						for (var j=0; j < primariesLength;j++) {
+							if (primaries[j].indexOf(elements[i])> -1 && primaries[j].indexOf('Dmg_') > -1) {
+								bodyTooltipClass+= (' effect-bg effect-bg-'+elements[i].toLowerCase());
+								return;
+							}
+						}
+					}
+				}
+				//for other pieces like bracers check for elemental damage
+				if (this.props.item.hasOwnProperty('armor') && this.props.item.slot !== 'ring' && this.props.item.slot !== 'amulet') {
+					for (var i =0; i < elementsLength;i++) {
+						if (primaries.indexOf(elements[i]+'Damage') > -1) {
+							bodyTooltipClass+= (' effect-bg effect-bg-'+elements[i].toLowerCase());
+							return;
+						}
+					}
+				}
+			}
+			//if it didnt have elemental and is armor add armor tooltip
+			if(this.props.item.hasOwnProperty('armor') && this.props.item.slot !== 'ring' && this.props.item.slot !== 'amulet'){
+				bodyTooltipClass+=' effect-bg effect-bg-armor';
+			}
+			//else noop for a black default background
+		}).bind(this)();
+
 		return (
-			<div className="tooltip-body effect-bg effect-bg-armor effect-bg-armor-default">
+			<div className={bodyTooltipClass}>
 
 				{/*The item icon and container, color needed for background*/}
 				<span className={iconClasses}>
