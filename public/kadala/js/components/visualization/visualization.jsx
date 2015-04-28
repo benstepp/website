@@ -23,10 +23,12 @@ var Visualization = React.createClass({
 			var byClass = {};
 			byClass.x = dClass;
 			byClass.y = 0;
-			for (var slot in this.props.lifetime[dClass]) {
-				//add to total and class count
-				totalShards+= this.props.lifetime[dClass][slot];
-				byClass.y+= this.props.lifetime[dClass][slot];
+			if (typeof this.props.lifetime[dClass] !== 'undefined') {
+				for (var slot in this.props.lifetime[dClass]) {
+					//add to total and class count
+					totalShards+= this.props.lifetime[dClass][slot];
+					byClass.y+= this.props.lifetime[dClass][slot];
+				}
 			}
 			classList.push(<li>{byClass.y} on <span className={byClass.x.toLowerCase().replace(' ','')}>{byClass.x}</span></li>);
 			shardsByClass.values.push(byClass);
@@ -43,26 +45,27 @@ var Visualization = React.createClass({
 		};
 		for(var i=0;i < 6; i++) {
 			var dClass_ = classes[i];
-
-			for (var slot in this.props.rarityCount[dClass_]) {
-				var slotData = this.props.rarityCount[dClass_][slot];
-				if (slotData.hasOwnProperty('magic')) {
-					totals.Magic+= slotData.magic;
-				}
-				if (slotData.hasOwnProperty('rare')) {
-					totals.Rare+= slotData.rare;
-				}
-				if (slotData.hasOwnProperty('legendary')) {
-					totals.Legendary+= slotData.legendary;
-				}
-				if (slotData.hasOwnProperty('set')) {
-					totals.Set+= slotData.set;
-				}
-				if (slotData.hasOwnProperty('ancient')) {
-					totals.Ancient+= slotData.ancient;
-				}
-				if (slotData.hasOwnProperty('ancientset')) {
-					totals['Ancient Set']+= slotData.ancientset;
+			if (typeof this.props.rarityCount[dClass_] !== 'undefined') {
+				for (var slot in this.props.rarityCount[dClass_]) {
+					var slotData = this.props.rarityCount[dClass_][slot];
+					if (slotData.hasOwnProperty('magic')) {
+						totals.Magic+= slotData.magic;
+					}
+					if (slotData.hasOwnProperty('rare')) {
+						totals.Rare+= slotData.rare;
+					}
+					if (slotData.hasOwnProperty('legendary')) {
+						totals.Legendary+= slotData.legendary;
+					}
+					if (slotData.hasOwnProperty('set')) {
+						totals.Set+= slotData.set;
+					}
+					if (slotData.hasOwnProperty('ancient')) {
+						totals.Ancient+= slotData.ancient;
+					}
+					if (slotData.hasOwnProperty('ancientset')) {
+						totals['Ancient Set']+= slotData.ancientset;
+					}
 				}
 			}
 		}
@@ -79,11 +82,13 @@ var Visualization = React.createClass({
 		var legDataNoClassSpec = {};
 		for (var i=0;i < 6;i++) {
 			var dClass__ = classes[i];
-			for (var slot in this.props.legCount[dClass__]) {
-				for (var leg in this.props.legCount[dClass__][slot]) {
-					for (var rarity in this.props.legCount[dClass__][slot][leg]) {
-						legDataNoClassSpec[leg] = legDataNoClassSpec[leg] || {};
-						legDataNoClassSpec[leg][rarity] = (legDataNoClassSpec[leg][rarity]) ?legDataNoClassSpec[leg][rarity] +this.props.legCount[dClass__][slot][leg][rarity] :this.props.legCount[dClass__][slot][leg][rarity];
+			if (typeof this.props.legCount[dClass__] !== 'undefined') {
+				for (var slot in this.props.legCount[dClass__]) {
+					for (var leg in this.props.legCount[dClass__][slot]) {
+						for (var rarity in this.props.legCount[dClass__][slot][leg]) {
+							legDataNoClassSpec[leg] = legDataNoClassSpec[leg] || {};
+							legDataNoClassSpec[leg][rarity] = (legDataNoClassSpec[leg][rarity]) ?legDataNoClassSpec[leg][rarity] +this.props.legCount[dClass__][slot][leg][rarity] :this.props.legCount[dClass__][slot][leg][rarity];
+						}
 					}
 				}
 			}
@@ -110,13 +115,37 @@ var Visualization = React.createClass({
 			}
 		}
 
-		var highestLegendary = ((legDataNoClassSpec[highestLeg].legendary > legDataNoClassSpec[highestSet].set) || typeof highestSet ==='undefined') ? highestLeg :highestSet;
-		var highestAncient = ((legDataNoClassSpec[highestAnc].ancient > legDataNoClassSpec[highestAncSet].ancientset || typeof highestAncient === 'undefined')) ? highestAnc:highestAncSet;
-		var highestLegendaryCount = legDataNoClassSpec[highestLegendary].legendary || legDataNoClassSpec[highestLegendary].set;
-		var highestAncientCount = legDataNoClassSpec[highestAncient].ancient || legDataNoClassSpec[highestAncient].ancientset;
+		var highestLegendary;
+		var highestAncient;
+		var highestLegendaryCount;
+		var highestAncientCount;
+		var highLegClass;
+		var highAncClass;
+		if (typeof highestLeg !== 'undefined' || typeof Set !== 'undefined') {
+			if (typeof highestSet !== 'undefined' && typeof highestLeg !== 'undefined') {
+				highestLegendary = ((legDataNoClassSpec[highestLeg].legendary > legDataNoClassSpec[highestSet].set)) ? highestLeg :highestSet;
+			}
+			else {
+				highestLegendary = highestLegendary || highestSet
+			}
+		}
+		if (typeof highestAnc !== 'undefined' || typeof highestAncSet !== 'undefined') {
+			if(typeof highestAncSet !== 'undefined' && typeof highestAnc !== 'undefinded') {
+				highestAnc= ((legDataNoClassSpec[highestAnc].ancient > legDataNoClassSpec[highestAncSet].ancientset)) ? highestAnc:highestAncSet;
+			}
+			else {
+				highestAnc = highestAnc || highestAncSet;
+			}
+		}
 
-		var highLegClass = (legDataNoClassSpec[highestLegendary].legendary) ? 'legendary' : 'set';
-		var highAncClass = (legDataNoClassSpec[highestAncient].ancient) ? 'ancient' : 'ancientset';
+		if (typeof highestLegendary !== 'undefined') {
+			var highestLegendaryCount = legDataNoClassSpec[highestLegendary].legendary || legDataNoClassSpec[highestLegendary].set;
+			var highLegClass = (legDataNoClassSpec[highestLegendary].legendary) ? 'legendary' : 'set';
+		}
+		if (typeof highestAncient !== 'undefined') {
+			var highestAncientCount = legDataNoClassSpec[highestAncient].ancient || legDataNoClassSpec[highestAncient].ancientset;
+			var highAncClass = (legDataNoClassSpec[highestAncient].ancient) ? 'ancient' : 'ancientset';
+		}
 
 		return (
 			<div className='vis'>

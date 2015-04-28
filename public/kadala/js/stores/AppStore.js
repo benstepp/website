@@ -55,14 +55,6 @@ function hideBoth() {
 	appSettings.options = false;
 }
 function toggleVis() {
-	if (appSettings.vis) {
-		appSettings.store = true;
-		appSettings.options = true;
-	}
-	else {
-		appSettings.store = false;
-		appSettings.options = false;
-	}
 	appSettings.vis= !appSettings.vis;
 }
 
