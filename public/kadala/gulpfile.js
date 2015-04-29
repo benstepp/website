@@ -64,7 +64,7 @@ module.exports = function(date) {
 			.pipe(source('app-'+date+'.min.js'))
 			.pipe(buffer());
 
-		var d3sim = gulp.src('public/libs/d3sim/build/');
+		var d3sim = gulp.src('public/libs/d3sim/build/index.js');
 
 		return merge(bundle,d3sim)
 			.pipe(concat('app-'+date+'.min.js'))
@@ -106,12 +106,12 @@ module.exports = function(date) {
 	});
 
 
-	gulp.start('browserify');
-	//gulp.start('clean');
-	//gulp.start('html');
-	//gulp.start('css');
-	//gulp.start('js');
-	//gulp.start('img');
-	//gulp.start('libs');
+	//gulp.start('browserify');
+	gulp.start('clean');
+	gulp.start('html');
+	gulp.start('css');
+	gulp.start('js');
+	gulp.start('img');
+	gulp.start('libs');
 
 };
