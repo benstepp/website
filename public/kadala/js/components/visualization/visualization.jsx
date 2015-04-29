@@ -8,7 +8,7 @@ var Visualization = React.createClass({
 	render:function() {
 
 		//determine screen width to base the size of visualizations on
-		var width = (window.innerWidth*0.3) - 30;
+		var width = (window.innerWidth/3) - 60;
 
 		var classes = ['Barbarian','Crusader','Demon Hunter','Monk','Witch Doctor','Wizard'];
 		var totalShards = 0;
@@ -30,7 +30,7 @@ var Visualization = React.createClass({
 					byClass.y+= this.props.lifetime[dClass][slot];
 				}
 			}
-			classList.push(<li>{byClass.y} on <span className={byClass.x.toLowerCase().replace(' ','')}>{byClass.x}</span></li>);
+			classList.push(<li key={i} >{byClass.y} on <span className={byClass.x.toLowerCase().replace(' ','')}>{byClass.x}</span></li>);
 			shardsByClass.values.push(byClass);
 		}
 
@@ -131,10 +131,10 @@ var Visualization = React.createClass({
 		}
 		if (typeof highestAnc !== 'undefined' || typeof highestAncSet !== 'undefined') {
 			if(typeof highestAncSet !== 'undefined' && typeof highestAnc !== 'undefinded') {
-				highestAnc= ((legDataNoClassSpec[highestAnc].ancient > legDataNoClassSpec[highestAncSet].ancientset)) ? highestAnc:highestAncSet;
+				highestAncient= ((legDataNoClassSpec[highestAnc].ancient > legDataNoClassSpec[highestAncSet].ancientset)) ? highestAnc:highestAncSet;
 			}
 			else {
-				highestAnc = highestAnc || highestAncSet;
+				highestAncient = highestAnc || highestAncSet;
 			}
 		}
 
@@ -157,15 +157,15 @@ var Visualization = React.createClass({
 				</div>
 
 				<div className='row'>
-					<div className='col-md-4 col-md-offset-2'>
+					<div className='col-sm-4 col-sm-offset-1'>
 						<ul>
 							{classList}
 						</ul>
 					</div>
-					<div className='col-md-4'>
+					<div className='col-sm-7'>
 						<ShardCountByClass 
 							data={shardsByClass}
-							width={width}
+							width={width*2}
 							height={width}
 						/>
 					</div>
@@ -195,9 +195,11 @@ var Visualization = React.createClass({
 
 				<div className='row'>
 					<div className='col-md-12'>
-						<p className='vis-center'>More data and visualization fixes coming soon. Every click is already being saved to your browser's local storage</p>
+						<p className='vis-center'>{'More data and visualization fixes coming soon. Every click is already being saved to your browser\'s local storage'}</p>
 					</div>
 				</div>
+
+
 
 			</div>
 		);

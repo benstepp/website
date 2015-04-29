@@ -1,4 +1,5 @@
 var React = require('react');
+//var PieChart = require('react-d3-components').PieChart;
 var PieChart = require('../../../../../node_modules/react-d3-components/lib/PieChart');
 
 var ShardCountByClass = React.createClass({
@@ -24,6 +25,7 @@ var ShardCountByClass = React.createClass({
 					width={this.props.width}
 					title='Shards Spent By Class'
 					colorScale={colorScale}
+					innerRadius={this.props.width*0.2}
 				/>
 			</div>
 		);

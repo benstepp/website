@@ -64,7 +64,7 @@ module.exports = function(date) {
 			.pipe(source('app-'+date+'.min.js'))
 			.pipe(buffer());
 
-		var d3sim = gulp.src('public/libs/d3sim/build/d3sim.js');
+		var d3sim = gulp.src('public/libs/d3sim/build/index.js');
 
 		return merge(bundle,d3sim)
 			.pipe(concat('app-'+date+'.min.js'))
