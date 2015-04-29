@@ -22,15 +22,26 @@ var D3ItemTooltipBody = React.createClass({
 		var secondaries = forEach(this.props.item.secondaries);
 
 		function forEach(statObject) {
+
+			//first collect an array of the stats so we can apply a sort
 			var results = [];
 			var keys = Object.keys(statObject);
 			var length = keys.length;
 			for (var i = 0; i < length; i ++) {
 				var stat = keys[i];
 				var val = statObject[stat];
-				results.push(<D3ItemTooltipStat stat={val} key={i} />);
+				results.push(val);
 			}
-			return results;
+			//sorts the array by index
+			results.sort(function(a,b) {
+				return (a.i > b.i);
+			});
+			var newResults = [];
+			var resultsLength = results.length;
+			for (var j =0; j< resultsLength;j++) {
+				newResults.push(<D3ItemTooltipStat key={j} stat={results[j]} />);
+			}
+			return newResults;
 		}
 
 		//image used as inline-style for item tooltips
