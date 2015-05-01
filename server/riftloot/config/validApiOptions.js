@@ -3,7 +3,7 @@ var validApiOptions = {
 	locale:['de','en','fr'],
 
 	//location routes
-	tier:['all','expert','raid1'],
+	tier:['all','expert','raid1','raid2'],
 
 	//role routes
 	calling:['cleric','mage','rogue','warrior'],

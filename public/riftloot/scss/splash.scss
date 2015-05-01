@@ -133,6 +133,10 @@ h1.splash-header {
   @media #{$small-only} {
     margin-top:8px;
   }
+
+  @media #{$medium-up} {
+    margin-bottom:12px;
+  }
 }
 
 .location-btn:hover {

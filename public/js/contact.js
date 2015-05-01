@@ -1,5 +1,5 @@
 (function() {
-	'use-strict';
+	'use strict';
 
 	var form = document.getElementById('contact');
 	var formMask = document.getElementById('form-mask');

@@ -60,7 +60,6 @@
 		};
 
 		_this.setLocale = function(locale) {
-			console.log(locale);
 			AppDataService.saveData('locale',locale);
 			$translate.use(locale);
 		};
