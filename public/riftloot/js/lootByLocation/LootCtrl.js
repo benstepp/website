@@ -30,7 +30,8 @@
 		_this.getTier = function(tier) {
 			var readable = {
 				expert:'Expert',
-				raid1:'Raid I'
+				raid1:'Raid I',
+				raid2:'Raid II'
 			};
 			return readable[tier];
 		};
