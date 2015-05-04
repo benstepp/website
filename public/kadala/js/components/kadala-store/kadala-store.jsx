@@ -3,6 +3,7 @@ var assign = require('object-assign');
 
 var AppStore = require('../../stores/AppStore');
 var KadalaItem = require('./kadala-item.jsx');
+var SimSelector = require('./sim-selector.jsx');
 
 var KadalaStore = React.createClass({
 	getInitialState:function() {
@@ -59,9 +60,12 @@ var KadalaStore = React.createClass({
 		}
 
 		return (
-			<div className={kadalaClass} id='kadala-store'>
-				{kadalaSlots}
-			</div>
+            <div>
+                <SimSelector />
+    			<div className={kadalaClass} id='kadala-store'>
+    				{kadalaSlots}
+    			</div>
+            </div>
 		);
 	}
 });

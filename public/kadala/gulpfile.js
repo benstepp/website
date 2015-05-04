@@ -106,12 +106,12 @@ module.exports = function(date) {
 	});
 
 
-	//gulp.start('browserify');
-	gulp.start('clean');
-	gulp.start('html');
-	gulp.start('css');
-	gulp.start('js');
-	gulp.start('img');
-	gulp.start('libs');
+	gulp.start('browserify');
+	//gulp.start('clean');
+	//gulp.start('html');
+	//gulp.start('css');
+	//gulp.start('js');
+	//gulp.start('img');
+	//gulp.start('libs');
 
 };
