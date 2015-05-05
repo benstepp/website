@@ -11,8 +11,10 @@
     padding:6px;
 }
 
-.sim-wrap {
-    display:none;
+@media #{$mobile} {
+    .sim-wrap {
+        display:none;
+    }
 }
 .sim-wrap.unhide {
     display:block !important;
