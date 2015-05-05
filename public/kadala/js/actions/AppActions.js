@@ -72,8 +72,14 @@ var AppActions = {
 		AppDispatcher.dispatch({
 			actionType:AppConstants.TOGGLE_VIS
 		});
-	}
+	},
 
+    changeSim:function(type) {
+        AppDispatcher.dispatch({
+            actionType:AppConstants.CHANGE_SIM,
+            sim:type
+        })
+    }
 };
 
 module.exports = AppActions;

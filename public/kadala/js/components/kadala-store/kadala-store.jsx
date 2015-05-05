@@ -23,7 +23,9 @@ var KadalaStore = React.createClass({
 
 	render:function() {
 
+        var craftingClass = 'crafting-panel';
 		var kadalaClass = 'kadala-store';
+        var simClass = 'sim-wrap';
 		//this is a check for internet explorer
 		//flex-direction:column breaks everything so we detect for it here
 		if ((window.navigator.userAgent.indexOf('MSIE ') !== -1)||!navigator.userAgent.match(/Trident.*rv\:11\./)) {
@@ -32,6 +34,8 @@ var KadalaStore = React.createClass({
 
 		if (this.state.store) {
 			kadalaClass+=' unhide';
+            craftingClass+= ' unhide';
+            simClass+= ' unhide';
 		}
 
 		var items = [
@@ -59,12 +63,18 @@ var KadalaStore = React.createClass({
 			kadalaSlots.push(<KadalaItem key={i} item={items[i]} shardCount={this.state.shards[items[i].type] || 0}/>);
 		}
 
+        var storeContent;
+        if (this.state.sim === 'Kadala') {
+            storeContent = <div className={kadalaClass} id='kadala-store'>{kadalaSlots}</div>;
+        }
+        else if (this.state.sim === 'Crafting') {
+            storeContent = <div className={craftingClass}>crafting</div>;
+        }
+
 		return (
-            <div>
-                <SimSelector />
-    			<div className={kadalaClass} id='kadala-store'>
-    				{kadalaSlots}
-    			</div>
+            <div className={simClass}>
+                <SimSelector current={this.state.sim}/>
+                {storeContent}
             </div>
 		);
 	}

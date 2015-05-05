@@ -1,0 +1,19 @@
+@import "../media-queries.scss";
+
+.sim-select {
+    width:25%;
+    @media #{$mobile} {
+        width:100%;
+    }
+}
+
+.sim-select-wrap {
+    padding:6px;
+}
+
+.sim-wrap {
+    display:none;
+}
+.sim-wrap.unhide {
+    display:block !important;
+}

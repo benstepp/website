@@ -47,6 +47,9 @@ function getItem() {
 function addItem(item) {
 	var inventoryLength = currentInventory.length;
 	//looping through each column of the inventory
+    var columnHeights = [];
+    var largeItemColumnIndex;
+    var largeColumnHeight = 6;
 	for (var i = 0; i < inventoryLength; i ++) {
 		//loop through each item in said column
 		var columnLength = currentInventory[i].length;
@@ -60,12 +63,25 @@ function addItem(item) {
 		//check if the height is still less than 6 with new item
 		//and add to that column and return to stop the madness
 		if (columnHeight+item.size <=6) {
-			currentInventory[i].push(item);
-			//if we can successfully add to inventory call for items inventory
-			addToItems(item);
-			return;
+            //exit loops on small items quickly
+	        if(item.size === 1) {
+                currentInventory[i].push(item);
+                addToItems(item);
+                return;
+            }
+            //if the current column is bigger we need to change it
+            if (largeColumnHeight > columnHeight) {
+                largeColumnHeight = columnHeight;
+                largeItemColumnIndex = i;
+            }
 		}
 	}
+    //at this point check if item is large 
+    if (item.size === 2 && typeof largeItemColumnIndex !== 'undefined') {
+        currentInventory[largeItemColumnIndex].push(item);
+        addToItems(item);
+        return;
+    }
 
 	//if we made it this far the new item does not fit in the current inventory
 	//check to see if there is a next inventory
