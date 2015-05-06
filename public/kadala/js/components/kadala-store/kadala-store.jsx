@@ -4,6 +4,7 @@ var assign = require('object-assign');
 var AppStore = require('../../stores/AppStore');
 var KadalaItem = require('./kadala-item.jsx');
 var SimSelector = require('./sim-selector.jsx');
+var CraftingStore = require('./crafting-store.jsx');
 
 var KadalaStore = React.createClass({
 	getInitialState:function() {
@@ -68,7 +69,9 @@ var KadalaStore = React.createClass({
             storeContent = <div className={kadalaClass} id='kadala-store'>{kadalaSlots}</div>;
         }
         else if (this.state.sim === 'Crafting') {
-            storeContent = <div className={craftingClass}>crafting</div>;
+            storeContent = <div className={craftingClass}>
+                <CraftingStore dClass={this.state.dClass} />
+            </div>;
         }
 
 		return (

@@ -11,7 +11,7 @@ var SimSelector = React.createClass({
 	render:function() {
 		return (
             <div className='sim-select-wrap'>
-			<select className='sim-select' id='sim-select' onChange={this._handleChange}>
+			<select className='sim-select' id='sim-select' onChange={this._handleChange} value={this.props.current}>
 	            <option value='Kadala'>Kadala</option>
                 <option value='Crafting'>Crafting</option>
 			</select>

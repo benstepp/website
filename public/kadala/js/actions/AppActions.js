@@ -79,6 +79,13 @@ var AppActions = {
             actionType:AppConstants.CHANGE_SIM,
             sim:type
         })
+    },
+
+    setCraft:function(item) {
+        AppDispatcher.dispatch({
+            actionType:AppConstants.SET_CRAFT,
+            item:item
+        });
     }
 };
 

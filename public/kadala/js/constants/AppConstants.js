@@ -17,5 +17,6 @@ module.exports = keyMirror({
 	TOGGLE_STORE:null,
 	TOGGLE_VIS:null,
 
-    CHANGE_SIM:null
+    CHANGE_SIM:null,
+    SET_CRAFT:null
 });

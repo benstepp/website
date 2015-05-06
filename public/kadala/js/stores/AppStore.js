@@ -15,7 +15,8 @@ var defaults = {
 	seasonal:true,
 	item:{"type":"helm","text":"Mystery Helmet","cost":25,"size":2},
 	vis:false,
-    sim:'Kadala'
+    sim:'Kadala',
+    craftItem:null
 };
 var shardsSpent = {};
 var lifetime = {Barbarian:{},Crusader:{},'Demon Hunter':{},Monk:{},'Witch Doctor':{},Wizard:{}};
@@ -119,6 +120,11 @@ function clearShards(key) {
 
 function changeSim(sim) {
     appSettings.sim = sim;
+    saveSettings();
+}
+
+function setCraft(item){
+    appSettings.craftItem = item;
     saveSettings();
 }
 
@@ -294,6 +300,10 @@ AppDispatcher.register(function(action) {
 			break;
         case AppConstants.CHANGE_SIM:
             changeSim(action.sim);
+            AppStore.emitChange();
+            break;
+        case AppConstants.SET_CRAFT:
+            setCraft(action.item);
             AppStore.emitChange();
             break;
 		default:
