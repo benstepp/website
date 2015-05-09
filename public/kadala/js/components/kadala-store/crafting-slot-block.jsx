@@ -1,8 +1,12 @@
 var React = require('react');
+var PureRenderMixin = require('react/addons').addons.PureRenderMixin;
 
 var CraftingItem = require('./crafting-item.jsx');
 
 var CraftingSlotBlock = React.createClass({
+
+    mixins: [PureRenderMixin],
+
     render:function() {
 
         var slotMap = {

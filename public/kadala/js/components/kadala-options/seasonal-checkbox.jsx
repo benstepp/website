@@ -1,4 +1,5 @@
 var React = require('react');
+var PureRenderMixin = require('react/addons').addons.PureRenderMixin;
 
 var SeasonalCheckbox = React.createClass({
 
@@ -6,6 +7,8 @@ var SeasonalCheckbox = React.createClass({
 		changeSeasonal:React.PropTypes.func,
 		seasonal:React.PropTypes.bool
 	},
+
+	mixins: [PureRenderMixin],
 
 	_updateSeasonal:function() {
 		this.props.changeSeasonal(!this.props.seasonal);

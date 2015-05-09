@@ -1,5 +1,6 @@
 var React = require('react');
 var assign = require('object-assign');
+var PureRenderMixin = require('react/addons').addons.PureRenderMixin;
 
 var AppStore = require('../../stores/AppStore');
 var KadalaItem = require('./kadala-item.jsx');
@@ -10,6 +11,8 @@ var KadalaStore = React.createClass({
 	getInitialState:function() {
 		return assign({},AppStore.getSettings(),{shards:AppStore.getShards()});
 	},
+
+	mixins: [PureRenderMixin],
 
 	componentDidMount: function() {
 		AppStore.addChangeListener(this._onChange);

@@ -1,5 +1,6 @@
 var React = require('react');
 var d3sim = require('d3sim');
+var PureRenderMixin = require('react/addons').addons.PureRenderMixin;
 
 var AppStore = require('../../stores/AppStore');
 
@@ -11,6 +12,8 @@ var CraftingStore = React.createClass({
     getInitialState:function() {
         return AppStore.getSettings();
     },
+
+    mixins: [PureRenderMixin],
 
     componentWillMount:function() {
         AppStore.addChangeListener(this._onChange);

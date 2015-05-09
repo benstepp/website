@@ -1,5 +1,6 @@
 var React = require('react');
 var d3sim = require('d3sim');
+var PureRenderMixin = require('react/addons').addons.PureRenderMixin;
 
 var AppActions = require('../../actions/AppActions.js');
 var AppStore = require('../../stores/AppStore.js');
@@ -9,6 +10,8 @@ var Navbar = React.createClass({
 	propTypes:{
 		mobile:React.PropTypes.bool
 	},
+
+	mixins: [PureRenderMixin],
 
 	getInitialState:function() {
 		return AppStore.getSettings();

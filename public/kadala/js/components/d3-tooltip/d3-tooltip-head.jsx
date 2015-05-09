@@ -1,4 +1,5 @@
 var React = require('react');
+var PureRenderMixin = require('react/addons').addons.PureRenderMixin;
 
 var D3ItemTooltipHead = React.createClass({
 
@@ -6,6 +7,8 @@ var D3ItemTooltipHead = React.createClass({
 		color:React.PropTypes.string,
 		name:React.PropTypes.string,
 	},
+
+	mixins: [PureRenderMixin],
 
 	render: function() {
 

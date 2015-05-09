@@ -1,4 +1,5 @@
 var React = require('react');
+var PureRenderMixin = require('react/addons').addons.PureRenderMixin;
 
 var InventoryContainer = require('./inventory-container.jsx');
 var InventoryStore = require('../../stores/InventoryStore');

@@ -1,5 +1,6 @@
 var React = require('react');
 var d3sim = require('d3sim');
+var PureRenderMixin = require('react/addons').addons.PureRenderMixin;
 
 var AppActions = require('../../actions/AppActions');
 
@@ -7,7 +8,9 @@ var D3TooltipHead = require('../d3-tooltip/d3-tooltip-head.jsx');
 
 var CraftItemInfo = React.createClass({
 
-    _craftItem:function() {console.log(this.props.item);
+    mixins: [PureRenderMixin],
+
+    _craftItem:function() {
         var item = d3sim.craftItem(this.props.item.slot, this.props.dClass, this.props.item.name);
         AppActions.addItem(item);
     },

@@ -12,11 +12,12 @@ var nextInventory;
 
 var items = [];
 var currentIndex = 0;
+var columnHeights = [0,0,0,0,0,0,0,0,0,0];
 
 //creates nested array blank inventory and sets as the current inventory
 function createInventory() {
 	var newInventory = [];
-
+	columnHeights = [0,0,0,0,0,0,0,0,0,0];
 	for (var i=0;i<10;i++) {
 		//push a blank array to represent each column of the inventory
 		newInventory.push([]);
@@ -45,43 +46,41 @@ function getItem() {
 }
 
 function addItem(item) {
-    item.size = (item.slot === 'amulet' || item.slot === 'ring' || item.slot === 'belt') ? 1 : 2;
-	var inventoryLength = currentInventory.length;
-	//looping through each column of the inventory
-    var columnHeights = [];
-    var largeItemColumnIndex;
-    var largeColumnHeight = 6;
-	for (var i = 0; i < inventoryLength; i ++) {
-		//loop through each item in said column
-		var columnLength = currentInventory[i].length;
-		var columnHeight = 0;
-		for (var j = 0; j < columnLength; j++) {
-			//add current item size to column height
-			if(currentInventory[i][j].hasOwnProperty('size')) {
-				columnHeight+=currentInventory[i][j].size;
-			}
-		}
-		//check if the height is still less than 6 with new item
-		//and add to that column and return to stop the madness
-		if (columnHeight+item.size <=6) {
-            //exit loops on small items quickly
-	        if(item.size === 1) {
+    item.size = item.size || ((item.slot === 'amulet' || item.slot === 'ring' || item.slot === 'belt') ? 1 : 2);
+
+	//if the item is small we loop
+	if (item.size === 1) {
+		for (var i = 0; i < 10 ;i++) {
+			//check if the height is still less than 6 with new item
+			//and add to that column and return to stop the madness
+			if (columnHeights[i] <= 5) {
+	        	columnHeights[i] += 1;
                 currentInventory[i].push(item);
                 addToItems(item);
                 return;
-            }
-            //if the current column is bigger we need to change it
-            if (largeColumnHeight > columnHeight) {
-                largeColumnHeight = columnHeight;
-                largeItemColumnIndex = i;
-            }
+			}
 		}
 	}
-    //at this point check if item is large 
-    if (item.size === 2 && typeof largeItemColumnIndex !== 'undefined') {
-        currentInventory[largeItemColumnIndex].push(item);
-        addToItems(item);
-        return;
+    //at this point check if item is large
+    else if (item.size === 2) {
+    	/*var lowest = Math.min.apply(Math,columnHeights);
+    	if (lowest <= 4) {
+    		var lowestIndex = columnHeights.indexOf(lowest);
+			columnHeights[lowestIndex] += 2;
+		    currentInventory[lowestIndex].push(item);
+		    addToItems(item);
+		    return;
+    	}*/
+		for (var i = 0; i < 10 ;i++) {
+			//check if the height is still less than 6 with new item
+			//and add to that column and return to stop the madness
+			if (columnHeights[i] <= 4) {
+	        	columnHeights[i] += 2;
+                currentInventory[i].push(item);
+                addToItems(item);
+                return;
+			}
+		}
     }
 
 	//if we made it this far the new item does not fit in the current inventory

@@ -1,4 +1,5 @@
 var React = require('react');
+var PureRenderMixin = require('react/addons').addons.PureRenderMixin;
 
 var D3ItemTooltipWeapon= React.createClass({
 
@@ -7,6 +8,8 @@ var D3ItemTooltipWeapon= React.createClass({
 		speed:React.PropTypes.number,
 		weaponDps:React.PropTypes.number
 	},
+
+	mixins: [PureRenderMixin],
 
 	render: function() {
 		return (
