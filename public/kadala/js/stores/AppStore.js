@@ -130,6 +130,9 @@ function setCraft(item){
 
 //saves the item name/rarity into localstorage for future visuals
 function saveItemData(item) {
+
+    if (appSettings.sim === 'Kadala') {
+
 	var name = item.name;
 	var slot = item.slot;
 	var rarity;
@@ -191,7 +194,7 @@ function saveItemData(item) {
 	}
 
 	saveSettings();
-
+    }
 }
 
 
@@ -304,6 +307,10 @@ AppDispatcher.register(function(action) {
             break;
         case AppConstants.SET_CRAFT:
             setCraft(action.item);
+            AppStore.emitChange();
+            break;
+        case AppConstants.HIDE_MENU:
+            hideBoth();
             AppStore.emitChange();
             break;
 		default:

@@ -25,7 +25,7 @@ var Navbar = React.createClass({
 	},
 
 	_buyItem:function() {
-		var item = d3sim.kadalaRoll(this.state.item.type);
+		var item = (this.state.sim === 'Kadala') ? d3sim.kadalaRoll(this.state.item.type) : d3sim.craftItem(this.state.craftItem.slot, this.state.dClass, this.state.craftItem.name);
 		item.size = this.state.item.size;
 		AppActions.addItem(item);
 		AppActions.incrementShards(this.state.item.type,this.state.item.cost);
@@ -41,6 +41,9 @@ var Navbar = React.createClass({
 	},
 
 	render:function() {
+
+        var buttonText = (this.state.sim === 'Crafting') ? this.state.craftItem.name : this.state.item.text;
+
 		return(
 			<nav>
 				<button className='ham' onClick={this._toggleOptions}>
@@ -50,7 +53,7 @@ var Navbar = React.createClass({
 					</svg>
 				</button>
 				<h1><a href='/kadala/'>Kadala Simulator</a></h1>
-				<button className='buy' onClick={this._buyItem}>{this.state.item.text}</button>
+				<button className='buy' onClick={this._buyItem}>{buttonText}</button>
 				<button className='shop' onClick={this._toggleStore}>
 					{/*From Material Design icons by Google (CC by 4.0)*/}
 					<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">

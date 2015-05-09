@@ -45,6 +45,7 @@ function getItem() {
 }
 
 function addItem(item) {
+    item.size = (item.slot === 'amulet' || item.slot === 'ring' || item.slot === 'belt') ? 1 : 2;
 	var inventoryLength = currentInventory.length;
 	//looping through each column of the inventory
     var columnHeights = [];

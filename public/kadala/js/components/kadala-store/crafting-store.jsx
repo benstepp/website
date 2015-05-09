@@ -43,7 +43,7 @@ var CraftingStore = React.createClass({
                         </div>
                     </div>
                     <div className='col-md-6'>
-                        <CraftItemInfo item={this.state.craftItem} />
+                        <CraftItemInfo item={this.state.craftItem} dClass={this.state.dClass} />
                     </div>
                 </div>
             </div>

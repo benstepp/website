@@ -23,7 +23,7 @@ var CraftingSlotBlock = React.createClass({
         var lis = [];
         var slotLength = this.props.items.length;
         for (var i =0; i < slotLength; i++) {
-            lis.push(<CraftingItem item={this.props.items[i]} key={i}/>);
+            lis.push(<CraftingItem item={this.props.items[i]} slot={this.props.slot} key={i}/>);
         }
 
         //hide the group is there are no items for this slot

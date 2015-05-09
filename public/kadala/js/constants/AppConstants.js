@@ -18,5 +18,7 @@ module.exports = keyMirror({
 	TOGGLE_VIS:null,
 
     CHANGE_SIM:null,
-    SET_CRAFT:null
+    SET_CRAFT:null,
+
+    HIDE_MENU:null
 });
