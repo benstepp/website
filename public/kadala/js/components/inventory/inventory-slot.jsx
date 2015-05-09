@@ -1,8 +1,12 @@
 var React = require('react');
+var PureRenderMixin = require('react/addons').addons.PureRenderMixin;
 
 var D3ItemTooltip = require('../d3-tooltip/d3-tooltip.jsx');
 
 var InventorySlot = React.createClass({
+
+    mixins: [PureRenderMixin],
+
 	componentDidMount:function() {
 		this.setTooltipOffset();
 	},

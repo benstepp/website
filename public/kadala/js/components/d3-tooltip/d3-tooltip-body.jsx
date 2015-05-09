@@ -1,4 +1,5 @@
 var React = require('react');
+var PureRenderMixin = require('react/addons').addons.PureRenderMixin;
 
 var D3ItemTooltipArmor = require('./d3-tooltip-armor.jsx');
 var D3ItemTooltipStat = require('./d3-tooltip-stat.jsx');
@@ -9,6 +10,8 @@ var D3ItemTooltipBody = React.createClass({
 	propTypes:{
 		item:React.PropTypes.object
 	},
+
+	mixins: [PureRenderMixin],
 
 	render: function() {
 

@@ -1,4 +1,5 @@
 var React = require('react');
+var PureRenderMixin = require('react/addons').addons.PureRenderMixin;
 
 var HardcoreCheckbox = React.createClass({
 
@@ -6,6 +7,8 @@ var HardcoreCheckbox = React.createClass({
 		changeHardcore:React.PropTypes.func,
 		hardcore:React.PropTypes.bool
 	},
+
+	mixins: [PureRenderMixin],
 
 	_updateHardcore:function(){
 		this.props.changeHardcore(!this.props.hardcore);

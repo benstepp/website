@@ -1,10 +1,13 @@
 var React = require('react');
+var PureRenderMixin = require('react/addons').addons.PureRenderMixin;
 
 var D3ItemTooltipStat= React.createClass({
 
 	propTypes:{
 		stat:React.PropTypes.object
 	},
+
+	mixins: [PureRenderMixin],
 
 	render: function() {
 

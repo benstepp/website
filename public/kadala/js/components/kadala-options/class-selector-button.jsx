@@ -1,4 +1,5 @@
 var React = require('react');
+var PureRenderMixin = require('react/addons').addons.PureRenderMixin;
 
 var ClassSelectorButton = React.createClass({
 
@@ -8,6 +9,8 @@ var ClassSelectorButton = React.createClass({
 		name:React.PropTypes.string,
 		selected:React.PropTypes.bool
 	},
+
+	mixins: [PureRenderMixin],
 
 	_handleClick:function() {
 		this.props.changeClass(this.props.name);

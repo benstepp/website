@@ -1,4 +1,5 @@
 var React = require('react');
+var PureRenderMixin = require('react/addons').addons.PureRenderMixin;
 
 var AppActions = require('../../actions/AppActions');
 
@@ -8,6 +9,8 @@ var ItemLeft = React.createClass({
 		hasPrevious:React.PropTypes.bool,
 		hideClass:React.PropTypes.string
 	},
+
+	mixins: [PureRenderMixin],
 
 	_handleClick:function() {
 		AppActions.previousItem();

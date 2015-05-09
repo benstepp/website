@@ -1,4 +1,5 @@
 var React = require('react');
+var PureRenderMixin = require('react/addons').addons.PureRenderMixin;
 
 var GenderSelectorButton = require('./gender-selector-button.jsx');
 
@@ -8,6 +9,8 @@ var GenderSelector = React.createClass({
 		changeGender:React.PropTypes.func,
 		selected:React.PropTypes.string
 	},
+
+	mixins: [PureRenderMixin],
 
 	render:function() {
 

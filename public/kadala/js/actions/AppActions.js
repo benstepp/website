@@ -72,8 +72,27 @@ var AppActions = {
 		AppDispatcher.dispatch({
 			actionType:AppConstants.TOGGLE_VIS
 		});
-	}
+	},
 
+    changeSim:function(type) {
+        AppDispatcher.dispatch({
+            actionType:AppConstants.CHANGE_SIM,
+            sim:type
+        });
+    },
+
+    setCraft:function(item) {
+        AppDispatcher.dispatch({
+            actionType:AppConstants.SET_CRAFT,
+            item:item
+        });
+    },
+
+    hideMenu: function() {
+        AppDispatcher.dispatch({
+            actionType:AppConstants.HIDE_MENU
+        });
+    }
 };
 
 module.exports = AppActions;

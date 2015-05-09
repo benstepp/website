@@ -1,0 +1,78 @@
+@import "../media-queries.scss";
+
+.sim-select {
+    width:25%;
+    @media #{$mobile} {
+        width:100%;
+    }
+}
+
+.sim-select-wrap {
+    padding:6px;
+}
+
+@media #{$mobile} {
+    .sim-wrap {
+        display:none;
+    }
+}
+.sim-wrap.unhide {
+    display:block !important;
+}
+
+.crafting-list {
+    overflow-y:scroll;
+    width:100%;
+    @media #{$desktop} {
+        max-height:calc(50vh - 8px);
+    }
+    @media #{$tablet} {
+        max-height:calc(50vh - 8px);
+    }
+
+    > ul {
+        &.hidden {
+            display:none;
+        }
+        > li {
+            list-style-type:none;
+            text-size:14px;
+            color:#ddd;
+            cursor:pointer;
+            &:hover {
+                color:#fff;
+                background-color:lighten(#12110f, 5%);
+            }
+            &.crafting-title {
+                font-weight:700;
+                background-color:#150d0a;
+                &:hover {
+                    color:#fff;
+                    background-color:lighten(#150d0a, 5%);
+                }
+            }
+        }
+    }
+}
+
+.crafting-store {
+    background-color:#12110f;
+    padding:4px;
+    @media #{$desktop} {
+        max-height:50vh;
+    }
+    @media #{$tablet} {
+        max-height:50vh;
+    }
+    @media #{$mobile} {
+        max-height:100vh;
+    }
+}
+
+.craft-item-header {
+    font-size: 20px;
+}
+
+.tooltip-head {
+    box-sizing:content-box;
+}

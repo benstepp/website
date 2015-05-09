@@ -1,4 +1,5 @@
 var React = require('react');
+var PureRenderMixin = require('react/addons').addons.PureRenderMixin;
 
 var AppActions = require('../../actions/AppActions');
 
@@ -7,6 +8,8 @@ var PreviousInventory = React.createClass({
 	propTypes:{
 		hasPrevious:React.PropTypes.bool
 	},
+
+	mixins: [PureRenderMixin],
 
 	_handleClick:function() {
 		AppActions.previousInventory();

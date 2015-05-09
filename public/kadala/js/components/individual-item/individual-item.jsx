@@ -1,4 +1,5 @@
 var React = require('react');
+var PureRenderMixin = require('react/addons').addons.PureRenderMixin;
 
 var D3ItemTooltip = require('../d3-tooltip/d3-tooltip.jsx');
 var InventoryStore = require('../../stores/InventoryStore');
@@ -6,6 +7,8 @@ var ItemLeft = require('./item-left.jsx');
 var ItemRight = require('./item-right.jsx');
 
 var IndividualItem = React.createClass({
+
+	mixins: [PureRenderMixin],
 
 	getInitialState:function() {
 		return InventoryStore.getItem();

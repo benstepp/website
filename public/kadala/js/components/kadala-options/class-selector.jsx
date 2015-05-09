@@ -1,4 +1,5 @@
 var React = require('react');
+var PureRenderMixin = require('react/addons').addons.PureRenderMixin;
 
 var ClassSelectorButton = require('./class-selector-button.jsx');
 
@@ -9,6 +10,8 @@ var ClassSelector = React.createClass({
 		gender:React.PropTypes.string,
 		selected:React.PropTypes.string
 	},
+
+	mixins: [PureRenderMixin],
 
 	render:function() {
 

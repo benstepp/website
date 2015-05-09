@@ -1,5 +1,6 @@
 var React = require('react');
 var d3sim = require('d3sim');
+var PureRenderMixin = require('react/addons').addons.PureRenderMixin;
 
 var AppActions = require('../../actions/AppActions.js');
 var AppStore = require('../../stores/AppStore.js');
@@ -16,6 +17,8 @@ var OptionsPanel = React.createClass({
 		d3sim.setKadala(initial.dClass,initial.seasonal,initial.hardcore);
 		return initial;
 	},
+
+	mixins: [PureRenderMixin],
 
 	componentDidMount: function() {
 		AppStore.addChangeListener(this._onChange);

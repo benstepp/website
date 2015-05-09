@@ -1,5 +1,6 @@
 var React = require('react');
 var d3sim = require('d3sim');
+var PureRenderMixin = require('react/addons').addons.PureRenderMixin;
 
 var AppActions = require('../../actions/AppActions');
 var AppStore = require('../../stores/AppStore');
@@ -10,6 +11,8 @@ var KadalaItem = React.createClass({
 		item:React.PropTypes.object,
 		shardCount:React.PropTypes.number
 	},
+
+	mixins: [PureRenderMixin],
 
 	_buyItem:function() {
 		var item = d3sim.kadalaRoll(this.props.item.type);
