@@ -40,12 +40,12 @@ var CraftingStore = React.createClass({
         return (
             <div className='crafting-store'>
                 <div className='row'>
-                    <div className='col-md-6'>
+                    <div className='col-sm-6'>
                         <div className='crafting-list'>
                             {craftSlots}
                         </div>
                     </div>
-                    <div className='col-md-6'>
+                    <div className='col-sm-6'>
                         <CraftItemInfo item={this.state.craftItem} dClass={this.state.dClass} />
                     </div>
                 </div>
