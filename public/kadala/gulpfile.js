@@ -16,6 +16,7 @@ var gulp = require('gulp'),
 	htmlreplace = require('gulp-html-replace'),
 	//css
 	sass = require('gulp-sass'),
+    autoprefixer = require('gulp-autoprefixer'),
 	minifyCss = require('gulp-minify-css'),
 	uncss = require('gulp-uncss'),
 	//js
@@ -76,6 +77,7 @@ module.exports = function(date) {
 		return gulp.src('public/kadala/scss/style.scss')
 			.pipe(sass())
 			.pipe(concat('style-'+date+'.min.css'))
+            .pipe(autoprefixer())
 			.pipe(minifyCss())
 			.pipe(gulp.dest('build/kadala'));
 	});
@@ -106,12 +108,12 @@ module.exports = function(date) {
 	});
 
 
-	gulp.start('browserify');
-	//gulp.start('clean');
-	//gulp.start('html');
-	//gulp.start('css');
-	//gulp.start('js');
-	//gulp.start('img');
-	//gulp.start('libs');
+	//gulp.start('browserify');
+	gulp.start('clean');
+	gulp.start('html');
+	gulp.start('css');
+	gulp.start('js');
+	gulp.start('img');
+	gulp.start('libs');
 
 };
