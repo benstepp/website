@@ -53,8 +53,13 @@ function toggleOptions() {
 	appSettings.store = false;
 }
 function hideBoth() {
-	appSettings.store = false;
-	appSettings.options = false;
+    //check if we need to notify before saving new values
+    var notify = (appSettings.store || appSettings.options);
+    if (notify) {
+	    appSettings.store = false;
+    	appSettings.options = false;
+        return notify;
+    }
 }
 function toggleVis() {
 	appSettings.vis= !appSettings.vis;
@@ -289,9 +294,11 @@ AppDispatcher.register(function(action) {
 			AppStore.emitChange();
 			break;
 		case AppConstants.ADD_ITEM:
-			hideBoth();
+			var notifyBool = hideBoth();
 			saveItemData(action.item);
-			AppStore.emitChange();
+			if (notifyBool) {
+                AppStore.emitChange();
+            }
 			break;
 		case AppConstants.CLEAR_SHARDS:
 			clearShards(action.key);

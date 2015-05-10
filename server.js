@@ -24,10 +24,10 @@ db.once('open', function callback () {
 });
 
 //app modules
-require('./server/riftevents')(app, io);
-require('./server/steam')(app, io);
-require('./server/riftloot')(app, io);
-require('./server/contact')(app,io);
+//require('./server/riftevents')(app, io);
+//require('./server/steam')(app, io);
+//require('./server/riftloot')(app, io);
+//require('./server/contact')(app,io);
 
 //start app
 http.listen(port);
