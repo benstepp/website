@@ -1,6 +1,5 @@
 var React = require('react');
 var d3sim = require('d3sim');
-var PureRenderMixin = require('react/addons').addons.PureRenderMixin;
 
 var AppStore = require('../../stores/AppStore');
 
@@ -12,8 +11,6 @@ var CraftingStore = React.createClass({
     getInitialState:function() {
         return AppStore.getSettings();
     },
-
-    mixins: [PureRenderMixin],
 
     componentWillMount:function() {
         AppStore.addChangeListener(this._onChange);
@@ -40,12 +37,12 @@ var CraftingStore = React.createClass({
         return (
             <div className='crafting-store'>
                 <div className='row'>
-                    <div className='col-md-6'>
+                    <div className='col-sm-6'>
                         <div className='crafting-list'>
                             {craftSlots}
                         </div>
                     </div>
-                    <div className='col-md-6'>
+                    <div className='col-sm-6'>
                         <CraftItemInfo item={this.state.craftItem} dClass={this.state.dClass} />
                     </div>
                 </div>

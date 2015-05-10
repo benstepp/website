@@ -12,9 +12,54 @@
 	margin-top:20px;
 	padding:8px;
 	background-color:#12110f;
+    position:relative;
 	@media #{$tablet} {
 		height:310px;
 	}
+}
+
+.blank-inventory {
+    height:324px;
+    width:100%;
+    display:flex;
+    flex-wrap:wrap;
+    position:absolute;
+    z-index:1;
+    top:0;
+    left:0;
+    @media #{$tablet} {
+        height:294px;
+    }
+}
+
+.filled-inventory {
+    height:324px;
+    width:100%;
+    z-index:2;
+    display:flex;
+    flex-wrap:wrap;
+    flex-direction:row;
+    position:relative;
+}
+
+.inventory-column {
+    display:flex;
+    flex-wrap:wrap;
+    align-content:flex-start;
+    width:54px;
+
+    @media #{$tablet} {
+        width:49px;
+    }
+}
+
+.inventory-wrap {
+    width:540px;
+    position:relative;
+
+    @media #{$tablet} {
+        width:490px;
+    }
 }
 
 .inventory-section {
