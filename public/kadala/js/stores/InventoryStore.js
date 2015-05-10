@@ -63,24 +63,15 @@ function addItem(item) {
 	}
     //at this point check if item is large
     else if (item.size === 2) {
-    	/*var lowest = Math.min.apply(Math,columnHeights);
+    	var lowest = Math.min.apply(Math,columnHeights);
     	if (lowest <= 4) {
     		var lowestIndex = columnHeights.indexOf(lowest);
 			columnHeights[lowestIndex] += 2;
 		    currentInventory[lowestIndex].push(item);
 		    addToItems(item);
 		    return;
-    	}*/
-		for (var i = 0; i < 10 ;i++) {
-			//check if the height is still less than 6 with new item
-			//and add to that column and return to stop the madness
-			if (columnHeights[i] <= 4) {
-	        	columnHeights[i] += 2;
-                currentInventory[i].push(item);
-                addToItems(item);
-                return;
-			}
-		}
+    	}
+		
     }
 
 	//if we made it this far the new item does not fit in the current inventory
